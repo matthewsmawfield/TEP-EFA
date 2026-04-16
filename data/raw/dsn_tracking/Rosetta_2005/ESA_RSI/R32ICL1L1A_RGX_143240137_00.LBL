@@ -1,0 +1,144 @@
+PDS_VERSION_ID           =  "PDS3"                                            
+DATA_SET_ID              =  "RO-C-RSI-1/2/3-ESC1-0446-V1.0"                   
+DATA_SET_NAME            =  "ROSETTA-ORBITER 67P RSI 1/2/3                    
+                             COMET ESCORT 1 0446 V1.0"                        
+MISSION_ID               =  "ROSETTA"                                         
+MISSION_NAME             =  "INTERNATIONAL ROSETTA MISSION"                   
+MISSION_PHASE_NAME       =  "COMET ESCORT 1"                                  
+PROCESSING_LEVEL_ID      =  "1"                                               
+PRODUCT_TYPE             =  "UDR"                                             
+TARGET_NAME              =  "67P/CHURYUMOV-GERASIMENKO 1 (1969 R1)"           
+TARGET_TYPE              =  "COMET"                                           
+INSTRUMENT_HOST_NAME     =  "ROSETTA-ORBITER"                                 
+INSTRUMENT_HOST_ID       =  "RO"                                              
+INSTRUMENT_NAME          =  "ROSETTA RADIO SCIENCE INVESTIGATION"             
+INSTRUMENT_TYPE          =  "RADIO SCIENCE"                                   
+INSTRUMENT_ID            =  "RSI"                                             
+PRODUCER_ID              =  "IFMS_ESA_NNO"                                    
+PRODUCER_FULL_NAME       =  "MARTIN PAETZOLD"                                 
+PRODUCER_INSTITUTION_NAME=  "RHEINISCHES INSTITUT FUER UMWELTFORSCHUNG,       
+                             PLANETENFORSCHUNG"                               
+DSN_STATION_NUMBER       =  32                                                
+PRODUCT_CREATION_TIME    =  2017-03-01T11:39:57.000                           
+SPACECRAFT_CLOCK_START_COUNT =  "N/A"                                         
+SPACECRAFT_CLOCK_STOP_COUNT  =  "N/A"                                         
+STANDARD_DATA_PRODUCT_ID =  "IFMS1"                                           
+DATA_QUALITY_ID          =  "N/A"                                             
+DATA_QUALITY_DESC        =  "See the DATASET.CAT for further information      
+                             on the quality of this data set."                
+INSTRUMENT_MODE_ID       =  "TWOD_X"                                          
+INSTRUMENT_MODE_DESC     =  "TWO-WAY DUAL-FREQUENCY X-BAND U/L X&S-Band D/L"  
+SOURCE_PRODUCT_ID        =  "NN11_ROSE_2014_324_OP_RG_013737_0000.raw"        
+SOFTWARE_NAME            =  "N/A"                                             
+DESCRIPTION              =  "This is an IFMS Closed Loop Ranging file         
+                            containing all the necessary information to       
+                            calculate the Two-Way Lighttime (TWLT). This file 
+                            begins with a header which contains useful        
+                            information about the Doppler recording equipment 
+                            of the ESA radio antenna station: the Intermediate
+                            Frequency & Modem System (IFMS).                  
+                            A description can be found in the                 
+                            corresponding level 1b ranging label file in the  
+                            note which describes the configuration_table. This
+                            level 1b label file has almost the same file name 
+                            as this one. The only difference is that instead  
+                            of 'L1A' the file name contains 'L1B'. It can be  
+                            found in the corresponding subfolders under       
+                            DATA/LEVEL1B/ for the data files.                 
+                            More information about the IFMS ranging file      
+                            format can be found in the MaRS/RSI/VeRa file     
+                            naming convention document MEX-MRS-IGM-IS-3016,   
+                            ROS-RSI-IGM-IS-3087,VEX-VRA-IGM-IS-3009           
+                            which is located under DOCUMENT/MRS_DOC,          
+                            DOCUMENT/RSI_DOC, DOCUMENT/VRA_DOC respectively.  
+                            For a detailed description see chapter 6 in the   
+                            IFSM-OCC interface control document IFMS_OCCFTP   
+                            which is located under DOCUMENT/ESA_DOC.          
+                                                                              
+                            Please note that the header format changed in May 
+                            gradually. In May 2005 the IFMS3 files already    
+                            have the new header whereas IFMS1 and IFMS2 still 
+                            contain the old header. Since end of May 2005     
+                            all IFMS files contain the new header.            
+                                                                              
+                            Below the header section the data section starts: 
+                            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            IMPORTANT NOTE: IFMS starts the ranging file      
+                            recording before a lock on the downlink signal was
+                            established. This is indicated by the ambiguity   
+                            flag being equal 'NO'. The numbers of these       
+                            samples are not meaningful. Thus real data are    
+                            denoted by ambiguity flag being 'YES' AND current 
+                            code being  greater equal 14.                     
+                            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            The 1st column contains the SampleNumber.         
+                            The 2nd column contains the UTC ground received   
+                            time of measurement in the format:                
+                            CCYYMMDD.HHMMSS.sss .                             
+                            The 3rd column contains the Delay which is the    
+                            signal round-trip delay modulo the maximum code   
+                            ambiguity [s].                                    
+                            The 4th column contains the current code number.  
+                            Possible values are {0,...,24}. Only data samples 
+                            with values greater or equal 14 are used for      
+                            further processing.                               
+                            The 5th column contains the ambiguity_done flag to
+                            indicate whether ambiguity was resolved (value in 
+                            this case=YES) or not (value is in this case=NO). 
+                            If value is NO the ranging tone from the          
+                            spacecraft could not be received. Therefor only   
+                            data with flag YES can be used for further        
+                            processing.                                       
+                            The 6th column contains a flag to indicate whether
+                            carrier is within the window of a known spurious  
+                            frequency (value in this case=YES) or not (value  
+                            is in this case=NO).                              
+                            The 7th column contains a flag to indicate whether
+                            the tone is within the window of a known spurious 
+                            frequency (value in this case=YES) or not (value  
+                            is in this case=NO).                              
+                            The 8th column contains a flag to indicate the    
+                            success of the previous code correlation (if      
+                            succesful value is YES, if not succesful value is 
+                            NO).                                              
+                            The 9th column contains the estimated Doppler     
+                            effect KD-1 or more precisely the computed        
+                            normalized Doppler shift calculated as follows:   
+                            KD-1 = ( F_R - q * F_T )/( q * F_T ) where        
+                               F_R is the frequency of the received signal at 
+                                   the groundstaion at given time,            
+                               F_T is the frequency of the transmitted signal 
+                                   at the groundstation at given time, and    
+                               q   is the frequency turn-around ratio at the  
+                                   space craft.                               
+                            If F_T is constant, the numerator is the Doppler  
+                            shift over the two-way time of flight. Also, if   
+                            F_T is constant, KD-1 multiplied by the speed of  
+                            light c yields the average radial velocity of the 
+                            spacecraft x 2 relative to the ground station over
+                            the two-way time of flight.                       
+                            The 10th column contains a flag to indicate the   
+                            Ranging receiver and demodulator unit (RGD) lock  
+                            status. It is YES when lock was established and NO
+                            if not. It has to be YES for meaningful data.     
+                            The 11th column contains the integrated tone level
+                            relative to the carrier level, not corrected with 
+                            the actual Code Modulation Index [dB].            
+                            The 12th column contains the normalised integrated
+                            code level to the tone level. Value has not unit. 
+                            The 13th column contains current phase error      
+                            [cycle].                                          
+                            The 14th column contains estimated tone loop      
+                            signal-to-noise ratio [dB].                       
+                            The 15th column contains estimated downlink       
+                            ranging modulation index [rad]."                  
+                                                                              
+^FILE                    =  "R32ICL1L1A_RGX_143240137_00.RAW"                 
+   PRODUCT_ID               =  "R32ICL1L1A_RGX_143240137_00.RAW"              
+   RECORD_TYPE              =  UNDEFINED                                      
+   START_TIME               =  2014-11-20T02:36:35.000                        
+   STOP_TIME                =  2014-11-20T03:36:34.000                        
+                                                                              
+                                                                              
+END                                                                           
+                                                                              

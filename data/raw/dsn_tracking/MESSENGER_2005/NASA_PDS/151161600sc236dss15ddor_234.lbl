@@ -1,0 +1,64 @@
+PDS_VERSION_ID                =  PDS3
+PRODUCT_VERSION_ID            =  "1.0"
+RECORD_TYPE                   =  UNDEFINED
+MISSION_NAME                  =  "MESSENGER"
+INSTRUMENT_HOST_NAME          =  "MESSENGER"
+INSTRUMENT_HOST_ID            =  "MESS"
+INSTRUMENT_NAME               =  "RADIO SCIENCE SUBSYSTEM"
+INSTRUMENT_ID                 =  "RSS"
+DSN_STATION_NUMBER            =  15
+TARGET_NAME                   =  "MERCURY"
+DATA_SET_ID                   =  "MESS-V/H-RSS-1-EDR-RAWDATA-V1.0"
+PRODUCER_ID                   =  "DSN"
+PRODUCT_ID                    =  "151161600SC236DSS15DDOR_234"
+ORIGINAL_PRODUCT_ID           =  "151161600SC236DSS15DDOR.234"
+PRODUCT_TYPE                  =  TNF
+FILE_NAME                     =  "151161600SC236DSS15DDOR_234.DAT"
+PRODUCT_CREATION_TIME         =  2015-117T16:31:41
+MISSION_PHASE_NAME            =  "MERCURY ORBIT YEAR 5"
+START_TIME                    =  2015-116T16:00:00
+STOP_TIME                     =  2015-116T23:40:59
+SPACECRAFT_CLOCK_START_COUNT  =  "N/A"
+SPACECRAFT_CLOCK_STOP_COUNT   =  "N/A"
+DESCRIPTION                   =  "
+   The TNF data type captures radiometric tracking data for delivery
+   to navigation and radio science users from the Telecommunications
+   Services at JPL.  The product replaces data types formerly known
+   as Orbit Data Files, Archival Tracking Data Files, and others.
+   
+   Format and content of the TNF data product are documented in:
+
+                             820-013
+                  Deep Space Mission System (DSMS)
+                  External Interface Specification
+                           JPL D-16765
+                            TRK-2-34
+              DSMS Tracking System Data Archival Format
+                     Jet Propulsion Laboratory
+                       4800 Oak Grove Drive
+                     Pasadena, CA  91109-8099
+                     Revision J:  May 31, 2007
+
+   The PDS label described in Appendix B of the above document is
+   inconsistent with current archiving standards of the Planetary
+   Data System.  It has been replaced by the label you are now
+   reading.  For more information, see
+ 
+         Planetary Data System Standards Reference (version 3.8)
+                    JPL Publication D-7669, Part 2
+                       Jet Propulsion Laboratory
+                          4800 Oak Grove Drive
+                        Pasadena, CA  91109-8099
+   
+   Background information on the radiometric system may be found in:
+
+             Formulation for Observed and Computed Values
+           of Deep Space Network Data Types  for Navigation
+                         by Theodore D. Moyer
+                  JPL Publication 00-7, October 2000
+      Monograph 2, Deep Space Communications and Navigation Series
+                       Jet Propulsion Laboratory
+                          4800 Oak Grove Drive
+                        Pasadena, CA  91109-8099"
+
+END

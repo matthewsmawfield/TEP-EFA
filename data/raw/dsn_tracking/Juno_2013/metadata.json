@@ -1,0 +1,28 @@
+{
+  "mission": "Juno_2013",
+  "archive_info": {
+    "instrument": "Juno Radio Science",
+    "pds_collections": [
+      "https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/",
+      "https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/"
+    ],
+    "data_types": [
+      "TRK-2-25",
+      "ATDF",
+      "Ka-band"
+    ],
+    "perigee": "2013-10-09",
+    "status": "available",
+    "notes": "Earth flyby tracking with Ka-band precision"
+  },
+  "download_status": "instructions_generated",
+  "access_status": "manual_required",
+  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Juno_2013/DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-07T13:07:54.381436",
+  "next_steps": [
+    "1. Open: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/",
+    "2. Navigate to perigee date data products",
+    "3. Download TRK-2-25 files",
+    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Juno_2013"
+  ]
+}

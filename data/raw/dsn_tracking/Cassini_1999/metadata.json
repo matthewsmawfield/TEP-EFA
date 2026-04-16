@@ -1,0 +1,27 @@
+{
+  "mission": "Cassini_1999",
+  "archive_info": {
+    "instrument": "Cassini Radio Science",
+    "pds_collections": [
+      "https://pds-rn.jpl.nasa.gov/data/co-rss-1-edr/",
+      "https://pds-rn.jpl.nasa.gov/data/co-rss-2-edr/"
+    ],
+    "data_types": [
+      "TRK-2-25",
+      "ATDF"
+    ],
+    "perigee": "1999-08-18",
+    "status": "available",
+    "notes": "Venus flyby 2 tracking data (Earth flyby not applicable)"
+  },
+  "download_status": "instructions_generated",
+  "access_status": "manual_required",
+  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Cassini_1999/DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-07T13:07:54.362447",
+  "next_steps": [
+    "1. Open: https://pds-rn.jpl.nasa.gov/data/co-rss-1-edr/",
+    "2. Navigate to perigee date data products",
+    "3. Download TRK-2-25 files",
+    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Cassini_1999"
+  ]
+}

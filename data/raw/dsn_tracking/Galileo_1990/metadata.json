@@ -1,0 +1,27 @@
+{
+  "mission": "Galileo_1990",
+  "archive_info": {
+    "instrument": "Galileo Radio Science",
+    "pds_collections": [
+      "https://pds-rn.jpl.nasa.gov/data/go-j-rss-1-edr-v1.0/",
+      "https://pds-rn.jpl.nasa.gov/data/go-j-rss-2-edr-v1.0/"
+    ],
+    "data_types": [
+      "TRK-2-25",
+      "ATDF"
+    ],
+    "perigee": "1990-12-08",
+    "status": "available",
+    "notes": "Earth flyby 1 tracking data archived"
+  },
+  "download_status": "instructions_generated",
+  "access_status": "manual_required",
+  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Galileo_1990/DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-07T13:07:54.343382",
+  "next_steps": [
+    "1. Open: https://pds-rn.jpl.nasa.gov/data/go-j-rss-1-edr-v1.0/",
+    "2. Navigate to perigee date data products",
+    "3. Download TRK-2-25 files",
+    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Galileo_1990"
+  ]
+}

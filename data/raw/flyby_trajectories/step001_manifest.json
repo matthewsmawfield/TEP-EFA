@@ -1,0 +1,162 @@
+{
+  "acquisition_timestamp": "2026-04-16T02:08:40.574919Z",
+  "query_system": "NASA JPL Horizons (https://ssd.jpl.nasa.gov/horizons/)",
+  "trajectory_data": {
+    "reference_frame": "ICRF (International Celestial Reference Frame)",
+    "origin": "Earth center (geocentric)",
+    "type": "reconstructed_ephemeris",
+    "notes": "Post-fit trajectories from JPL orbit determination including anomalous accelerations"
+  },
+  "anomaly_data": {
+    "source": "peer_reviewed_literature",
+    "primary_reference": {
+      "authors": "Anderson, J. D., Campbell, J. K., Ekelund, J. E., Ellis, J., & Jordan, J. F.",
+      "year": 2008,
+      "title": "Anomalous Orbital-Energy Changes Observed during Spacecraft Flybys of Earth",
+      "journal": "Physical Review Letters",
+      "volume": "100",
+      "issue": "9",
+      "pages": "091102",
+      "doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "measurement_methodology": {
+      "tracking_system": "NASA Deep Space Network (DSN)",
+      "tracking_type": "2-way and 3-way Doppler",
+      "frequency_bands": [
+        "X-band (8.4 GHz)",
+        "S-band (2.3 GHz)"
+      ],
+      "precision": "~0.1 mm/s velocity accuracy",
+      "orbit_determination": "JPL Orbit Determination Program (ODP)",
+      "analysis_method": "Pre-perigee orbit fit with forward propagation, residual analysis vs post-perigee tracking"
+    },
+    "important_note": "Anomaly values are from published literature using professional NASA/JPL orbit determination software with DSN tracking data; NOT independently detected by this pipeline. Raw DSN tracking data requires NASA archive access and specialized software."
+  },
+  "total_spacecraft": 12,
+  "successful_queries": 12,
+  "failed_queries": 0,
+  "spacecraft": [
+    "Galileo_1990",
+    "Galileo_1992",
+    "NEAR_1998",
+    "Cassini_1999",
+    "Rosetta_2005",
+    "Rosetta_2007",
+    "Rosetta_2009",
+    "MESSENGER_2005",
+    "Juno_2013",
+    "Stardust_2001",
+    "OSIRIS-REx_2017",
+    "BepiColombo_2020"
+  ],
+  "summary": {
+    "Galileo_1990": {
+      "jpl_id": "-77",
+      "perigee_altitude_km": 972.326284153226,
+      "perigee_velocity_km_s": 13.734858931622512,
+      "observed_dv_mm_s": 3.92,
+      "dv_uncertainty_mm_s": 0.03,
+      "reference": "Anderson et al. (2008)",
+      "reference_doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "Galileo_1992": {
+      "jpl_id": "-77",
+      "perigee_altitude_km": 309.62136848929276,
+      "perigee_velocity_km_s": 14.076342937542945,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Anderson et al. (2008)",
+      "reference_doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "NEAR_1998": {
+      "jpl_id": "-93",
+      "perigee_altitude_km": 567.9126239501475,
+      "perigee_velocity_km_s": 12.721401342759908,
+      "observed_dv_mm_s": 13.46,
+      "dv_uncertainty_mm_s": 0.01,
+      "reference": "Anderson et al. (2008)",
+      "reference_doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "Cassini_1999": {
+      "jpl_id": "-82",
+      "perigee_altitude_km": 1197.2836508095043,
+      "perigee_velocity_km_s": 19.019547595117707,
+      "observed_dv_mm_s": 0.11,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Anderson et al. (2008)",
+      "reference_doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "Rosetta_2005": {
+      "jpl_id": "-85",
+      "perigee_altitude_km": 1968.719444407985,
+      "perigee_velocity_km_s": 10.512802597471808,
+      "observed_dv_mm_s": 1.82,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Morley & Budnik (2007)",
+      "reference_doi": null
+    },
+    "Rosetta_2007": {
+      "jpl_id": "-85",
+      "perigee_altitude_km": 5429.899238974063,
+      "perigee_velocity_km_s": 12.458122601229617,
+      "observed_dv_mm_s": 0.02,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Muller et al. (2008)",
+      "reference_doi": null
+    },
+    "Rosetta_2009": {
+      "jpl_id": "-226",
+      "perigee_altitude_km": 2571.9870850514035,
+      "perigee_velocity_km_s": 13.30822474166735,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Muller et al. (2010)",
+      "reference_doi": null
+    },
+    "MESSENGER_2005": {
+      "jpl_id": "-236",
+      "perigee_altitude_km": 2351.2418034283655,
+      "perigee_velocity_km_s": 10.385155258625337,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Anderson et al. (2008)",
+      "reference_doi": "10.1103/PhysRevLett.100.091102"
+    },
+    "Juno_2013": {
+      "jpl_id": "-61",
+      "perigee_altitude_km": 817.423122737795,
+      "perigee_velocity_km_s": 14.79384624021903,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.02,
+      "reference": "Aksenov & Tuchin (2020)",
+      "reference_doi": "10.1093/mnras/staa059"
+    },
+    "Stardust_2001": {
+      "jpl_id": "-29",
+      "perigee_altitude_km": 6008.920433478959,
+      "perigee_velocity_km_s": 10.314904022519391,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.05,
+      "reference": "Not detected in literature - predicted null",
+      "reference_doi": null
+    },
+    "OSIRIS-REx_2017": {
+      "jpl_id": "-64",
+      "perigee_altitude_km": 17239.063089743,
+      "perigee_velocity_km_s": 8.518296761997322,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.02,
+      "reference": "Not detected in literature - predicted null",
+      "reference_doi": null
+    },
+    "BepiColombo_2020": {
+      "jpl_id": "-121",
+      "perigee_altitude_km": 12697.341077777892,
+      "perigee_velocity_km_s": 7.594496738645929,
+      "observed_dv_mm_s": 0.0,
+      "dv_uncertainty_mm_s": 0.03,
+      "reference": "Not detected in literature - predicted null",
+      "reference_doi": null
+    }
+  }
+}

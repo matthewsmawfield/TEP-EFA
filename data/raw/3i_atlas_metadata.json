@@ -1,0 +1,15 @@
+{
+  "nga_params": {
+    "A1": 5.32e-08,
+    "A2": 1.15e-08,
+    "A3": -6.85e-09
+  },
+  "source": "MPC_REAL_OBSERVATIONS",
+  "data_origin": "Minor Planet Center (MPC) submissions",
+  "n_observations": 7940,
+  "n_observatories": 338,
+  "observation_span": "2025-05-08 to 2026-04-09",
+  "generated_at": "2026-04-04 03:13:13.046401",
+  "updated_at": "2026-04-06T15:35:37",
+  "note": "Real astrometric observations of 3I/ATLAS from MPC. Non-gravitational parameters from JPL#54 solution."
+}

@@ -1,0 +1,35 @@
+NASA PDS RAW DSN DATA DOWNLOAD INSTRUCTIONS
+================================================================================
+
+Mission: Stardust_2001
+Instrument: Stardust Radio Science
+Perigee Date: 2001-01-15
+Data Types: TRK-2-25, ATDF
+
+PDS COLLECTIONS:
+1. https://pds-rn.jpl.nasa.gov/data/sdu-c-rss-1-edr/
+2. https://pds-rn.jpl.nasa.gov/data/sdu-a-rss-1-edr/
+
+STEPS TO DOWNLOAD:
+1. Visit the PDS collection URLs above using a web browser
+2. Navigate to the data products for the perigee date: 2001-01-15
+3. Look for TRK-2-25 (ATDF) files which contain raw Doppler tracking
+4. Download files covering perigee ± 2 days
+5. Place downloaded files in this directory: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Stardust_2001
+
+DATA FORMAT:
+- TRK-2-25 (ATDF): Archival Tracking Data Files
+  * Contains raw Doppler frequency measurements
+  * Time-tagged with UTC timestamps
+  * Includes station IDs (DSS-24, DSS-25, etc.)
+  * Unprocessed by orbit determination
+
+- ODF: Orbit Data Files (if available)
+  * May contain pre-processed tracking data
+  * Check for raw vs processed flags
+
+CONTACT FOR ASSISTANCE:
+NASA PDS Radio Science Node: https://pds-rn.jpl.nasa.gov/
+Email: pds-rn@jpl.nasa.gov
+
+GENERATED: 2026-04-07T13:07:54.381758

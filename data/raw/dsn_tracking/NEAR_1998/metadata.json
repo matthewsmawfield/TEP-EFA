@@ -1,0 +1,27 @@
+{
+  "mission": "NEAR_1998",
+  "archive_info": {
+    "instrument": "NEAR Radio Science",
+    "pds_collections": [
+      "https://pds-rn.jpl.nasa.gov/data/near-a-rss-1-edr/",
+      "https://pds-rn.jpl.nasa.gov/data/near-a-esa-3-edr/"
+    ],
+    "data_types": [
+      "TRK-2-25",
+      "ODF"
+    ],
+    "perigee": "1998-01-23",
+    "status": "available",
+    "notes": "Raw tracking data available via PDS Radio Science Node"
+  },
+  "download_status": "instructions_generated",
+  "access_status": "manual_required",
+  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/NEAR_1998/DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-07T13:07:54.333270",
+  "next_steps": [
+    "1. Open: https://pds-rn.jpl.nasa.gov/data/near-a-rss-1-edr/",
+    "2. Navigate to perigee date data products",
+    "3. Download TRK-2-25 files",
+    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/NEAR_1998"
+  ]
+}

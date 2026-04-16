@@ -1,0 +1,27 @@
+{
+  "mission": "MESSENGER_2005",
+  "archive_info": {
+    "instrument": "MESSENGER Radio Science",
+    "pds_collections": [
+      "https://pds-rn.jpl.nasa.gov/data/mess-rss-1-edr/",
+      "https://pds-rn.jpl.nasa.gov/data/mess-e-rss-1-edr/"
+    ],
+    "data_types": [
+      "TRK-2-25",
+      "ATDF"
+    ],
+    "perigee": "2005-08-02",
+    "status": "available",
+    "notes": "Earth flyby 1 tracking data available"
+  },
+  "download_status": "instructions_generated",
+  "access_status": "manual_required",
+  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/MESSENGER_2005/DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-07T13:07:54.371670",
+  "next_steps": [
+    "1. Open: https://pds-rn.jpl.nasa.gov/data/mess-rss-1-edr/",
+    "2. Navigate to perigee date data products",
+    "3. Download TRK-2-25 files",
+    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/MESSENGER_2005"
+  ]
+}
