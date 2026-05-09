@@ -3,26 +3,49 @@
   "archive_info": {
     "instrument": "Juno Radio Science",
     "pds_collections": [
-      "https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/",
-      "https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/"
+      "urn:nasa:pds:jno-e-rss-1-edr",
+      "urn:nasa:pds:jno-j-rss-1-edr"
     ],
+    "pds_search_portal": "https://pds.mcp.nasa.gov/portal/search",
     "data_types": [
-      "TRK-2-25",
-      "ATDF",
+      "TRK-2-25 (ATDF)",
+      "TRK-2-18 (ODF)",
+      "TNF",
       "Ka-band"
     ],
-    "perigee": "2013-10-09",
-    "status": "available",
-    "notes": "Earth flyby tracking with Ka-band precision"
+    "perigee": "2013-10-09T19:21:00Z",
+    "perigee_altitude_km": 817,
+    "status": "real_data_required",
+    "requirement": "NO_SYNTHETIC_DATA",
+    "notes": "CRITICAL: Real raw DSN tracking data required for falsification test. Synthetic data not acceptable."
   },
-  "download_status": "instructions_generated",
-  "access_status": "manual_required",
-  "instructions_file": "/Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Juno_2013/DOWNLOAD_INSTRUCTIONS.txt",
-  "generated": "2026-04-07T13:07:54.381436",
+  "download_status": "manual_download_required",
+  "access_status": "pds_portal_access",
+  "instructions_file": "DOWNLOAD_INSTRUCTIONS.txt",
+  "generated": "2026-04-19T05:17:00Z",
+  "updated": "2026-04-19T05:17:00Z",
+  "data_requirements": {
+    "format": "TRK-2-25 binary",
+    "time_coverage": "±24 hours around perigee",
+    "stations": ["DSS-24", "DSS-25", "DSS-54", "DSS-34", "DSS-63"],
+    "minimum_files": 1,
+    "falsification_test": {
+      "predicted_signal_mm_s": 2.25,
+      "falsification_threshold_mm_s": 0.08,
+      "standard_od_observed_mm_s": 0.00,
+      "standard_od_uncertainty_mm_s": 0.02
+    }
+  },
   "next_steps": [
-    "1. Open: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/",
-    "2. Navigate to perigee date data products",
-    "3. Download TRK-2-25 files",
-    "4. Save to: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Juno_2013"
-  ]
+    "1. Visit: https://pds.mcp.nasa.gov/portal/search",
+    "2. Search: 'Juno Earth flyby 2013' or 'JNO-E-RSS-1-EDR'",
+    "3. Download TRK-2-25/ATDF files for 2013-10-08 to 2013-10-10",
+    "4. Place in: data/raw/dsn_tracking/Juno_2013/",
+    "5. Run: python scripts/steps/step_026_juno_dsn_reanalysis.py"
+  ],
+  "contacts": {
+    "pds_rn_email": "pds-rn@jpl.nasa.gov",
+    "naif_email": "naif@jpl.nasa.gov",
+    "request_subject": "Juno 2013 Earth Flyby TRK-2-25 Data Request"
+  }
 }

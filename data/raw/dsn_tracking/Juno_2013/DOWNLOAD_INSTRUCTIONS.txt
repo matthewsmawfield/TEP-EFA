@@ -1,35 +1,161 @@
-NASA PDS RAW DSN DATA DOWNLOAD INSTRUCTIONS
+NASA PDS RAW DSN DATA DOWNLOAD INSTRUCTIONS - JUNO 2013 EARTH FLYBY
 ================================================================================
 
 Mission: Juno_2013
 Instrument: Juno Radio Science
-Perigee Date: 2013-10-09
-Data Types: TRK-2-25, ATDF, Ka-band
+Perigee Date: 2013-10-09 19:21 UTC
+Perigee Altitude: 817 km
+Data Types: TRK-2-25 (ATDF), TRK-2-18 (ODF), Ka-band Doppler
 
-PDS COLLECTIONS:
-1. https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/
-2. https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/
+CRITICAL: REAL RAW DSN DATA REQUIRED - NO SYNTHETIC SUBSTITUTES
+This analysis requires actual tracking data from NASA DSN stations.
 
-STEPS TO DOWNLOAD:
-1. Visit the PDS collection URLs above using a web browser
-2. Navigate to the data products for the perigee date: 2013-10-09
-3. Look for TRK-2-25 (ATDF) files which contain raw Doppler tracking
-4. Download files covering perigee ± 2 days
-5. Place downloaded files in this directory: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Juno_2013
+CURRENT PDS ACCESS METHODS (Updated 2026-04-19):
+================================================================================
 
-DATA FORMAT:
+Option 1: NEW PDS Search Portal (Recommended)
+---------------------------------------------
+URL: https://pds.mcp.nasa.gov/portal/search
+
+Steps:
+1. Open the PDS Search Portal in a modern web browser
+2. Search for: "Juno Earth flyby 2013" or "JNO-E-RSS-1-EDR"
+3. Filter by:
+   - Mission: Juno
+   - Date Range: 2013-10-08 to 2013-10-10
+   - Data Type: TRK-2-25 or ATDF
+4. Download files containing "jnoe" prefix (Juno Earth flyby)
+5. Target files from DSS-24, DSS-25, DSS-54 (Canberra)
+
+Option 2: PDS Keyword Search
+-----------------------------
+URL: https://pds.nasa.gov/datasearch/keyword-search/
+
+Search Terms:
+- "Juno Radio Science Earth"
+- "JNO-E-RSS-1-EDR"
+- "TRK-2-25 Juno 2013"
+
+Option 3: PDS API (Programmatic)
+--------------------------------
+Documentation: https://nasa-pds.github.io/pds-api/
+Python Library: https://nasa-pds.github.io/peppi/
+
+Example API query structure:
+  target_name = "Earth"
+  start_date = "2013-10-08T00:00:00Z"
+  stop_date = "2013-10-10T23:59:59Z"
+  instrument = "Juno Radio Science"
+
+Option 4: Direct NASA PDS Node Contact
+---------------------------------------
+For large data requests or archive access issues:
+
+NASA PDS Radio Science Node:
+  URL: https://pds-rn.jpl.nasa.gov/
+  Email: pds-rn@jpl.nasa.gov
+  Phone: (818) 354-XXXX
+
+NASA PDS Navigational Node (NAIF):
+  URL: https://naif.jpl.nasa.gov/
+  Email: naif@jpl.nasa.gov
+
+JPL DSN Data Archive:
+  URL: https://deepspace.jpl.nasa.gov/
+  Contact: DSN Data Archivist
+
+REQUIRED DATA PRODUCTS:
+================================================================================
+
+Primary Data (ESSENTIAL):
 - TRK-2-25 (ATDF): Archival Tracking Data Files
-  * Contains raw Doppler frequency measurements
-  * Time-tagged with UTC timestamps
-  * Includes station IDs (DSS-24, DSS-25, etc.)
-  * Unprocessed by orbit determination
+  Format: Binary SFDU/CHDO records
+  Content: Raw Doppler frequency (Hz), timestamps, station IDs
+  Time Coverage: ±24 hours around perigee (2013-10-09 19:21 UTC)
+  Stations: DSS-24, DSS-25 (Canberra), DSS-54, DSS-34, DSS-63
 
-- ODF: Orbit Data Files (if available)
-  * May contain pre-processed tracking data
-  * Check for raw vs processed flags
+Secondary Data (if available):
+- TRK-2-18 (ODF): Orbit Data Files
+- TNF: Tracking Network Files (consolidated)
+- Ancillary: Station logs, calibration data
 
-CONTACT FOR ASSISTANCE:
-NASA PDS Radio Science Node: https://pds-rn.jpl.nasa.gov/
-Email: pds-rn@jpl.nasa.gov
+DATA FORMAT SPECIFICATION:
+================================================================================
 
-GENERATED: 2026-04-07T13:07:54.372065
+TRK-2-25 files contain:
+- SFDU headers (Standard Formatted Data Unit)
+- CHDO records (Compressed Header Data Object)
+- Doppler measurements (Hz, 2-way)
+- Range measurements (km)
+- Timestamps (UTC, typically TDB or UTC)
+- Station ID codes
+- Signal-to-noise ratio
+
+Reference Document:
+  "TRK-2-34 DSMS Tracking System Data Archival Format"
+  JPL D-16765, Revision J (May 2007)
+
+EXPECTED FILE NAMING:
+================================================================================
+
+Juno Earth flyby files typically named:
+  jnoe_YYYYMMDD_HHMMSS_station.trk
+  jnoe_20131009_192100_dss25.trk
+
+Or ATDF format:
+  JNOE_2013_282_??????.ATDF
+
+Or TNF format:
+  13812????SC282DSS??DDOR_234.TNF
+
+LOCAL STORAGE:
+================================================================================
+
+Place all downloaded files in this directory:
+  /Users/matthewsmawfield/www/TEP-EFA/data/raw/dsn_tracking/Juno_2013/
+
+After download, run:
+  python scripts/steps/step_026_juno_dsn_reanalysis.py
+
+FALSIFICATION TEST:
+================================================================================
+
+This data is for the CRITICAL falsification test:
+- TEP predicts: +2.25 mm/s velocity anomaly
+- Standard OD observed: 0.00 ± 0.02 mm/s
+- Minimal OD should recover signal if TEP is correct
+- Falsification threshold: |Δv| < 0.08 mm/s
+
+DATA QUALITY REQUIREMENTS:
+================================================================================
+
+Minimum for analysis:
+- Continuous tracking: ±2 hours around perigee
+- Sample rate: ≥1 Hz (raw, unaveraged)
+- Precision: ≤0.1 mm/s (≤0.001 Hz at X-band)
+- Stations: ≥1 DSN station with valid data
+
+VERIFICATION:
+================================================================================
+
+After downloading, verify files with:
+  ls -la /Users/matthewsmawfield/www/TEP-EFA/data/raw/dsn_tracking/Juno_2013/
+
+Check file sizes (should be MB-scale, not empty)
+Check file timestamps (should include 2013-10-09)
+
+CONTACT FOR ISSUES:
+================================================================================
+
+If PDS access fails:
+1. Try alternative web browser
+2. Check NASA PDS status: https://pds.nasa.gov/home/about/
+3. Contact pds-rn@jpl.nasa.gov with request for:
+   "Juno 2013 Earth flyby TRK-2-25 data for 2013-10-08 to 2013-10-10"
+
+DOCUMENTATION STATUS:
+================================================================================
+Generated: 2026-04-19 (Updated)
+Valid as of: Current PDS infrastructure
+Previous PDS-RN direct URLs deprecated - use new Search Portal
+

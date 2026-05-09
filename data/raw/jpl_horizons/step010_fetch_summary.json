@@ -3,39 +3,43 @@
     "mission": "NEAR_1998",
     "status": "SUCCESS",
     "data_points": 301,
-    "raw_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_trajectory.json"
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_trajectory.json"
   },
   {
     "mission": "Galileo_1990",
-    "status": "NO_QUERY_FILE",
-    "data": null
+    "status": "SUCCESS",
+    "data_points": 301,
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_trajectory.json"
   },
   {
     "mission": "Cassini_1999",
-    "status": "NO_QUERY_FILE",
-    "data": null
+    "status": "SUCCESS",
+    "data_points": 301,
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_trajectory.json"
   },
   {
     "mission": "Rosetta_2005",
     "status": "SUCCESS",
     "data_points": 361,
-    "raw_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json"
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json"
   },
   {
     "mission": "MESSENGER_2005",
     "status": "SUCCESS",
     "data_points": 361,
-    "raw_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_trajectory.json"
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_trajectory.json"
   },
   {
     "mission": "Juno_2013",
     "status": "SUCCESS",
     "data_points": 301,
-    "raw_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json"
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json"
   },
   {
     "mission": "Rosetta_2007",
@@ -46,8 +50,8 @@
     "mission": "Rosetta_2009",
     "status": "SUCCESS",
     "data_points": 241,
-    "raw_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_trajectory.json"
+    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_raw_response.txt",
+    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_trajectory.json"
   },
   {
     "mission": "Galileo_1992",

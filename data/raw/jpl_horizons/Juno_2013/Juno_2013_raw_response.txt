@@ -1,5 +1,5 @@
 *******************************************************************************
- Revised: Apr 07, 2026          Juno Spacecraft  / (Sun, Jupiter)           -61 
+ Revised: May 04, 2026          Juno Spacecraft  / (Sun, Jupiter)           -61 
                      http://www.nasa.gov/mission_pages/juno/main/index.html
                              http://missionjuno.swri.edu/#/mission
  
@@ -68,18 +68,18 @@
   * Total delta-V budget: 2107 m/s (~1852 m/s on bi-prop; remainder on RCS)
 
  SPACECRAFT TRAJECTORY (from JPL navigation team)
-   The trajectory after 2026-Apr-01 is a planning prediction.
+   The trajectory after 2026-Apr-21 is a planning prediction.
 
    Trajectory name                         Start (TDB)         Stop (TDB)
    ------------------------------        -----------------   -----------------
-   spk_rec_110805_*_260401               2011-Aug-05 17:19   2026-Mar-14 17:04 
-   juno_pred_orbit                       2026-Mar-14 17:04   2026-May-04 15:03
-   spk_ref_251119_281001_260129          2026-May-04 15:03   2028-Sep-30 23:55
+   spk_rec_110805_*_260423               2011-Aug-05 17:19   2026-Apr-16 07:05 
+   juno_pred_orbit                       2026-Apr-16 07:05   2026-Jun-07 18:53
+   spk_ref_251119_281001_260129          2026-Jun-07 18:53   2028-Sep-30 23:55
 *******************************************************************************
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Wed Apr 15 19:08:36 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Sat May  9 15:02:17 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Juno (spacecraft) (-61)         {source: Juno_merged}
 Center body name: Earth (399)                     {source: Juno_merged}
@@ -103,8 +103,8 @@ Atmos refraction: NO (AIRLESS)
 RA format       : HMS
 Time format     : CAL 
 Calendar mode   : Mixed Julian/Gregorian
-EOP file        : eop.260415.p260711                                           
-EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-APR-15. PREDICTS-> 2026-JUL-10
+EOP file        : eop.260508.p260804                                           
+EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-MAY-08. PREDICTS-> 2026-AUG-03
 Units conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s 
 Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )
 Table cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )
