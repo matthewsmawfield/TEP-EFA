@@ -983,7 +983,7 @@
   ],
   "source": "ESA SPICE Service / ESOC Flight Dynamics",
   "kernel_file": "ORER_______________00031.BSP",
-  "extraction_date": "2026-05-10T01:02:05.086723",
+  "extraction_date": "2026-05-10T15:10:17.379471",
   "observed_anomaly": {
     "dv_mm_s": 1.82,
     "uncertainty_mm_s": 0.05,
