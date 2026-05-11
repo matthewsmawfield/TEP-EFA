@@ -1943,7 +1943,7 @@
   ],
   "source": "ESA SPICE Service / ESOC Flight Dynamics",
   "kernel_file": "ORFR_______________00067.BSP",
-  "extraction_date": "2026-05-10T15:10:17.386199",
+  "extraction_date": "2026-05-11T09:05:44.688410",
   "observed_anomaly": {
     "dv_mm_s": 0.02,
     "uncertainty_mm_s": 0.05,
