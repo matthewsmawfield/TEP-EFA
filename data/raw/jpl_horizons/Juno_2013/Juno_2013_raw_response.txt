@@ -79,7 +79,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Tue May 12 03:18:41 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Tue May 12 11:23:04 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Juno (spacecraft) (-61)         {source: Juno_merged}
 Center body name: Earth (399)                     {source: Juno_merged}
