@@ -1,0 +1,29 @@
+{
+  "mission": "DART_TRK234_REFERENCE",
+  "perigee_utc": null,
+  "window_hours": 48.0,
+  "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
+  "metadata_source": null,
+  "downloads": [
+    {
+      "url": "https://pdssbn.astro.umd.edu/holdings/pds4-dart:data_trk234-v1.0/2021/dart_hga_tnf_20211124T032621_v01.dat",
+      "path": "data/raw/dsn_tracking/DART_TRK234_REFERENCE/NASA_PDS/dart_hga_tnf_20211124T032621_v01.dat",
+      "bytes": 19822444,
+      "status": "cached"
+    }
+  ],
+  "candidate_products": [
+    {
+      "id": "urn:nasa:pds:dart:data_trk234:dart_hga_tnf_20211124t032621_v01::1.0",
+      "title": "DART Radio Science Tracking and Navigation File (TNF) dart_hga_tnf_20211124t032621",
+      "start_date_time": "2021-11-24T03:26:21Z",
+      "stop_date_time": "2021-11-24T16:09:43Z"
+    }
+  ],
+  "search_diagnostics": {
+    "collection_lids": [],
+    "title_search_pages": 0,
+    "member_search_pages": 0
+  },
+  "status": "downloaded"
+}

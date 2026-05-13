@@ -1,0 +1,18 @@
+{
+  "mission": "Cassini_1999",
+  "perigee_utc": "1999-08-18T03:28:00+00:00",
+  "window_hours": 48.0,
+  "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
+  "metadata_source": "data/raw/dsn_tracking/Cassini_1999/metadata.json",
+  "downloads": [],
+  "candidate_products": [],
+  "search_diagnostics": {
+    "collection_lids": [
+      "urn:nasa:pds:co-rss-1-edr::1.0",
+      "urn:nasa:pds:co-rss-2-edr::1.0"
+    ],
+    "title_search_pages": 0,
+    "member_search_pages": 0
+  },
+  "status": "no_indexed_products"
+}

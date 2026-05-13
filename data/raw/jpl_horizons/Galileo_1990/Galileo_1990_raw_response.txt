@@ -40,7 +40,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Tue May 12 11:22:56 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Wed May 13 00:45:53 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Galileo (spacecraft) (-77)      {source: galileo_merged}
 Center body name: Earth (399)                     {source: galileo_merged}
@@ -64,8 +64,8 @@ Atmos refraction: NO (AIRLESS)
 RA format       : HMS
 Time format     : CAL 
 Calendar mode   : Mixed Julian/Gregorian
-EOP file        : eop.260511.p260807                                           
-EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-MAY-11. PREDICTS-> 2026-AUG-06
+EOP file        : eop.260512.p260807                                           
+EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-MAY-12. PREDICTS-> 2026-AUG-06
 Units conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s 
 Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )
 Table cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )

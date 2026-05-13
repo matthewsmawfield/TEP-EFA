@@ -1,0 +1,17 @@
+{
+  "mission": "NEAR_1998",
+  "perigee_utc": "1998-01-23T07:23:00+00:00",
+  "window_hours": 48.0,
+  "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
+  "metadata_source": "data/raw/dsn_tracking/NEAR_1998/metadata.json",
+  "downloads": [],
+  "candidate_products": [],
+  "search_diagnostics": {
+    "collection_lids": [
+      "urn:nasa:pds:near_rss_raw:data_odf::1.0"
+    ],
+    "title_search_pages": 6,
+    "member_search_pages": 1
+  },
+  "status": "no_indexed_products"
+}
