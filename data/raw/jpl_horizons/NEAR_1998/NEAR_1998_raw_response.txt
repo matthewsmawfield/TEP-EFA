@@ -71,7 +71,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Wed May 13 00:45:52 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Wed May 13 01:53:11 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: NEAR Shoemaker (spacecraft) (-93) {source: NEAR_merged}
 Center body name: Earth (399)                     {source: NEAR_merged}

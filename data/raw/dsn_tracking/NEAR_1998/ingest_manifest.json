@@ -11,7 +11,8 @@
       "urn:nasa:pds:near_rss_raw:data_odf::1.0"
     ],
     "title_search_pages": 6,
-    "member_search_pages": 1
+    "member_search_pages": 1,
+    "unindexed_collection_lids": []
   },
   "status": "no_indexed_products"
 }

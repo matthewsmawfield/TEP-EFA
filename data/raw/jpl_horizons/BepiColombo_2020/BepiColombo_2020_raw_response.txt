@@ -85,7 +85,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Wed May 13 00:46:18 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Wed May 13 01:53:40 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: BepiColombo (Spacecraft) (-121) {source: BepiColombo_ESA}
 Center body name: Earth (399)                     {source: DE441}

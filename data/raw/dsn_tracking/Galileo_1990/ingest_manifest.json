@@ -12,7 +12,11 @@
       "urn:nasa:pds:go-j-rss-2-edr::1.0"
     ],
     "title_search_pages": 0,
-    "member_search_pages": 0
+    "member_search_pages": 0,
+    "unindexed_collection_lids": [
+      "urn:nasa:pds:go-j-rss-1-edr::1.0",
+      "urn:nasa:pds:go-j-rss-2-edr::1.0"
+    ]
   },
   "status": "no_indexed_products"
 }

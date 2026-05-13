@@ -57,7 +57,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Wed May 13 00:46:11 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Wed May 13 01:53:32 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Stardust (bus) (spacecraft) (-29) {source: stardust}
 Center body name: Earth (399)                     {source: stardust}

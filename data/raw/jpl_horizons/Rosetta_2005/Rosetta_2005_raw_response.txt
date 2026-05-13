@@ -75,7 +75,7 @@
  
  
 *******************************************************************************
-Ephemeris / WWW_USER Wed May 13 00:45:57 2026 Pasadena, USA      / Horizons    
+Ephemeris / WWW_USER Wed May 13 01:53:17 2026 Pasadena, USA      / Horizons    
 *******************************************************************************
 Target body name: Rosetta (spacecraft) (-226)     {source: rosetta_merged}
 Center body name: Earth (399)                     {source: rosetta_merged}
