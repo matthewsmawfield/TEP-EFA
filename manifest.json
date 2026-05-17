@@ -1,0 +1,66 @@
+{
+  "title": "Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly",
+  "short_title": "TEP Flyby Anomaly",
+  "author": "Matthew Lukin Smawfield",
+  "version": "v0.1 (Yogyakarta)",
+  "date": "2026-05-17",
+  "doi": "10.5281/zenodo.19454863",
+  "paper_series": "TEP Series: Paper 15 (Earth Flyby Anomaly)",
+  "generated": "2026-05-17",
+  "sections": [
+    {
+      "id": "abstract",
+      "title": "Abstract",
+      "file": "1_abstract.html",
+      "order": 1
+    },
+    {
+      "id": "introduction",
+      "title": "Introduction",
+      "file": "2_introduction.html",
+      "order": 2
+    },
+    {
+      "id": "observations",
+      "title": "Observations and Data",
+      "file": "3_observations.html",
+      "order": 3
+    },
+    {
+      "id": "methodology",
+      "title": "Methodology",
+      "file": "4_methodology.html",
+      "order": 4
+    },
+    {
+      "id": "results",
+      "title": "Results",
+      "file": "5_results.html",
+      "order": 5
+    },
+    {
+      "id": "discussion",
+      "title": "Discussion",
+      "file": "6_discussion.html",
+      "order": 6
+    },
+    {
+      "id": "conclusion",
+      "title": "Conclusions",
+      "file": "7_conclusion.html",
+      "order": 7
+    },
+    {
+      "id": "references",
+      "title": "References",
+      "file": "8_references.html",
+      "order": 8
+    },
+    {
+      "id": "reproducibility",
+      "title": "Data Availability & Reproducibility",
+      "file": "9_reproducibility.html",
+      "order": 9
+    }
+  ]
+}
