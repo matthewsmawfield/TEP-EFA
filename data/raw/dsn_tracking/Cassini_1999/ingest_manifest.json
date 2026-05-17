@@ -16,7 +16,8 @@
     "unindexed_collection_lids": [
       "urn:nasa:pds:co-rss-1-edr::1.0",
       "urn:nasa:pds:co-rss-2-edr::1.0"
-    ]
+    ],
+    "exhaustive_lid_searches": []
   },
   "status": "no_indexed_products"
 }

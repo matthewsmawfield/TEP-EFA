@@ -1,0 +1,17 @@
+{
+  "mission": "Stardust_2001",
+  "perigee_utc": "2001-01-15T11:14:00+00:00",
+  "window_hours": 48.0,
+  "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
+  "metadata_source": "data/raw/dsn_tracking/Stardust_2001/metadata.json",
+  "downloads": [],
+  "candidate_products": [],
+  "search_diagnostics": {
+    "collection_lids": [],
+    "title_search_pages": 0,
+    "member_search_pages": 0,
+    "unindexed_collection_lids": [],
+    "exhaustive_lid_searches": []
+  },
+  "status": "no_indexed_products"
+}

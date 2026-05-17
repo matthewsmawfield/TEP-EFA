@@ -25,5 +25,13 @@
     "title_search_pages": 0,
     "member_search_pages": 0
   },
-  "status": "downloaded"
+  "status": "downloaded",
+  "local_njpl_trk234_artifacts": [
+    {
+      "path": "data/raw/dsn_tracking/DART_TRK234_REFERENCE/NASA_PDS/dart_hga_tnf_20211124T032621_v01.dat",
+      "bytes": 19822444,
+      "format_magic": "NJPL",
+      "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row)."
+    }
+  ]
 }

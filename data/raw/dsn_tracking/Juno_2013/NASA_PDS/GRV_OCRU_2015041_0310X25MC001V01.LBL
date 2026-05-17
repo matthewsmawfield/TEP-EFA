@@ -1,0 +1,49 @@
+PDS_VERSION_ID               = PDS3
+RECORD_TYPE                  = STREAM
+INSTRUMENT_NAME              = "GRAVITY SCIENCE INSTRUMENT"
+TARGET_NAME                  = "JUPITER"
+DATA_SET_ID                  = "JNO-J-RSS-1-OCRU-V1.0"
+MISSION_NAME                 = "JUNO"
+INSTRUMENT_HOST_NAME         = "JUNO"
+INSTRUMENT_HOST_ID           = "JNO"
+DSN_STATION_NUMBER           = 25
+PRODUCT_ID                   = "GRV_OCRU_2015041_0310X25MC001V01.TNF"
+ORIGINAL_PRODUCT_ID          = "15041s041_1s.sort.stdf"
+FILE_NAME                    = "GRV_OCRU_2015041_0310X25MC001V01.TNF"
+START_TIME                   = 2015-041T03:10:30
+STOP_TIME                    = 2015-041T13:24:49
+PRODUCT_CREATION_TIME        = 2015-041T13:24:49
+OBSERVATION_TYPE             = SCIENCE
+STANDARD_DATA_PRODUCT_ID     = DSN_TNF
+PROCESSING_LEVEL_ID          = "1"
+PRODUCT_VERSION_ID           = "01"
+MD5_CHECKSUM                 = "8b11ec63333e41504216451c61146c22"
+PRODUCER_ID                  = "DSN"
+DESCRIPTION                  = "
+    The TNF data type captures radiometric tracking data for delivery
+    to navigation and radio science users from the Telecommunications
+    Services at JPL.  The product replaces data types formerly known
+    as Orbit Data Files, Archival Tracking Data Files, and others.
+    Format and content of the TNF data product is documented in:
+
+                              820-013
+                   Deep Space Mission System (DSMS)
+                   External Interface Specification
+                            JPL D-16765
+                             TRK-2-34
+               DSMS Tracking System Data Archival Format
+                      Jet Propulsion Laboratory
+                        4800 Oak Grove Drive
+                      Pasadena, CA  91109-8099
+
+    Background information on the radiometric system may be found in:
+
+             Formulation for Observed and Computed Values
+           of Deep Space Network Data Types  for Navigation
+                         by Theodore D. Moyer
+                  JPL Publication 00-7, October 2000
+     Monograph 2, Deep Space Communications and Navigation Series
+                      Jet Propulsion Laboratory
+                        4800 Oak Grove Drive
+                      Pasadena, CA  91109-8099        "
+END

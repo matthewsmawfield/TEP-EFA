@@ -10,6 +10,110 @@ Data Types: TRK-2-25 (ATDF), TRK-2-18 (ODF), Ka-band Doppler
 CRITICAL: REAL RAW DSN DATA REQUIRED - NO SYNTHETIC SUBSTITUTES
 This analysis requires actual tracking data from NASA DSN stations.
 
+VERIFIED DATASETS AND HTTPS MIRRORS (audit 2026-05-13)
+================================================================================
+
+The following links were checked from this repository environment (HTTP 200,
+directory listings or metadata). Use them as **concrete download targets**;
+always confirm ``START_TIME`` / ``STOP_TIME`` in each product ``.LBL`` overlaps
+your science window before ingesting.
+
+A) Juno Outer Cruise Gravity / Radio Science (NJPL-class TNF on HTTPS)
+-----------------------------------------------------------------------
+**Dataset:** JUNO-J-RSS-1-OCRU-V1.0 (Juno Gravity Science outer cruise raw data)  
+**DOI:** https://doi.org/10.17189/mkat-jh51  
+**NASA PDS summary page:** https://pds.nasa.gov/ds-view/pds/viewDataset.jsp?dsid=JUNO-J-RSS-1-OCRU-V1.0  
+**NMSU PDS Atmospheres volume root:** https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/  
+**TNF directory (closed-loop tracking primitives):** https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/  
+**ODF directory:** https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/ODF/
+
+**Temporal caveat (from this volume's ERRATA.TXT):** the archive begins
+**a few days after the 2013-10-09 Earth flyby** and is aimed at outer-cruise
+gravity checkout and navigation to Jupiter. It is **not** a substitute for
+**perigee-window** products unless you locate a member whose label explicitly
+covers 2013-10-08--2013-10-10 UTC (unlikely for OCRU v1 as documented). Use this
+mirror to verify **NJPL** TRK-2-34 compatibility and parser wiring, or for
+post-flyby DSN passes.
+
+**Automated Step 030 ingest (opt-in):** set ``TEP_030_ALLOW_ATMOSPHERES_OCRU_MIRROR=1``
+before running ``scripts/steps/step_030_juno_reanalysis.py``. Optional
+``TEP_030_ATMOSPHERES_MAX_TNF_FILES`` (default 30) caps how many ``.TNF`` files are
+fetched from the index URL below; files are written under
+``data/raw/dsn_tracking/Juno_2013/NASA_PDS/`` and rejected unless the NJPL
+TRK-2-34 magic is present. When only ``ramp_freq_hz`` is populated in the CHDO,
+Step 030 reports a **Hz** pairwise proxy and does **not** apply the 0.08 mm/s gate.
+
+Optional stricter selection (no silent mismatch with the 2013 flyby window):
+
+- ``TEP_030_ATMOSPHERES_LBL_TIME_FILTER=1`` — for each candidate ``.TNF``, fetch the
+  sibling ``.LBL``, parse PDS3 ``START_TIME`` / ``STOP_TIME`` (day-of-year UTC), and
+  **keep only** products whose span overlaps
+  ``2013-10-08T19:21Z``–``2013-10-10T19:21Z`` (±24 h of perigee). If **none** overlap,
+  Step 030 raises ``RuntimeError`` (expected for jnogrv_0001 OCRU-only listings).
+- ``TEP_030_ATMOSPHERES_LBL_SCAN_CAP`` (default 500) — max candidate ``.LBL`` GETs per run.
+- ``TEP_030_ATMOSPHERES_INDEX_URL`` — override the default TNF index base URL (must end
+  with a directory path the code will normalize).
+
+**Example download (one TNF + label; ~65 MB — replace filenames after checking
+the TNF index for products that overlap your window):**
+
+  cd data/raw/dsn_tracking/Juno_2013
+  curl -L -O "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/GRV_OCRU_2015103_2121M25MC001V01.TNF"
+  curl -L -O "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/GRV_OCRU_2015103_2121M25MC001V01.LBL"
+
+**Sibling volume (same mission phase, browse before bulk download):**  
+https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0002/
+
+**Public Horizons + Step 040a batch (no TRK required)**
+----------------------------------------------------
+When **both** of the following exist, ``scripts/steps/step_030_juno_reanalysis.py``
+runs a 6-state pure-Kepler batch adjustment to **public** JPL Horizons columns in
+``data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json`` (``range_m`` and
+``velocity_m_s`` / geocentric ``deldot``), anchored with the Juno perigee Cartesian
+state from ``results/step040a_3d_state_vectors.json``:
+
+  * ``horizons_public_ephemeris_batch`` — full report (``velocity_only`` and
+    ``range_and_velocity`` joint fit when ``range_m`` is present).
+  * ``horizons_minimal_od_batch`` — legacy summary (velocity-only subset).
+
+Disable with ``TEP_030_SKIP_HORIZONS_PUBLIC_OD=1``. This does **not** replace
+perigee-window TRK products; it is the strongest **fully public** path until
+Earth-phase TRK is ingested.
+
+**Public mirror reachability (optional)**  
+Set ``TEP_030_PROBE_PUBLIC_URLS=1`` when running ``step_030_juno_reanalysis.py`` to
+record HTTP status codes for curated PDS-RN, Atmospheres OCRU, PDS dataset page,
+JPL Horizons, and NAIF Juno SPK URLs in ``juno_2013_public_url_probe`` inside
+``results/step030_juno_dsn_reanalysis.json`` (small streamed GET per URL; needs
+network).
+
+Additional public references (manual browse / API):
+  * JPL SSD Horizons API: https://ssd-api.jpl.nasa.gov/doc/horizons.html  
+  * PDS API: https://nasa-pds.github.io/pds-api/  
+  * NSSDCA (legacy) co-observation search: https://nssdc.gsfc.nasa.gov/nmc/  
+
+B) TRK-2-34 reader (Step 030 dependency)
+---------------------------------------
+Step 030 imports ``trk234`` to parse NJPL-class archives. NASA maintains a
+reference reader: https://github.com/NASA-PDS/PyTrk234  
+Install per that project's instructions until ``import trk234`` succeeds in the
+same Python used for ``scripts/steps/step_030_juno_reanalysis.py``.
+
+C) Earth-flyby perigee window (2013-10-08 -- 2013-10-10 UTC) — primary path
+---------------------------------------------------------------------------
+Perigee Doppler / TRK products are expected under **Juno Earth-phase** Radio
+Science / DSN holdings (historically referenced as ``jno-e-rss-1-edr`` style
+paths on the PDS Radio Science Node). Automated PDS MCP collection lookup for
+``urn:nasa:pds:jno-e-rss-1-edr::1.0`` may return **no indexed products** in some
+environments; use **Option 1** (portal) and **Option 4** (``pds-rn@jpl.nasa.gov``)
+below with explicit UTC bounds and ``TRK-2-34`` / ``NJPL`` format requirements.
+
+After any successful download into ``data/raw/dsn_tracking/Juno_2013/``:
+
+  python3 scripts/utils/run_juno_efb_dsn_chain.py
+
+(or ``python3 scripts/steps/step_030_juno_reanalysis.py`` alone)
+
 CURRENT PDS ACCESS METHODS (Updated 2026-04-19):
 ================================================================================
 
@@ -111,11 +215,14 @@ Or TNF format:
 LOCAL STORAGE:
 ================================================================================
 
-Place all downloaded files in this directory:
-  /Users/matthewsmawfield/www/TEP-EFA/data/raw/dsn_tracking/Juno_2013/
+Place all downloaded files in this directory (repository-relative):
+  data/raw/dsn_tracking/Juno_2013/
+
+Files must be DSMS TRK-2-34-class archives (binary header begins with the ASCII
+sequence ``NJPL``); the pipeline filters with ``is_trk234_archive`` before parsing.
 
 After download, run:
-  python scripts/steps/step_026_juno_dsn_reanalysis.py
+  python3 scripts/steps/step_030_juno_reanalysis.py
 
 FALSIFICATION TEST:
 ================================================================================
@@ -139,19 +246,21 @@ VERIFICATION:
 ================================================================================
 
 After downloading, verify files with:
-  ls -la /Users/matthewsmawfield/www/TEP-EFA/data/raw/dsn_tracking/Juno_2013/
+  ls -la data/raw/dsn_tracking/Juno_2013/
 
 Check file sizes (should be MB-scale, not empty)
 Check file timestamps (should include 2013-10-09)
 
-CONTACT FOR ISSUES:
+PDS ACCESS TROUBLESHOOTING:
 ================================================================================
 
 If PDS access fails:
-1. Try alternative web browser
+1. Try an alternative web browser
 2. Check NASA PDS status: https://pds.nasa.gov/home/about/
-3. Contact pds-rn@jpl.nasa.gov with request for:
-   "Juno 2013 Earth flyby TRK-2-25 data for 2013-10-08 to 2013-10-10"
+3. Search the PDS Radio Science Node for Juno TRK-2-25 products whose
+   PDS3 START_TIME/STOP_TIME overlap 2013-10-08 to 2013-10-10 UTC
+   (Earth flyby perigee 2013-10-09 19:21 UTC). Place downloads under
+   data/raw/dsn_tracking/Juno_2013/ and re-run Step 030.
 
 DOCUMENTATION STATUS:
 ================================================================================

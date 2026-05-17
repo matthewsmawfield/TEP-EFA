@@ -12,7 +12,18 @@
     ],
     "title_search_pages": 6,
     "member_search_pages": 1,
-    "unindexed_collection_lids": []
+    "unindexed_collection_lids": [],
+    "exhaustive_lid_searches": [
+      {
+        "lid_root": "urn:nasa:pds:near_rss_raw:data_odf:",
+        "exhaustive_lid_root": "urn:nasa:pds:near_rss_raw:data_odf:",
+        "exhaustive_charset_size": 16,
+        "exhaustive_api_calls": 33,
+        "exhaustive_unique_products": 188,
+        "exhaustive_cap_hit": false,
+        "exhaustive_root_hits": 188
+      }
+    ]
   },
   "status": "no_indexed_products"
 }

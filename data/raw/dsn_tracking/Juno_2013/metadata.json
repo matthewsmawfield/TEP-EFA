@@ -2,6 +2,18 @@
   "mission": "Juno_2013",
   "archive_info": {
     "instrument": "Juno Radio Science",
+    "verified_download_roots_2026_05": {
+      "juno_outer_cruise_gravity_ocru_v1": {
+        "dataset_id": "JUNO-J-RSS-1-OCRU-V1.0",
+        "doi": "https://doi.org/10.17189/mkat-jh51",
+        "pds_nasa_summary": "https://pds.nasa.gov/ds-view/pds/viewDataset.jsp?dsid=JUNO-J-RSS-1-OCRU-V1.0",
+        "atmospheres_volume_root": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/",
+        "tnf_directory": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/",
+        "odf_directory": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/ODF/",
+        "temporal_note": "Volume ERRATA: outer cruise archive begins a few days after 2013-10-09 Earth flyby; confirm START_TIME/STOP_TIME in each .LBL for science window overlap."
+      },
+      "trk234_reference_reader": "https://github.com/NASA-PDS/PyTrk234"
+    },
     "pds_collections": [
       "urn:nasa:pds:jno-e-rss-1-edr",
       "urn:nasa:pds:jno-j-rss-1-edr"
@@ -19,11 +31,25 @@
     "requirement": "NO_SYNTHETIC_DATA",
     "notes": "CRITICAL: Real raw DSN tracking data required for falsification test. Synthetic data not acceptable."
   },
-  "download_status": "manual_download_required",
+  "download_status": "njpl_trk234_on_disk_verified",
+  "local_verified_ingest": {
+    "updated": "2026-05-13T00:00:00Z",
+    "njpl_artifacts": [
+      {
+        "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
+        "lbl_path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.LBL",
+        "dataset": "JUNO-J-RSS-1-OCRU-V1.0",
+        "source_url_tnf": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/GRV_OCRU_2015041_0310X25MC001V01.TNF",
+        "source_url_lbl": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/GRV_OCRU_2015041_0310X25MC001V01.LBL",
+        "format_magic": "NJPL",
+        "note": "Real closed-loop TNF from NMSU Atmospheres mirror; outer-cruise epoch per .LBL — not Earth-perigee window."
+      }
+    ]
+  },
   "access_status": "pds_portal_access",
   "instructions_file": "DOWNLOAD_INSTRUCTIONS.txt",
   "generated": "2026-04-19T05:17:00Z",
-  "updated": "2026-04-19T05:17:00Z",
+  "updated": "2026-05-13T00:00:00Z",
   "data_requirements": {
     "format": "TRK-2-25 binary",
     "time_coverage": "±24 hours around perigee",
@@ -37,11 +63,12 @@
     }
   },
   "next_steps": [
+    "0. Read DOWNLOAD_INSTRUCTIONS.txt section 'VERIFIED DATASETS AND HTTPS MIRRORS' for concrete URLs (JUNO-J-RSS-1-OCRU-V1.0 TNF tree) and perigee-window caveats.",
     "1. Visit: https://pds.mcp.nasa.gov/portal/search",
     "2. Search: 'Juno Earth flyby 2013' or 'JNO-E-RSS-1-EDR'",
-    "3. Download TRK-2-25/ATDF files for 2013-10-08 to 2013-10-10",
+    "3. Download TRK-2-25 / TRK-2-34 (NJPL) / TNF products whose .LBL START/STOP overlaps 2013-10-08 to 2013-10-10 UTC",
     "4. Place in: data/raw/dsn_tracking/Juno_2013/",
-    "5. Run: python scripts/steps/step_026_juno_dsn_reanalysis.py"
+    "5. Run: python3 scripts/utils/run_juno_efb_dsn_chain.py"
   ],
   "contacts": {
     "pds_rn_email": "pds-rn@jpl.nasa.gov",

@@ -2,92 +2,85 @@
   {
     "mission": "NEAR_1998",
     "status": "SUCCESS",
-    "data_points": 301,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_trajectory.json"
   },
   {
     "mission": "Galileo_1990",
     "status": "SUCCESS",
-    "data_points": 301,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_trajectory.json"
   },
   {
     "mission": "Cassini_1999",
     "status": "SUCCESS",
-    "data_points": 301,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_trajectory.json"
   },
   {
     "mission": "Rosetta_2005",
     "status": "SUCCESS",
-    "data_points": 361,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json"
   },
   {
     "mission": "MESSENGER_2005",
     "status": "SUCCESS",
-    "data_points": 361,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_trajectory.json"
   },
   {
     "mission": "Juno_2013",
     "status": "SUCCESS",
-    "data_points": 301,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json"
   },
   {
     "mission": "Rosetta_2007",
     "status": "SUCCESS",
-    "data_points": 241,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2007/Rosetta_2007_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2007/Rosetta_2007_trajectory.json"
   },
   {
     "mission": "Rosetta_2009",
     "status": "SUCCESS",
-    "data_points": 241,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_trajectory.json"
   },
   {
     "mission": "Galileo_1992",
     "status": "SUCCESS",
-    "data_points": 301,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1992/Galileo_1992_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1992/Galileo_1992_trajectory.json"
   },
   {
     "mission": "Stardust_2001",
     "status": "SUCCESS",
-    "data_points": 361,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Stardust_2001/Stardust_2001_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Stardust_2001/Stardust_2001_trajectory.json"
   },
   {
     "mission": "OSIRIS-REx_2017",
     "status": "SUCCESS",
-    "data_points": 361,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/OSIRIS-REx_2017/OSIRIS-REx_2017_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/OSIRIS-REx_2017/OSIRIS-REx_2017_trajectory.json"
   },
   {
     "mission": "BepiColombo_2020",
     "status": "SUCCESS",
-    "data_points": 361,
+    "data_points": 4320,
     "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2020/BepiColombo_2020_raw_response.txt",
     "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2020/BepiColombo_2020_trajectory.json"
-  },
-  {
-    "mission": "BepiColombo_2021",
-    "status": "SUCCESS",
-    "data_points": 361,
-    "raw_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2021/BepiColombo_2021_raw_response.txt",
-    "json_file": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2021/BepiColombo_2021_trajectory.json"
   }
 ]

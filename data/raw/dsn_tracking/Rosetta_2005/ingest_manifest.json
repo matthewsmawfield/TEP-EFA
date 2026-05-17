@@ -10,7 +10,8 @@
     "collection_lids": [],
     "title_search_pages": 0,
     "member_search_pages": 0,
-    "unindexed_collection_lids": []
+    "unindexed_collection_lids": [],
+    "exhaustive_lid_searches": []
   },
   "status": "no_indexed_products"
 }

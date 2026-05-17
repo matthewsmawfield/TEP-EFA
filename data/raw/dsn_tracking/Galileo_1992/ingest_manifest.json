@@ -1,6 +1,6 @@
 {
   "mission": "Galileo_1992",
-  "perigee_utc": "1992-12-08T18:00:00+00:00",
+  "perigee_utc": "1992-12-08T15:09:00+00:00",
   "window_hours": 48.0,
   "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
   "metadata_source": "data/raw/dsn_tracking/Galileo_1992/metadata.json",
@@ -16,7 +16,8 @@
     "unindexed_collection_lids": [
       "urn:nasa:pds:go-j-rss-1-edr::1.0",
       "urn:nasa:pds:go-j-rss-2-edr::1.0"
-    ]
+    ],
+    "exhaustive_lid_searches": []
   },
   "status": "no_indexed_products"
 }

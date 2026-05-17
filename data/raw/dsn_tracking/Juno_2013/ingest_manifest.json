@@ -16,7 +16,30 @@
     "unindexed_collection_lids": [
       "urn:nasa:pds:jno-e-rss-1-edr::1.0",
       "urn:nasa:pds:jno-j-rss-1-edr::1.0"
-    ]
+    ],
+    "exhaustive_lid_searches": []
   },
-  "status": "no_indexed_products"
+  "status": "no_indexed_products_local_njpl_verified",
+  "local_njpl_trk234_artifacts": [
+    {
+      "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
+      "bytes": 66491124,
+      "format_magic": "NJPL",
+      "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
+      "lbl_start_utc": "2015-02-10T03:10:30+00:00",
+      "lbl_stop_utc": "2015-02-10T13:24:49+00:00",
+      "overlaps_perigee_window": false
+    }
+  ],
+  "atmospheres_index_probe": {
+    "index_url": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/",
+    "status": "complete",
+    "tnf_listed": 16,
+    "lbl_scanned": 16,
+    "perigee_window_overlaps": 0,
+    "overlap_candidates": [],
+    "perigee_utc": "2013-10-09T19:21:00+00:00",
+    "window_utc": "2013-10-08T19:21:00+00:00 to 2013-10-10T19:21:00+00:00",
+    "interpretation": "jnogrv_0001 OCRU volume is outer-cruise; perigee-window TNFs are rare. Zero overlaps is expected unless Earth-phase JNO-E-RSS products are ingested separately."
+  }
 }
