@@ -11,6 +11,7 @@ in this directory.  Do not duplicate these values in project scripts.
 Version: TEP v0.14 (Jakarta)
 """
 
+import numpy as np
 
 VERSION = "0.14"
 VERSION_CODENAME = "Jakarta"

@@ -14,7 +14,6 @@ On the cosmological background, X = X_b, so x = 1.
 
 import sympy as sp
 
-
 def run_stability_proof():
     # Define symbols
     X, X_b, Z, U, h, delta_V = sp.symbols('X X_b Z U h Delta_V', real=True, positive=True)
@@ -33,20 +32,20 @@ def run_stability_proof():
     # Check that at x=1, the stealth terms vanish.
     L_bg = L_phi.subs(x, 1)
     print(f"1. Background Lagrangian L(x=1) = {L_bg}")
-    print("   (Expect: Z*X_b - U)\n")
+    print(f"   (Expect: Z*X_b - U)\n")
     
     # 2. First derivative (Pressure / Equation of Motion)
     L_X = sp.diff(L_phi, X)
     L_X_bg = L_X.subs(X, X_b)
     print(f"2. Background First Derivative L_X(x=1) = {L_X_bg}")
-    print("   (Expect: Z)\n")
+    print(f"   (Expect: Z)\n")
     
     # 3. Second derivative (Stability / Sound Speed)
     # The crucial term for avoiding ghosts and defining c_s^2 is L_XX
     L_XX = sp.diff(L_X, X)
     L_XX_bg = sp.simplify(L_XX.subs(X, X_b))
     print(f"3. Background Second Derivative L_XX(x=1) = {L_XX_bg}")
-    print("   (Expect: 2*(h - Delta_V) / X_b^2)\n")
+    print(f"   (Expect: 2*(h - Delta_V) / X_b^2)\n")
     
     # Note: For ghost freedom, we need L_X > 0 (which is Z > 0)
     # For stability (c_s^2 > 0), we need L_X + 2X L_XX > 0

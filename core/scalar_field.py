@@ -23,7 +23,6 @@ scalar-field calculations across the corpus.
 """
 
 import numpy as np
-
 from . import constants as tep_const
 from .screening import screening_factor
 

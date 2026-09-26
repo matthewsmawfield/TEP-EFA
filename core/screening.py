@@ -18,7 +18,6 @@ models across the corpus.
 """
 
 import numpy as np
-
 from . import constants as tep_const
 
 RHO_C = tep_const.RHO_C
