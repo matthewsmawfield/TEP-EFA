@@ -13,23 +13,21 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
-
 from scripts.utils.publication_sync import (
     PRIMARY_DETECTIONS,
-    load_expected_publication_values,
-    split_step026_model_blocks,
-    sync_publication_artifacts,
     _format_percent,
     _format_signed_mm,
     _round,
+    load_expected_publication_values,
+    split_step026_model_blocks,
+    sync_publication_artifacts,
 )
-
+from scripts.utils.step_logger import StepLogger
 
 STALE_MARKERS = (
     "567.5",
@@ -62,13 +60,13 @@ class ClaimConsistencyAuditor:
 
     def __init__(self, project_root: Path):
         self.project_root = project_root
-        self.violations: List[str] = []
+        self.violations: list[str] = []
         self.pipeline_constants = self._load_pipeline_constants()
         self.manuscript_claims = self._load_manuscript_claims()
         self.expected = self._load_expected_claims()
-        self.audit_results: List[Dict[str, Any]] = []
+        self.audit_results: list[dict[str, Any]] = []
 
-    def _load_pipeline_constants(self) -> Dict[str, Any]:
+    def _load_pipeline_constants(self) -> dict[str, Any]:
         sys.path.insert(0, str(self.project_root))
 
         from scripts.utils.physics import (
@@ -91,7 +89,7 @@ class ClaimConsistencyAuditor:
             "DISFORMAL_VELOCITY_THRESHOLD_KM_S": DISFORMAL_VELOCITY_THRESHOLD_KM_S,
         }
 
-    def _manuscript_sources(self) -> List[Path]:
+    def _manuscript_sources(self) -> list[Path]:
         sources = [self.project_root / "15-TEP-EFA-v0.1-Yogyakarta.md"]
         sources.extend(sorted((self.project_root / "site/components").glob("*.html")))
         return [path for path in sources if path.exists()]
@@ -99,7 +97,7 @@ class ClaimConsistencyAuditor:
     def _combined_manuscript_text(self) -> str:
         return "\n".join(path.read_text(encoding="utf-8") for path in self._manuscript_sources())
 
-    def _load_manuscript_claims(self) -> Dict[str, Any]:
+    def _load_manuscript_claims(self) -> dict[str, Any]:
         claims = {
             "v_trans": [],
             "cassini_treatments": [],
@@ -156,7 +154,7 @@ class ClaimConsistencyAuditor:
 
         return claims
 
-    def _load_json(self, relative_path: str) -> Dict[str, Any]:
+    def _load_json(self, relative_path: str) -> dict[str, Any]:
         path = self.project_root / relative_path
         if not path.exists():
             raise FileNotFoundError(relative_path)
@@ -167,10 +165,10 @@ class ClaimConsistencyAuditor:
     _format_percent = staticmethod(_format_percent)
     _format_signed_mm = staticmethod(_format_signed_mm)
 
-    def _load_expected_claims(self) -> Dict[str, Any]:
+    def _load_expected_claims(self) -> dict[str, Any]:
         return load_expected_publication_values(self.project_root)
 
-    def _require_substrings(self, text: str, required: List[str], label: str) -> bool:
+    def _require_substrings(self, text: str, required: list[str], label: str) -> bool:
         missing = [value for value in required if value not in text]
         if missing:
             self.violations.append(f"{label} missing expected values: {', '.join(missing)}")
@@ -259,7 +257,7 @@ class ClaimConsistencyAuditor:
         return True
 
     @staticmethod
-    def _mantissa_exponent(value: float) -> Tuple[float, int]:
+    def _mantissa_exponent(value: float) -> tuple[float, int]:
         if value == 0.0:
             return 0.0, 0
         v = float(value)
@@ -270,7 +268,7 @@ class ClaimConsistencyAuditor:
         return mant, exp
 
     @staticmethod
-    def _mantissa_exponent_from_log10(log10_bf: float) -> Tuple[float, int]:
+    def _mantissa_exponent_from_log10(log10_bf: float) -> tuple[float, int]:
         if log10_bf is None:
             raise ValueError("log10 Bayes factor is None (excluded flyby); cannot format mantissa")
         lf = float(log10_bf)
@@ -473,7 +471,7 @@ class ClaimConsistencyAuditor:
             return True
         text = path.read_text(encoding="utf-8")
         match = re.search(
-            r"<caption>\s*Table 8:\s*Comparison of Flyby Anomaly Explanations\s*</caption>[\s\S]*?<tbody>([\s\S]*?)</tbody>",
+            r"<caption>\s*Table \d+:\s*Comparison of Flyby Anomaly Explanations\s*</caption>[\s\S]*?<tbody>([\s\S]*?)</tbody>",
             text,
             re.IGNORECASE,
         )
@@ -863,7 +861,7 @@ class ClaimConsistencyAuditor:
         output_path: Path,
         *,
         passed: bool,
-        synced_files: List[str] | None = None,
+        synced_files: list[str] | None = None,
         duration_seconds: float | None = None,
     ) -> Path:
         step039 = self._load_json("results/step039_flyby_prediction_table.json")

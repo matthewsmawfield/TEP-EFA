@@ -6,10 +6,9 @@ import json
 import math
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
-
-PRIMARY_DETECTIONS: Tuple[Tuple[str, str], ...] = (
+PRIMARY_DETECTIONS: tuple[tuple[str, str], ...] = (
     ("NEAR", "NEAR"),
     ("Galileo_1990", "Galileo 1990"),
     ("Cassini", "Cassini"),
@@ -36,7 +35,7 @@ def _format_signed_mm(value: float, digits: int = 2) -> str:
     return f"{rounded:.{digits}f}"
 
 
-def _mantissa_exponent(value: float) -> Tuple[float, int]:
+def _mantissa_exponent(value: float) -> tuple[float, int]:
     if value == 0.0:
         return 0.0, 0
     v = float(value)
@@ -97,12 +96,12 @@ _STEP026_METADATA_KEYS = frozenset(
 )
 
 
-def _step026_primary_block(step026: Dict[str, Any]) -> Dict[str, Any]:
+def _step026_primary_block(step026: dict[str, Any]) -> dict[str, Any]:
     """Primary gated comparison (top-level Step 026 row set; n=4 when sign gate is relaxed)."""
     return {key: value for key, value in step026.items() if key not in _STEP026_METADATA_KEYS}
 
 
-def sign_agreement_model_block(step026: Dict[str, Any]) -> Dict[str, Any]:
+def sign_agreement_model_block(step026: dict[str, Any]) -> dict[str, Any]:
     """Sign-agreement-restricted subset (typically n=3) for Section 4.5 robustness prose."""
     if "sign_agreement_model_comparison" in step026:
         return step026["sign_agreement_model_comparison"]
@@ -114,7 +113,7 @@ def sign_agreement_model_block(step026: Dict[str, Any]) -> Dict[str, Any]:
     )
 
 
-def split_step026_model_blocks(step026: Dict[str, Any]) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+def split_step026_model_blocks(step026: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
     """
     Return (headline_full_catalog, primary_gated_ensemble) blocks from Step 026.
 
@@ -130,7 +129,7 @@ def split_step026_model_blocks(step026: Dict[str, Any]) -> Tuple[Dict[str, Any],
     return step026["full_catalog_model_comparison"], _step026_primary_block(step026)
 
 
-def _model_block_to_publication_dict(model_block: Dict[str, Any]) -> Dict[str, Any]:
+def _model_block_to_publication_dict(model_block: dict[str, Any]) -> dict[str, Any]:
     """Map one Step 026 comparison block to publication-sync / audit fields."""
     info = model_block["information_criteria"]
     bayes = model_block["bayes_factors"]
@@ -211,7 +210,7 @@ def _model_block_to_publication_dict(model_block: Dict[str, Any]) -> Dict[str, A
     }
 
 
-def load_expected_publication_values(project_root: Path) -> Dict[str, Any]:
+def load_expected_publication_values(project_root: Path) -> dict[str, Any]:
     step026 = json.loads(
         (project_root / "results/step026_stable_model_comparison.json").read_text(encoding="utf-8")
     )
@@ -223,7 +222,7 @@ def load_expected_publication_values(project_root: Path) -> Dict[str, Any]:
     model_gated = _model_block_to_publication_dict(gated_block)
     stages = variance["variance_decomposition"]["stages"]
 
-    components: Dict[str, Dict[str, float]] = {}
+    components: dict[str, dict[str, float]] = {}
     for mission_key, _ in PRIMARY_DETECTIONS:
         mission = predictions["predictions"][mission_key]["tep_predictions"]
         components[mission_key] = {
@@ -258,21 +257,21 @@ def load_expected_publication_values(project_root: Path) -> Dict[str, Any]:
     }
 
 
-def _publication_sources(project_root: Path) -> List[Path]:
+def _publication_sources(project_root: Path) -> list[Path]:
     # The manuscript markdown is generated from `site/components/*.html`.
     # Do not write to the generated markdown directly.
     sources = sorted((project_root / "site/components").glob("*.html"))
     return [path for path in sources if path.exists()]
 
 
-def load_step039_values(project_root: Path) -> Dict[str, Any]:
+def load_step039_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads(
         (project_root / "results/step039_flyby_prediction_table.json").read_text(encoding="utf-8")
     )
     return payload
 
 
-def load_step019_values(project_root: Path) -> Dict[str, Any]:
+def load_step019_values(project_root: Path) -> dict[str, Any]:
     path = project_root / "results/step019_3d_field_integration_results.json"
     payload = json.loads(path.read_text(encoding="utf-8"))
     if (
@@ -291,33 +290,33 @@ def load_step019_values(project_root: Path) -> Dict[str, Any]:
     return payload
 
 
-def load_step040_values(project_root: Path) -> Dict[str, Any]:
+def load_step040_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads(
         (project_root / "results/step040_cosmographic_shear.json").read_text(encoding="utf-8")
     )
     return payload
 
 
-def load_step008_values(project_root: Path) -> Dict[str, Any]:
+def load_step008_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads((project_root / "results/step008_fitting_results.json").read_text(encoding="utf-8"))
     return payload
 
 
-def load_step025_values(project_root: Path) -> Dict[str, Any]:
+def load_step025_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads(
         (project_root / "results/step025_corrected_uncertainty.json").read_text(encoding="utf-8")
     )
     return payload
 
 
-def load_step032_values(project_root: Path) -> Dict[str, Any]:
+def load_step032_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads(
         (project_root / "results/step032_tep_suppression_analysis.json").read_text(encoding="utf-8")
     )
     return payload
 
 
-def load_step036_values(project_root: Path) -> Dict[str, Any]:
+def load_step036_values(project_root: Path) -> dict[str, Any]:
     payload = json.loads(
         (project_root / "results/step036_final_report.json").read_text(encoding="utf-8")
     )
@@ -335,7 +334,7 @@ def _raw_class_label(raw_class: str) -> str:
     return labels.get(raw_class, raw_class.replace("_", " ").title())
 
 
-def _format_prediction_mm(row: Dict[str, Any]) -> str:
+def _format_prediction_mm(row: dict[str, Any]) -> str:
     prediction = row.get("raw_tep_prediction_mm_s")
     if prediction is None:
         return "N/A"
@@ -345,14 +344,14 @@ def _format_prediction_mm(row: Dict[str, Any]) -> str:
     return f"${_format_signed_mm(prediction, 3)} \\pm {uncertainty:.3f}$"
 
 
-def _format_residual_mm(row: Dict[str, Any]) -> str:
+def _format_residual_mm(row: dict[str, Any]) -> str:
     residual = row.get("pooled_beta_residual_mm_s")
     if residual is None:
         return "—"
     return f"${_format_signed_mm(residual, 3)}$"
 
 
-def _classification_label(row: Dict[str, Any]) -> str:
+def _classification_label(row: dict[str, Any]) -> str:
     raw_class = row.get("raw_classification")
     if raw_class:
         return _raw_class_label(raw_class)
@@ -366,7 +365,7 @@ def _classification_label(row: Dict[str, Any]) -> str:
     return labels.get(classification, classification.replace("_", " ").title())
 
 
-def _sync_step039_prediction_row(text: str, row: Dict[str, Any]) -> str:
+def _sync_step039_prediction_row(text: str, row: dict[str, Any]) -> str:
     flyby = row["flyby"]
     pattern = rf"(<tr>\s*<td>{re.escape(flyby)}</td>)(\s*<td>[^<]+</td>)([\s\S]*?)(</tr>)"
     match = re.search(pattern, text)
@@ -411,7 +410,7 @@ def _sync_step039_prediction_row(text: str, row: Dict[str, Any]) -> str:
     return text[: match.start()] + replacement + text[match.end() :]
 
 
-def _sync_step039_table(text: str, rows: List[Dict[str, Any]]) -> str:
+def _sync_step039_table(text: str, rows: list[dict[str, Any]]) -> str:
     pattern = r"(<caption>\s*Table 4:[\s\S]*?<tbody>)([\s\S]*?)(</tbody>)"
     match = re.search(pattern, text)
     if not match:
@@ -427,7 +426,7 @@ def _latex_beta() -> str:
     return r"$\beta$"
 
 
-def _sync_step019_table3b_integration(text: str, step019: Dict[str, Any]) -> str:
+def _sync_step019_table3b_integration(text: str, step019: dict[str, Any]) -> str:
     """
     Synchronize Table 3b integration-vs-perigee with Step 019 payload.
 
@@ -459,7 +458,7 @@ def _sync_step019_table3b_integration(text: str, step019: Dict[str, Any]) -> str
         }
         return labels.get(key, key)
 
-    rows_out: List[str] = []
+    rows_out: list[str] = []
     for key in keys:
         row = per_flyby.get(key, {})
         try:
@@ -494,7 +493,7 @@ def _sync_step019_table3b_integration(text: str, step019: Dict[str, Any]) -> str
     return text[: match.start(2)] + new_tbody + text[match.end(2) :]
 
 
-def _sync_step040_table8(text: str, step040: Dict[str, Any]) -> str:
+def _sync_step040_table8(text: str, step040: dict[str, Any]) -> str:
     results = step040.get("flyby_results", [])
     if not isinstance(results, list) or not results:
         return text
@@ -514,7 +513,7 @@ def _sync_step040_table8(text: str, step040: Dict[str, Any]) -> str:
             return "—"
         return f"<strong>{val:.2f}</strong>"
 
-    rows_out: List[str] = []
+    rows_out: list[str] = []
     for row in results:
         if not row.get("has_3d_vector", False):
             continue
@@ -562,7 +561,7 @@ def _sync_step040_table8(text: str, step040: Dict[str, Any]) -> str:
     return text[: match.start(2)] + new_tbody + text[match.end(2) :]
 
 
-def _sync_step040_table9b(text: str, step040: Dict[str, Any]) -> str:
+def _sync_step040_table9b(text: str, step040: dict[str, Any]) -> str:
     results = step040.get("flyby_results", [])
     reg = step040.get("multivariate_regression", {})
     coeffs = reg.get("coefficients", {}) if isinstance(reg, dict) else {}
@@ -579,7 +578,7 @@ def _sync_step040_table9b(text: str, step040: Dict[str, Any]) -> str:
     if not match:
         return text
 
-    rows_out: List[str] = []
+    rows_out: list[str] = []
     for row in results:
         if not row.get("has_3d_vector", False):
             continue
@@ -612,7 +611,7 @@ def _sync_step040_table9b(text: str, step040: Dict[str, Any]) -> str:
     return text[: match.start(2)] + "\n" + new_tbody + "\n" + text[match.end(2) :]
 
 
-def _sync_step040_regression_prose(text: str, step040: Dict[str, Any]) -> str:
+def _sync_step040_regression_prose(text: str, step040: dict[str, Any]) -> str:
     """
     Synchronize the multivariate-regression prose block in 4.11.6 with Step 040 JSON.
     """
@@ -655,7 +654,7 @@ def _sync_step040_regression_prose(text: str, step040: Dict[str, Any]) -> str:
     return re.sub(pattern, replacement, text, count=1)
 
 
-def _sync_step039_prose(text: str, step039: Dict[str, Any]) -> str:
+def _sync_step039_prose(text: str, step039: dict[str, Any]) -> str:
     summary = step039["metadata"]["raw_classification_summary"]
     uncertainty_summary = step039["metadata"].get(
         "raw_uncertainty_aware_classification_summary", {}
@@ -749,7 +748,7 @@ def _sync_step039_prose(text: str, step039: Dict[str, Any]) -> str:
     return text
 
 
-def _sync_plaintext_bic_sentence(text: str, model_dict: Dict[str, Any]) -> str:
+def _sync_plaintext_bic_sentence(text: str, model_dict: dict[str, Any]) -> str:
     """
     Rewrite the Unicode-only Bayes/BIC clause in HTML abstract (1_abstract.html)
     to match Step 026 JSON (avoids 10^18 vs 10^71 drift when body uses LaTeX).
@@ -778,7 +777,7 @@ def _sync_plaintext_bic_sentence(text: str, model_dict: Dict[str, Any]) -> str:
     return text.replace(legacy, new_sentence)
 
 
-def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> str:
+def _sync_text(text: str, expected: dict[str, Any], step039: dict[str, Any]) -> str:
     """Rewrite static manuscript numerics using `expected` / Step 039 JSON.
 
     TeX-heavy `re.sub` replacements must use a callable replacer (or doubled escapes
@@ -813,7 +812,7 @@ def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> 
         # Alternative Step 009 sentence structures found in 5_results.html and 7_conclusion.html
         (r"environmental modulation is assigned [\d.]+%", f"environmental modulation is assigned {variance['environmental']}"),
         (r"and the residual is [\d.]+%", f"and the residual is {variance['residual']}"),
-        (r"structural and observational proxies are negligible fractions", f"structural and observational proxies are negligible fractions"),
+        (r"structural and observational proxies are negligible fractions", "structural and observational proxies are negligible fractions"),
     ]
 
     for pattern, replacement in replacements:
@@ -1062,7 +1061,7 @@ def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> 
     return text
 
 
-def _sync_step025_uncertainty(text: str, step025: Dict[str, Any]) -> str:
+def _sync_step025_uncertainty(text: str, step025: dict[str, Any]) -> str:
     """Synchronize uncertainty budget claims with Step 025 JSON."""
     budget = step025.get("corrected_uncertainty_budget", {})
     total_rel = budget.get("total_relative_uncertainty")
@@ -1164,7 +1163,7 @@ def _sync_step025_uncertainty(text: str, step025: Dict[str, Any]) -> str:
     return text
 
 
-def _sync_step032_spearman(text: str, step032: Dict[str, Any]) -> str:
+def _sync_step032_spearman(text: str, step032: dict[str, Any]) -> str:
     """Synchronize Spearman correlation claims with Step 032 JSON."""
     enhanced = step032.get("enhanced_evidence", {})
     spearman = enhanced.get("altitude_anomaly_spearman", {})
@@ -1213,7 +1212,7 @@ def _sync_step032_spearman(text: str, step032: Dict[str, Any]) -> str:
     return text
 
 
-def _sync_step036_ppn(text: str, step036: Dict[str, Any]) -> str:
+def _sync_step036_ppn(text: str, step036: dict[str, Any]) -> str:
     """Synchronize PPN margin claims with Step 036 JSON."""
     summary = step036.get("summary", {})
     ppn = summary.get("ppn_analysis", {})
@@ -1273,7 +1272,7 @@ def _format_tex_scientific(value: float, sigfigs: int = 3) -> str:
     return f"{mantissa_fmt} \\times 10^{{{exponent}}}"
 
 
-def _sync_step008_beta_claims(text: str, step008: Dict[str, Any]) -> str:
+def _sync_step008_beta_claims(text: str, step008: dict[str, Any]) -> str:
     stats = step008.get("overall_analysis", {}).get("beta_statistics", {})
     robust = step008.get("robustness_analysis", {})
     loo = robust.get("leave_one_out", {}).get("leave_one_out_results", {})
@@ -1478,7 +1477,7 @@ def _normalize_abstract_mathjax_backslashes(text: str) -> str:
     return text
 
 
-def sync_publication_artifacts(project_root: Path) -> List[Path]:
+def sync_publication_artifacts(project_root: Path) -> list[Path]:
     expected = load_expected_publication_values(project_root)
     step039 = load_step039_values(project_root)
     step019 = load_step019_values(project_root)
@@ -1487,7 +1486,7 @@ def sync_publication_artifacts(project_root: Path) -> List[Path]:
     step025 = load_step025_values(project_root)
     step032 = load_step032_values(project_root)
     step036 = load_step036_values(project_root)
-    updated: List[Path] = []
+    updated: list[Path] = []
 
     for path in _publication_sources(project_root):
         original = path.read_text(encoding="utf-8")

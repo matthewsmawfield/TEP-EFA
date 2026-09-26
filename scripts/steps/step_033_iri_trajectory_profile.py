@@ -40,22 +40,21 @@ import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Tuple
 
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.celestrak_space_weather import lookup_space_weather
 from scripts.steps.step_038_extract_3d_vectors import parse_raw_response
+from scripts.utils.celestrak_space_weather import lookup_space_weather
 from scripts.utils.step_logger import StepLogger
 
 # Check if PyIRI is available
 IRI_AVAILABLE = False
 try:
-    from PyIRI.main_library import IRI_density_1day
     import PyIRI
+    from PyIRI.main_library import IRI_density_1day
     IRI_AVAILABLE = True
 except ImportError:
     pass
@@ -78,7 +77,7 @@ def parse_datetime(dt_str: str) -> datetime:
     raise ValueError(f"Cannot parse datetime: {dt_str}")
 
 
-def geodetic_lat_lon_deg(ra_deg: float, dec_deg: float) -> Tuple[float, float]:
+def geodetic_lat_lon_deg(ra_deg: float, dec_deg: float) -> tuple[float, float]:
     """Sub-satellite geodetic latitude/longitude from JPL Horizons RA/Dec."""
     lat_deg = float(dec_deg)
     lon_deg = float(ra_deg)
@@ -87,7 +86,7 @@ def geodetic_lat_lon_deg(ra_deg: float, dec_deg: float) -> Tuple[float, float]:
     return lat_deg, lon_deg
 
 
-def horizons_geometry_by_timestamp(mission: str) -> Dict[str, Tuple[float, float]]:
+def horizons_geometry_by_timestamp(mission: str) -> dict[str, tuple[float, float]]:
     """Map trajectory timestamps to geodetic coordinates from cached Horizons data."""
     raw_path = PROJECT_ROOT / "data" / "raw" / "jpl_horizons" / mission / f"{mission}_raw_response.txt"
     if not raw_path.exists():
@@ -97,7 +96,7 @@ def horizons_geometry_by_timestamp(mission: str) -> Dict[str, Tuple[float, float
     if not parsed or not parsed.get("timestamps"):
         raise RuntimeError(f"Could not parse JPL Horizons geometry for {mission}")
 
-    geometry: Dict[str, Tuple[float, float]] = {}
+    geometry: dict[str, tuple[float, float]] = {}
     for dt, ra_deg, dec_deg in zip(parsed["timestamps"], parsed["ra_deg"], parsed["dec_deg"]):
         geometry[dt.strftime("%Y-%m-%d %H:%M:%S")] = geodetic_lat_lon_deg(ra_deg, dec_deg)
     return geometry
@@ -160,7 +159,7 @@ def _subsample_indices(n_points: int, perigee_index: int, stride: int, halfwidth
     return sorted(coarse | dense)
 
 
-def _mission_worker(payload: Tuple[str, str, int, int]) -> Tuple[str, dict]:
+def _mission_worker(payload: tuple[str, str, int, int]) -> tuple[str, dict]:
     """Process one mission (picklable entry point for ``ProcessPoolExecutor``)."""
     mission, traj_relpath, stride, halfwidth = payload
     if not IRI_AVAILABLE:
@@ -181,7 +180,7 @@ def _mission_worker(payload: Tuple[str, str, int, int]) -> Tuple[str, dict]:
     perigee_altitude_km = float(altitude_km_all[perigee_index])
 
     geometry_by_timestamp = horizons_geometry_by_timestamp(mission)
-    f107_by_date: Dict[str, float] = {}
+    f107_by_date: dict[str, float] = {}
 
     def f107_for_date(date_key: str) -> float:
         if date_key not in f107_by_date:
@@ -350,7 +349,7 @@ def main() -> int:
     )
 
     payloads = [(m, p, stride, halfwidth) for m, p in primary_flybys.items()]
-    results: Dict[str, dict] = {}
+    results: dict[str, dict] = {}
 
     if workers <= 1:
         for pl in payloads:

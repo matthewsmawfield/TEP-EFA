@@ -10,12 +10,10 @@ This provides independent verification of the literature-cited exclusion
 (thermal recoil ~0.01 mm/s for Galileo vs 3.92 mm/s observed).
 """
 
-import sys
 import json
-import numpy as np
-from pathlib import Path
+import sys
 from dataclasses import dataclass
-from typing import Dict, List, Optional
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -255,7 +253,7 @@ class ThermalRecoilModeler:
     def analyze_catalog(
         self,
         catalog_path: Path
-    ) -> Dict:
+    ) -> dict:
         """
         Analyze all flybys in the catalog.
         
@@ -272,7 +270,7 @@ class ThermalRecoilModeler:
         try:
             with open(catalog_path, 'r') as f:
                 catalog = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load catalog: {e}")
             return None
         
@@ -350,7 +348,7 @@ def main():
         print("="*70)
         print(f"\nAnalyzed {results['summary']['n_analyzed']} flybys")
         print(f"RTG-powered flybys: {results['summary']['n_rtg_flybys']}")
-        print(f"\nSummary:")
+        print("\nSummary:")
         print(f"  All excluded: {results['summary']['all_excluded']}")
         print(f"  Maximum thermal fraction: {results['summary']['max_thermal_fraction']:.2e}")
         print(f"  Conclusion: {results['summary']['conclusion']}")
@@ -377,7 +375,7 @@ def main():
         return results
         
     except Exception as e:
-        logger.error(f"Analysis failed: {str(e)}")
+        logger.error(f"Analysis failed: {e!s}")
         raise
 
 

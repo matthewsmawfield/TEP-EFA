@@ -8,48 +8,60 @@
   "derivation": "Variance decomposition analysis of fitted beta heterogeneity; \u00b150% uncertainty accounts for systematic uncertainty in parameter estimation and model assumptions",
   "recommended_action": "Validate with independent analysis and larger sample size",
   "step": "009_variance_analysis",
-  "timestamp": "2026-09-14T11:20:08.319162+00:00",
+  "timestamp": "2026-09-26T14:19:09.140614+00:00",
   "variance_decomposition": {
     "status": "underpowered_for_variance_partition",
-    "warning": "With n=4 valid fits and n_sign_gated=3, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.",
-    "n_valid_fits": 4,
-    "n_sign_gated": 3,
+    "warning": "With n=6 valid fits and n_sign_gated=6, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.",
+    "n_valid_fits": 6,
+    "n_sign_gated": 6,
     "variance_methodology": {
-      "note": "Formal variance decomposition (ANOVA-style partitioning) requires n >= 10 for reliable statistical power. The current dataset (n=4 fits, n_sign_gated=3) is insufficient. We replace the decomposition with a deterministic geometry modulation analysis that uses all n=12 catalogued flybys.",
+      "note": "Formal variance decomposition (ANOVA-style partitioning) requires n >= 10 for reliable statistical power. The current dataset (n=6 fits, n_sign_gated=6) is insufficient. We replace the decomposition with a deterministic geometry modulation analysis that uses all n=12 catalogued flybys.",
       "legacy_stage_fractions": "DEPRECATED. Do not use for manuscript inference."
     },
     "beta_scatter": {
-      "n_fits": 4,
-      "n_sign_gated": 3,
-      "beta_span": 5.275878781745436,
-      "beta_min": 0.0010102428095147484,
-      "beta_max": 0.005329918603129757,
-      "log_mean": -2.686053589457508,
-      "log_std": 0.30148636423660613,
+      "n_fits": 6,
+      "n_sign_gated": 6,
+      "beta_span": 150998.9042389367,
+      "beta_min": 0.0018207797052178442,
+      "beta_max": 274.93574034838866,
+      "log_mean": -0.6808096807624654,
+      "log_std": 2.355158277275929,
       "note": "The TEP prediction (Step 007) already includes the geometry envelope, so beta_fitted is the coupling required to match the observed anomaly after geometry, plasma, J2, and disformal modulation have been accounted for. Residual scatter in beta_fitted therefore reflects genuine coupling heterogeneity or model incompleteness, not unmodeled geometry. With n <= 4, this scatter cannot be decomposed into structural, observational, or environmental components with any statistical reliability.",
       "per_mission": [
         {
           "mission": "NEAR",
-          "beta_fitted": 0.0017305147756031074,
-          "beta_uncertainty": 1.7142295944557774e-06,
+          "beta_fitted": 0.0018207797052178442,
+          "beta_uncertainty": 2.3447386000824143e-05,
           "sign_agreement": true
         },
         {
           "mission": "Galileo_1990",
-          "beta_fitted": 0.005329918603129757,
-          "beta_uncertainty": 5.438692452173221e-05,
+          "beta_fitted": 0.008731721925085452,
+          "beta_uncertainty": 0.00023759787551252932,
           "sign_agreement": true
         },
         {
           "mission": "Cassini",
-          "beta_fitted": 0.0019340334704831914,
-          "beta_uncertainty": 0.0011721414972625402,
-          "sign_agreement": false
+          "beta_fitted": 125.74842831024559,
+          "beta_uncertainty": 83.83228554016372,
+          "sign_agreement": true
+        },
+        {
+          "mission": "Galileo_1992",
+          "beta_fitted": 0.06730401137901822,
+          "beta_uncertainty": 0.0195084090953676,
+          "sign_agreement": true
         },
         {
           "mission": "Rosetta_2005",
-          "beta_fitted": 0.0010102428095147484,
-          "beta_uncertainty": 3.7005231117756344e-05,
+          "beta_fitted": 0.002223360573892163,
+          "beta_uncertainty": 4.940801275315918e-05,
+          "sign_agreement": true
+        },
+        {
+          "mission": "MESSENGER_2005",
+          "beta_fitted": 274.93574034838866,
+          "beta_uncertainty": 183.29049356559244,
           "sign_agreement": true
         }
       ]
@@ -64,52 +76,52 @@
       "catalog": [
         {
           "mission": "NEAR",
-          "dv_pred_mm_s": 1.586403195722739,
+          "dv_pred_mm_s": 1.5270456032053303,
           "dv_obs_mm_s": 13.46,
-          "sigma_mm_s": 0.01,
+          "sigma_mm_s": 0.13,
           "predicted_detected": true,
           "observed_detected": true,
           "category": "true_positive"
         },
         {
           "mission": "Galileo_1990",
-          "dv_pred_mm_s": 0.1987218559225848,
+          "dv_pred_mm_s": 0.1372338175512307,
           "dv_obs_mm_s": 3.92,
-          "sigma_mm_s": 0.03,
+          "sigma_mm_s": 0.08,
           "predicted_detected": false,
           "observed_detected": true,
           "category": "false_negative"
         },
         {
           "mission": "Cassini",
-          "dv_pred_mm_s": -0.011927370112788957,
-          "dv_obs_mm_s": 0.11,
-          "sigma_mm_s": 0.05,
-          "predicted_detected": false,
-          "observed_detected": true,
-          "category": "false_negative"
-        },
-        {
-          "mission": "Galileo_1992",
-          "dv_pred_mm_s": 0.0002782606561873544,
-          "dv_obs_mm_s": 0.0,
-          "sigma_mm_s": 0.05,
+          "dv_pred_mm_s": -5.326023415145495e-05,
+          "dv_obs_mm_s": -2.0,
+          "sigma_mm_s": 1.0,
           "predicted_detected": false,
           "observed_detected": false,
           "category": "true_negative"
         },
         {
+          "mission": "Galileo_1992",
+          "dv_pred_mm_s": -0.034811851294463965,
+          "dv_obs_mm_s": -4.6,
+          "sigma_mm_s": 1.0,
+          "predicted_detected": false,
+          "observed_detected": true,
+          "category": "false_negative"
+        },
+        {
           "mission": "Rosetta_2005",
-          "dv_pred_mm_s": 0.321182638866365,
-          "dv_obs_mm_s": 1.82,
-          "sigma_mm_s": 0.05,
+          "dv_pred_mm_s": 0.1757984655197509,
+          "dv_obs_mm_s": 1.8,
+          "sigma_mm_s": 0.03,
           "predicted_detected": false,
           "observed_detected": true,
           "category": "false_negative"
         },
         {
           "mission": "Rosetta_2007",
-          "dv_pred_mm_s": 6.762895846310001e-05,
+          "dv_pred_mm_s": 6.6498078579098e-05,
           "dv_obs_mm_s": 0.02,
           "sigma_mm_s": 0.05,
           "predicted_detected": false,
@@ -127,9 +139,9 @@
         },
         {
           "mission": "MESSENGER_2005",
-          "dv_pred_mm_s": 4.2870208980271865e-07,
-          "dv_obs_mm_s": 0.0,
-          "sigma_mm_s": 0.05,
+          "dv_pred_mm_s": 2.962146923366389e-07,
+          "dv_obs_mm_s": 0.02,
+          "sigma_mm_s": 0.01,
           "predicted_detected": false,
           "observed_detected": false,
           "category": "true_negative"
@@ -173,11 +185,66 @@
       ]
     },
     "rank_correlation": {
-      "spearman_r": 0.7252137165212658,
-      "spearman_p": 0.0076077456298081995,
-      "pearson_r_log": 0.7217600091919062,
-      "pearson_p_log": 0.00804617673464389,
+      "spearman_r": 0.5593900887643948,
+      "spearman_p": 0.058617151460439894,
+      "pearson_r_log": 0.45875525604104217,
+      "pearson_p_log": 0.13359251982797735,
       "n_catalog": 12
+    },
+    "asymmetry_ordering": {
+      "description": "Spearman rank of |trajectory asymmetry| vs |observed anomaly magnitude|.  The gated sign-agreement subset is the n=3 detection ensemble quoted in the abstract; the nonzero and full rows give the broader-catalog statistics.",
+      "gated_sign_agreement_subset": {
+        "n": 6,
+        "missions": [
+          "NEAR",
+          "Galileo_1990",
+          "Cassini",
+          "Galileo_1992",
+          "Rosetta_2005",
+          "MESSENGER_2005"
+        ],
+        "spearman_r": 0.6571428571428573,
+        "spearman_p": 0.15617492711370237,
+        "largest_asymmetry_mission": "NEAR",
+        "largest_anomaly_mission": "NEAR",
+        "extremal_order_match": true
+      },
+      "nonzero_anomaly_subset": {
+        "n": 7,
+        "missions": [
+          "NEAR",
+          "Galileo_1990",
+          "Cassini",
+          "Galileo_1992",
+          "Rosetta_2005",
+          "Rosetta_2007",
+          "MESSENGER_2005"
+        ],
+        "spearman_r": 0.6847124716486249,
+        "spearman_p": 0.08966645319106825,
+        "largest_asymmetry_mission": "NEAR",
+        "largest_anomaly_mission": "NEAR",
+        "extremal_order_match": true
+      },
+      "all_published_with_asymmetry": {
+        "n": 9,
+        "missions": [
+          "NEAR",
+          "Galileo_1990",
+          "Cassini",
+          "Galileo_1992",
+          "Rosetta_2005",
+          "Rosetta_2007",
+          "Rosetta_2009",
+          "MESSENGER_2005",
+          "Juno"
+        ],
+        "spearman_r": 0.563045090566732,
+        "spearman_p": 0.11445589798666721,
+        "largest_asymmetry_mission": "NEAR",
+        "largest_anomaly_mission": "NEAR",
+        "extremal_order_match": true
+      }
     },
     "stages": {
       "stage1_structural": {
@@ -199,15 +266,15 @@
         "explained_fraction": null,
         "explained_percent": null,
         "status": "underpowered",
-        "f10.7_correlation": 0.7317545567403081,
-        "f10.7_p_value": 0.2682454432596919,
+        "f10.7_correlation": 0.018835070161380904,
+        "f10.7_p_value": 0.9717507357214306,
         "note": "Use rank_correlation instead"
       },
       "stage4_residual": {
         "name": "Statistical + Unmodeled",
         "explained_fraction": null,
         "explained_percent": null,
-        "n_valid_fits": 4,
+        "n_valid_fits": 6,
         "status": "underpowered",
         "note": "Formal residual partitioning requires n >= 10"
       }
@@ -216,11 +283,11 @@
   },
   "mission_analysis": {
     "NEAR": {
-      "beta_fitted": 0.0017305147756031074,
-      "beta_eff": 0.0006043627963768504,
-      "beta_uncertainty": 1.7142295944557774e-06,
+      "beta_fitted": 0.0018207797052178442,
+      "beta_eff": 0.0006358868064840219,
+      "beta_uncertainty": 2.3447386000824143e-05,
       "physical_parameters": {
-        "altitude_km": 567.9,
+        "altitude_km": 539.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 12.72,
         "plasma_density_cm3": 19387.907157239344,
@@ -229,10 +296,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.080657062017727,
-        "f_j2": 0.7525153076184323,
-        "f_plasma": 0.6493301747624005,
+        "f_j2": 0.7634680971376387,
+        "f_plasma": 0.6148903575686837,
         "f_velocity": 1.0,
-        "f_total_structural": 0.5280424287064245,
+        "f_total_structural": 0.5073135621602208,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -242,11 +309,11 @@
       }
     },
     "Galileo_1990": {
-      "beta_fitted": 0.005329918603129757,
-      "beta_eff": 0.0018614140467687508,
-      "beta_uncertainty": 5.438692452173221e-05,
+      "beta_fitted": 0.008731721925085452,
+      "beta_eff": 0.0030494555459606235,
+      "beta_uncertainty": 0.00023759787551252932,
       "physical_parameters": {
-        "altitude_km": 972.3,
+        "altitude_km": 960.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 13.73,
         "plasma_density_cm3": 44029.27485715168,
@@ -255,10 +322,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.0608223618522366,
-        "f_j2": 0.6147120592252623,
-        "f_plasma": 0.5092390560012177,
+        "f_j2": 0.6185041872308088,
+        "f_plasma": 0.4776785281517298,
         "f_velocity": 1.0,
-        "f_total_structural": 0.33207494043969343,
+        "f_total_structural": 0.31341590366026323,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -268,11 +335,11 @@
       }
     },
     "Cassini": {
-      "beta_fitted": 0.0019340334704831914,
-      "beta_eff": 0.0006754394085426308,
-      "beta_uncertainty": 0.0011721414972625402,
+      "beta_fitted": 125.74842831024559,
+      "beta_eff": 43.91622241254064,
+      "beta_uncertainty": 83.83228554016372,
       "physical_parameters": {
-        "altitude_km": 1197.3,
+        "altitude_km": 1175.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 19.02,
         "plasma_density_cm3": 14013.139494754905,
@@ -281,10 +348,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.0582372648224307,
-        "f_j2": 0.5493010059558688,
-        "f_plasma": 0.6743656955622473,
+        "f_j2": 0.5554599846704401,
+        "f_plasma": 0.6519093297719187,
         "f_velocity": 0.6086884717269062,
-        "f_total_structural": 0.09409970672099979,
+        "f_total_structural": 0.0014372833873189125,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -294,11 +361,11 @@
       }
     },
     "Galileo_1992": {
-      "beta_fitted": null,
-      "beta_eff": null,
-      "beta_uncertainty": null,
+      "beta_fitted": 0.06730401137901822,
+      "beta_eff": 0.023505167998479914,
+      "beta_uncertainty": 0.0195084090953676,
       "physical_parameters": {
-        "altitude_km": 309.6,
+        "altitude_km": 303.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 14.08,
         "plasma_density_cm3": 1661219.5433202146,
@@ -307,10 +374,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.0804254668676425,
-        "f_j2": 0.8562568958398531,
-        "f_plasma": 0.18550007341460703,
+        "f_j2": 0.8590872110477069,
+        "f_plasma": 0.18482943289223225,
         "f_velocity": 1.0,
-        "f_total_structural": 0.0032542369894069958,
+        "f_total_structural": 0.17155492777200304,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -320,11 +387,11 @@
       }
     },
     "Rosetta_2005": {
-      "beta_fitted": 0.0010102428095147484,
-      "beta_eff": 0.0003528159239005361,
-      "beta_uncertainty": 3.7005231117756344e-05,
+      "beta_fitted": 0.002223360573892163,
+      "beta_eff": 0.0007764836410155491,
+      "beta_uncertainty": 4.940801275315918e-05,
       "physical_parameters": {
-        "altitude_km": 1968.7,
+        "altitude_km": 1955.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 10.51,
         "plasma_density_cm3": 2854.6393116286213,
@@ -333,10 +400,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.0530436749333894,
-        "f_j2": 0.3735054867230335,
-        "f_plasma": 0.8794439085755273,
+        "f_j2": 0.37607278225563295,
+        "f_plasma": 0.9139564906151764,
         "f_velocity": 1.0,
-        "f_total_structural": 0.3459007589659286,
+        "f_total_structural": 0.36194602247447005,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -350,7 +417,7 @@
       "beta_eff": null,
       "beta_uncertainty": null,
       "physical_parameters": {
-        "altitude_km": 5429.9,
+        "altitude_km": 5301.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 12.46,
         "plasma_density_cm3": 276.34027237063435,
@@ -359,10 +426,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.1356634321612977,
-        "f_j2": 0.06620175570104725,
-        "f_plasma": 0.984574104264115,
+        "f_j2": 0.07060895541940684,
+        "f_plasma": 0.9853980557488055,
         "f_velocity": 1.0,
-        "f_total_structural": 0.001836656554933533,
+        "f_total_structural": 0.0017972733829832996,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -398,11 +465,11 @@
       }
     },
     "MESSENGER_2005": {
-      "beta_fitted": null,
-      "beta_eff": null,
-      "beta_uncertainty": null,
+      "beta_fitted": 274.93574034838866,
+      "beta_eff": 96.0182109990841,
+      "beta_uncertainty": 183.29049356559244,
       "physical_parameters": {
-        "altitude_km": 2351.2,
+        "altitude_km": 2347.0,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 10.39,
         "plasma_density_cm3": 1750.192904104066,
@@ -411,10 +478,10 @@
       },
       "stage1_structural_factors": {
         "f_inclination": 1.1096100664743906,
-        "f_j2": 0.30855607459000894,
-        "f_plasma": 0.9159642668239879,
+        "f_j2": 0.30920472318929887,
+        "f_plasma": 0.9152563498615215,
         "f_velocity": 1.0,
-        "f_total_structural": 2.9983201248810396e-05,
+        "f_total_structural": 2.2715669053353462e-05,
         "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
@@ -529,17 +596,17 @@
     }
   },
   "synthesis_conclusions": [
-    "Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=4 valid fits (n_sign_gated=3), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).",
+    "Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=6 valid fits (n_sign_gated=6), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).",
     "",
-    "Beta scatter statistics (n=4): Fitted beta spans a factor of 5.3 (log STD = 0.301 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.",
+    "Beta scatter statistics (n=6): Fitted beta spans a factor of 150998.9 (log STD = 2.355 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.",
     "",
     "Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at \u03b2_ref = 10\u207b\u2074 correctly classifies 9/12 flybys (accuracy 75.00%)\u20141 true positive, 8 true negatives, 3 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at \u03b2_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at \u03b2_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.",
     "",
-    "Rank correlation across the full catalog (n=12): Spearman rho = 0.73 (p = 0.008) between predicted and observed anomaly magnitudes. This indicates moderate rank agreement.",
+    "Rank correlation across the full catalog (n=12): Spearman rho = 0.56 (p = 0.059) between predicted and observed anomaly magnitudes. This does not reach conventional significance, consistent with the small catalog.",
     "",
-    "Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=4) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).",
+    "Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=6) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).",
     "",
-    "The 5.3x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter."
+    "The 150998.9x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter."
   ],
   "heuristic_parameter_metadata": {
     "RESIDUAL_INCLINATION_SCALE": {
@@ -608,6 +675,6 @@
   "manuscript_citations": {
     "results_section": "Section 4.3 - Deterministic Geometry Modulation Analysis",
     "discussion_section": "Section 5.7 - Physics of Beta Scatter",
-    "key_claim": "5.3x beta scatter assessed via deterministic geometry modulation; formal variance partitioning deferred to n >= 10"
+    "key_claim": "150998.9x beta scatter assessed via deterministic geometry modulation; formal variance partitioning deferred to n >= 10"
   }
 }

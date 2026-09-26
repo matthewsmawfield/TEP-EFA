@@ -38,12 +38,10 @@ To obtain real mission OD data:
 """
 
 import json
-import math
-import numpy as np
-from pathlib import Path
 import sys
-from typing import Dict, Any
 from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -92,7 +90,7 @@ class MissionSpecificODAbsorption:
             }
         }
     
-    def load_mission_od_characteristics(self, mission_name: str) -> Dict[str, Any]:
+    def load_mission_od_characteristics(self, mission_name: str) -> dict[str, Any]:
         """
         Load OD characteristics from published literature.
         
@@ -135,7 +133,7 @@ class MissionSpecificODAbsorption:
                 "requires_mission_archive_access": True
             }
     
-    def load_od_simulation_reference(self) -> Dict[str, Any]:
+    def load_od_simulation_reference(self) -> dict[str, Any]:
         """Load Step 012 OD filter simulation metrics (not mission-specific F_OD)."""
         step_012_file = self.project_root / "results" / "step012_od_simulation_validation.json"
         if not step_012_file.exists():
@@ -171,13 +169,13 @@ class MissionSpecificODAbsorption:
         try:
             with open(step_007_file, 'r') as f:
                 data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load flyby data: {e}")
             return None
         
         return data.get("predictions", {})
     
-    def compute_od_survival_factor(self, spacecraft: str, altitude_km: float, velocity_km_s: float) -> Dict[str, Any]:
+    def compute_od_survival_factor(self, spacecraft: str, altitude_km: float, velocity_km_s: float) -> dict[str, Any]:
         """
         Compute OD survival factor for a flyby.
         

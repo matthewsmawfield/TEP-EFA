@@ -6,7 +6,7 @@ import json
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 from urllib.parse import quote, urlparse
 
 import requests
@@ -334,7 +334,7 @@ def _mission_search_tokens(mission: str) -> list[str]:
 def _build_time_window_query(
     start: datetime,
     end: datetime,
-    title_token: Optional[str] = None,
+    title_token: str | None = None,
 ) -> str:
     start_iso = start.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     end_iso = end.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
@@ -402,7 +402,7 @@ def _download_file(
     session: requests.Session,
     url: str,
     destination: Path,
-    project_root: Optional[Path] = None,
+    project_root: Path | None = None,
 ) -> dict[str, Any]:
     destination.parent.mkdir(parents=True, exist_ok=True)
     response = session.get(url, timeout=120, stream=True)
@@ -436,7 +436,7 @@ def download_product_files(
     session: requests.Session,
     product: dict[str, Any],
     mission_dir: Path,
-    project_root: Optional[Path] = None,
+    project_root: Path | None = None,
 ) -> list[dict[str, Any]]:
     downloads: list[dict[str, Any]] = []
     for url in _product_download_urls(product):
@@ -600,7 +600,7 @@ def search_lid_root_exhaustive(
     *,
     max_api_calls: int = 500,
     limit: int = PDS_MCP_RESULT_CAP,
-    max_root_hits: Optional[int] = None,
+    max_root_hits: int | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     """
     Enumerate every product under lid_root despite the MCP 100-row cap.
@@ -669,7 +669,7 @@ def search_lid_root_exhaustive(
     return list(collected.values()), diagnostics
 
 
-def _exhaustive_lid_charset_for_mission(mission: str) -> Optional[str]:
+def _exhaustive_lid_charset_for_mission(mission: str) -> str | None:
     if mission == "NEAR_1998":
         return "0123456789abcdef"
     if mission == "MESSENGER_2005":
@@ -790,9 +790,9 @@ def download_label_companion_files(
     mission_dir: Path,
     metadata: dict[str, Any],
     mission: str,
-    perigee: Optional[datetime] = None,
+    perigee: datetime | None = None,
     window_hours: float = 48.0,
-    project_root: Optional[Path] = None,
+    project_root: Path | None = None,
 ) -> list[dict[str, Any]]:
     from scripts.utils.dsn_tracking_discovery import label_covers_perigee
 
@@ -1048,7 +1048,7 @@ def _scan_local_njpl_trk234_files(
     mission_dir: Path,
     project_root: Path,
     *,
-    perigee: Optional[datetime] = None,
+    perigee: datetime | None = None,
     window_hours: float = 48.0,
 ) -> list[dict[str, Any]]:
     """
@@ -1062,7 +1062,10 @@ def _scan_local_njpl_trk234_files(
         is_label_only_dat_file,
         is_trk234_archive,
     )
-    from scripts.utils.pds3_lbl_time import interval_overlaps_window, parse_pds3_lbl_start_stop_utc
+    from scripts.utils.pds3_lbl_time import (
+        interval_overlaps_window,
+        parse_pds3_lbl_start_stop_utc,
+    )
 
     win_lo = win_hi = None
     if perigee is not None:

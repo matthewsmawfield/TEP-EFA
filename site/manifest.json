@@ -2,7 +2,7 @@
   "title": "Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly",
   "short_title": "TEP Flyby Anomaly",
   "author": "Matthew Lukin Smawfield",
-  "version": "v0.2 (Yogyakarta)",
+  "version": "v0.3 (Yogyakarta)",
   "date": "17 May 2026",
   "doi": "10.5281/zenodo.19454862",
   "paper_series": "TEP Series: Paper 15 (Earth Flyby Anomaly)",
@@ -64,7 +64,7 @@
     }
   ],
   "first_published": "17 May 2026",
-  "last_updated": "14 September 2026",
+  "last_updated": "23 September 2026",
   "icons": [
     {
       "src": "public/android-chrome-192x192.png",

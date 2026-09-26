@@ -3,7 +3,7 @@
 TEP Conformal Scaling
 =====================
 
-Version: TEP v0.10 (Jakarta)
+Version: TEP v0.14 (Jakarta)
 
 Computes the conformal factor A(phi), Temporal Shear Sigma_mu,
 and effective gravitational coupling from the scalar field profile phi.
@@ -13,8 +13,9 @@ definitions across the corpus.
 """
 
 import numpy as np
+
 from . import constants as tep_const
-from .screening import universal_screening_function, coupling_screening_factor
+from .screening import coupling_screening_factor
 
 BETA_A = tep_const.BETA_A
 BETA_CASSINI_MAX = tep_const.BETA_CASSINI_MAX

@@ -45,14 +45,14 @@
       "total_cmb_speed_kms": 396.5885486466358,
       "cmb_disformal_enhancement": 973.2949214219562,
       "observed_mm_s": 13.46,
-      "predicted_mm_s": 1.586403195722739,
-      "uncertainty_mm_s": 0.01,
-      "ratio_obs_pred": 8.484602171938924,
-      "difference_mm_s": 11.873596804277263,
-      "sigma_difference": 1187.3596804277263,
+      "predicted_mm_s": 1.5270456032053303,
+      "uncertainty_mm_s": 0.13,
+      "ratio_obs_pred": 8.814406047695575,
+      "difference_mm_s": 11.93295439679467,
+      "sigma_difference": 91.79195689842054,
       "has_3d_vector": true,
-      "geometric_model_ratio": 36.52365019432213,
-      "geometric_model_residual": -28.039048022383206,
+      "geometric_model_ratio": -2560.652522831132,
+      "geometric_model_residual": 2569.4669288788277,
       "both_aligned_flag": 1.0,
       "same_direction_flag": 1.0
     },
@@ -82,14 +82,14 @@
       "total_cmb_speed_kms": 403.07664354451873,
       "cmb_disformal_enhancement": 865.6637649422485,
       "observed_mm_s": 3.92,
-      "predicted_mm_s": 0.1987218559225848,
-      "uncertainty_mm_s": 0.03,
-      "ratio_obs_pred": 19.726063757813822,
-      "difference_mm_s": 3.721278144077415,
-      "sigma_difference": 124.04260480258051,
+      "predicted_mm_s": 0.1372338175512307,
+      "uncertainty_mm_s": 0.08,
+      "ratio_obs_pred": 28.564387917989865,
+      "difference_mm_s": 3.782766182448769,
+      "sigma_difference": 47.28457728060961,
       "has_3d_vector": true,
-      "geometric_model_ratio": 115.61329065513917,
-      "geometric_model_residual": -95.88722689732535,
+      "geometric_model_ratio": -2992.349762600351,
+      "geometric_model_residual": 3020.9141505183406,
       "both_aligned_flag": 1.0,
       "same_direction_flag": 1.0
     },
@@ -118,15 +118,15 @@
       "sc_cmb_cos_theta": -0.9569803361771646,
       "total_cmb_speed_kms": 339.7576910753258,
       "cmb_disformal_enhancement": 323.621776518287,
-      "observed_mm_s": 0.11,
-      "predicted_mm_s": -0.011927370112788957,
-      "uncertainty_mm_s": 0.05,
-      "ratio_obs_pred": -9.222485674528874,
-      "difference_mm_s": 0.12192737011278895,
-      "sigma_difference": 2.4385474022557787,
+      "observed_mm_s": -2.0,
+      "predicted_mm_s": -5.326023415145495e-05,
+      "uncertainty_mm_s": 1.0,
+      "ratio_obs_pred": 37551.468405351814,
+      "difference_mm_s": -1.9999467397658486,
+      "sigma_difference": -1.9999467397658486,
       "has_3d_vector": true,
-      "geometric_model_ratio": -32.73603937864442,
-      "geometric_model_residual": 23.513553704115544,
+      "geometric_model_ratio": 31039.443869362152,
+      "geometric_model_residual": 6512.024535989662,
       "both_aligned_flag": 0.0,
       "same_direction_flag": 1.0
     },
@@ -155,15 +155,15 @@
       "sc_cmb_cos_theta": 0.8641342713940963,
       "total_cmb_speed_kms": 411.53346284552106,
       "cmb_disformal_enhancement": 861.366793382337,
-      "observed_mm_s": 0.0,
-      "predicted_mm_s": 0.0002782606561873544,
-      "uncertainty_mm_s": 0.05,
-      "ratio_obs_pred": 0.0,
-      "difference_mm_s": -0.0002782606561873544,
-      "sigma_difference": -0.0055652131237470875,
+      "observed_mm_s": -4.6,
+      "predicted_mm_s": -0.034811851294463965,
+      "uncertainty_mm_s": 1.0,
+      "ratio_obs_pred": 132.13890755449495,
+      "difference_mm_s": -4.565188148705536,
+      "sigma_difference": -4.565188148705536,
       "has_3d_vector": true,
-      "geometric_model_ratio": 42.21754338491287,
-      "geometric_model_residual": -42.21754338491287,
+      "geometric_model_ratio": -4377.665720516599,
+      "geometric_model_residual": 4509.804628071094,
       "both_aligned_flag": 1.0,
       "same_direction_flag": 1.0
     },
@@ -192,15 +192,15 @@
       "sc_cmb_cos_theta": -0.5727608325438125,
       "total_cmb_speed_kms": 370.39520666923545,
       "cmb_disformal_enhancement": 1242.8522840711628,
-      "observed_mm_s": 1.82,
-      "predicted_mm_s": 0.321182638866365,
-      "uncertainty_mm_s": 0.05,
-      "ratio_obs_pred": 5.666557838941134,
-      "difference_mm_s": 1.498817361133635,
-      "sigma_difference": 29.9763472226727,
+      "observed_mm_s": 1.8,
+      "predicted_mm_s": 0.1757984655197509,
+      "uncertainty_mm_s": 0.03,
+      "ratio_obs_pred": 10.238997221496058,
+      "difference_mm_s": 1.6242015344802492,
+      "sigma_difference": 54.140051149341645,
       "has_3d_vector": true,
-      "geometric_model_ratio": -17.805887173413687,
-      "geometric_model_residual": 23.47244501235482,
+      "geometric_model_ratio": 8103.142134633254,
+      "geometric_model_residual": -8092.903137411758,
       "both_aligned_flag": 0.0,
       "same_direction_flag": 0.0
     },
@@ -230,14 +230,14 @@
       "total_cmb_speed_kms": 402.9842438990766,
       "cmb_disformal_enhancement": 1056.0802175446038,
       "observed_mm_s": 0.02,
-      "predicted_mm_s": 6.762895846310001e-05,
+      "predicted_mm_s": 6.6498078579098e-05,
       "uncertainty_mm_s": 0.05,
-      "ratio_obs_pred": 295.73130289907516,
-      "difference_mm_s": 0.0199323710415369,
-      "sigma_difference": 0.39864742083073795,
+      "ratio_obs_pred": 300.7605697390255,
+      "difference_mm_s": 0.019933501921420904,
+      "sigma_difference": 0.3986700384284181,
       "has_3d_vector": true,
-      "geometric_model_ratio": 86.7921539486205,
-      "geometric_model_residual": 208.93914895045467,
+      "geometric_model_ratio": 5741.873145924599,
+      "geometric_model_residual": -5441.112576185574,
       "both_aligned_flag": 1.0,
       "same_direction_flag": 1.0
     },
@@ -273,8 +273,8 @@
       "difference_mm_s": -0.0012001144942585659,
       "sigma_difference": -0.024002289885171318,
       "has_3d_vector": true,
-      "geometric_model_ratio": 37.42082690013311,
-      "geometric_model_residual": -37.42082690013311,
+      "geometric_model_ratio": 1066.3182001706064,
+      "geometric_model_residual": -1066.3182001706064,
       "both_aligned_flag": 1.0,
       "same_direction_flag": 1.0
     },
@@ -303,15 +303,15 @@
       "sc_cmb_cos_theta": 0.0039698239727246854,
       "total_cmb_speed_kms": 351.00414891653656,
       "cmb_disformal_enhancement": 1148.3208737123916,
-      "observed_mm_s": 0.0,
-      "predicted_mm_s": 4.2870208980271865e-07,
-      "uncertainty_mm_s": 0.05,
-      "ratio_obs_pred": 0.0,
-      "difference_mm_s": -4.2870208980271865e-07,
-      "sigma_difference": -8.574041796054373e-06,
+      "observed_mm_s": 0.02,
+      "predicted_mm_s": 2.962146923366389e-07,
+      "uncertainty_mm_s": 0.01,
+      "ratio_obs_pred": 67518.59552351513,
+      "difference_mm_s": 0.019999703785307663,
+      "sigma_difference": 1.9999703785307663,
       "has_3d_vector": true,
-      "geometric_model_ratio": 38.0801225433808,
-      "geometric_model_residual": -38.0801225433808,
+      "geometric_model_ratio": 68507.75288430287,
+      "geometric_model_residual": -989.1573607877363,
       "both_aligned_flag": 0.0,
       "same_direction_flag": 0.0
     },
@@ -347,8 +347,8 @@
       "difference_mm_s": -0.01316795791180281,
       "sigma_difference": -0.6583978955901405,
       "has_3d_vector": true,
-      "geometric_model_ratio": 14.280379918789684,
-      "geometric_model_residual": -14.280379918789684,
+      "geometric_model_ratio": 1022.7189689022489,
+      "geometric_model_residual": -1022.7189689022489,
       "both_aligned_flag": 0.0,
       "same_direction_flag": 0.0
     },
@@ -455,155 +455,155 @@
   "correlations": [
     {
       "test": "Ratio vs Heliocentric Distance",
-      "pearson_r": -0.20734362873327275,
-      "p_value": 0.5924446280842431,
+      "pearson_r": 0.8935200365037753,
+      "p_value": 0.0011671783860327089,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs Heliocentric Modulation",
-      "pearson_r": 0.2051235147225831,
-      "p_value": 0.5965017244282065,
+      "pearson_r": -0.8891325669986538,
+      "p_value": 0.0013384010547388982,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs Radial Velocity",
-      "pearson_r": -0.23766163027578813,
-      "p_value": 0.5380534236269873,
+      "pearson_r": -0.13625140272132952,
+      "p_value": 0.7266892247038244,
       "n": 9,
       "significant": false
     },
     {
       "test": "Ratio vs CMB Modulation Factor",
-      "pearson_r": 0.3155556923322635,
-      "p_value": 0.4081365337840876,
+      "pearson_r": -0.7588585685585558,
+      "p_value": 0.017743134425061174,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs CMB Solar Modulation",
-      "pearson_r": 0.31555569233226344,
-      "p_value": 0.40813653378408793,
+      "pearson_r": -0.7588585685585557,
+      "p_value": 0.017743134425061174,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs Earth Orbital Speed",
-      "pearson_r": 0.2158882026757994,
-      "p_value": 0.5769217725593745,
+      "pearson_r": -0.8936618914163573,
+      "p_value": 0.0011619117138905038,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs Earth CMB Projection",
-      "pearson_r": 0.29421925570403007,
-      "p_value": 0.4421923258210841,
+      "pearson_r": -0.8752968497119691,
+      "p_value": 0.0019917968055303413,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs SC-Orbital Alignment",
-      "pearson_r": -0.09876015627005379,
-      "p_value": 0.8004355803037284,
+      "pearson_r": -0.8537796335065961,
+      "p_value": 0.003401379378987374,
       "n": 9,
-      "significant": false
+      "significant": true
     },
     {
       "test": "Ratio vs SC-CMB cos(theta)",
-      "pearson_r": 0.33053665505063873,
-      "p_value": 0.3849684455206655,
+      "pearson_r": -0.35995403420897476,
+      "p_value": 0.34133881752959483,
       "n": 9,
       "significant": false
     },
     {
       "test": "Ratio vs SC-CMB Projection",
-      "pearson_r": 0.29835253663261396,
-      "p_value": 0.4355001637849213,
+      "pearson_r": -0.39699722612549804,
+      "p_value": 0.2900751794753375,
       "n": 9,
       "significant": false
     },
     {
       "test": "Ratio vs CMB Disformal Enhancement",
-      "pearson_r": 0.25553891347189445,
-      "p_value": 0.506922751001729,
+      "pearson_r": -0.07858691911499813,
+      "p_value": 0.8407257025174038,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs Heliocentric Distance",
-      "pearson_r": -0.43690217179607993,
-      "p_value": 0.23965043768008806,
+      "pearson_r": -0.3601996828940154,
+      "p_value": 0.3409851683059165,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs Heliocentric Modulation",
-      "pearson_r": 0.4417099965794368,
-      "p_value": 0.23392016204516994,
+      "pearson_r": 0.36308504333996533,
+      "p_value": 0.33684471889885237,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs Radial Velocity",
-      "pearson_r": 0.5333342144455491,
-      "p_value": 0.13922609010017642,
+      "pearson_r": 0.5083439205064364,
+      "p_value": 0.16230536581836597,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs CMB Modulation Factor",
-      "pearson_r": 0.22321950505734098,
-      "p_value": 0.5637219920675608,
+      "pearson_r": 0.15573644508907028,
+      "p_value": 0.6890789211510479,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs CMB Solar Modulation",
-      "pearson_r": 0.22321950505734037,
-      "p_value": 0.5637219920675617,
+      "pearson_r": 0.15573644508906997,
+      "p_value": 0.689078921151048,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs Earth Orbital Speed",
-      "pearson_r": 0.4421792620093216,
-      "p_value": 0.23336488036450154,
+      "pearson_r": 0.3699551715198846,
+      "p_value": 0.32708663704309865,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs Earth CMB Projection",
-      "pearson_r": 0.27158848961446663,
-      "p_value": 0.47961379788579334,
+      "pearson_r": 0.20120238352571423,
+      "p_value": 0.6036908345111334,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs SC-Orbital Alignment",
-      "pearson_r": 0.20734698688681139,
-      "p_value": 0.5924384986627967,
+      "pearson_r": 0.08546159935652739,
+      "p_value": 0.8269552284409452,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs SC-CMB cos(theta)",
-      "pearson_r": 0.06871140008013912,
-      "p_value": 0.860571841375597,
+      "pearson_r": -0.00021921396572225152,
+      "p_value": 0.9995534209940188,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs SC-CMB Projection",
-      "pearson_r": 0.08980350668525164,
-      "p_value": 0.8182788413476594,
+      "pearson_r": 0.0402633943385186,
+      "p_value": 0.9180868160436646,
       "n": 9,
       "significant": false
     },
     {
       "test": "Difference vs CMB Disformal Enhancement",
-      "pearson_r": 0.14860500844322294,
-      "p_value": 0.7027803501679394,
+      "pearson_r": 0.26479194876940115,
+      "p_value": 0.49110250343503276,
       "n": 9,
       "significant": false
     }
@@ -611,36 +611,36 @@
   "multivariate_regression": {
     "model": "ratio = b0 + b1*SC-CMB_cos + b2*Earth-CMB_proj/30 + b3*SC-orbital",
     "coefficients": {
-      "b0_intercept": 29.247287368563015,
-      "b1_sc_cmb_cos": -12.67533576009395,
-      "b2_earth_cmb_proj": 107.97775378595027,
-      "b3_sc_orbital": -104.62025075301345
+      "b0_intercept": 32813.14839236445,
+      "b1_sc_cmb_cos": 14243.180432040257,
+      "b2_earth_cmb_proj": -37625.719851593145,
+      "b3_sc_orbital": -15795.742339631228
     },
-    "r_squared": 0.22254205721451126,
-    "adjusted_r_squared": -0.24393270845678194,
-    "residual_std": 81.36107694970741,
-    "original_std": 92.2737639124697,
-    "std_reduction_percent": 11.826424435350875
+    "r_squared": 0.9626439892218348,
+    "adjusted_r_squared": 0.9402303827549356,
+    "residual_std": 4431.391706151426,
+    "original_std": 22927.66853520919,
+    "std_reduction_percent": 80.67229688292859
   },
   "directional_consistency": {
-    "both_aligned_correlation_r": 0.35367962674260744,
-    "both_aligned_correlation_p": 0.3504325099107284,
-    "same_direction_correlation_r": 0.25832136010408074,
-    "same_direction_correlation_p": 0.5021440669077752,
-    "mann_whitney_u_statistic": 16.0,
-    "mann_whitney_u_pvalue": 0.09523809523809523
+    "both_aligned_correlation_r": -0.5673044744876808,
+    "both_aligned_correlation_p": 0.11114022428362214,
+    "same_direction_correlation_r": -0.3325179823065271,
+    "same_direction_correlation_p": 0.3819514794520754,
+    "mann_whitney_u_statistic": 7.5,
+    "mann_whitney_u_pvalue": 0.7936507936507936
   },
   "optimal_weighted_combination": {
     "model": "E = SC-CMB_cos(theta) + w * Earth-CMB_proj/30",
     "w_grid_min": -2.0,
     "w_grid_max": 2.0,
     "w_grid_points": 201,
-    "optimal_w": 0.48,
-    "pearson_r": 0.3400137927686132,
-    "p_value": 0.37063887220602887,
+    "optimal_w": -2.0,
+    "pearson_r": 0.9562862792498783,
+    "p_value": 5.50929401526203e-05,
     "n_permutations_max_abs_r": 4000,
     "permutation_random_seed": 42,
-    "permutation_p_value_max_abs_r": 0.7750562359410147
+    "permutation_p_value_max_abs_r": 0.0029992501874531365
   },
   "sensitivity": {
     "ratio_excluding_missions": [
@@ -653,78 +653,78 @@
         "correlations": [
           {
             "test": "Ratio vs Heliocentric Distance",
-            "pearson_r": -0.64459199421384,
-            "p_value": 0.08444332945747775,
+            "pearson_r": 0.8906906124669005,
+            "p_value": 0.003003382403404495,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs Heliocentric Modulation",
-            "pearson_r": 0.6468419317064401,
-            "p_value": 0.08300921767381036,
+            "pearson_r": -0.8862759316913187,
+            "p_value": 0.003370538221597769,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs Radial Velocity",
-            "pearson_r": 0.36545574086760324,
-            "p_value": 0.37333777643856747,
+            "pearson_r": -0.19324048354291368,
+            "p_value": 0.6465930014909884,
             "n": 8,
             "significant": false
           },
           {
             "test": "Ratio vs CMB Modulation Factor",
-            "pearson_r": 0.541380281278617,
-            "p_value": 0.16581529376434095,
+            "pearson_r": -0.7506092327488174,
+            "p_value": 0.03188630315717176,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs CMB Solar Modulation",
-            "pearson_r": 0.5413802812786173,
-            "p_value": 0.16581529376434082,
+            "pearson_r": -0.7506092327488173,
+            "p_value": 0.03188630315717176,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs Earth Orbital Speed",
-            "pearson_r": 0.6467935272705144,
-            "p_value": 0.08303992028352133,
+            "pearson_r": -0.8905436512551217,
+            "p_value": 0.0030151668675239347,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs Earth CMB Projection",
-            "pearson_r": 0.5608106511144336,
-            "p_value": 0.14815237908839476,
+            "pearson_r": -0.8722051935971558,
+            "p_value": 0.004730391348404915,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs SC-Orbital Alignment",
-            "pearson_r": 0.017018647767836556,
-            "p_value": 0.9680961963816282,
+            "pearson_r": -0.8898366884838668,
+            "p_value": 0.0030722742708094936,
             "n": 8,
-            "significant": false
+            "significant": true
           },
           {
             "test": "Ratio vs SC-CMB cos(theta)",
-            "pearson_r": 0.31732974024007593,
-            "p_value": 0.4437432292012177,
+            "pearson_r": -0.3264783407374416,
+            "p_value": 0.4299605733336941,
             "n": 8,
             "significant": false
           },
           {
             "test": "Ratio vs SC-CMB Projection",
-            "pearson_r": 0.3970616346336722,
-            "p_value": 0.3300583196621342,
+            "pearson_r": -0.3688040149095328,
+            "p_value": 0.3686380740399908,
             "n": 8,
             "significant": false
           },
           {
             "test": "Ratio vs CMB Disformal Enhancement",
-            "pearson_r": 0.4596630786113623,
-            "p_value": 0.2518392085704916,
+            "pearson_r": -0.041477127016313065,
+            "p_value": 0.9223195348872671,
             "n": 8,
             "significant": false
           }
@@ -735,90 +735,92 @@
       {
         "name": "signed_log10_abs_ratio",
         "definition": "sign(ratio)*log10(max(|ratio|,1e-300)); |ratio|>0 only",
-        "n": 5,
+        "n": 7,
         "missions": [
           "NEAR",
           "Galileo_1990",
           "Cassini",
+          "Galileo_1992",
           "Rosetta_2005",
-          "Rosetta_2007"
+          "Rosetta_2007",
+          "MESSENGER_2005"
         ],
         "correlations": [
           {
             "test": "signed_log_ratio vs Heliocentric Distance",
-            "pearson_r": -0.7825714861360752,
-            "p_value": 0.11765522001704283,
-            "n": 5,
-            "significant": false
+            "pearson_r": 0.9250387186824036,
+            "p_value": 0.002837130130137563,
+            "n": 7,
+            "significant": true
           },
           {
             "test": "signed_log_ratio vs Heliocentric Modulation",
-            "pearson_r": 0.7791833205335682,
-            "p_value": 0.1203500661793835,
-            "n": 5,
-            "significant": false
+            "pearson_r": -0.9239112593405919,
+            "p_value": 0.0029431913613272337,
+            "n": 7,
+            "significant": true
           },
           {
             "test": "signed_log_ratio vs Radial Velocity",
-            "pearson_r": -0.07978909109788551,
-            "p_value": 0.8985172698643652,
-            "n": 5,
+            "pearson_r": -0.6204747569089339,
+            "p_value": 0.137095489161614,
+            "n": 7,
             "significant": false
           },
           {
             "test": "signed_log_ratio vs CMB Modulation Factor",
-            "pearson_r": 0.898967758973402,
-            "p_value": 0.03796035701160154,
-            "n": 5,
-            "significant": true
+            "pearson_r": -0.7075529651580217,
+            "p_value": 0.07531926742526371,
+            "n": 7,
+            "significant": false
           },
           {
             "test": "signed_log_ratio vs CMB Solar Modulation",
-            "pearson_r": 0.8989677589734021,
-            "p_value": 0.03796035701160142,
-            "n": 5,
-            "significant": true
+            "pearson_r": -0.7075529651580219,
+            "p_value": 0.07531926742526357,
+            "n": 7,
+            "significant": false
           },
           {
             "test": "signed_log_ratio vs Earth Orbital Speed",
-            "pearson_r": 0.7875303953357163,
-            "p_value": 0.11374423336522989,
-            "n": 5,
-            "significant": false
+            "pearson_r": -0.9261551874314905,
+            "p_value": 0.0027343446082563525,
+            "n": 7,
+            "significant": true
           },
           {
             "test": "signed_log_ratio vs Earth CMB Projection",
-            "pearson_r": 0.8649468980513,
-            "p_value": 0.05835676415657264,
-            "n": 5,
-            "significant": false
+            "pearson_r": -0.776657422947568,
+            "p_value": 0.03997965517599922,
+            "n": 7,
+            "significant": true
           },
           {
             "test": "signed_log_ratio vs SC-Orbital Alignment",
-            "pearson_r": -0.09490807999279832,
-            "p_value": 0.8793409383539345,
-            "n": 5,
+            "pearson_r": -0.7290809781790344,
+            "p_value": 0.06301226790035108,
+            "n": 7,
             "significant": false
           },
           {
             "test": "signed_log_ratio vs SC-CMB cos(theta)",
-            "pearson_r": 0.9075836348903594,
-            "p_value": 0.03325396002136729,
-            "n": 5,
-            "significant": true
+            "pearson_r": -0.3403307925350273,
+            "p_value": 0.4551066232251372,
+            "n": 7,
+            "significant": false
           },
           {
             "test": "signed_log_ratio vs SC-CMB Projection",
-            "pearson_r": 0.9419983511273543,
-            "p_value": 0.016621851547502512,
-            "n": 5,
-            "significant": true
+            "pearson_r": -0.4352306055633288,
+            "p_value": 0.329074146549108,
+            "n": 7,
+            "significant": false
           },
           {
             "test": "signed_log_ratio vs CMB Disformal Enhancement",
-            "pearson_r": 0.7335629059673169,
-            "p_value": 0.158328261051749,
-            "n": 5,
+            "pearson_r": -0.41112167166159386,
+            "p_value": 0.3595144947879202,
+            "n": 7,
             "significant": false
           }
         ]
@@ -841,78 +843,78 @@
         "correlations": [
           {
             "test": "sigma_z vs Heliocentric Distance",
-            "pearson_r": -0.36972551541181464,
-            "p_value": 0.32741053594066766,
+            "pearson_r": -0.4675313616641367,
+            "p_value": 0.20443430516440042,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs Heliocentric Modulation",
-            "pearson_r": 0.37431392325009233,
-            "p_value": 0.32096948300310957,
+            "pearson_r": 0.4705969163018495,
+            "p_value": 0.2010788917384352,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs Radial Velocity",
-            "pearson_r": 0.4673868123862129,
-            "p_value": 0.20459328552525535,
+            "pearson_r": 0.7841663194238822,
+            "p_value": 0.01236305553345428,
             "n": 9,
-            "significant": false
+            "significant": true
           },
           {
             "test": "sigma_z vs CMB Modulation Factor",
-            "pearson_r": 0.19325291473832906,
-            "p_value": 0.618355962014997,
+            "pearson_r": 0.14924071033216837,
+            "p_value": 0.7015559227136036,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs CMB Solar Modulation",
-            "pearson_r": 0.1932529147383283,
-            "p_value": 0.6183559620149982,
+            "pearson_r": 0.1492407103321681,
+            "p_value": 0.7015559227136042,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs Earth Orbital Speed",
-            "pearson_r": 0.3763276008024909,
-            "p_value": 0.31816293489707265,
+            "pearson_r": 0.4710200517481105,
+            "p_value": 0.20061817710752622,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs Earth CMB Projection",
-            "pearson_r": 0.22407343826667026,
-            "p_value": 0.5621918115091193,
+            "pearson_r": 0.2156462287000475,
+            "p_value": 0.5773593322546293,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs SC-Orbital Alignment",
-            "pearson_r": 0.22188212556067377,
-            "p_value": 0.566121553917473,
+            "pearson_r": 0.21744245962818215,
+            "p_value": 0.5741140840343126,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs SC-CMB cos(theta)",
-            "pearson_r": 0.09199285074544791,
-            "p_value": 0.8139103090242613,
+            "pearson_r": -0.08148580388144717,
+            "p_value": 0.8349142739865251,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs SC-CMB Projection",
-            "pearson_r": 0.09886875995079994,
-            "p_value": 0.8002196959854891,
+            "pearson_r": -0.005044957690048826,
+            "p_value": 0.9897227145679309,
             "n": 9,
             "significant": false
           },
           {
             "test": "sigma_z vs CMB Disformal Enhancement",
-            "pearson_r": 0.1153329287965211,
-            "p_value": 0.7676345289449612,
+            "pearson_r": 0.3491394278443302,
+            "p_value": 0.35708520478411804,
             "n": 9,
             "significant": false
           }

@@ -3,43 +3,43 @@
     "NEAR": {
       "spacecraft": "NEAR",
       "perigee": {
-        "altitude_km": 567.9,
+        "altitude_km": 539.0,
         "velocity_km_s": 12.72,
         "datetime": "1998-01-23"
       },
       "observed": {
         "dv_obs_mm_s": 13.46,
-        "sigma_mm_s": 0.01
+        "sigma_mm_s": 0.13
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 1.586403195722739,
-        "dv_grad_mm_s": 0.9276007296450464,
-        "dv_disf_mm_s": 0.6588024660776926,
+        "dv_tep_mm_s": 1.5270456032053303,
+        "dv_grad_mm_s": 0.8928973538679067,
+        "dv_disf_mm_s": 0.6341482493374236,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.080657062017727,
-          "f_j2": 0.7525153076184323,
-          "f_plasma_core": 0.6493301747624005,
+          "f_j2": 0.7634680971376387,
+          "f_plasma_core": 0.6148903575686837,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.5280424287064245,
-          "plasma_density_cm3": 16090.395312666522,
-          "plasma_screening_factor": 0.0009224450263559888,
-          "plasma_sign_factor": -0.7614080095100046,
+          "f_geometry_core": 0.5073135621602208,
+          "plasma_density_cm3": 20291.682934469423,
+          "plasma_screening_factor": 0.0001487545802289149,
+          "plasma_sign_factor": -0.6729998435920799,
           "asymmetry_cancellation_factor": 1.0,
-          "geometry_envelope": 0.5280424287064245
+          "geometry_envelope": 0.5073135621602208
         }
       },
       "geometry": {
-        "dec_in_deg": -20.8,
-        "dec_out_deg": -19.7,
-        "dec_in_rad": -0.36302848441482055,
-        "dec_out_rad": -0.3438298626428829,
+        "dec_in_deg": -20.76,
+        "dec_out_deg": -71.96,
+        "dec_in_rad": -0.36233035271402286,
+        "dec_out_rad": -1.2559389297351193,
         "cos_dec_asymmetry": 0.625,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 12720.0,
-        "altitude_km": 567.9,
+        "altitude_km": 539.0,
         "perigee_latitude_rad": 0.567723123157121,
         "ephemeris": [],
         "flyby_date": "1998-01-23",
@@ -324,58 +324,58 @@
         "mission_name": "NEAR"
       },
       "disformal_transition": {
-        "xi": 0.3130518407627082,
-        "xi_abs": 0.3130518407627082,
+        "xi": 0.3152133637114529,
+        "xi_abs": 0.3152133637114529,
         "regime_classification": "disformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.7571428571428571,
         "cos_dec_asymmetry": 0.625,
-        "field_gradient_ratio": 0.8737367146954904,
+        "field_gradient_ratio": 0.8797695875748633,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 6938900.0,
+        "field_gradient_ratio_r_m": 6910000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
     "Galileo_1990": {
       "spacecraft": "Galileo_1990",
       "perigee": {
-        "altitude_km": 972.3,
+        "altitude_km": 960.0,
         "velocity_km_s": 13.73,
         "datetime": "1990-12-08"
       },
       "observed": {
         "dv_obs_mm_s": 3.92,
-        "sigma_mm_s": 0.03
+        "sigma_mm_s": 0.08
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.1987218559225848,
-        "dv_grad_mm_s": 0.16219936449871,
-        "dv_disf_mm_s": 0.03652249142387479,
+        "dv_tep_mm_s": 0.1372338175512307,
+        "dv_grad_mm_s": 0.11714508411945099,
+        "dv_disf_mm_s": 0.02008873343177972,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.0608223618522366,
-          "f_j2": 0.6147120592252623,
-          "f_plasma_core": 0.5092390560012177,
+          "f_j2": 0.6185041872308088,
+          "f_plasma_core": 0.4776785281517298,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.33207494043969343,
-          "plasma_density_cm3": 42413.02409380898,
-          "plasma_screening_factor": 9.995865932900516e-09,
+          "f_geometry_core": 0.31341590366026323,
+          "plasma_density_cm3": 53683.71568421961,
+          "plasma_screening_factor": 7.479630329357186e-11,
           "plasma_sign_factor": 1.0,
           "asymmetry_cancellation_factor": 1.0,
-          "geometry_envelope": 0.33207494043969343
+          "geometry_envelope": 0.31341590366026323
         }
       },
       "geometry": {
-        "dec_in_deg": -25.1,
-        "dec_out_deg": -34.1,
-        "dec_in_rad": -0.4380776422505767,
-        "dec_out_rad": -0.5951572749300664,
-        "cos_dec_asymmetry": 0.195,
+        "dec_in_deg": -12.52,
+        "dec_out_deg": -34.15,
+        "dec_in_rad": -0.21851522234969006,
+        "dec_out_rad": -0.5960299395560635,
+        "cos_dec_asymmetry": 0.149,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 13730.0,
-        "altitude_km": 972.3,
+        "altitude_km": 960.0,
         "perigee_latitude_rad": 0.417506512947418,
         "ephemeris": [],
         "flyby_date": "1990-12-08",
@@ -660,58 +660,58 @@
         "mission_name": "Galileo_1990"
       },
       "disformal_transition": {
-        "xi": 0.10335258733921747,
-        "xi_abs": 0.10335258733921747,
+        "xi": 0.0792035910516293,
+        "xi_abs": 0.0792035910516293,
         "regime_classification": "mixed",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.8172619047619047,
-        "cos_dec_asymmetry": 0.195,
-        "field_gradient_ratio": 0.7935316091099238,
+        "cos_dec_asymmetry": 0.149,
+        "field_gradient_ratio": 0.7958589293063869,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 7343300.0,
+        "field_gradient_ratio_r_m": 7331000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
     "Cassini": {
       "spacecraft": "Cassini",
       "perigee": {
-        "altitude_km": 1197.3,
+        "altitude_km": 1175.0,
         "velocity_km_s": 19.02,
         "datetime": "1999-08-18"
       },
       "observed": {
-        "dv_obs_mm_s": 0.11,
-        "sigma_mm_s": 0.05
+        "dv_obs_mm_s": -2.0,
+        "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -0.011927370112788957,
-        "dv_grad_mm_s": -0.014563003244217852,
-        "dv_disf_mm_s": 0.0026356331314288956,
+        "dv_tep_mm_s": -5.326023415145495e-05,
+        "dv_grad_mm_s": -5.5784210686916894e-05,
+        "dv_disf_mm_s": 2.5239765354619464e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.0582372648224307,
-          "f_j2": 0.5493010059558688,
-          "f_plasma_core": 0.6743656955622473,
+          "f_j2": 0.5554599846704401,
+          "f_plasma_core": 0.6519093297719187,
           "f_velocity": 0.6086884717269062,
-          "f_geometry_core": 0.23860744566744882,
-          "plasma_density_cm3": 13591.671526984304,
-          "plasma_screening_factor": 0.0027306347781882326,
-          "plasma_sign_factor": -0.714224496061428,
-          "asymmetry_cancellation_factor": 0.39437037037037026,
-          "geometry_envelope": 0.09409970672099979
+          "f_geometry_core": 0.23324809290825335,
+          "plasma_density_cm3": 15813.54307238807,
+          "plasma_screening_factor": 0.001040307901037897,
+          "plasma_sign_factor": -0.6511606106950714,
+          "asymmetry_cancellation_factor": 0.006162037037037035,
+          "geometry_envelope": 0.0014372833873189125
         }
       },
       "geometry": {
-        "dec_in_deg": -12.9,
-        "dec_out_deg": -4.9,
-        "dec_in_rad": -0.22514747350726852,
-        "dec_out_rad": -0.08552113334772216,
-        "cos_dec_asymmetry": -0.088,
+        "dec_in_deg": -12.92,
+        "dec_out_deg": -4.99,
+        "dec_in_rad": -0.22549653935766736,
+        "dec_out_rad": -0.08709192967451705,
+        "cos_dec_asymmetry": -0.022,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 19020.0,
-        "altitude_km": 1197.3,
+        "altitude_km": 1175.0,
         "perigee_latitude_rad": -0.3987301638917267,
         "ephemeris": [],
         "flyby_date": "1999-08-18",
@@ -996,58 +996,58 @@
         "mission_name": "Cassini"
       },
       "disformal_transition": {
-        "xi": -0.08483666524816041,
-        "xi_abs": 0.08483666524816041,
-        "regime_classification": "mixed",
+        "xi": -0.021322076369619324,
+        "xi_abs": 0.021322076369619324,
+        "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 1.1321428571428571,
-        "cos_dec_asymmetry": -0.088,
-        "field_gradient_ratio": 0.7521396004736586,
+        "cos_dec_asymmetry": -0.022,
+        "field_gradient_ratio": 0.7561437241788361,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 7568300.0,
+        "field_gradient_ratio_r_m": 7546000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
     "Galileo_1992": {
       "spacecraft": "Galileo_1992",
       "perigee": {
-        "altitude_km": 309.6,
+        "altitude_km": 303.0,
         "velocity_km_s": 14.08,
         "datetime": "1992-12-08"
       },
       "observed": {
-        "dv_obs_mm_s": 0.0,
-        "sigma_mm_s": 0.05
+        "dv_obs_mm_s": -4.6,
+        "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.0002782606561873544,
-        "dv_grad_mm_s": 0.00026833387714607604,
-        "dv_disf_mm_s": 9.926779041278372e-06,
+        "dv_tep_mm_s": -0.034811851294463965,
+        "dv_grad_mm_s": -0.07516141437552928,
+        "dv_disf_mm_s": 0.04034956308106532,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.0804254668676425,
-          "f_j2": 0.8562568958398531,
-          "f_plasma_core": 0.18550007341460703,
+          "f_j2": 0.8590872110477069,
+          "f_plasma_core": 0.18482943289223225,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.17161015373825955,
-          "plasma_density_cm3": 1368482.25100728,
-          "plasma_screening_factor": 7.401100020061634e-259,
+          "f_geometry_core": 0.17155492777200304,
+          "plasma_density_cm3": 1385164.6295424853,
+          "plasma_screening_factor": 5.279266815169121e-262,
           "plasma_sign_factor": 1.0,
-          "asymmetry_cancellation_factor": 0.018962962962962963,
-          "geometry_envelope": 0.0032542369894069958
+          "asymmetry_cancellation_factor": 1.0,
+          "geometry_envelope": 0.17155492777200304
         }
       },
       "geometry": {
-        "dec_in_deg": -30.3,
-        "dec_out_deg": -33.8,
-        "dec_in_rad": -0.5288347633542818,
-        "dec_out_rad": -0.5899212871740833,
-        "cos_dec_asymmetry": 0.032,
+        "dec_in_deg": -34.26,
+        "dec_out_deg": -4.87,
+        "dec_in_rad": -0.5979498017332573,
+        "dec_out_rad": -0.08499753457212385,
+        "cos_dec_asymmetry": -0.17,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 14080.0,
-        "altitude_km": 309.6,
+        "altitude_km": 303.0,
         "perigee_latitude_rad": -0.5658929515109326,
         "ephemeris": [],
         "flyby_date": "1992-12-08",
@@ -1332,58 +1332,58 @@
         "mission_name": "Galileo_1992"
       },
       "disformal_transition": {
-        "xi": 0.0208846124409802,
-        "xi_abs": 0.0208846124409802,
-        "regime_classification": "conformal_dominated",
+        "xi": -0.1111239898730957,
+        "xi_abs": 0.1111239898730957,
+        "regime_classification": "mixed",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.8380952380952381,
-        "cos_dec_asymmetry": 0.032,
-        "field_gradient_ratio": 0.9291582683440676,
+        "cos_dec_asymmetry": -0.17,
+        "field_gradient_ratio": 0.9306195220215118,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 6680600.0,
+        "field_gradient_ratio_r_m": 6674000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
     "Rosetta_2005": {
       "spacecraft": "Rosetta_2005",
       "perigee": {
-        "altitude_km": 1968.7,
+        "altitude_km": 1955.0,
         "velocity_km_s": 10.51,
         "datetime": "2005-03-04"
       },
       "observed": {
-        "dv_obs_mm_s": 1.82,
-        "sigma_mm_s": 0.05
+        "dv_obs_mm_s": 1.8,
+        "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.321182638866365,
-        "dv_grad_mm_s": 0.31790116090102855,
-        "dv_disf_mm_s": 0.0032814779653364545,
+        "dv_tep_mm_s": 0.1757984655197509,
+        "dv_grad_mm_s": 0.17485227015320132,
+        "dv_disf_mm_s": 0.0009461953665495793,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.0530436749333894,
-          "f_j2": 0.3735054867230335,
-          "f_plasma_core": 0.8794439085755273,
+          "f_j2": 0.37607278225563295,
+          "f_plasma_core": 0.9139564906151764,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.3459007589659286,
-          "plasma_density_cm3": 2672.6052369046174,
-          "plasma_screening_factor": 0.3132408499315248,
+          "f_geometry_core": 0.36194602247447005,
+          "plasma_density_cm3": 1748.671150131919,
+          "plasma_screening_factor": 0.467903140184298,
           "plasma_sign_factor": -1.0,
           "asymmetry_cancellation_factor": 1.0,
-          "geometry_envelope": 0.3459007589659286
+          "geometry_envelope": 0.36194602247447005
         }
       },
       "geometry": {
-        "dec_in_deg": -3.4,
-        "dec_out_deg": -34.3,
-        "dec_in_rad": -0.059341194567807204,
-        "dec_out_rad": -0.598647933434055,
-        "cos_dec_asymmetry": 0.33,
+        "dec_in_deg": -2.81,
+        "dec_out_deg": -34.29,
+        "dec_in_rad": -0.04904375198104066,
+        "dec_out_rad": -0.5984734005088556,
+        "cos_dec_asymmetry": 0.173,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 10510.0,
-        "altitude_km": 1968.7,
+        "altitude_km": 1955.0,
         "perigee_latitude_rad": 0.36144314367759234,
         "ephemeris": [],
         "flyby_date": "2005-03-04",
@@ -1668,22 +1668,22 @@
         "mission_name": "Rosetta_2005"
       },
       "disformal_transition": {
-        "xi": 0.08084140330439465,
-        "xi_abs": 0.08084140330439465,
+        "xi": 0.042518960090243876,
+        "xi_abs": 0.042518960090243876,
         "regime_classification": "mixed",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.6255952380952381,
-        "cos_dec_asymmetry": 0.33,
-        "field_gradient_ratio": 0.6259404751643723,
+        "cos_dec_asymmetry": 0.173,
+        "field_gradient_ratio": 0.6279855670150848,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 8339700.0,
+        "field_gradient_ratio_r_m": 8326000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
     "Rosetta_2007": {
       "spacecraft": "Rosetta_2007",
       "perigee": {
-        "altitude_km": 5429.9,
+        "altitude_km": 5301.0,
         "velocity_km_s": 12.46,
         "datetime": "2007-11-13"
       },
@@ -1692,34 +1692,34 @@
         "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 6.762895846310001e-05,
-        "dv_grad_mm_s": 6.502991390874533e-05,
-        "dv_disf_mm_s": 2.5990445543546786e-06,
+        "dv_tep_mm_s": 6.6498078579098e-05,
+        "dv_grad_mm_s": 6.40110807810027e-05,
+        "dv_disf_mm_s": 2.4869977980952903e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.1356634321612977,
-          "f_j2": 0.06620175570104725,
-          "f_plasma_core": 0.984574104264115,
+          "f_j2": 0.07060895541940684,
+          "f_plasma_core": 0.9853980557488055,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.07402314931603836,
-          "plasma_density_cm3": 265.9327392089853,
-          "plasma_screening_factor": 0.8909191487446859,
-          "plasma_sign_factor": 0.8633972584577342,
-          "asymmetry_cancellation_factor": 0.0248119212962963,
-          "geometry_envelope": 0.001836656554933533
+          "f_geometry_core": 0.07901710782096327,
+          "plasma_density_cm3": 251.26982546407675,
+          "plasma_screening_factor": 0.896611063565007,
+          "plasma_sign_factor": 0.8831820337691482,
+          "asymmetry_cancellation_factor": 0.02274537037037038,
+          "geometry_envelope": 0.0017972733829832996
         }
       },
       "geometry": {
-        "dec_in_deg": -5.5,
-        "dec_out_deg": -6.5,
-        "dec_in_rad": -0.09599310885968812,
-        "dec_out_rad": -0.11344640137963143,
-        "cos_dec_asymmetry": 0.035,
+        "dec_in_deg": -10.8,
+        "dec_out_deg": 18.6,
+        "dec_in_rad": -0.1884955592153876,
+        "dec_out_rad": 0.3246312408709453,
+        "cos_dec_asymmetry": 0.034,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 12460.0,
-        "altitude_km": 5429.9,
+        "altitude_km": 5301.0,
         "perigee_latitude_rad": -1.1300250597320753,
         "ephemeris": [],
         "flyby_date": "2007-11-13",
@@ -2004,15 +2004,15 @@
         "mission_name": "Rosetta_2007"
       },
       "disformal_transition": {
-        "xi": 0.005285895661269207,
-        "xi_abs": 0.005285895661269207,
+        "xi": 0.005294904889724972,
+        "xi_abs": 0.005294904889724972,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.7416666666666667,
-        "cos_dec_asymmetry": 0.035,
-        "field_gradient_ratio": 0.27455731607580774,
+        "cos_dec_asymmetry": 0.034,
+        "field_gradient_ratio": 0.2831142473545363,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 11800900.0,
+        "field_gradient_ratio_r_m": 11672000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },
@@ -45556,43 +45556,43 @@
     "MESSENGER_2005": {
       "spacecraft": "MESSENGER_2005",
       "perigee": {
-        "altitude_km": 2351.2,
+        "altitude_km": 2347.0,
         "velocity_km_s": 10.39,
         "datetime": "2005-08-02"
       },
       "observed": {
-        "dv_obs_mm_s": 0.0,
-        "sigma_mm_s": 0.05
+        "dv_obs_mm_s": 0.02,
+        "sigma_mm_s": 0.01
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 4.2870208980271865e-07,
-        "dv_grad_mm_s": 4.286293613368853e-07,
-        "dv_disf_mm_s": 7.272846583336224e-11,
+        "dv_tep_mm_s": 2.962146923366389e-07,
+        "dv_grad_mm_s": 2.9616890074618125e-07,
+        "dv_disf_mm_s": 4.5791590457650034e-11,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
         "geometry_envelope": {
           "f_inclination": 1.1096100664743906,
-          "f_j2": 0.30855607459000894,
-          "f_plasma_core": 0.9159642668239879,
+          "f_j2": 0.30920472318929887,
+          "f_plasma_core": 0.9152563498615215,
           "f_velocity": 1.0,
-          "f_geometry_core": 0.3136050304012227,
-          "plasma_density_cm3": 1699.4872663320814,
-          "plasma_screening_factor": 0.47800594332283614,
+          "f_geometry_core": 0.3140214089935582,
+          "plasma_density_cm3": 1716.7755441545248,
+          "plasma_screening_factor": 0.47443015559579815,
           "plasma_sign_factor": -1.0,
-          "asymmetry_cancellation_factor": 9.560816422635259e-05,
-          "geometry_envelope": 2.9983201248810396e-05
+          "asymmetry_cancellation_factor": 7.233796296296299e-05,
+          "geometry_envelope": 2.2715669053353462e-05
         }
       },
       "geometry": {
-        "dec_in_deg": 31.3,
-        "dec_out_deg": -31.9,
-        "dec_in_rad": 0.5462880558742251,
-        "dec_out_rad": -0.5567600313861911,
-        "cos_dec_asymmetry": 0.005487142503665887,
+        "dec_in_deg": 31.44,
+        "dec_out_deg": -31.92,
+        "dec_in_rad": 0.5487315168270173,
+        "dec_out_rad": -0.55710909723659,
+        "cos_dec_asymmetry": 0.005,
         "declination_source": "catalog_published",
         "v_perigee_m_s": 10390.0,
-        "altitude_km": 2351.2,
+        "altitude_km": 2347.0,
         "perigee_latitude_rad": 0.8193962075989355,
         "ephemeris": [],
         "flyby_date": "2005-08-02",
@@ -45877,15 +45877,15 @@
         "mission_name": "MESSENGER_2005"
       },
       "disformal_transition": {
-        "xi": 0.0011993335622327824,
-        "xi_abs": 0.0011993335622327824,
+        "xi": 0.00109395144636728,
+        "xi_abs": 0.00109395144636728,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.618452380952381,
-        "cos_dec_asymmetry": 0.005487142503665887,
-        "field_gradient_ratio": 0.5714539201987916,
+        "cos_dec_asymmetry": 0.005,
+        "field_gradient_ratio": 0.5720256599412167,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
-        "field_gradient_ratio_r_m": 8722200.0,
+        "field_gradient_ratio_r_m": 8718000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       }
     },

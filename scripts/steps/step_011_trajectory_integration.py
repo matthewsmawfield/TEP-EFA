@@ -47,34 +47,42 @@ Output:
 - Uncertainty quantification from convergence tests
 """
 
-import numpy as np
 import json
-from pathlib import Path
 import sys
-from scipy.integrate import solve_ivp
 from datetime import datetime
-from typing import Dict, List, Tuple, Optional
+from pathlib import Path
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import (
-    M_PL_GEV as M_PL, C_LIGHT, R_EARTH, M_EARTH, GM_EARTH, J2_EARTH, J3_EARTH, J4_EARTH,
-    LAMBDA_TEP_M, R_TRANSITION_M, CHARACTERISTIC_SUPPRESSION,
-    N_TOPOLOGY, get_tep_metadata,
-    ucd_screening_factor,
-    KG_M3_TO_GEV4, LAMBDA_BASELINE_GEV,
-    DISFORMAL_COUPLING_STRENGTH, DISFORMAL_VELOCITY_THRESHOLD_KM_S
+    C_LIGHT,
+    CHARACTERISTIC_SUPPRESSION,
+    DISFORMAL_COUPLING_STRENGTH,
+    DISFORMAL_VELOCITY_THRESHOLD_KM_S,
+    GM_EARTH,
+    J2_EARTH,
+    J3_EARTH,
+    KG_M3_TO_GEV4,
+    LAMBDA_BASELINE_GEV,
+    LAMBDA_TEP_M,
+    N_TOPOLOGY,
+    R_EARTH,
+    R_TRANSITION_M,
 )
+from scripts.utils.physics import M_PL_GEV as M_PL
+from scripts.utils.step_logger import StepLogger
 
 # Alias for backward compatibility
 LAMBDA_GEV = LAMBDA_BASELINE_GEV
 
-from scripts.utils.enhanced_physics import (
-    EarthGeoidModel, EarthDensityModel, TEP3DTrajectoryIntegrator
+from scripts.utils.enhanced_physics import EarthDensityModel, EarthGeoidModel
+from scripts.utils.tep_geometry_envelope import (
+    derive_disformal_transition_scale,
+    zonal_harmonic_bracket,
 )
-from scripts.utils.tep_geometry_envelope import zonal_harmonic_bracket
 
 # TEP Theoretical Framework (Standardized for Jakarta v0.8)
 LAMBDA_TEP_KM = LAMBDA_TEP_M / 1e3
@@ -153,7 +161,7 @@ class GeometryDependentBetaModulator:
         return 1.0
     
     def disformal_geometry_factor(self, v_sc_m_s: float, cos_asymmetry: float,
-                                   velocity_gradient_alignment: Optional[float] = None) -> float:
+                                   velocity_gradient_alignment: float | None = None) -> float:
         """
         Calculate effective trajectory geometrical asymmetry with disformal coupling.
         
@@ -180,7 +188,7 @@ class GeometryDependentBetaModulator:
     
     def compute_effective_beta(self, altitude_km: float, latitude_deg: float,
                                 velocity_km_s: float, plasma_density_cm3: float,
-                                use_screening: bool = True) -> Dict:
+                                use_screening: bool = True) -> dict:
         """
         Compute position-dependent effective coupling β_eff.
         
@@ -345,9 +353,9 @@ class Trajectory3DIntegrator:
     def _generate_keplerian_ephemeris(
         self,
         name: str,
-        jpl_data: Dict,
-        perigee_state: Dict
-    ) -> List[Dict]:
+        jpl_data: dict,
+        perigee_state: dict
+    ) -> list[dict]:
         """
         Generate 3D trajectory ephemeris from JPL Horizons scalar data
         and perigee state vectors using Keplerian orbit propagation.
@@ -505,8 +513,8 @@ class Trajectory3DIntegrator:
         return ephemeris
 
     def integrate_trajectory_from_ephemeris(self, name: str,
-                                             ephemeris_data: Dict,
-                                             predictions_data: Dict) -> Optional[Dict]:
+                                             ephemeris_data: dict,
+                                             predictions_data: dict) -> dict | None:
         """
         Perform full 3D trajectory integration from ephemeris data.
 
@@ -694,7 +702,7 @@ class Trajectory3DIntegrator:
             'modulation_factors_at_perigee': beta_mod if beta_mod is not None else {}
         }
     
-    def run_full_integration(self) -> Dict:
+    def run_full_integration(self) -> dict:
         """
         Execute full 3D trajectory integration for all flybys.
         
@@ -712,7 +720,7 @@ class Trajectory3DIntegrator:
         try:
             with open(predictions_file) as f:
                 predictions = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load predictions: {e}")
             return {}
         
@@ -723,7 +731,7 @@ class Trajectory3DIntegrator:
                 with open(fitting_file) as f:
                     fitting_data = json.load(f)
                 beta_0 = fitting_data.get('overall_analysis', {}).get('recommended_beta', BETA_BASELINE)
-            except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+            except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
                 self.logger.warning(f"Failed to load fitting results: {e}, using baseline")
                 beta_0 = BETA_BASELINE
         else:
@@ -760,7 +768,7 @@ class Trajectory3DIntegrator:
             try:
                 with open(traj_file) as f:
                     traj_data = json.load(f)
-            except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+            except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
                 self.logger.warning(f"Failed to load trajectory file: {e}, skipping {name}")
                 continue
             
@@ -773,16 +781,16 @@ class Trajectory3DIntegrator:
                 # Extract geometry for modulation factor reporting
                 geom = pred_data.get('geometry', {})
                 if not geom:
-                    logger.warning(f"Missing geometry for {name}, skipping")
+                    self.logger.warning(f"Missing geometry for {name}, skipping")
                     continue
                 altitude_km = geom.get('altitude_km')
                 if altitude_km is None:
-                    logger.warning(f"Missing altitude_km for {name}, skipping")
+                    self.logger.warning(f"Missing altitude_km for {name}, skipping")
                     continue
                 perigee_lat_deg = np.degrees(geom.get('perigee_latitude_rad', 0.0))
                 velocity_km_s = pred_data.get('perigee', {}).get('velocity_km_s')
                 if velocity_km_s is None:
-                    logger.warning(f"Missing velocity_km_s for {name}, skipping")
+                    self.logger.warning(f"Missing velocity_km_s for {name}, skipping")
                     continue
                 plasma_density = self.estimate_plasma_density(altitude_km, perigee_lat_deg)
                 
@@ -900,10 +908,11 @@ class Trajectory3DIntegrator:
                 'plasma_exponent': ALPHA_PLASMA,
                 'velocity_critical_km_s': {
                     'value': V_CRIT_KM_S,
-                    'source': 'TEP_field_equation_analytical_derivation',
-                    'derivation': 'Transition velocity v_trans = (c/sqrt(2)) * (lambda_TEP/R_earth)^(1/2) * (|grad_phi|*lambda_TEP/M_Pl)^(1/2) ≈ 16.8 km/s',
-                    'status': 'first_principles_derivation',
-                    'data_source': 'TEP_field_equations_Jakarta_v0.8'
+                    'source': 'empirical_response_template_scale',
+                    'derivation': 'Transition scale v_trans = 16.8 km/s carried as a phenomenological template parameter (±20%); the closed form (c/sqrt(2)) * (lambda_TEP/R_earth)^(1/2) * (|grad_phi|*lambda_TEP/M_Pl)^(1/2) ≈ 14-16.5 km/s at the UCD-pinned field amplitude is retained as a dimensional anchor only. Under the canonical B(phi) envelope no km/s disformal transition exists (required B_0 ~ 1.6e18, excluded by ~26 orders vs the holonomy-target bound).',
+                    'status': 'phenomenological_template_scale',
+                    'data_source': 'empirical_template_with_audit',
+                    'derivation_audit': derive_disformal_transition_scale()
                 },
                 'velocity_exponent': ALPHA_VELOCITY,
                 'uncertainty': 1000.0,

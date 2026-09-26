@@ -19,15 +19,15 @@ Author: TEP-EFA Analysis Pipeline
 Date: 2026-04-18
 """
 
-import sys
 import json
-import numpy as np
-from pathlib import Path
-from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
-import requests
-from datetime import datetime, timedelta
+import sys
 import time
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import requests
 
 # Add pipeline to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -50,7 +50,7 @@ class DSNDataConfig:
     arc_length_hours: float = 4.0
     data_format: str = 'TRK-2-25'  # or 'TRK-2-18'
     frequency_band: str = 'X'  # 'S', 'X', 'Ka'
-    stations: List[str] = None  # ['DSS-24', 'DSS-25', 'DSS-26']
+    stations: list[str] = None  # ['DSS-24', 'DSS-25', 'DSS-26']
 
 
 class DSNRawDataAcquisition:
@@ -144,7 +144,7 @@ class DSNRawDataAcquisition:
         self.cache_dir = Path(__file__).parent.parent.parent / 'data' / 'raw' / 'dsn_tracking'
         self.cache_dir.mkdir(parents=True, exist_ok=True)
     
-    def check_data_availability(self, mission_name: str) -> Dict:
+    def check_data_availability(self, mission_name: str) -> dict:
         """
         Check if raw DSN data is available for a mission.
         
@@ -170,7 +170,7 @@ class DSNRawDataAcquisition:
                 'notes': 'Check NASA PDS for availability'
             }
     
-    def download_raw_data(self, mission_name: str, output_dir: Optional[Path] = None) -> Dict:
+    def download_raw_data(self, mission_name: str, output_dir: Path | None = None) -> dict:
         """
         Download raw DSN tracking data from NASA PDS.
         
@@ -220,7 +220,7 @@ class DSNRawDataAcquisition:
             'cached': False
         }
     
-    def process_trk_file(self, file_path: Path) -> Dict:
+    def process_trk_file(self, file_path: Path) -> dict:
         """
         Process a TRK-2-25 or TRK-2-18 tracking data file.
         
@@ -306,14 +306,14 @@ class DSNRawDataAcquisition:
                                 'line_number': line_num
                             })
                             
-                        except (ValueError, IndexError) as e:
+                        except (ValueError, IndexError):
                             # Skip unparseable lines
                             continue
         
         except Exception as e:
             return {
                 'success': False,
-                'error': f'Error reading file: {str(e)}',
+                'error': f'Error reading file: {e!s}',
                 'data': None
             }
         
@@ -334,7 +334,7 @@ class DSNRawDataAcquisition:
                                   max(r['doppler_frequency_hz'] for r in data_records))
         }
 
-    def process_trk234_file(self, file_path: Path) -> Dict:
+    def process_trk234_file(self, file_path: Path) -> dict:
         """Parse TRK-2-34 (TNF) products with PyTrk234 when available."""
         from datetime import datetime
 
@@ -504,9 +504,9 @@ class MinimalOrbitDetermination:
         """
         return -0.5 * self.wavelength * doppler_hz
     
-    def extract_velocity_anomaly(self, doppler_data: List[Dict], 
+    def extract_velocity_anomaly(self, doppler_data: list[dict], 
                                    perigee_time: datetime,
-                                   window_hours: float = 4.0) -> Dict:
+                                   window_hours: float = 4.0) -> dict:
         """
         Extract velocity anomaly around perigee passage.
         
@@ -524,8 +524,6 @@ class MinimalOrbitDetermination:
         Returns:
             dict with velocity anomaly and analysis details
         """
-        import numpy as np
-        from scipy import interpolate
         
         # Convert to numpy arrays
         times = np.array([(r['timestamp'] - perigee_time).total_seconds() / 3600.0 
@@ -585,7 +583,7 @@ class MinimalOrbitDetermination:
     
     def compare_with_tep_prediction(self, velocity_anomaly_mm_s: float,
                                      tep_prediction_mm_s: float,
-                                     uncertainty_mm_s: float) -> Dict:
+                                     uncertainty_mm_s: float) -> dict:
         """
         Compare extracted velocity anomaly with TEP prediction.
         
@@ -626,7 +624,7 @@ to enable full TEP signal recovery analysis.
     def analyze_mission_dsn_data(self, mission_name: str, 
                                    perigee_time: datetime,
                                    tep_prediction_mm_s: float,
-                                   trk_file_path: Optional[Path] = None) -> Dict:
+                                   trk_file_path: Path | None = None) -> dict:
         """
         Full pipeline: load DSN data, parse TRK files, extract velocity anomaly, compare with TEP.
         
@@ -690,14 +688,14 @@ to enable full TEP signal recovery analysis.
             'conclusion': 'TEP signal detected' if comparison['consistent'] else 'Inconsistent with TEP'
         }
     
-    def check_all_missions(self) -> Dict:
+    def check_all_missions(self) -> dict:
         """Check data availability for all missions in catalog."""
         results = {}
         for mission in self.acquisition.MISSION_DATASETS:
             results[mission] = self.acquisition.check_data_availability(mission)
         return results
     
-    def prioritize_downloads(self) -> List[str]:
+    def prioritize_downloads(self) -> list[str]:
         """
         Prioritize missions for raw data download.
         
@@ -729,7 +727,7 @@ to enable full TEP signal recovery analysis.
         """Generate a script to download all available raw DSN data."""
         missions = self.prioritize_downloads()
         
-        script = """#!/bin/bash
+        script = f"""#!/bin/bash
 # DSN Raw Data Download Script
 # Generated by TEP-EFA Analysis Pipeline
 # Date: 2026-04-18
@@ -741,8 +739,8 @@ DATA_DIR="data/raw/dsn_tracking"
 mkdir -p $DATA_DIR
 
 echo "Downloading raw DSN tracking data..."
-echo "Priority missions: {n}"
-""".format(n=len(missions))
+echo "Priority missions: {len(missions)}"
+"""
         
         for mission in missions:
             info = self.acquisition.check_data_availability(mission)
@@ -804,7 +802,7 @@ def main():
     try:
         with open(tep_predictions_file) as f:
             tep_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+    except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Failed to load TEP predictions: {e}")
         return None
     

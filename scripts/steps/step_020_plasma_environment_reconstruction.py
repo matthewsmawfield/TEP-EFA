@@ -40,13 +40,13 @@ Output per flyby:
 """
 
 import json
+import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
 import numpy as np
 import requests
-from datetime import datetime, timedelta
-from pathlib import Path
-import sys
-from typing import Dict, Any
-from datetime import datetime
 from scipy.interpolate import interp1d
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -244,7 +244,7 @@ class PlasmaEnvironmentReconstructor:
             response.raise_for_status()
             data = response.json()
             self._kp_cache = data
-            self.logger.success(f"Fetched Kp data from NOAA SWPC")
+            self.logger.success("Fetched Kp data from NOAA SWPC")
             return data
         except requests.RequestException as e:
             self.logger.error(f"Failed to fetch Kp data from NOAA SWPC: {e}")
@@ -258,13 +258,13 @@ class PlasmaEnvironmentReconstructor:
         try:
             with open(step_007_file, 'r') as f:
                 data = json.load(f)
-        except (FileNotFoundError, ValueError, IOError) as e:
+        except (OSError, FileNotFoundError, ValueError) as e:
             self.logger.warning(f"Could not load flyby data: {e}")
             return {}
         
         return data.get("predictions", {})
     
-    def get_solar_activity(self, flyby_date: str) -> Dict[str, Any]:
+    def get_solar_activity(self, flyby_date: str) -> dict[str, Any]:
         """
         Get solar activity indices for a given date using REAL NOAA/SWPC data.
         
@@ -373,7 +373,7 @@ class PlasmaEnvironmentReconstructor:
         # Sign reversal is handled by disformal coupling in other steps
         return 1.0, 0.2  # ±20% uncertainty (small effect)
     
-    def reconstruct_for_flyby(self, flyby_name: str, flyby_data: Dict) -> Dict[str, Any]:
+    def reconstruct_for_flyby(self, flyby_name: str, flyby_data: dict) -> dict[str, Any]:
         """Reconstruct plasma environment for a single flyby using IRI profiles."""
         # Get flyby parameters
         altitude = flyby_data["perigee"]["altitude_km"]

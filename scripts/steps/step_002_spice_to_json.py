@@ -7,12 +7,13 @@ converting them to the same JSON format used by the pipeline.
 """
 
 import json
-import numpy as np
-from pathlib import Path
-from datetime import datetime, timedelta
 import sys
-import urllib.request
 import time
+import urllib.request
+from datetime import datetime, timedelta
+from pathlib import Path
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -223,7 +224,7 @@ def main():
     # Create directories
     KERNEL_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    logger.debug(f"Created directories")
+    logger.debug("Created directories")
     
     # Clear any existing kernels
     spice.kclear()

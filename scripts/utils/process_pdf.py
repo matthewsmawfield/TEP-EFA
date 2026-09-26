@@ -13,13 +13,13 @@ Example:
     python process_pdf.py site/public/docs/26-TEP-C0-v0.1-Athens.pdf --quality ebook
 """
 
-import subprocess
-import sys
+import argparse
 import os
 import re
-from pathlib import Path
-import argparse
+import subprocess
+import sys
 import tempfile
+from pathlib import Path
 
 from compress_pdf import compress_pdf as _compress_pdf
 
@@ -241,7 +241,7 @@ def main():
     cff_data = parse_citation_cff()
     if cff_data:
         metadata = build_metadata(cff_data)
-        print(f"Loaded metadata from CITATION.cff")
+        print("Loaded metadata from CITATION.cff")
         print(f"  Title: {metadata.get('Title', 'N/A')[:60]}...")
     else:
         print("Warning: Could not load CITATION.cff, using minimal metadata")

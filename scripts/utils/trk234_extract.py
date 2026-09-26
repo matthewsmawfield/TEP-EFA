@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 
-def extract_trk234_measurements(filepath: Path) -> List[Dict[str, Any]]:
+def extract_trk234_measurements(filepath: Path) -> list[dict[str, Any]]:
     """Decode a TRK-2-34 archive and return per-SFDU observables."""
     import trk234
 
@@ -15,7 +15,7 @@ def extract_trk234_measurements(filepath: Path) -> List[Dict[str, Any]]:
         return []
 
     reader.decode()
-    measurements: List[Dict[str, Any]] = []
+    measurements: list[dict[str, Any]] = []
 
     for index, sfdu in enumerate(reader.sfdu_list):
         trk = getattr(sfdu, "trk_chdo", None)

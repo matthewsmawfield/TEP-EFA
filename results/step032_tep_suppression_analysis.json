@@ -15,7 +15,7 @@
       {
         "mission": "NEAR_1998",
         "standard_od_dv_mm_s": 13.46,
-        "minimal_od_predicted_dv_mm_s": 13.462370135587253,
+        "minimal_od_predicted_dv_mm_s": 14.184192949907235,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
@@ -24,7 +24,7 @@
       {
         "mission": "Galileo_1990",
         "standard_od_dv_mm_s": 3.92,
-        "minimal_od_predicted_dv_mm_s": 7.863087524426619,
+        "minimal_od_predicted_dv_mm_s": 7.9638333333333335,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
@@ -32,26 +32,26 @@
       },
       {
         "mission": "Galileo_1992",
-        "standard_od_dv_mm_s": 0.0,
-        "minimal_od_predicted_dv_mm_s": 24.69405684754522,
+        "standard_od_dv_mm_s": -4.6,
+        "minimal_od_predicted_dv_mm_s": 25.231947194719474,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
-        "notes": "Standard OD: 0.00 mm/s. Minimal OD prediction: 24.69 mm/s. TEP signal likely filtered by OD."
+        "notes": "Standard OD: -4.60 mm/s. Minimal OD prediction: 25.23 mm/s. TEP signal likely filtered by OD."
       },
       {
         "mission": "Cassini_1999",
-        "standard_od_dv_mm_s": 0.11,
-        "minimal_od_predicted_dv_mm_s": 6.38543389292575,
+        "standard_od_dv_mm_s": -2.0,
+        "minimal_od_predicted_dv_mm_s": 6.506621276595745,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
-        "notes": "Standard OD: 0.11 mm/s. Minimal OD prediction: 6.39 mm/s. TEP signal likely filtered by OD."
+        "notes": "Standard OD: -2.00 mm/s. Minimal OD prediction: 6.51 mm/s. TEP signal likely filtered by OD."
       },
       {
         "mission": "Rosetta_2005",
-        "standard_od_dv_mm_s": 1.82,
-        "minimal_od_predicted_dv_mm_s": 3.883415451820999,
+        "standard_od_dv_mm_s": 1.8,
+        "minimal_od_predicted_dv_mm_s": 3.91062915601023,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
@@ -60,7 +60,7 @@
       {
         "mission": "Rosetta_2007",
         "standard_od_dv_mm_s": 0.02,
-        "minimal_od_predicted_dv_mm_s": 0.07519035955777019,
+        "minimal_od_predicted_dv_mm_s": 0.08761465346335619,
         "tep_detected": false,
         "confidence": 1.0,
         "ppn_compliant": true,
@@ -77,12 +77,12 @@
       },
       {
         "mission": "MESSENGER_2005",
-        "standard_od_dv_mm_s": 0.0,
-        "minimal_od_predicted_dv_mm_s": 3.2516502211636613,
+        "standard_od_dv_mm_s": 0.02,
+        "minimal_od_predicted_dv_mm_s": 3.2574691095014914,
         "tep_detected": true,
         "confidence": 1.0,
         "ppn_compliant": true,
-        "notes": "Standard OD: 0.00 mm/s. Minimal OD prediction: 3.25 mm/s. TEP signal likely filtered by OD."
+        "notes": "Standard OD: 0.02 mm/s. Minimal OD prediction: 3.26 mm/s. TEP signal likely filtered by OD."
       },
       {
         "mission": "Juno_2013",
@@ -133,30 +133,30 @@
       "data": [
         {
           "mission": "Galileo_1992",
-          "altitude": 309.6,
-          "std_od": 0.0,
-          "predicted": 24.69405684754522,
+          "altitude": 303.0,
+          "std_od": -4.6,
+          "predicted": 25.231947194719474,
           "suppressed": true
         },
         {
           "mission": "Galileo_1990",
-          "altitude": 972.3,
+          "altitude": 960.0,
           "std_od": 3.92,
-          "predicted": 7.863087524426619,
+          "predicted": 7.9638333333333335,
           "suppressed": false
         },
         {
           "mission": "Rosetta_2005",
-          "altitude": 1968.7,
-          "std_od": 1.82,
-          "predicted": 3.883415451820999,
+          "altitude": 1955.0,
+          "std_od": 1.8,
+          "predicted": 3.91062915601023,
           "suppressed": false
         },
         {
           "mission": "MESSENGER_2005",
-          "altitude": 2351.2,
-          "std_od": 0.0,
-          "predicted": 3.2516502211636613,
+          "altitude": 2347.0,
+          "std_od": 0.02,
+          "predicted": 3.2574691095014914,
           "suppressed": true
         },
         {
@@ -168,9 +168,9 @@
         },
         {
           "mission": "Rosetta_2007",
-          "altitude": 5429.9,
+          "altitude": 5301.0,
           "std_od": 0.02,
-          "predicted": 0.07519035955777019,
+          "predicted": 0.08761465346335619,
           "suppressed": false
         }
       ],
@@ -180,13 +180,13 @@
       "total_high_altitude": 3
     },
     "statistical_significance": {
-      "pearson_correlation": 0.3316403021459718,
-      "p_value": 0.292299305258112,
+      "pearson_correlation": 0.06394752746390489,
+      "p_value": 0.8434840259014373,
       "interpretation": "WEAK correlation"
     },
     "altitude_anomaly_spearman": {
-      "rho": -0.18278153875348274,
-      "p_value": 0.6378520997897523,
+      "rho": 0.07563292261344162,
+      "p_value": 0.8466544684756082,
       "n": 9,
       "interpretation": "not significant",
       "note": "Computed from all flybys with published observations; expected anti-correlation masked by null results at intermediate altitudes and trajectory-asymmetry modulation"

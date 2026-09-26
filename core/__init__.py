@@ -1,6 +1,6 @@
 """TEP Core — canonical Python package for the Temporal Equivalence Principle.
 
-Version: TEP v0.10 (Jakarta)
+Version: TEP v0.14 (Jakarta)
 
 This package provides the shared physics layer used by all TEP papers:
   - constants: physical and phenomenological parameters
@@ -11,72 +11,69 @@ This package provides the shared physics layer used by all TEP papers:
   - evidence: Bayesian evidence and model-comparison utilities
 """
 
-from . import constants
-from . import conformal_scaling
-from . import cosmology
-from . import scalar_field
-from . import screening
-from . import evidence
+from . import conformal_scaling, constants, cosmology, evidence, scalar_field, screening
 
 __all__ = [
-    "constants",
     "conformal_scaling",
+    "constants",
     "cosmology",
+    "evidence",
     "scalar_field",
     "screening",
-    "evidence",
 ]
 
 # Re-export commonly used symbols at package level for convenience
-from .constants import (
-    VERSION,
-    VERSION_CODENAME,
-    VERSION_STRING,
-    G_NEWTON,
-    C_LIGHT,
-    M_PLANCK,
-    M_SUN,
-    MPC_TO_M,
-    BETA_A,
-    RHO_T,
-    RHO_C,
-    ILLUSTRATIVE_BETA_A,
-    KG_M3_TO_G_CM3,
-    G_CM3_TO_KG_M3,
-    LAB_COHERENCE_LENGTH_M,
-    M_REF,
-    ALPHA_LOG,
-    BETA_GEOM,
-    SCREENING_LENGTH_KM,
-    LAMBDA_T_MGEX_KM,
-    LAMBDA_T_MGEX_ERR_KM,
-    LAMBDA_T_MGEX_R2,
-    GNSS_LAMBDA_T_LONGSPAN_CODE_KM,
-    GNSS_LAMBDA_T_LONGSPAN_CODE_ERR_KM,
-    GNSS_LAMBDA_T_EXPONENTIAL_BY_CENTER,
-)
-from .screening import (
-    screening_factor,
-    universal_screening_function,
-    coupling_screening_factor,
-    beta_screened,
-)
 from .conformal_scaling import (
     conformal_factor,
     conformal_factor_small,
-    temporal_shear_from_scalar_field,
     effective_g,
     g_eff_variance,
     minimum_steepness_for_retention,
     minimum_steepness_for_suppression,
     screening_diagnostics,
+    temporal_shear_from_scalar_field,
+)
+from .constants import (
+    ALPHA_LOG,
+    BETA_A,
+    BETA_GEOM,
+    C_LIGHT,
+    G_CM3_TO_KG_M3,
+    G_NEWTON,
+    GNSS_LAMBDA_T_EXPONENTIAL_BY_CENTER,
+    GNSS_LAMBDA_T_LONGSPAN_CODE_ERR_KM,
+    GNSS_LAMBDA_T_LONGSPAN_CODE_KM,
+    ILLUSTRATIVE_BETA_A,
+    KG_M3_TO_G_CM3,
+    LAB_COHERENCE_LENGTH_M,
+    LAMBDA_T_MGEX_ERR_KM,
+    LAMBDA_T_MGEX_KM,
+    LAMBDA_T_MGEX_R2,
+    M_PLANCK,
+    M_REF,
+    M_SUN,
+    MPC_TO_M,
+    RHO_C,
+    RHO_T,
+    SCREENING_LENGTH_KM,
+    VERSION,
+    VERSION_CODENAME,
+    VERSION_STRING,
 )
 from .scalar_field import (
+    compute_temporal_shear_from_mass_gradient,
+    scalar_field_difference,
+    scalar_field_logarithmic,
     solve_scalar_field_cylinder,
-    solve_scalar_field_uniform_density,
     solve_scalar_field_layered,
     solve_scalar_field_layered_weighted,
-    scalar_field_logarithmic,
-    scalar_field_difference,
-    compute_temporal_shear_from_mass_gradient,
+    solve_scalar_field_uniform_density,
+)
+from .screening import (
+    coupling_screening_factor,
+    matter_acceleration,
+    physical_shear,
+    screening_factor,
+    screening_ratio,
+    universal_screening_function,
 )

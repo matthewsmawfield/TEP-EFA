@@ -56,11 +56,14 @@ R_TRANSITION_UNCERTAINTY: Final[float] = 0.10  # ±10% systematic uncertainty
 SUPPRESSION_EXPONENT: Final[float] = 0.334    # Theoretical density scaling (≈ 1/3, ±0.05 from multi-scale validation)
 
 # Disformal Coupling Parameters (Yogyakarta v0.1)
-# CRITICAL: These are theoretical parameters with limited empirical validation
-DISFORMAL_COUPLING_STRENGTH: Final[float] = 0.05  # α_B - Disformal coupling strength (±50% uncertainty - theoretical)
-DISFORMAL_VELOCITY_THRESHOLD_KM_S: Final[float] = 16.8  # v_trans - Velocity threshold [km/s] (±20% uncertainty - theoretical)
-DISFORMAL_COUPLING_UNCERTAINTY: Final[float] = 0.5  # ±50% uncertainty (theoretical)
-DISFORMAL_VELOCITY_UNCERTAINTY: Final[float] = 0.2  # ±20% uncertainty (theoretical)
+# CRITICAL: These are phenomenological response-template parameters, not
+# action-derived quantities. Under the canonical B(phi) envelope no km/s
+# disformal transition exists (required B_0 ~ 1.6e18 vs |B_0| <= 5e-8
+# holonomy-target bound; see tep_geometry_envelope.derive_disformal_transition_scale).
+DISFORMAL_COUPLING_STRENGTH: Final[float] = 0.05  # α_B - template disformal coupling strength (±50% uncertainty - empirical template)
+DISFORMAL_VELOCITY_THRESHOLD_KM_S: Final[float] = 16.8  # v_trans - velocity template scale [km/s] (±20% uncertainty - empirical template)
+DISFORMAL_COUPLING_UNCERTAINTY: Final[float] = 0.5  # ±50% uncertainty (empirical template)
+DISFORMAL_VELOCITY_UNCERTAINTY: Final[float] = 0.2  # ±20% uncertainty (empirical template)
 
 # Legacy alias for backward compatibility
 RHO_TEMPORAL_TOPOLOGY_G_CM3: Final[float] = RHO_T  # Universal Temporal Topology density [g/cm³] (deprecated, use RHO_T)
@@ -115,8 +118,17 @@ def ucd_screening_factor(r: float) -> float:
 
 
 def ppn_gamma_deviation(beta_eff: float) -> float:
-    """Magnitude |γ − 1| used for Cassini checks (Jakarta v0.8 Sec. 7: γ − 1 = −2 α_eff² in DEF; here |γ−1| ≈ 2 β_eff² with β_eff the screened dimensionless coupling for A = exp(β φ/M_Pl))."""
-    return 2.0 * beta_eff**2
+    """Magnitude |γ − 1| used for Cassini checks (Paper 0 §7, canonical linear
+    source-charge mapping: γ − 1 = −4β_A²S_Σ/(1+2β_A²S_Σ); the photon probe is
+    unscreened, so the deviation is linear in the screened source charge S_Σ).
+    With β_A = −1 and S_Σ = |β_eff| (screened dimensionless coupling for
+    A = exp(β_A φ/M_Pl)): |γ−1| = 4|β_eff|/(1+2|β_eff|).
+
+    Meaningful only when beta_eff is a source-charge projection; Earth-vicinity
+    flyby-response amplitudes are a distinct projection and are not constrained
+    by Cassini through this map (see manuscript §4.6.1a)."""
+    s = abs(beta_eff)
+    return 4.0 * s / (1.0 + 2.0 * s)
 
 
 def validate_screened_coupling(

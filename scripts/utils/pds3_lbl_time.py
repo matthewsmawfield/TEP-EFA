@@ -4,10 +4,9 @@ from __future__ import annotations
 
 import re
 from datetime import datetime, timezone
-from typing import Optional, Tuple
 
 
-def pds3_lbl_value_line(lbl_text: str, key: str) -> Optional[str]:
+def pds3_lbl_value_line(lbl_text: str, key: str) -> str | None:
     m = re.search(rf"^\s*{re.escape(key)}\s*=\s*(.+)$", lbl_text, re.MULTILINE | re.IGNORECASE)
     if not m:
         return None
@@ -17,7 +16,7 @@ def pds3_lbl_value_line(lbl_text: str, key: str) -> Optional[str]:
     return raw.strip().strip('"')
 
 
-def parse_pds3_lbl_start_stop_utc(lbl_text: str) -> Optional[Tuple[datetime, datetime]]:
+def parse_pds3_lbl_start_stop_utc(lbl_text: str) -> tuple[datetime, datetime] | None:
     """
     Parse PDS3 START_TIME / STOP_TIME from a product label (day-of-year form).
 

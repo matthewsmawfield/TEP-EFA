@@ -17,6 +17,7 @@ import datetime
 import json
 import sys
 from pathlib import Path
+
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -485,19 +486,19 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
 
-    logger.info(f"")
-    logger.info(f"Raw pooled-amplitude classification summary:")
+    logger.info("")
+    logger.info("Raw pooled-amplitude classification summary:")
     for cls, count in raw_classification_counts.items():
         logger.info(f"  {cls:25s}: {count}")
-    logger.info(f"")
-    logger.info(f"Uncertainty-aware raw classification summary:")
+    logger.info("")
+    logger.info("Uncertainty-aware raw classification summary:")
     for cls, count in raw_uncertainty_aware_counts.items():
         logger.info(f"  {cls:25s}: {count}")
-    logger.info(f"")
-    logger.info(f"Post-OD classification summary:")
+    logger.info("")
+    logger.info("Post-OD classification summary:")
     for cls, count in classification_counts.items():
         logger.info(f"  {cls:25s}: {count}")
-    logger.info(f"")
+    logger.info("")
     logger.info(f"Output written to: {out_path}")
     logger.log_step_summary(len(rows), "SUCCESS")
     return 0

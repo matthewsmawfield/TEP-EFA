@@ -5,7 +5,7 @@
   "status": "preliminary",
   "calibration_status": "exploratory_hypothesis_generating",
   "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-  "derivation": "Space weather correlation analysis with n=4 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+  "derivation": "Space weather correlation analysis with n=6 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
   "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
   "analysis": {
     "uncertainty": null,
@@ -14,26 +14,26 @@
     "status": "preliminary",
     "calibration_status": "exploratory_hypothesis_generating",
     "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-    "derivation": "Space weather correlation analysis with n=4 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+    "derivation": "Space weather correlation analysis with n=6 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
     "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
     "correlation": {
-      "uncertainty": 0.8833816760321714,
+      "uncertainty": 0.8114629724090763,
       "uncertainty_fraction": 0.5,
-      "uncertainty_absolute": 0.8833816760321714,
+      "uncertainty_absolute": 0.8114629724090763,
       "status": "preliminary",
       "calibration_status": "exploratory_hypothesis_generating",
       "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-      "derivation": "Pearson correlation r=0.7318 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=4 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
+      "derivation": "Pearson correlation r=0.0188 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=6 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
       "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements; consider multi-mission coordinated campaigns to increase statistical power",
-      "pearson_r": 0.7317545567403083,
-      "p_value": 0.2682454432596917,
-      "n_samples": 4,
+      "pearson_r": 0.018835070161380904,
+      "p_value": 0.9717507357214306,
+      "n_samples": 6,
       "r_ci_95": [
-        -0.7728916537490292,
-        0.9938716983153136
+        -0.8050317740042683,
+        0.8178941708138842
       ],
-      "interpretation": "r=0.73, p=0.27 (n=4): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.",
-      "statistical_power_note": "With n=4, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
+      "interpretation": "r=0.02, p=0.97 (n=6): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.",
+      "statistical_power_note": "With n=6, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
     },
     "data_points": [
       {
@@ -43,8 +43,8 @@
         "Kp_sum": 67.0,
         "P_env": 161.823,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.0017305147756031074,
-        "altitude": 567.9,
+        "beta": 0.0018207797052178442,
+        "altitude": 539.0,
         "dv_obs": 13.46
       },
       {
@@ -54,8 +54,8 @@
         "Kp_sum": 153.0,
         "P_env": 582.912,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.005329918603129757,
-        "altitude": 972.3,
+        "beta": 0.008731721925085452,
+        "altitude": 960.0,
         "dv_obs": 3.92
       },
       {
@@ -65,9 +65,20 @@
         "Kp_sum": 317.0,
         "P_env": 545.0189999999999,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.0019340334704831914,
-        "altitude": 1197.3,
-        "dv_obs": 0.11
+        "beta": 125.74842831024559,
+        "altitude": 1175.0,
+        "dv_obs": -2.0
+      },
+      {
+        "mission": "Galileo_1992",
+        "flyby_date": "1992-12-08",
+        "F107": 129.0,
+        "Kp_sum": 313.0,
+        "P_env": 532.77,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 0.06730401137901822,
+        "altitude": 303.0,
+        "dv_obs": -4.6
       },
       {
         "mission": "Rosetta_2005",
@@ -76,9 +87,20 @@
         "Kp_sum": 37.0,
         "P_env": 108.09300000000002,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.0010102428095147484,
-        "altitude": 1968.7,
-        "dv_obs": 1.82
+        "beta": 0.002223360573892163,
+        "altitude": 1955.0,
+        "dv_obs": 1.8
+      },
+      {
+        "mission": "MESSENGER_2005",
+        "flyby_date": "2005-08-02",
+        "F107": 110.2,
+        "Kp_sum": 173.0,
+        "P_env": 300.846,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 274.93574034838866,
+        "altitude": 2347.0,
+        "dv_obs": 0.02
       }
     ],
     "catalog_context": [

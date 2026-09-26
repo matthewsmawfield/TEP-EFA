@@ -58,18 +58,18 @@ Author: TEP-EFA Pipeline
 Date: 2026-04-19
 """
 
-import os
-import sys
 import json
+import os
+import re
 import subprocess
-import numpy as np
+import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
+
+import numpy as np
 import requests
 from scipy.ndimage import uniform_filter1d
-from datetime import datetime, timedelta, timezone
-import time
-import re
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -77,7 +77,6 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.dsn_pds_ingest import ingest_mission_tracking
 from scripts.utils.dsn_tracking_discovery import (
     _label_path_for_data_file,
-    discover_dsn_tracking_file,
     is_trk234_archive,
 )
 from scripts.utils.flyby_time_series_residuals import (
@@ -86,11 +85,11 @@ from scripts.utils.flyby_time_series_residuals import (
     save_juno_ramp_pairwise_step030_archive,
     write_juno_042_sidecar,
 )
+from scripts.utils.pds3_lbl_time import (
+    parse_pds3_lbl_start_stop_utc,
+)
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.trk234_extract import extract_trk234_measurements
-
-
-from scripts.utils.pds3_lbl_time import parse_pds3_lbl_start_stop_utc  # noqa: E402 — re-export for tests
 
 
 class JunoDSNReanalysis:
@@ -107,7 +106,7 @@ class JunoDSNReanalysis:
     )
 
     # Curated public HTTPS targets for ``TEP_030_PROBE_PUBLIC_URLS=1`` (id, url, purpose).
-    JUNO_PUBLIC_URL_PROBE_TARGETS: Tuple[Tuple[str, str, str], ...] = (
+    JUNO_PUBLIC_URL_PROBE_TARGETS: tuple[tuple[str, str, str], ...] = (
         (
             "pds_rn_jno_e_rss_edr",
             "https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/",
@@ -163,7 +162,7 @@ class JunoDSNReanalysis:
     def _project_root(self) -> Path:
         return self.data_dir.parent.parent.parent.parent
 
-    def _horizons_public_ephemeris_optional(self) -> Optional[Dict[str, Any]]:
+    def _horizons_public_ephemeris_optional(self) -> dict[str, Any] | None:
         """
         Best-effort fit to public JPL Horizons JSON + Step 038 Juno anchor.
         Skips when ``TEP_030_SKIP_HORIZONS_PUBLIC_OD=1`` or inputs missing.
@@ -175,11 +174,13 @@ class JunoDSNReanalysis:
         s40 = root / "results" / "step038_3d_state_vectors.json"
         if not traj.is_file() or not s40.is_file():
             return None
-        from scripts.utils.minimal_od_juno_horizons import run_horizons_public_ephemeris_batch
+        from scripts.utils.minimal_od_juno_horizons import (
+            run_horizons_public_ephemeris_batch,
+        )
 
         return run_horizons_public_ephemeris_batch(root)
 
-    def _trk_ingest_temporal_audit(self, file_paths: List[str]) -> Dict[str, Any]:
+    def _trk_ingest_temporal_audit(self, file_paths: list[str]) -> dict[str, Any]:
         """
         For each ingested NJPL archive with a sibling PDS3 ``.LBL``, test whether
         ``START_TIME``/``STOP_TIME`` overlaps the Step 030 flyby analysis window
@@ -193,7 +194,7 @@ class JunoDSNReanalysis:
         window_h = float(self.ANALYSIS_WINDOW_HOURS)
         win_lo = perigee - timedelta(hours=window_h / 2.0)
         win_hi = perigee + timedelta(hours=window_h / 2.0)
-        rows: List[Dict[str, Any]] = []
+        rows: list[dict[str, Any]] = []
         root = PROJECT_ROOT.resolve()
         for fp in file_paths:
             p = Path(fp).resolve()
@@ -203,7 +204,7 @@ class JunoDSNReanalysis:
                 rel = str(p.relative_to(root))
             except ValueError:
                 rel = str(p)
-            row: Dict[str, Any] = {"file": rel}
+            row: dict[str, Any] = {"file": rel}
             lbl = _label_path_for_data_file(p)
             if lbl is None or not lbl.is_file():
                 row["sibling_lbl"] = None
@@ -234,10 +235,10 @@ class JunoDSNReanalysis:
                 row["lbl_parse_error"] = str(exc)
             rows.append(row)
 
-        def _known_false(r: Dict[str, Any]) -> bool:
+        def _known_false(r: dict[str, Any]) -> bool:
             return r.get("overlaps_flyby_window_utc") is False
 
-        def _known_true(r: Dict[str, Any]) -> bool:
+        def _known_true(r: dict[str, Any]) -> bool:
             return r.get("overlaps_flyby_window_utc") is True
 
         any_overlap = any(_known_true(r) for r in rows)
@@ -259,12 +260,12 @@ class JunoDSNReanalysis:
     def _build_evidence_tier_assessment(
         self,
         *,
-        trk_temporal: Dict[str, Any],
-        falsification_result: Dict[str, Any],
-        proxy_results: Dict[str, Any],
-        horizons_pub: Optional[Dict[str, Any]],
+        trk_temporal: dict[str, Any],
+        falsification_result: dict[str, Any],
+        proxy_results: dict[str, Any],
+        horizons_pub: dict[str, Any] | None,
         perigee_matched: bool,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Machine-readable Tier I–III closure for Juno DSN / OD-filtering narrative."""
         proxy_kind = proxy_results.get("proxy_kind")
         trk_off_epoch = bool(trk_temporal.get("all_evaluated_files_miss_flyby_window"))
@@ -292,7 +293,7 @@ class JunoDSNReanalysis:
                 "(e.g. OCRU outer-cruise 2015 TNF); ramp-frequency Hz proxy only."
             )
 
-        horizons_note: Optional[str] = None
+        horizons_note: str | None = None
         if horizons_pub is not None:
             vo = horizons_pub.get("velocity_only") or {}
             bls = vo.get("batch_least_squares") or {}
@@ -336,7 +337,7 @@ class JunoDSNReanalysis:
             ),
         }
 
-    def _probe_juno_public_urls_optional(self) -> Optional[Dict[str, Any]]:
+    def _probe_juno_public_urls_optional(self) -> dict[str, Any] | None:
         """
         Optional live check of public archive entry points (no bulk download).
         Enable with ``TEP_030_PROBE_PUBLIC_URLS=1``.
@@ -352,9 +353,9 @@ class JunoDSNReanalysis:
                 )
             }
         )
-        probes: List[Dict[str, Any]] = []
+        probes: list[dict[str, Any]] = []
         for probe_id, url, purpose in self.JUNO_PUBLIC_URL_PROBE_TARGETS:
-            entry: Dict[str, Any] = {
+            entry: dict[str, Any] = {
                 "id": probe_id,
                 "url": url,
                 "purpose": purpose,
@@ -385,7 +386,7 @@ class JunoDSNReanalysis:
             "probes": probes,
         }
 
-    def query_pds_inventory(self) -> Dict:
+    def query_pds_inventory(self) -> dict:
         """
         Query NASA PDS Radio Science Node for Juno Earth flyby data inventory.
         
@@ -433,7 +434,7 @@ class JunoDSNReanalysis:
         
         return inventory
     
-    def download_trk225_data(self) -> Dict:
+    def download_trk225_data(self) -> dict:
         """
         Download raw TRK-2-25 tracking data from NASA PDS.
         
@@ -625,9 +626,9 @@ class JunoDSNReanalysis:
         self,
         session: requests.Session,
         idx_url: str,
-        tnf_names: List[str],
+        tnf_names: list[str],
         max_n: int,
-    ) -> List[str]:
+    ) -> list[str]:
         """
         Keep only ``.TNF`` basenames whose sibling ``.LBL`` START_TIME/STOP_TIME overlaps
         the Step 030 analysis window around ``FLYBY_DATE`` (``ANALYSIS_WINDOW_HOURS``).
@@ -636,7 +637,7 @@ class JunoDSNReanalysis:
         win_lo = flyby - timedelta(hours=self.ANALYSIS_WINDOW_HOURS / 2)
         win_hi = flyby + timedelta(hours=self.ANALYSIS_WINDOW_HOURS / 2)
         scan_cap = int(os.environ.get("TEP_030_ATMOSPHERES_LBL_SCAN_CAP", "500"))
-        overlap: List[str] = []
+        overlap: list[str] = []
         scanned = 0
         for name in sorted(set(tnf_names)):
             if len(overlap) >= max_n:
@@ -673,7 +674,7 @@ class JunoDSNReanalysis:
             )
         return overlap
 
-    def _download_atmospheres_ocru_tnfs(self, session: requests.Session) -> List[Path]:
+    def _download_atmospheres_ocru_tnfs(self, session: requests.Session) -> list[Path]:
         """
         Optional bulk ingest from the verified NMSU Atmospheres HTTPS mirror for
         JUNO-J-RSS-1-OCRU-V1.0 (NJPL-class TNF).
@@ -713,7 +714,7 @@ class JunoDSNReanalysis:
         )
         # De-duplicate, preserve order
         seen = set()
-        tnf_names: List[str] = []
+        tnf_names: list[str] = []
         for h in hrefs:
             name = h.split("/")[-1]
             if not name.lower().endswith(".tnf"):
@@ -762,7 +763,7 @@ class JunoDSNReanalysis:
                     "Earth flyby — pairwise statistics are not asserted as perigee Doppler."
                 )
 
-        out: List[Path] = []
+        out: list[Path] = []
         for name in chosen:
             file_url = idx_url + name
             local_path = dest / name
@@ -784,7 +785,7 @@ class JunoDSNReanalysis:
 
         return out
 
-    def parse_trk225_file(self, filepath: str) -> List[Dict]:
+    def parse_trk225_file(self, filepath: str) -> list[dict]:
         """
         Parse TRK-2-34 / TRK-2-25-class NJPL SFDU archive for radiometric observables.
 
@@ -865,7 +866,7 @@ class JunoDSNReanalysis:
             
         return measurements
     
-    def _basic_trk_parse(self, filepath: str) -> List[Dict]:
+    def _basic_trk_parse(self, filepath: str) -> list[dict]:
         """Basic TRK-2-25 parsing without external library."""
         measurements = []
         
@@ -905,7 +906,7 @@ class JunoDSNReanalysis:
             
         return measurements
     
-    def extract_doppler_pair_residual_proxy(self, doppler_data: List[Dict]) -> Dict:
+    def extract_doppler_pair_residual_proxy(self, doppler_data: list[dict]) -> dict:
         """
         Build a per-station pairwise-difference proxy (not orbit determination).
 
@@ -1023,7 +1024,7 @@ class JunoDSNReanalysis:
             },
         }
     
-    def _analyze_perigee_passage(self, residuals: List[Dict]) -> Dict:
+    def _analyze_perigee_passage(self, residuals: list[dict]) -> dict:
         """Analyze residuals around perigee passage for TEP signal."""
         
         perigee_window_start = self.FLYBY_DATE - timedelta(hours=2)
@@ -1091,7 +1092,7 @@ class JunoDSNReanalysis:
             'message': 'No perigee residuals with velocity_mm_s or ramp_freq_delta_hz',
         }
     
-    def export_juno_residual_series_for_042(self, residuals: List[Dict]) -> Optional[Path]:
+    def export_juno_residual_series_for_042(self, residuals: list[dict]) -> Path | None:
         """
         Export pairwise-Doppler proxy (mm/s) timestamps for Step 042 correlation.
 
@@ -1134,7 +1135,7 @@ class JunoDSNReanalysis:
         else:
             self.logger.success("Step 042 refresh completed.")
 
-    def compute_falsification_test(self, proxy_results: Dict) -> Dict:
+    def compute_falsification_test(self, proxy_results: dict) -> dict:
         """
         Gate the perigee-window **pairwise-Doppler proxy** mean against a fixed
         0.08 mm/s repository threshold.
@@ -1261,12 +1262,12 @@ class JunoDSNReanalysis:
 
     def compute_matched_filter_tep_template(
         self,
-        residuals: List[Dict],
+        residuals: list[dict],
         perigee_altitude_km: float = 817.0,
         perigee_velocity_km_s: float = 14.79,
         lambda_tep_km: float = 4000.0,
         earth_radius_km: float = 6371.0,
-    ) -> Dict:
+    ) -> dict:
         """
         Time-domain matched-filter test: correlate pairwise residuals with a
         predicted TEP impulse template centred at perigee.
@@ -1399,9 +1400,9 @@ class JunoDSNReanalysis:
 
     def compute_archive_presmoothing_sensitivity(
         self,
-        measurements: List[Dict],
-        window_samples: Tuple[int, ...] = (1, 5, 11, 31, 61),
-    ) -> Dict:
+        measurements: list[dict],
+        window_samples: tuple[int, ...] = (1, 5, 11, 31, 61),
+    ) -> dict:
         """
         Observable-domain sensitivity: presmooth archival ramp (or Doppler) per
         station, then re-form sequential pairwise differences.
@@ -1429,7 +1430,7 @@ class JunoDSNReanalysis:
 
         basis = "ramp_freq_hz" if use_ramp else "doppler_hz"
 
-        def _parse_ts(s: Optional[str]) -> Optional[datetime]:
+        def _parse_ts(s: str | None) -> datetime | None:
             if not s:
                 return None
             try:
@@ -1437,17 +1438,17 @@ class JunoDSNReanalysis:
             except (ValueError, TypeError):
                 return None
 
-        stations: Dict[str, List[Dict]] = {}
+        stations: dict[str, list[dict]] = {}
         for m in measurements:
             st = m.get("station", "UNKNOWN")
             stations.setdefault(st, []).append(m)
 
-        per_station: Dict[str, Dict] = {}
+        per_station: dict[str, dict] = {}
         for st_name, rows in stations.items():
             rows_sorted = sorted(rows, key=lambda x: str(x.get("timestamp", "")))
-            ts_list: List[datetime] = []
-            y_list: List[float] = []
-            freq_hz: List[float] = []
+            ts_list: list[datetime] = []
+            y_list: list[float] = []
+            freq_hz: list[float] = []
 
             for row in rows_sorted:
                 t = _parse_ts(row.get("timestamp"))
@@ -1476,7 +1477,7 @@ class JunoDSNReanalysis:
             y = np.asarray(y_list, dtype=float)
             dt_med = float(np.median(np.diff(t_sec))) if len(t_sec) > 1 else 0.0
 
-            win_stats: Dict[str, Dict[str, float]] = {}
+            win_stats: dict[str, dict[str, float]] = {}
             for W in window_samples:
                 if W < 1:
                     continue
@@ -1521,7 +1522,7 @@ class JunoDSNReanalysis:
 
             raw_key = "1" if "1" in win_stats else str(window_samples[0])
             raw_mean_abs = win_stats.get(raw_key, {}).get("mean_abs")
-            frac_change_vs_raw: Dict[str, Optional[float]] = {}
+            frac_change_vs_raw: dict[str, float | None] = {}
             for wk, stats in win_stats.items():
                 if wk == raw_key or raw_mean_abs is None or raw_mean_abs == 0.0:
                     frac_change_vs_raw[wk] = None
@@ -1531,7 +1532,7 @@ class JunoDSNReanalysis:
                     )
 
             # One-shot 3σ clip on W=1 pairwise deltas (mimics aggressive editing)
-            clip_note: Optional[Dict[str, float]] = None
+            clip_note: dict[str, float] | None = None
             if "1" in win_stats and use_ramp:
                 ys1 = y
                 d1 = np.diff(ys1)
@@ -1588,7 +1589,7 @@ class JunoDSNReanalysis:
             "interpretation": summary,
         }
 
-    def run_full_reanalysis(self) -> Dict:
+    def run_full_reanalysis(self) -> dict:
         """Execute complete Juno 2013 raw DSN reanalysis with REAL DATA ONLY."""
         self.logger.header("STEP 030: JUNO 2013 RAW DSN REANALYSIS (CRITICAL TEST)")
         
@@ -1759,7 +1760,7 @@ class JunoDSNReanalysis:
             else "format_validation_or_hz_proxy_only"
         )
 
-        horizons_pub: Optional[Dict[str, Any]] = None
+        horizons_pub: dict[str, Any] | None = None
         try:
             horizons_pub = self._horizons_public_ephemeris_optional()
         except (FileNotFoundError, KeyError, ValueError, RuntimeError) as exc:

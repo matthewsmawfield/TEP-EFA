@@ -1,33 +1,35 @@
 """
 GNSS Cross-Validation for TEP Parameters
 
-This module implements cross-validation between flyby analysis and GNSS clock
-correlation data from Paper 5 (GTE). The GNSS analysis provides independent
-empirical support for the theoretically derived TEP parameters, particularly:
+This module implements cross-checks between flyby analysis and GNSS clock
+correlation data from Paper 5 (GTE). Because the pipeline's terrestrial scale
+constants are themselves anchored on the GNSS measurement (ρ_T is calibrated
+from L_c under the Paper 6 §2 transfer-sketch identification), the comparisons
+here are shared-input bookkeeping checks — verifying that the adopted
+constants remain consistent with their own anchor — not independent empirical
+validations. Parameters compared:
 - Correlation length: λ = 4,201 ± 1,967 km
 - Density modulation exponent: α_d = 0.334 (from Paper 6)
 - Universal critical density: ρ_c ≈ 20 g/cm³
-
-These empirical constraints serve to validate the analytical PREM boundary value 
-integration and ensure parameter consistency across experimental platforms.
 """
 
-import numpy as np
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import (
     BETA_BASELINE,
-    RHO_T,
-    SUPPRESSION_EXPONENT,
     LAMBDA_TEP_M,
     LAMBDA_TEP_UNCERTAINTY,
+    RHO_T,
+    SUPPRESSION_EXPONENT,
 )
+from scripts.utils.step_logger import StepLogger
 
 # GNSS-derived parameters from Paper 5 (GTE)
 GNSS_CORRELATION_LENGTH_KM = 4201  # km
@@ -117,8 +119,13 @@ class GNSSCrossValidation:
             else:
                 self.logger.info("  Theory anchor: ✗ INCONSISTENT (> 3σ mission spread)")
         
-        # Compare screening length (primary GNSS cross-scale check)
-        self.logger.subsection("SCREENING LENGTH COMPARISON")
+        # Compare screening length (constant-input bookkeeping check)
+        # NOTE: both constants trace to the same GNSS measurement — LAMBDA_TEP_M
+        # is the corpus anchor set from GNSS_CORRELATION_LENGTH_KM itself — so
+        # this verifies pipeline constants match the adopted anchor; it is a
+        # shared-input bookkeeping check, NOT an empirical validation. A
+        # genuine cross-scale test would require a fitted (not input) length.
+        self.logger.subsection("SCREENING LENGTH BOOKKEEPING (SHARED INPUT)")
         lambda_tep_km = LAMBDA_TEP_M / 1000.0
         lambda_tep_sigma_km = lambda_tep_km * LAMBDA_TEP_UNCERTAINTY
         gnss_sigma_km = GNSS_CORRELATION_UNCERTAINTY_KM
@@ -131,6 +138,7 @@ class GNSSCrossValidation:
         self.logger.info(f"  GNSS-derived (Paper 5): {GNSS_CORRELATION_LENGTH_KM:.0f} ± {GNSS_CORRELATION_UNCERTAINTY_KM:.0f} km")
         self.logger.info(f"  Flyby model (physics.py): {lambda_tep_km:.0f} ± {lambda_tep_sigma_km:.0f} km (SCF prior)")
         self.logger.info(f"  Difference: {lambda_diff_km:.0f} km ({lambda_sigma:.1f}σ combined)")
+        self.logger.info("  (Both constants share the same GNSS anchor — bookkeeping check only.)")
         if lambda_consistent:
             self.logger.info("  GNSS cross-scale: ✓ CONSISTENT (< 2σ)")
         elif lambda_sigma < 3:
@@ -158,6 +166,12 @@ class GNSSCrossValidation:
             'beta_consistent': lambda_consistent,
             'lambda_consistent': lambda_consistent,
             'lambda_sigma': float(lambda_sigma) if lambda_sigma != np.inf else None,
+            'lambda_check_semantics': (
+                'BOOKKEEPING_ONLY: lambda_tep_km and gnss_correlation_length are '
+                'both constants anchored on the same GNSS measurement; this '
+                'agreement cannot fail in practice and is not an independent '
+                'validation of the terrestrial scale.'
+            ),
             'lambda_tep_km': lambda_tep_km,
             'lambda_tep_uncertainty_km': lambda_tep_sigma_km,
             'beta_theory_consistent': bool(beta_theory_sigma < 2.0) if beta_theory_sigma != np.inf else None,

@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "step": "anderson_audit",
+    "description": "Anderson empirical formula best-fit and geometry audit",
+    "timestamp": "2026-05-16T16:00:00Z"
+  },
+  "anderson_fit": {
+    "A_fit_mm_s": 16.129975883783512,
+    "B_fit_mm_s": -0.12661501912962866,
+    "A_uncertainty_mm_s": 0.13858070236534445,
+    "B_uncertainty_mm_s": 0.009959604893230558,
+    "chi2": 2091.5866700332767,
+    "dof": 5,
+    "reduced_chi2": 418.31733400665536,
+    "rms_residual_mm_s": 1.7404148913088109,
+    "r2_weighted": 0.8662597631957358,
+    "n_data_points": 7,
+    "fit_mission_names": [
+      "NEAR",
+      "Galileo_1990",
+      "Cassini",
+      "Galileo_1992",
+      "Rosetta_2005",
+      "Rosetta_2007",
+      "MESSENGER_2005"
+    ]
+  },
+  "anderson_fit_n4_primary_detections_only": {
+    "A_fit_mm_s": 24.284170475728406,
+    "B_fit_mm_s": -2.0518683354270673,
+    "A_uncertainty_mm_s": 0.29079824591706055,
+    "B_uncertainty_mm_s": 0.0617385973766059,
+    "chi2": 1007.999395723921,
+    "dof": 2,
+    "reduced_chi2": 503.9996978619605,
+    "rms_residual_mm_s": 1.2365640338383068,
+    "r2_weighted": 0.873711109238378,
+    "n_data_points": 4,
+    "fit_mission_names": [
+      "NEAR",
+      "Galileo_1990",
+      "Cassini",
+      "Rosetta_2005"
+    ]
+  },
+  "cassini_sign_analysis": {
+    "published_cos_asymmetry": -0.022,
+    "observed_anomaly_mm_s": -2.0,
+    "anderson_prediction_mm_s": -0.4815,
+    "tep_prediction_mm_s": -0.0001,
+    "conclusion": "Both Anderson empirical formula and TEP model predict negative anomaly for Cassini because the published geometry factor cos_asymmetry = -0.088 is negative. The sign mismatch is inherited from the literature geometry, not a TEP-specific failure."
+  },
+  "anderson_vs_tep_vs_observed_table": [
+    {
+      "mission_name": "NEAR",
+      "cos_asymmetry": 0.625,
+      "observed_dv_mm_s": 13.46,
+      "observed_uncertainty_mm_s": 0.13,
+      "anderson_prediction_mm_s": 9.9546,
+      "tep_prediction_beta_ref_mm_s": 1.527,
+      "tep_prediction_fitted_beta_mm_s": 13.46
+    },
+    {
+      "mission_name": "Galileo_1990",
+      "cos_asymmetry": 0.149,
+      "observed_dv_mm_s": 3.92,
+      "observed_uncertainty_mm_s": 0.08,
+      "anderson_prediction_mm_s": 2.2768,
+      "tep_prediction_beta_ref_mm_s": 0.1372,
+      "tep_prediction_fitted_beta_mm_s": 3.92
+    },
+    {
+      "mission_name": "Cassini",
+      "cos_asymmetry": -0.022,
+      "observed_dv_mm_s": -2.0,
+      "observed_uncertainty_mm_s": 1.0,
+      "anderson_prediction_mm_s": -0.4815,
+      "tep_prediction_beta_ref_mm_s": -0.0001,
+      "tep_prediction_fitted_beta_mm_s": -2.0
+    },
+    {
+      "mission_name": "Galileo_1992",
+      "cos_asymmetry": -0.17,
+      "observed_dv_mm_s": -4.6,
+      "observed_uncertainty_mm_s": 1.0,
+      "anderson_prediction_mm_s": -2.8687,
+      "tep_prediction_beta_ref_mm_s": -0.0348,
+      "tep_prediction_fitted_beta_mm_s": -4.6
+    },
+    {
+      "mission_name": "Rosetta_2005",
+      "cos_asymmetry": 0.173,
+      "observed_dv_mm_s": 1.8,
+      "observed_uncertainty_mm_s": 0.03,
+      "anderson_prediction_mm_s": 2.6639,
+      "tep_prediction_beta_ref_mm_s": 0.1758,
+      "tep_prediction_fitted_beta_mm_s": 1.8
+    },
+    {
+      "mission_name": "Rosetta_2007",
+      "cos_asymmetry": 0.034,
+      "observed_dv_mm_s": 0.02,
+      "observed_uncertainty_mm_s": 0.05,
+      "anderson_prediction_mm_s": 0.4218,
+      "tep_prediction_beta_ref_mm_s": 0.0001,
+      "tep_prediction_fitted_beta_mm_s": 0.0002
+    },
+    {
+      "mission_name": "Rosetta_2009",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": 0.0,
+      "observed_uncertainty_mm_s": 0.05,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": 0.0012,
+      "tep_prediction_fitted_beta_mm_s": 0.0044
+    },
+    {
+      "mission_name": "MESSENGER_2005",
+      "cos_asymmetry": 0.005,
+      "observed_dv_mm_s": 0.02,
+      "observed_uncertainty_mm_s": 0.01,
+      "anderson_prediction_mm_s": -0.046,
+      "tep_prediction_beta_ref_mm_s": 0.0,
+      "tep_prediction_fitted_beta_mm_s": 0.02
+    },
+    {
+      "mission_name": "Juno",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": 0.0,
+      "observed_uncertainty_mm_s": 0.02,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": 0.0132,
+      "tep_prediction_fitted_beta_mm_s": 0.0483
+    },
+    {
+      "mission_name": "Stardust",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": null,
+      "observed_uncertainty_mm_s": null,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": -0.0003,
+      "tep_prediction_fitted_beta_mm_s": -0.0012
+    },
+    {
+      "mission_name": "OSIRIS-REx",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": null,
+      "observed_uncertainty_mm_s": 0.02,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": 0.0,
+      "tep_prediction_fitted_beta_mm_s": 0.0
+    },
+    {
+      "mission_name": "BepiColombo",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": null,
+      "observed_uncertainty_mm_s": 0.03,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": -0.0,
+      "tep_prediction_fitted_beta_mm_s": -0.0
+    },
+    {
+      "mission_name": "JUICE",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": null,
+      "observed_uncertainty_mm_s": null,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": null,
+      "tep_prediction_fitted_beta_mm_s": null
+    },
+    {
+      "mission_name": "Europa_Clipper",
+      "cos_asymmetry": null,
+      "observed_dv_mm_s": null,
+      "observed_uncertainty_mm_s": null,
+      "anderson_prediction_mm_s": null,
+      "tep_prediction_beta_ref_mm_s": null,
+      "tep_prediction_fitted_beta_mm_s": null
+    }
+  ],
+  "geometry_audit_table": [
+    {
+      "mission_name": "NEAR",
+      "declination_in_deg_anderson": -20.76,
+      "declination_out_deg_anderson": -71.96,
+      "cos_asymmetry_published": 0.625,
+      "cos_asymmetry_computed_from_anderson_decs": 0.6254,
+      "declination_in_deg_horizons": -20.76,
+      "declination_out_deg_horizons": -71.96,
+      "cos_asymmetry_horizons": 0.625
+    },
+    {
+      "mission_name": "Galileo_1990",
+      "declination_in_deg_anderson": -12.52,
+      "declination_out_deg_anderson": -34.15,
+      "cos_asymmetry_published": 0.149,
+      "cos_asymmetry_computed_from_anderson_decs": 0.1486,
+      "declination_in_deg_horizons": -12.52,
+      "declination_out_deg_horizons": -34.15,
+      "cos_asymmetry_horizons": 0.149
+    },
+    {
+      "mission_name": "Cassini",
+      "declination_in_deg_anderson": -12.92,
+      "declination_out_deg_anderson": -4.99,
+      "cos_asymmetry_published": -0.022,
+      "cos_asymmetry_computed_from_anderson_decs": -0.0215,
+      "declination_in_deg_horizons": -12.92,
+      "declination_out_deg_horizons": -4.99,
+      "cos_asymmetry_horizons": -0.022
+    },
+    {
+      "mission_name": "Galileo_1992",
+      "declination_in_deg_anderson": -34.26,
+      "declination_out_deg_anderson": -4.87,
+      "cos_asymmetry_published": -0.17,
+      "cos_asymmetry_computed_from_anderson_decs": -0.1699,
+      "declination_in_deg_horizons": -34.26,
+      "declination_out_deg_horizons": -4.87,
+      "cos_asymmetry_horizons": -0.17
+    },
+    {
+      "mission_name": "Rosetta_2005",
+      "declination_in_deg_anderson": -2.81,
+      "declination_out_deg_anderson": -34.29,
+      "cos_asymmetry_published": 0.173,
+      "cos_asymmetry_computed_from_anderson_decs": 0.1726,
+      "declination_in_deg_horizons": -2.81,
+      "declination_out_deg_horizons": -34.29,
+      "cos_asymmetry_horizons": 0.173
+    },
+    {
+      "mission_name": "Rosetta_2007",
+      "declination_in_deg_anderson": -10.8,
+      "declination_out_deg_anderson": 18.6,
+      "cos_asymmetry_published": 0.034,
+      "cos_asymmetry_computed_from_anderson_decs": 0.0345,
+      "declination_in_deg_horizons": -10.8,
+      "declination_out_deg_horizons": 18.6,
+      "cos_asymmetry_horizons": 0.034
+    },
+    {
+      "mission_name": "Rosetta_2009",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": 18.3817335819716,
+      "declination_out_deg_horizons": 24.284555786347568,
+      "cos_asymmetry_horizons": 0.037462427020661826
+    },
+    {
+      "mission_name": "MESSENGER_2005",
+      "declination_in_deg_anderson": 31.44,
+      "declination_out_deg_anderson": -31.92,
+      "cos_asymmetry_published": 0.005,
+      "cos_asymmetry_computed_from_anderson_decs": 0.0044,
+      "declination_in_deg_horizons": 31.44,
+      "declination_out_deg_horizons": -31.92,
+      "cos_asymmetry_horizons": 0.005
+    },
+    {
+      "mission_name": "Juno",
+      "declination_in_deg_anderson": -26.9,
+      "declination_out_deg_anderson": 34.6,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": 0.0687,
+      "declination_in_deg_horizons": -26.9,
+      "declination_out_deg_horizons": 34.6,
+      "cos_asymmetry_horizons": 0.06866116107077225
+    },
+    {
+      "mission_name": "Stardust",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": -21.9034312306491,
+      "declination_out_deg_horizons": 11.097389020833347,
+      "cos_asymmetry_horizons": -0.053487520847351866
+    },
+    {
+      "mission_name": "OSIRIS-REx",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": -3.2201266978011502,
+      "declination_out_deg_horizons": 31.920754447434483,
+      "cos_asymmetry_horizons": 0.14964087986363117
+    },
+    {
+      "mission_name": "BepiColombo",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": -16.059166157074074,
+      "declination_out_deg_horizons": 6.010344440836651,
+      "cos_asymmetry_horizons": -0.03352645897833417
+    },
+    {
+      "mission_name": "JUICE",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": null,
+      "declination_out_deg_horizons": null,
+      "cos_asymmetry_horizons": null
+    },
+    {
+      "mission_name": "Europa_Clipper",
+      "declination_in_deg_anderson": null,
+      "declination_out_deg_anderson": null,
+      "cos_asymmetry_published": null,
+      "cos_asymmetry_computed_from_anderson_decs": null,
+      "declination_in_deg_horizons": null,
+      "declination_out_deg_horizons": null,
+      "cos_asymmetry_horizons": null
+    }
+  ]
+}

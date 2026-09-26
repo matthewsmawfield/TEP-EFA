@@ -111,7 +111,7 @@ class CorrectedUncertaintyCalculator:
         heterogeneity_rel_unc = std / mean if mean > 0 else 0
         
         # Systematic uncertainty sources (from theory parameters)
-        # From Paper 6 (UCD): ρ_T = 20 ± 8 g/cm³ (40%) → ΔS_⊕ ≈ ±0.09 (~25%)
+        # From Paper 6 (UCD): ρ_T = 20 ± 7 g/cm³ (35%) → ΔS_⊕ ≈ ±0.09 (~25%)
         trajectory_rel_unc = 0.01  # 1% trajectory uncertainty
         suppression_rel_unc = 0.25  # ~25% characteristic suppression uncertainty (Paper 6 UCD)
         multipole_rel_unc = 0.001  # 0.1% multipole uncertainty

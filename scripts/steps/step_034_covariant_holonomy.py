@@ -8,16 +8,16 @@ continuum axioms and the kinematic macroscopic Earth Flyby Anomaly (EFA) data.
 """
 
 import json
-import numpy as np
-from pathlib import Path
 import sys
 import time
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import BETA_BASELINE
+from scripts.utils.step_logger import StepLogger
+
 
 class TemporalShearImpulseTracer:
     """Ray-traces null geodesics through the conformal-disformal two metric to compute time non-closure."""

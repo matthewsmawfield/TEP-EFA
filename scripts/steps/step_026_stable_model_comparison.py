@@ -54,17 +54,16 @@ not the primary evidence claim.
 """
 
 import json
+import math
 import sys
 import time
 from pathlib import Path
 
 import numpy as np
-import math
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.flyby_ensemble import (
     ENSEMBLE_GATE_POLICY,
     flyby_ensemble_exclusion_reason,
@@ -73,6 +72,7 @@ from scripts.utils.flyby_ensemble import (
     strict_sign_gate_from_config,
 )
 from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION
+from scripts.utils.step_logger import StepLogger
 
 
 def convert_to_native_types(obj):

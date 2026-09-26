@@ -204,18 +204,17 @@ be ingested directly by:
 """
 
 import json
-from pathlib import Path
 import sys
 import time
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.flyby_ensemble import load_validated_step008_ensemble_summary
+from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION
 from scripts.utils.step_logger import StepLogger
 
-from scripts.utils.step_logger import StepLogger
-from scripts.utils.flyby_ensemble import load_validated_step008_ensemble_summary
-from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION, validate_screened_coupling
 
 def load_results(filename: str) -> dict:
     filepath = PROJECT_ROOT / 'results' / filename

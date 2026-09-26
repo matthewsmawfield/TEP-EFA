@@ -15,9 +15,8 @@ Output:
 
 import json
 import re
-import os
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 # Paths
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -120,7 +119,7 @@ def audit_component(html_path, json_sources):
         for src in json_sources:
             try:
                 data = load_json(src["json_path"])
-            except Exception as e:
+            except Exception:
                 continue
             extracted = src["extract_fn"](data)
             for ext in extracted:

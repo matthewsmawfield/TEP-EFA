@@ -43,11 +43,11 @@ REFERENCES:
 """
 
 import json
-import numpy as np
-from pathlib import Path
-from typing import Dict, Tuple, List
 import sys
 import time
+from pathlib import Path
+
+import numpy as np
 
 # For reproducibility
 np.random.seed(42)
@@ -136,7 +136,7 @@ class TEPForceModel:
         # Acceleration vector (always toward Earth center)
         return -magnitude * r_hat
     
-    def verify_potential(self, r_test: np.ndarray = None) -> Dict:
+    def verify_potential(self, r_test: np.ndarray = None) -> dict:
         """Verify the acceleration derives from a proper potential."""
         if r_test is None:
             r_test = np.linspace(self.R_E, 10*self.R_E, 1000)
@@ -278,7 +278,7 @@ class DSNDopplerModel:
         self.R_E = PhysicalConstants.R_EARTH
         self.omega_E = 7.292115e-5  # Earth's rotation rate [rad/s]
     
-    def station_position(self, t: float) -> Tuple[np.ndarray, np.ndarray]:
+    def station_position(self, t: float) -> tuple[np.ndarray, np.ndarray]:
         """
         Compute station position and velocity at time t (3D).
         
@@ -377,7 +377,7 @@ class SyntheticTrackingNetwork:
     def __init__(
         self,
         noise_sigma: float,
-        station_lat_lon_rad: List[Tuple[float, float]],
+        station_lat_lon_rad: list[tuple[float, float]],
         two_way_multiplier: float = 1.0,
         use_stacked: bool = False,
     ):
@@ -472,7 +472,7 @@ def _perigee_state_bias(
     t_array: np.ndarray,
     truth_states_tep: np.ndarray,
     i_pg: int,
-) -> Dict:
+) -> dict:
     est_arc = propagator_pure.propagate(est_state0, t_array)
     dpos = est_arc[i_pg, :3] - truth_states_tep[i_pg, :3]
     dvel = est_arc[i_pg, 3:6] - truth_states_tep[i_pg, 3:6]
@@ -494,7 +494,7 @@ def _run_od_arc(
     states_tep: np.ndarray,
     injected_doppler_rms: float,
     measurements_tep: np.ndarray,
-) -> Tuple[Dict, Dict, float, float, float]:
+) -> tuple[dict, dict, float, float, float]:
     """Minimal + modern OD on TEP measurements; returns suppression fractions (not percent)."""
     minimal_od = MinimalODFilter(
         t_array=t_array,
@@ -533,7 +533,7 @@ def _run_oracle_tep_od(
     network: SyntheticTrackingNetwork,
     initial_guess_state0: np.ndarray,
     measurements_tep: np.ndarray,
-) -> Dict:
+) -> dict:
     """
     Oracle OD: same 6-state batch estimator, but with the correct dynamics (TEP included).
 
@@ -581,7 +581,7 @@ class MinimalODFilter:
         self.n_steps = len(t_array)
     
     def compute_residuals_and_jacobian(self, state0: np.ndarray,
-                                        measurements: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                                        measurements: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Compute residuals and Jacobian for least-squares.
         
@@ -615,7 +615,7 @@ class MinimalODFilter:
         
         return residuals, jacobian, states
     
-    def estimate(self, initial_guess: np.ndarray, measurements: np.ndarray) -> Dict:
+    def estimate(self, initial_guess: np.ndarray, measurements: np.ndarray) -> dict:
         """
         Run batch least-squares estimation.
         
@@ -728,7 +728,7 @@ class ModernODFilterWithEmpiricalAccel:
         self.n_steps = len(t_array)
         self.n_states = 9  # 6 orbital (3D pos + 3D vel) + 3 empirical accel (reduced from 15 for stability)
         
-    def _get_accel_for_time(self, state: np.ndarray, t: float) -> Tuple[float, float, float]:
+    def _get_accel_for_time(self, state: np.ndarray, t: float) -> tuple[float, float, float]:
         """Get the empirical acceleration (constant across all time for stability)."""
         return state[6], state[7], state[8]
             
@@ -750,7 +750,8 @@ class ModernODFilterWithEmpiricalAccel:
         def state_derivative(s, t):
             x, y, z, vx, vy, vz = s
             r = np.sqrt(x**2 + y**2 + z**2)
-            if r < 1e6: return np.array([vx, vy, vz, 0.0, 0.0, 0.0])
+            if r < 1e6:
+                return np.array([vx, vy, vz, 0.0, 0.0, 0.0])
             
             a_grav = -mu / r**3
             ax = a_grav * x
@@ -782,7 +783,7 @@ class ModernODFilterWithEmpiricalAccel:
         return states
         
     def compute_residuals_and_jacobian(self, state: np.ndarray,
-                                        measurements: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                                        measurements: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Compute residuals and N-parameter Jacobian (3D)."""
         states = self._propagate_with_emp_accel(state)
         modeled = _modeled_vector(self.doppler, states, self.t_array)
@@ -811,7 +812,7 @@ class ModernODFilterWithEmpiricalAccel:
         return residuals, jacobian, states
         
     def run_filter(self, initial_state: np.ndarray, measurements: np.ndarray,
-                   t_array: np.ndarray) -> Dict:
+                   t_array: np.ndarray) -> dict:
         """Run a stable empirical-acceleration correction on top of a fixed 6-state arc."""
         state_estimate = initial_state.copy()
         W = 1.0 / (self.doppler.noise_sigma ** 2)
@@ -914,7 +915,7 @@ class ModernODFilter:
         return temp_prop.propagate(state9[:6], self.t_array)
         
     def compute_residuals_and_jacobian(self, state: np.ndarray,
-                                        measurements: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+                                        measurements: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Compute residuals and N-parameter Jacobian (3D)."""
         # Propagate with current state estimate
         states = self._propagate_with_emp_accel(state)
@@ -947,7 +948,7 @@ class ModernODFilter:
         return residuals, jacobian, states
         
     def run_filter(self, initial_state: np.ndarray, measurements: np.ndarray,
-                   t_array: np.ndarray) -> Dict:
+                   t_array: np.ndarray) -> dict:
         """Run batch estimation."""
         state_estimate = initial_state.copy()
         W = 1.0 / (self.doppler.noise_sigma ** 2)
@@ -1033,7 +1034,7 @@ class ModernODFilter:
 
 def setup_flyby_scenario(tep_alpha: float = 1e-4, tep_lambda: float = 1e6,
                          v_inf: float = 10000.0, perigee_altitude: float = 500e3,
-                         inclination_deg: float = 30.0, dt: float = 10.0) -> Dict:
+                         inclination_deg: float = 30.0, dt: float = 10.0) -> dict:
     """
     Setup a realistic Earth flyby scenario with proper hyperbolic orbital mechanics (3D).
     
@@ -1094,7 +1095,7 @@ def setup_flyby_scenario(tep_alpha: float = 1e-4, tep_lambda: float = 1e6,
 def run_validation_tests(propagator_pure: OrbitalMechanics3D,
                          propagator_tep: OrbitalMechanics3D,
                          tep_model: TEPForceModel,
-                         scenario: Dict) -> Dict:
+                         scenario: dict) -> dict:
     """
     Run validation tests on the orbital mechanics implementation.
     
@@ -1179,12 +1180,12 @@ def main():
         dt=10.0                # 10 second sampling
     )
     
-    logger.info(f"Flyby geometry:")
+    logger.info("Flyby geometry:")
     logger.info(f"  Perigee altitude: {scenario['r_perigee'] - PhysicalConstants.R_EARTH:.0f} m")
     logger.info(f"  Hyperbolic excess velocity: {scenario['v_inf']:.0f} m/s")
     logger.info(f"  Arc duration: {scenario['t_array'][-1] - scenario['t_array'][0]:.0f} s")
     logger.info(f"  Time steps: {len(scenario['t_array'])}")
-    logger.info(f"TEP model parameters:")
+    logger.info("TEP model parameters:")
     logger.info(f"  Coupling strength (alpha): {scenario['tep_alpha']:.2e} m/s^2")
     logger.info(f"  Length scale (lambda): {scenario['tep_lambda']:.0f} m")
     
@@ -1384,13 +1385,13 @@ def main():
     logger.info(f"True injected speed delta over arc: {true_dv*1000:.3f} mm/s")
     logger.info(f"Injected Doppler signal RMS: {injected_doppler_rms*1000:.3f} mm/s")
     logger.info(f"Injected Doppler signal peak-to-peak: {injected_doppler_peak_to_peak*1000:.3f} mm/s")
-    logger.info(f"")
-    logger.info(f"MINIMAL OD RESULTS:")
+    logger.info("")
+    logger.info("MINIMAL OD RESULTS:")
     logger.info(f"  Detected delta-V: {minimal_detected*1000:.3f} mm/s")
     logger.info(f"  Residual/injected observable fraction: {suppression_minimal*100:.1f}%")
     logger.info(f"  Observable suppression: {suppression_percent_minimal:.1f}%")
-    logger.info(f"")
-    logger.info(f"MODERN OD RESULTS:")
+    logger.info("")
+    logger.info("MODERN OD RESULTS:")
     logger.info(f"  Detected delta-V: {modern_detected*1000:.3f} mm/s")
     logger.info(f"  Residual/injected observable fraction: {suppression_modern*100:.1f}%")
     logger.info(f"  Observable suppression: {suppression_percent_modern:.1f}%")
@@ -1435,7 +1436,7 @@ def main():
             "rng_seed_offset": 202,
         },
     ]
-    sensitivity_rows: List[Dict] = []
+    sensitivity_rows: list[dict] = []
     for spec in sensitivity_specs:
         np.random.seed(42 + int(spec["rng_seed_offset"]))
         net = SyntheticTrackingNetwork(
@@ -1535,7 +1536,7 @@ def main():
         'scenario': {
             'perigee_altitude_m': float(scenario['r_perigee'] - PhysicalConstants.R_EARTH),
             'arc_duration_s': float(scenario['t_array'][-1] - scenario['t_array'][0]),
-            'time_steps': int(len(scenario['t_array'])),
+            'time_steps': len(scenario['t_array']),
             'tep_alpha_m_s2': float(scenario['tep_alpha']),
             'tep_lambda_m': float(scenario['tep_lambda'])
         },

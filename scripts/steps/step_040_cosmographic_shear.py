@@ -11,11 +11,11 @@ that may correlate with date/time and direction via cosmographic modulation.
 """
 
 import json
+import math
 import os
 import sys
-import math
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 import numpy as np
 from scipy import stats
@@ -135,9 +135,9 @@ def earth_sun_ephemeris_state(dt: datetime, logger, quiet: bool = False) -> dict
     velocity from Horizons (consistent inertial chain), and Earth/Sun barycentric
     positions in ICRS (AU) for trajectory mapping in Step 042.
     """
-    from astropy.time import Time
-    from astropy.coordinates import solar_system_ephemeris, get_body_barycentric_posvel
     import astropy.units as u
+    from astropy.coordinates import get_body_barycentric_posvel, solar_system_ephemeris
+    from astropy.time import Time
 
     t = Time(dt, scale="utc")
     ephem = os.environ.get("TEP_SOLAR_SYSTEM_EPHEMERIS", "de440").strip()
@@ -560,7 +560,7 @@ def main():
             logger.info(f"  Observed: {obs:.2f} mm/s, Predicted: {prd:.3f} mm/s")
             logger.info(f"  Ratio (obs/pred): {ratio:.2f}, Difference: {diff:.2f} mm/s")
         else:
-            logger.info(f"  No prediction available or zero prediction")
+            logger.info("  No prediction available or zero prediction")
 
         results.append({
             "mission": mission,
@@ -635,7 +635,7 @@ def main():
             std_resid = float(np.std(residuals))
             reduction = (std_orig - std_resid) / std_orig * 100.0 if std_orig > 0 else 0.0
 
-            logger.info(f"Model: ratio = b0 + b1*SC-CMB_cos + b2*Earth-CMB_proj/30 + b3*SC-orbital")
+            logger.info("Model: ratio = b0 + b1*SC-CMB_cos + b2*Earth-CMB_proj/30 + b3*SC-orbital")
             logger.info(f"Coefficients: b0={beta_hat[0]:+.3f}, b1={beta_hat[1]:+.3f}, b2={beta_hat[2]:+.3f}, b3={beta_hat[3]:+.3f}")
             logger.info(f"R^2 = {r2_multi:.4f}, Adjusted R^2 = {adj_r2_multi:.4f}")
             logger.info(f"Residual std: {std_resid:.3f} (original: {std_orig:.3f}, reduction: {reduction:.1f}%)")

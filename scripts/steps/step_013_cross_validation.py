@@ -41,14 +41,15 @@ The corrected implementation:
   - Enforces β > 0 at all stages.
 """
 
-import numpy as np
 import json
 import re
-from pathlib import Path
 import sys
 import time
 from collections import defaultdict
-from typing import Any, Dict, List, Tuple
+from pathlib import Path
+from typing import Any
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -98,14 +99,14 @@ class CrossValidator:
         try:
             with open(fit_file) as f:
                 fit_data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load fitting data: {e}")
             return None
         
         try:
             with open(pred_file) as f:
                 pred_data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load predictions data: {e}")
             return None
 
@@ -246,7 +247,7 @@ class CrossValidator:
             'fold_results': results,
         }
 
-        self.logger.info(f"\nLOO-CV Summary:")
+        self.logger.info("\nLOO-CV Summary:")
         self.logger.info(f"  β_loo = {beta_mean_loo:.3e} ± {beta_std_loo:.3e}")
         self.logger.info(f"  Stability coefficient: {stability:.3f} ({summary['stability_assessment']})")
         self.logger.info(f"  Sign accuracy: {sign_accuracy*100:.0f}%")
@@ -257,7 +258,7 @@ class CrossValidator:
     # Leave-One-Mission-Out (mandatory cross-mission held-out)
     # ------------------------------------------------------------------
 
-    def leave_one_mission_out_cv(self, detections: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def leave_one_mission_out_cv(self, detections: list[dict[str, Any]]) -> dict[str, Any]:
         """
         Hold out entire mission groups (same stem as ``Galileo_1990`` / ``Galileo_1992``).
 
@@ -267,12 +268,12 @@ class CrossValidator:
         """
         self.logger.section("LEAVE-ONE-MISSION-OUT CROSS-VALIDATION (MANDATORY PROTOCOL)")
 
-        by_mission: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
+        by_mission: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for d in detections:
             by_mission[d["mission_id"]].append(d)
 
         mission_ids = sorted(by_mission.keys())
-        folds: List[Dict[str, Any]] = []
+        folds: list[dict[str, Any]] = []
 
         for mid in mission_ids:
             held = list(by_mission[mid])
@@ -295,7 +296,7 @@ class CrossValidator:
 
             beta_train = self._loo_training_beta_weighted_mean(train)
             beta_train = max(beta_train, 0.0)
-            per_flyby: List[Dict[str, Any]] = []
+            per_flyby: list[dict[str, Any]] = []
 
             for test in held:
                 dv_pred = self._predict_with_beta(beta_train, test)
@@ -399,8 +400,8 @@ class CrossValidator:
     @staticmethod
     def evaluate_cross_mission_mandatory_pass(
         n_detections: int,
-        loomo: Dict[str, Any],
-    ) -> Tuple[bool, List[str]]:
+        loomo: dict[str, Any],
+    ) -> tuple[bool, list[str]]:
         """
         Mandatory gate for the pipeline: with ≥2 primaries, every completed LOOMO fold
         must predict the correct anomaly sign for every held-out flyby with valid data,
@@ -412,7 +413,7 @@ class CrossValidator:
         tests an expected limitation, not generalisation.  Amplitude prediction is still
         evaluated in the fold statistics.
         """
-        reasons: List[str] = []
+        reasons: list[str] = []
         if n_detections < 2:
             reasons.append(
                 "fewer_than_two_primary_detections_cross_mission_protocol_not_applicable"

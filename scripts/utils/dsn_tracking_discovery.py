@@ -5,12 +5,11 @@ from __future__ import annotations
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Optional
 
 from scripts.utils.dsn_pds_ingest import _parse_pds_timestamp
 
 
-def _label_path_for_data_file(data_path: Path) -> Optional[Path]:
+def _label_path_for_data_file(data_path: Path) -> Path | None:
     for suffix in (".lbl", ".LBL"):
         candidate = data_path.with_suffix(suffix)
         if candidate.is_file():
@@ -18,7 +17,7 @@ def _label_path_for_data_file(data_path: Path) -> Optional[Path]:
     return None
 
 
-def _read_label_field(label_path: Path, field_name: str) -> Optional[str]:
+def _read_label_field(label_path: Path, field_name: str) -> str | None:
     pattern = re.compile(rf"^{re.escape(field_name)}\s*=\s*(.+)$", re.IGNORECASE)
     for line in label_path.read_text(encoding="utf-8", errors="ignore").splitlines():
         match = pattern.match(line.strip())
@@ -70,9 +69,9 @@ def is_label_only_dat_file(data_path: Path) -> bool:
 
 def discover_dsn_tracking_file(
     mission_dir: Path,
-    perigee: Optional[datetime] = None,
+    perigee: datetime | None = None,
     window_hours: float = 48.0,
-) -> Optional[Path]:
+) -> Path | None:
     if not mission_dir.is_dir():
         return None
 
@@ -110,9 +109,9 @@ def discover_dsn_tracking_file(
 def discover_trk234_file(
     project_root: Path,
     mission: str = "MESSENGER_2005",
-    perigee: Optional[datetime] = None,
+    perigee: datetime | None = None,
     window_hours: float = 48.0,
-) -> Optional[Path]:
+) -> Path | None:
     mission_dir = project_root / "data" / "raw" / "dsn_tracking" / mission
     return discover_dsn_tracking_file(
         mission_dir,

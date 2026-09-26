@@ -13,17 +13,19 @@ genuine physical modulation or model limitations—this analysis is hypothesis-g
 
 import json
 import math
-import numpy as np
-from pathlib import Path
-from scipy import stats
 import sys
 import time
+from pathlib import Path
+
+import numpy as np
+from scipy import stats
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.celestrak_space_weather import lookup_space_weather
 from scripts.utils.step_logger import StepLogger
+
 
 class SpaceWeatherCorrelator:
     """Match historical space weather to flyby catalog dates and fitted beta values."""
@@ -32,12 +34,12 @@ class SpaceWeatherCorrelator:
         try:
             with open(results_file, encoding="utf-8") as f:
                 self.results = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             raise RuntimeError(f"Failed to load results file {results_file}: {e}")
         try:
             with open(catalog_file, encoding="utf-8") as f:
                 self.catalog = json.load(f).get("flybys", [])
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             raise RuntimeError(f"Failed to load catalog file {catalog_file}: {e}")
         self.fits = self.results.get("individual_fits", {})
         self.data_points = []

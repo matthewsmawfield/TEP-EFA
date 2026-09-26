@@ -1,150 +1,228 @@
 {
   "data_source": "step008_fitting_results.json (primary detections only, S/N>2)",
-  "n_primary_detections": 4,
+  "n_primary_detections": 6,
   "detection_names": [
     "NEAR",
     "Galileo_1990",
     "Cassini",
-    "Rosetta_2005"
+    "Galileo_1992",
+    "Rosetta_2005",
+    "MESSENGER_2005"
   ],
   "mission_id_by_flyby": {
     "NEAR": "NEAR",
     "Galileo_1990": "Galileo",
     "Cassini": "Cassini",
-    "Rosetta_2005": "Rosetta"
+    "Galileo_1992": "Galileo",
+    "Rosetta_2005": "Rosetta",
+    "MESSENGER_2005": "MESSENGER"
   },
   "fitted_betas": {
-    "NEAR": 0.0017305147756031074,
-    "Galileo_1990": 0.005329918603129757,
-    "Cassini": 0.0019340334704831914,
-    "Rosetta_2005": 0.0010102428095147484
+    "NEAR": 0.0018207797052178442,
+    "Galileo_1990": 0.008731721925085452,
+    "Cassini": 125.74842831024559,
+    "Galileo_1992": 0.06730401137901822,
+    "Rosetta_2005": 0.002223360573892163,
+    "MESSENGER_2005": 274.93574034838866
   },
   "fitted_beta_uncertainties": {
-    "NEAR": 1.7142295944557774e-06,
-    "Galileo_1990": 5.438692452173221e-05,
-    "Cassini": 0.0011721414972625402,
-    "Rosetta_2005": 3.7005231117756344e-05
+    "NEAR": 2.3447386000824143e-05,
+    "Galileo_1990": 0.00023759787551252932,
+    "Cassini": 83.83228554016372,
+    "Galileo_1992": 0.0195084090953676,
+    "Rosetta_2005": 4.940801275315918e-05,
+    "MESSENGER_2005": 183.29049356559244
   },
   "beta_summary": {
-    "mean": 0.002501177414682701,
-    "std": 0.0016688495936437384,
-    "min": 0.0010102428095147484,
-    "max": 0.005329918603129757,
-    "scatter_ratio": 5.275878781745436,
+    "mean": 66.79404142203624,
+    "std": 103.78958629587467,
+    "min": 0.0018207797052178442,
+    "max": 274.93574034838866,
+    "scatter_ratio": 150998.9042389367,
     "all_positive": true
   },
   "leave_one_out": {
-    "n_folds": 4,
-    "beta_loo_mean": 0.0018931266832084097,
-    "beta_loo_std": 0.00027931726239328387,
-    "stability_coefficient": 0.1475428268328594,
+    "n_folds": 6,
+    "beta_loo_mean": 0.0020203595826140666,
+    "beta_loo_std": 0.00021317866838717185,
+    "stability_coefficient": 0.10551521136220121,
     "stability_assessment": "stable",
-    "sign_accuracy": 0.75,
+    "sign_accuracy": 1.0,
     "fold_results": [
       {
         "left_out": "NEAR",
-        "beta_loo": 0.002376907709061285,
+        "beta_loo": 0.0024935306395386506,
         "dv_obs": 13.46,
-        "dv_pred": 17.077441860193584,
-        "residual_mm_s": -3.6174418601935834,
-        "abs_error_mm_s": 3.6174418601935834,
-        "rel_error_pct": 26.875496732493186,
+        "dv_pred": 17.03974293613458,
+        "residual_mm_s": -3.579742936134579,
+        "abs_error_mm_s": 3.579742936134579,
+        "rel_error_pct": 26.595415573065225,
         "correct_sign": true
       },
       {
         "left_out": "Galileo_1990",
-        "beta_loo": 0.001728972883319778,
+        "beta_loo": 0.0018948574840537266,
         "dv_obs": 3.92,
-        "dv_pred": 1.6849490419790778,
-        "residual_mm_s": 2.2350509580209224,
-        "abs_error_mm_s": 2.2350509580209224,
-        "rel_error_pct": 57.01660607196231,
+        "dv_pred": 1.246360159722376,
+        "residual_mm_s": 2.673639840277624,
+        "abs_error_mm_s": 2.673639840277624,
+        "rel_error_pct": 68.20509796626591,
         "correct_sign": true
       },
       {
         "left_out": "Cassini",
-        "beta_loo": 0.001732538634438866,
-        "dv_obs": 0.11,
-        "dv_pred": -0.10128774251512367,
-        "residual_mm_s": 0.21128774251512367,
-        "abs_error_mm_s": 0.21128774251512367,
-        "rel_error_pct": 192.0797659228397,
-        "correct_sign": false
+        "beta_loo": 0.0019487725382700035,
+        "dv_obs": -2.0,
+        "dv_pred": -0.0004939965713735259,
+        "residual_mm_s": -1.9995060034286265,
+        "abs_error_mm_s": 1.9995060034286265,
+        "rel_error_pct": 99.97530017143133,
+        "correct_sign": true
+      },
+      {
+        "left_out": "Galileo_1992",
+        "beta_loo": 0.0019486960965939737,
+        "dv_obs": -4.6,
+        "dv_pred": -0.32287558503420444,
+        "residual_mm_s": -4.277124414965796,
+        "abs_error_mm_s": 4.277124414965796,
+        "rel_error_pct": 92.9809655427347,
+        "correct_sign": true
       },
       {
         "left_out": "Rosetta_2005",
-        "beta_loo": 0.0017340875060137084,
-        "dv_obs": 1.82,
-        "dv_pred": 2.729325412350007,
-        "residual_mm_s": -0.9093254123500067,
-        "abs_error_mm_s": 0.9093254123500067,
-        "rel_error_pct": 49.962934744505866,
+        "beta_loo": 0.0018875281946358006,
+        "dv_obs": 1.8,
+        "dv_pred": 1.591971049243746,
+        "residual_mm_s": 0.20802895075625405,
+        "abs_error_mm_s": 0.20802895075625405,
+        "rel_error_pct": 11.557163930903002,
+        "correct_sign": true
+      },
+      {
+        "left_out": "MESSENGER_2005",
+        "beta_loo": 0.0019487725425922453,
+        "dv_obs": 0.02,
+        "dv_pred": 2.747435210894145e-06,
+        "residual_mm_s": 0.019997252564789108,
+        "abs_error_mm_s": 0.019997252564789108,
+        "rel_error_pct": 99.98626282394554,
         "correct_sign": true
       }
     ]
   },
   "leave_one_mission_out": {
-    "n_mission_groups": 4,
-    "max_flybys_per_mission": 1,
-    "equivalent_to_leave_one_flyby_out": true,
-    "equivalence_note": "Each mission_id appears once; LOOMO folds match LOO folds one-to-one.",
+    "n_mission_groups": 5,
+    "max_flybys_per_mission": 2,
+    "equivalent_to_leave_one_flyby_out": false,
+    "equivalence_note": "At least one mission hosts multiple primaries; LOOMO is stricter than LOO.",
     "mission_folds": [
       {
         "held_out_mission_id": "Cassini",
         "status": "complete",
-        "n_train": 3,
+        "n_train": 5,
         "n_held_out": 1,
         "train_flybys": [
           "NEAR",
           "Galileo_1990",
-          "Rosetta_2005"
+          "Galileo_1992",
+          "Rosetta_2005",
+          "MESSENGER_2005"
         ],
         "held_out_flybys": [
           "Cassini"
         ],
-        "beta_train": 0.001732538634438866,
+        "beta_train": 0.0019487725382700035,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Cassini",
             "status": "ok",
-            "beta_train": 0.001732538634438866,
-            "dv_pred": -0.10128774251512367,
-            "dv_obs": 0.11,
-            "residual_mm_s": 0.21128774251512367,
-            "abs_error_mm_s": 0.21128774251512367,
-            "rel_error_pct": 192.0797659228397,
-            "correct_sign": false,
-            "sign_agreement_at_ref": false,
-            "known_sign_mismatch": true
+            "beta_train": 0.0019487725382700035,
+            "dv_pred": -0.0004939965713735259,
+            "dv_obs": -2.0,
+            "residual_mm_s": -1.9995060034286265,
+            "abs_error_mm_s": 1.9995060034286265,
+            "rel_error_pct": 99.97530017143133,
+            "correct_sign": true,
+            "sign_agreement_at_ref": true,
+            "known_sign_mismatch": false
           }
         ]
       },
       {
         "held_out_mission_id": "Galileo",
         "status": "complete",
-        "n_train": 3,
-        "n_held_out": 1,
+        "n_train": 4,
+        "n_held_out": 2,
         "train_flybys": [
           "NEAR",
           "Cassini",
-          "Rosetta_2005"
+          "Rosetta_2005",
+          "MESSENGER_2005"
         ],
         "held_out_flybys": [
-          "Galileo_1990"
+          "Galileo_1990",
+          "Galileo_1992"
         ],
-        "beta_train": 0.001728972883319778,
+        "beta_train": 0.0018947803631739072,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Galileo_1990",
             "status": "ok",
-            "beta_train": 0.001728972883319778,
-            "dv_pred": 1.6849490419790778,
+            "beta_train": 0.0018947803631739072,
+            "dv_pred": 1.2463221142960363,
             "dv_obs": 3.92,
-            "residual_mm_s": 2.2350509580209224,
-            "abs_error_mm_s": 2.2350509580209224,
-            "rel_error_pct": 57.01660607196231,
+            "residual_mm_s": 2.6736778857039636,
+            "abs_error_mm_s": 2.6736778857039636,
+            "rel_error_pct": 68.2060685128562,
+            "correct_sign": true,
+            "sign_agreement_at_ref": true,
+            "known_sign_mismatch": false
+          },
+          {
+            "flyby": "Galileo_1992",
+            "status": "ok",
+            "beta_train": 0.0018947803631739072,
+            "dv_pred": -0.3161522493657865,
+            "dv_obs": -4.6,
+            "residual_mm_s": -4.283847750634213,
+            "abs_error_mm_s": 4.283847750634213,
+            "rel_error_pct": 93.12712501378725,
+            "correct_sign": true,
+            "sign_agreement_at_ref": true,
+            "known_sign_mismatch": false
+          }
+        ]
+      },
+      {
+        "held_out_mission_id": "MESSENGER",
+        "status": "complete",
+        "n_train": 5,
+        "n_held_out": 1,
+        "train_flybys": [
+          "NEAR",
+          "Galileo_1990",
+          "Cassini",
+          "Galileo_1992",
+          "Rosetta_2005"
+        ],
+        "held_out_flybys": [
+          "MESSENGER_2005"
+        ],
+        "beta_train": 0.0019487725425922453,
+        "fold_all_signs_correct": true,
+        "per_flyby": [
+          {
+            "flyby": "MESSENGER_2005",
+            "status": "ok",
+            "beta_train": 0.0019487725425922453,
+            "dv_pred": 2.747435210894145e-06,
+            "dv_obs": 0.02,
+            "residual_mm_s": 0.019997252564789108,
+            "abs_error_mm_s": 0.019997252564789108,
+            "rel_error_pct": 99.98626282394554,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -154,28 +232,30 @@
       {
         "held_out_mission_id": "NEAR",
         "status": "complete",
-        "n_train": 3,
+        "n_train": 5,
         "n_held_out": 1,
         "train_flybys": [
           "Galileo_1990",
           "Cassini",
-          "Rosetta_2005"
+          "Galileo_1992",
+          "Rosetta_2005",
+          "MESSENGER_2005"
         ],
         "held_out_flybys": [
           "NEAR"
         ],
-        "beta_train": 0.002376907709061285,
+        "beta_train": 0.0024935306395386506,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "NEAR",
             "status": "ok",
-            "beta_train": 0.002376907709061285,
-            "dv_pred": 17.077441860193584,
+            "beta_train": 0.0024935306395386506,
+            "dv_pred": 17.03974293613458,
             "dv_obs": 13.46,
-            "residual_mm_s": -3.6174418601935834,
-            "abs_error_mm_s": 3.6174418601935834,
-            "rel_error_pct": 26.875496732493186,
+            "residual_mm_s": -3.579742936134579,
+            "abs_error_mm_s": 3.579742936134579,
+            "rel_error_pct": 26.595415573065225,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -185,28 +265,30 @@
       {
         "held_out_mission_id": "Rosetta",
         "status": "complete",
-        "n_train": 3,
+        "n_train": 5,
         "n_held_out": 1,
         "train_flybys": [
           "NEAR",
           "Galileo_1990",
-          "Cassini"
+          "Cassini",
+          "Galileo_1992",
+          "MESSENGER_2005"
         ],
         "held_out_flybys": [
           "Rosetta_2005"
         ],
-        "beta_train": 0.0017340875060137084,
+        "beta_train": 0.0018875281946358006,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Rosetta_2005",
             "status": "ok",
-            "beta_train": 0.0017340875060137084,
-            "dv_pred": 2.729325412350007,
-            "dv_obs": 1.82,
-            "residual_mm_s": -0.9093254123500067,
-            "abs_error_mm_s": 0.9093254123500067,
-            "rel_error_pct": 49.962934744505866,
+            "beta_train": 0.0018875281946358006,
+            "dv_pred": 1.591971049243746,
+            "dv_obs": 1.8,
+            "residual_mm_s": 0.20802895075625405,
+            "abs_error_mm_s": 0.20802895075625405,
+            "rel_error_pct": 11.557163930903002,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -226,49 +308,51 @@
   "bootstrap": {
     "n_bootstrap": 10000,
     "n_valid_samples": 10000,
-    "beta_mean": 0.0025351802325738284,
-    "beta_median": 0.002451953164866658,
-    "beta_std": 0.0008763388617418245,
+    "beta_mean": 69.0657840349274,
+    "beta_median": 60.41759507571103,
+    "beta_std": 54.347613865886004,
     "ci_68": [
-      0.0015493680918873046,
-      0.003405115888915386
+      13.44099178557884,
+      122.32122511867365
     ],
     "ci_95": [
-      0.001153544467675929,
-      0.004424087233362436
+      0.010917971383650292,
+      196.97733726924193
     ]
   },
   "altitude_stratified": {
     "low_altitude": {
-      "n_flybys": 2,
-      "beta_mean": 0.0035302166893664325,
-      "beta_median": 0.0035302166893664325,
+      "n_flybys": 3,
+      "beta_mean": 0.025952171003107174,
+      "beta_median": 0.008731721925085452,
       "beta_range": [
-        0.0017305147756031074,
-        0.005329918603129757
+        0.0018207797052178442,
+        0.06730401137901822
       ],
       "members": [
         "NEAR",
-        "Galileo_1990"
+        "Galileo_1990",
+        "Galileo_1992"
       ]
     },
     "mid_altitude": {
-      "n_flybys": 2,
-      "beta_mean": 0.0014721381399989699,
-      "beta_median": 0.0014721381399989699,
+      "n_flybys": 3,
+      "beta_mean": 133.5621306730694,
+      "beta_median": 125.74842831024559,
       "beta_range": [
-        0.0010102428095147484,
-        0.0019340334704831914
+        0.002223360573892163,
+        274.93574034838866
       ],
       "members": [
         "Cassini",
-        "Rosetta_2005"
+        "Rosetta_2005",
+        "MESSENGER_2005"
       ]
     }
   },
   "summary": {
-    "n_total_flybys": 4,
-    "n_with_observations": 4,
+    "n_total_flybys": 6,
+    "n_with_observations": 6,
     "validation_status": "complete"
   }
 }

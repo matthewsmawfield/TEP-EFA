@@ -10,13 +10,12 @@ Each step writes ``logs/<step_name>.log``; ``logs/pipeline.log`` records
 the orchestrator run.
 """
 
-import sys
-import subprocess
-import time
 import json
+import subprocess
+import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import List, Tuple, Dict
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 STEPS_DIR = PROJECT_ROOT / 'scripts' / 'steps'
@@ -27,7 +26,7 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # All pipeline steps (run_all runs everything by default)
 # Organized by workflow phases for clarity
-CORE_STEPS: List[Tuple[str, str]] = [
+CORE_STEPS: list[tuple[str, str]] = [
     # Phase 1: Data Acquisition & Preparation (001-006)
     ('step_001_download_spice.py', 'Step 001: Download SPICE Kernels (NAIF)'),
     ('step_002_spice_to_json.py', 'Step 002: Convert SPICE to JSON'),
@@ -84,6 +83,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     # Phase 11: Mission-Specific Analysis (030-032)
     ('step_030_juno_reanalysis.py', 'Step 030: Juno 2013 Reanalysis'),
     ('step_042_time_resolved_cosmography.py', 'Step 042: Time-Resolved Cosmography (after Horizons + optional Juno DSN sidecar)'),
+    ('step_043_clock_sector_od.py', 'Step 043: Clock-Sector Proper-Time Artefact OD Rederivation'),
     ('step_031_pds_search.py', 'Step 031: PDS Search'),
     ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
     
@@ -114,7 +114,7 @@ class PipelineLogger:
     def __init__(self):
         self.start_time = datetime.now(timezone.utc)
         self.log_file = LOGS_DIR / "pipeline.log"
-        self.step_results: List[Dict] = []
+        self.step_results: list[dict] = []
         
     def _write(self, message: str, level: str = "INFO"):
         """Write message to both console and log file."""
@@ -191,13 +191,13 @@ class PipelineLogger:
     
     def generate_research_audit(self):
         """Generate a professional-grade research audit for reproducibility."""
-        import platform
         import hashlib
         import json
-        import os
+        import platform
 
         def get_file_hash(path):
-            if not path.exists(): return "MISSING"
+            if not path.exists():
+                return "MISSING"
             sha256_hash = hashlib.sha256()
             with open(path, "rb") as f:
                 for byte_block in iter(lambda: f.read(4096), b""):
@@ -326,10 +326,10 @@ class PipelineLogger:
             self.subheader("Output Locations")
             self.info(f"Log file:         {self.log_file}")
             self.info(f"Results:          {PROJECT_ROOT / 'results'}")
-            self.info(f"Key output:       results/step003_archival_flyby_catalog.json")
-            self.info(f"Key output:       results/step008_fitting_results.json")
-            self.info(f"Key output:       results/step036_final_report.json")
-            self.info(f"Key figure:       results/step007_figure1_altitude_anomaly.png")
+            self.info("Key output:       results/step003_archival_flyby_catalog.json")
+            self.info("Key output:       results/step008_fitting_results.json")
+            self.info("Key output:       results/step036_final_report.json")
+            self.info("Key figure:       results/step007_figure1_altitude_anomaly.png")
             self._write("")
             self.success("PIPELINE COMPLETED SUCCESSFULLY")
             return True
@@ -378,7 +378,7 @@ def run_step(filename: str, description: str, step_num: int, total_steps: int,
         
     except Exception as e:
         duration = time.time() - start_time
-        logger.error(f"Exception running {description}: {str(e)}")
+        logger.error(f"Exception running {description}: {e!s}")
         logger.add_step_result(f"Step {step_num:03d}", description, "FAILED", duration, -1)
         return False
 
@@ -386,7 +386,10 @@ def run_step(filename: str, description: str, step_num: int, total_steps: int,
 def _log_ensemble_policy(logger: PipelineLogger) -> None:
     """Log frozen ensemble gates from config so every run states the active policy."""
     sys.path.insert(0, str(PROJECT_ROOT))
-    from scripts.utils.flyby_ensemble import ENSEMBLE_GATE_POLICY, strict_sign_gate_from_config
+    from scripts.utils.flyby_ensemble import (
+        ENSEMBLE_GATE_POLICY,
+        strict_sign_gate_from_config,
+    )
 
     strict_sg = strict_sign_gate_from_config()
     logger.info(

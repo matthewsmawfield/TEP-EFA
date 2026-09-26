@@ -1,14 +1,14 @@
 {
   "step_name": "step_032_tep_suppression",
   "step_number": "032",
-  "timestamp": "2026-09-14T11:23:39.939384+00:00",
+  "timestamp": "2026-09-26T14:23:30.891685+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step032_tep_suppression_analysis.json",
       "description": "TEP suppression analysis report",
-      "size_bytes": 10470,
-      "hash": "05f9b4fe1aa8b56a7bd8e47072802631e9deaf8e07bff27743806f826c2d7cd7"
+      "size_bytes": 10478,
+      "hash": "70f4f58e9fafdbc09cc5de456b6bfcba5b83fb0dfd778d84f71af51f5997081b"
     }
   ],
   "parameters": {},

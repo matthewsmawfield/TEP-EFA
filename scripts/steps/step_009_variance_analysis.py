@@ -50,24 +50,27 @@ Date: 2026-04-21
 """
 
 import json
+import sys
+from pathlib import Path
+from typing import Any
+
 import numpy as np
 from scipy import stats
-from pathlib import Path
-from typing import Dict, List, Tuple, Any
-import sys
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
+import time
+from datetime import datetime, timezone
+
 from scripts.utils.iri_mission_map import resolve_iri_mission
 from scripts.utils.plasma_screening import (
     load_iri_trajectory_profiles,
     mission_peak_electron_density_cm3,
 )
-import time
-from datetime import datetime, timezone
+from scripts.utils.step_logger import StepLogger
+
 
 # Helper functions
 def ensure_dir(path: Path):
@@ -104,13 +107,7 @@ class Timer:
         return datetime.now(timezone.utc).isoformat()
 
 # Standardized Physics Constants
-from scripts.utils.physics import (
-    M_PL_GEV as M_PL, C_LIGHT, R_EARTH, M_EARTH, J2_EARTH,
-    LAMBDA_TEP_M, R_TRANSITION_M, RHO_T,
-    SUPPRESSION_EXPONENT, get_tep_metadata,
-    KG_M3_TO_GEV4, LAMBDA_BASELINE_GEV,
-    DISFORMAL_VELOCITY_THRESHOLD_KM_S
-)
+from scripts.utils.physics import DISFORMAL_VELOCITY_THRESHOLD_KM_S
 
 # Stage 1: Residual Modulation Benchmarks
 # CRITICAL: These are HEURISTIC ESTIMATES with significant uncertainty
@@ -187,9 +184,8 @@ HEURISTIC_PARAMETER_METADATA = {
 }
 
 
-from scripts.utils.statistical_utils import weighted_mean, detect_outliers_sigma
 
-def load_step_results(results_dir: Path) -> Dict[str, Any]:
+def load_step_results(results_dir: Path) -> dict[str, Any]:
     """Load results from prerequisite pipeline steps."""
     results = {}
     
@@ -211,8 +207,8 @@ def load_step_results(results_dir: Path) -> Dict[str, Any]:
 
 
 def calculate_stage1_structural_modulation(
-    fit_data: Dict[str, Any],
-) -> Dict[str, float]:
+    fit_data: dict[str, Any],
+) -> dict[str, float]:
     """
     Stage 1: Extract structural modulation from the Step 007 geometry envelope.
 
@@ -253,7 +249,7 @@ def calculate_stage2_observational_effects(
     od_suppression_percent: float,
     systematic_uncertainty_mm_s: float,
     observed_anomaly_mm_s: float
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Stage 2: Calculate observational pipeline effects.
     
@@ -273,8 +269,8 @@ def calculate_stage2_observational_effects(
 
 
 def analyze_stage3_environmental_modulation(
-    step018_results: Dict
-) -> Dict[str, Any]:
+    step018_results: dict
+) -> dict[str, Any]:
     """
     Analyze environmental modulation effects (space weather, plasma, etc.).
     
@@ -314,11 +310,11 @@ def analyze_stage3_environmental_modulation(
 
 
 def calculate_variance_decomposition(
-    individual_fits: Dict[str, Any],
-    step018_results: Dict,
-    step021_results: Dict,
-    iri_profiles: Dict[str, Any],
-) -> Dict[str, Any]:
+    individual_fits: dict[str, Any],
+    step018_results: dict,
+    step021_results: dict,
+    iri_profiles: dict[str, Any],
+) -> dict[str, Any]:
     """
     Calculate deterministic geometry modulation analysis.
 
@@ -501,6 +497,63 @@ def calculate_variance_decomposition(
         }
 
     # ------------------------------------------------------------------
+    # 3b. Trajectory-asymmetry ordering diagnostics
+    # ------------------------------------------------------------------
+    # Spearman rank of |cos_asymmetry| vs |observed anomaly| for the
+    # sign-gated detection subset and the broader catalog.  This is the
+    # statistic behind the manuscript's ordering claims; it is computed
+    # here so the reported value is machine-produced rather than asserted.
+    asym_rows = []
+    for mission, fit_data in individual_fits.items():
+        asym = fit_data.get('cos_dec_asymmetry')
+        obs = fit_data.get('observed', {}).get('dv_obs_mm_s')
+        if asym is None or obs is None:
+            continue
+        asym_rows.append({
+            'mission': mission,
+            'abs_asym': float(abs(asym)),
+            'abs_obs': float(abs(obs)),
+            'sign_agreement': fit_data.get('fit', {}).get('sign_agreement'),
+        })
+
+    def _spearman_pair(xs: list[float], ys: list[float]):
+        if len(xs) < 3:
+            return None, None
+        r_, p_ = stats.spearmanr(xs, ys)
+        return (float(r_) if np.isfinite(r_) else None,
+                float(p_) if np.isfinite(p_) else None)
+
+    def _ordering_block(rows: list[dict[str, Any]]) -> dict[str, Any]:
+        xs = [r['abs_asym'] for r in rows]
+        ys = [r['abs_obs'] for r in rows]
+        r_, p_ = _spearman_pair(xs, ys)
+        top_asym = max(rows, key=lambda r: r['abs_asym'])
+        top_obs = max(rows, key=lambda r: r['abs_obs'])
+        return {
+            'n': len(rows),
+            'missions': [r['mission'] for r in rows],
+            'spearman_r': r_,
+            'spearman_p': p_,
+            'largest_asymmetry_mission': top_asym['mission'],
+            'largest_anomaly_mission': top_obs['mission'],
+            'extremal_order_match': top_asym['mission'] == top_obs['mission'],
+        }
+
+    gated_rows = [r for r in asym_rows if r['sign_agreement'] is True]
+    nonzero_rows = [r for r in asym_rows if r['abs_obs'] > 0.0]
+    asymmetry_ordering = {
+        'description': (
+            'Spearman rank of |trajectory asymmetry| vs |observed anomaly '
+            'magnitude|.  The gated sign-agreement subset is the n=3 '
+            'detection ensemble quoted in the abstract; the nonzero and '
+            'full rows give the broader-catalog statistics.'
+        ),
+        'gated_sign_agreement_subset': _ordering_block(gated_rows),
+        'nonzero_anomaly_subset': _ordering_block(nonzero_rows),
+        'all_published_with_asymmetry': _ordering_block(asym_rows),
+    }
+
+    # ------------------------------------------------------------------
     # Assemble output (legacy stage fields kept for backward compat but null)
     # ------------------------------------------------------------------
     env_analysis = analyze_stage3_environmental_modulation(step018_results)
@@ -529,6 +582,7 @@ def calculate_variance_decomposition(
         'beta_scatter': beta_scatter,
         'detection_pattern': detection_pattern,
         'rank_correlation': rank_correlation,
+        'asymmetry_ordering': asymmetry_ordering,
         'stages': {
             'stage1_structural': {
                 'name': 'Structural Physics Modulation',
@@ -567,10 +621,10 @@ def calculate_variance_decomposition(
 
 
 def generate_mission_analysis(
-    individual_fits: Dict[str, Any],
-    step018_results: Dict,
-    iri_profiles: Dict[str, Any],
-) -> Dict[str, Any]:
+    individual_fits: dict[str, Any],
+    step018_results: dict,
+    iri_profiles: dict[str, Any],
+) -> dict[str, Any]:
     """Generate per-mission variance analysis."""
     missions = {}
     
@@ -630,7 +684,7 @@ def generate_mission_analysis(
     return missions
 
 
-def generate_synthesis_conclusions(variance_decomp: Dict, beta_span: float = 4.0) -> List[str]:
+def generate_synthesis_conclusions(variance_decomp: dict, beta_span: float = 4.0) -> list[str]:
     """Generate synthesis conclusions for the manuscript."""
     if variance_decomp.get('status') == 'insufficient_data':
         return [
@@ -765,7 +819,7 @@ def main():
     # Stage 2: Observational effects (from Step 021)
     logger.subsection("Stage 2: Observational Pipeline Effects")
     try:
-        if 'step021' in step_results and step_results['step021']:
+        if step_results.get('step021'):
             # New structure: step021 has 'results' with per-spacecraft F_OD estimates
             if 'results' in step_results['step021']:
                 # Calculate average F_OD across all missions

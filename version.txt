@@ -1,3 +1,5 @@
+v0.3 (Yogyakarta) — 23 September 2026
+
 v0.2 (Yogyakarta) — 14 September 2026 — Model-selection reframing, β_A notation, and S_Σ operator
 
 - Renamed conformal coupling notation: β → β_A, β_eff → β_{A,eff}, β_fit → b_flyby throughout

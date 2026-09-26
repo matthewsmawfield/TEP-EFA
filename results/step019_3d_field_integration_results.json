@@ -7,34 +7,46 @@
   },
   "per_flyby": {
     "NEAR": {
-      "dv_3d_mm_s": 8.68213823700521,
-      "dv_simplified_mm_s": 6.892261808522482,
-      "dv_current_mm_s": 1.586403195722739,
-      "ratio_3d_simplified": 1.2596936213696197
+      "dv_3d_mm_s": 8.703977717816935,
+      "dv_simplified_mm_s": 6.932949835595835,
+      "dv_current_mm_s": 1.5270456032053303,
+      "ratio_3d_simplified": 1.2554508433233014
     },
     "Galileo_1990": {
-      "dv_3d_mm_s": 8.38764332385529,
-      "dv_simplified_mm_s": 6.360418461812376,
-      "dv_current_mm_s": 0.1987218559225848,
-      "ratio_3d_simplified": 1.3187250766933445
+      "dv_3d_mm_s": 8.396305625524825,
+      "dv_simplified_mm_s": 6.375624282362746,
+      "dv_current_mm_s": 0.1372338175512307,
+      "ratio_3d_simplified": 1.3169385857243823
     },
     "Cassini": {
-      "dv_3d_mm_s": 8.232282070913058,
-      "dv_simplified_mm_s": 6.092072605300018,
-      "dv_current_mm_s": -0.011927370112788957,
-      "ratio_3d_simplified": 1.3513105644458485
+      "dv_3d_mm_s": 8.247422680412273,
+      "dv_simplified_mm_s": 6.1178629932580355,
+      "dv_current_mm_s": -5.326023415145495e-05,
+      "ratio_3d_simplified": 1.348088816225705
+    },
+    "Galileo_1992": {
+      "dv_3d_mm_s": 8.886519150448915,
+      "dv_simplified_mm_s": 7.279997378696116,
+      "dv_current_mm_s": -0.034811851294463965,
+      "ratio_3d_simplified": 1.2206761470071483
     },
     "Rosetta_2005": {
-      "dv_3d_mm_s": 7.740716945203529,
-      "dv_simplified_mm_s": 5.295413741440382,
-      "dv_current_mm_s": 0.321182638866365,
-      "ratio_3d_simplified": 1.461777553777698
+      "dv_3d_mm_s": 7.748934521503112,
+      "dv_simplified_mm_s": 5.30810283915946,
+      "dv_current_mm_s": 0.1757984655197509,
+      "ratio_3d_simplified": 1.4598312723591012
     },
     "Rosetta_2007": {
-      "dv_3d_mm_s": 6.105043376333373,
-      "dv_simplified_mm_s": 3.146794838502645,
-      "dv_current_mm_s": 6.762895846310001e-05,
-      "ratio_3d_simplified": 1.9400830653575007
+      "dv_3d_mm_s": 6.153467478924442,
+      "dv_simplified_mm_s": 3.200512706763331,
+      "dv_current_mm_s": 6.6498078579098e-05,
+      "ratio_3d_simplified": 1.9226505384343326
+    },
+    "MESSENGER_2005": {
+      "dv_3d_mm_s": 7.520493344363437,
+      "dv_simplified_mm_s": 4.962984012376002,
+      "dv_current_mm_s": 2.962146923366389e-07,
+      "ratio_3d_simplified": 1.5153168588917219
     },
     "Stardust": {
       "dv_3d_mm_s": 5.896608860244548,

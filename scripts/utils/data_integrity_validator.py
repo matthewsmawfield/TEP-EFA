@@ -18,9 +18,9 @@ Rules:
 
 import json
 import sys
-from pathlib import Path
-from typing import Dict, List, Any, Tuple
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
 
 
 @dataclass
@@ -57,7 +57,7 @@ class DataIntegrityValidator:
 
     # Subtrees where model-registry / envelope vocabulary repeats controlled coefficients;
     # these are audited in Step 008 and must not trip the generic heuristic-metadata rule.
-    HEURISTIC_METADATA_EXEMPT_PATH_FRAGMENTS: Tuple[str, ...] = (
+    HEURISTIC_METADATA_EXEMPT_PATH_FRAGMENTS: tuple[str, ...] = (
         'parameter_budget_audit',
         'enhanced_validation',
         'geometry_envelope_heuristics',
@@ -71,7 +71,7 @@ class DataIntegrityValidator:
     )
 
     # Integer/series fields where round values are part of the schema (not fabrication).
-    BENIGN_ROUND_NUMBER_KEYS: Tuple[str, ...] = (
+    BENIGN_ROUND_NUMBER_KEYS: tuple[str, ...] = (
         'topology_n',
         'beta_initial',
         'version',
@@ -123,7 +123,7 @@ class DataIntegrityValidator:
     
     def __init__(self, project_root: Path = None):
         self.project_root = project_root or Path(__file__).resolve().parent.parent.parent
-        self.violations: List[str] = []
+        self.violations: list[str] = []
     
     def _check_known_synthetic_files(self, context: str):
         """Block known synthetic test data files from being used in main analysis."""
@@ -135,7 +135,7 @@ class DataIntegrityValidator:
                     f"in main analysis. This file is for OD absorption testing only."
                 )
         
-    def validate_results(self, results: Dict[str, Any], context: str = "") -> bool:
+    def validate_results(self, results: dict[str, Any], context: str = "") -> bool:
         """
         Validate results dictionary for synthetic data contamination.
         
@@ -196,7 +196,7 @@ class DataIntegrityValidator:
             for i, item in enumerate(data):
                 self._check_no_synthetic_in_real_data(item, context, f"{path}[{i}]")
     
-    def _check_simulation_labeling(self, data: Dict, context: str):
+    def _check_simulation_labeling(self, data: dict, context: str):
         """Ensure simulations are explicitly labeled."""
         if 'metadata' in data or 'simulation' in str(data).lower():
             # Look for explicit simulation labeling
@@ -256,7 +256,7 @@ class DataIntegrityValidator:
             for i, item in enumerate(data):
                 self._check_no_fabricated_values(item, context, f"{path}[{i}]")
     
-    def _check_observational_provenance(self, data: Dict, context: str, path: str = ""):
+    def _check_observational_provenance(self, data: dict, context: str, path: str = ""):
         """Ensure observed anomalies have proper literature citations."""
         if not isinstance(data, dict):
             return
@@ -370,7 +370,7 @@ class DataIntegrityValidator:
             for i, item in enumerate(data):
                 self._check_suspicious_round_numbers(item, context, f"{path}[{i}]")
     
-    def get_violations(self) -> List[str]:
+    def get_violations(self) -> list[str]:
         """Return list of all violations found during validation."""
         return self.violations.copy()
     

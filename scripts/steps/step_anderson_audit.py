@@ -12,8 +12,9 @@ Output: results/step_anderson_audit.json
 """
 import json
 import math
-import numpy as np
 from pathlib import Path
+
+import numpy as np
 
 ROOT = Path(__file__).parent.parent.parent
 RESULTS = ROOT / "results"

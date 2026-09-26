@@ -5,7 +5,6 @@ from __future__ import annotations
 import csv
 import io
 from pathlib import Path
-from typing import Dict
 
 import requests
 
@@ -20,7 +19,7 @@ CACHE_PATH = (
     / "space_weather"
     / "SW-All.csv"
 )
-_SW_ALL_BY_DATE: Dict[str, Dict[str, str]] | None = None
+_SW_ALL_BY_DATE: dict[str, dict[str, str]] | None = None
 _SW_ALL_SOURCE: str | None = None
 
 
@@ -66,13 +65,13 @@ def _load_sw_all_text() -> tuple[str, str]:
     )
 
 
-def _load_sw_all_by_date() -> Dict[str, Dict[str, str]]:
+def _load_sw_all_by_date() -> dict[str, dict[str, str]]:
     global _SW_ALL_BY_DATE, _SW_ALL_SOURCE
     if _SW_ALL_BY_DATE is not None:
         return _SW_ALL_BY_DATE
 
     text, source = _load_sw_all_text()
-    by_date: Dict[str, Dict[str, str]] = {}
+    by_date: dict[str, dict[str, str]] = {}
     reader = csv.DictReader(io.StringIO(text))
     for row in reader:
         date = row.get("DATE", "").strip()
@@ -87,7 +86,7 @@ def _load_sw_all_by_date() -> Dict[str, Dict[str, str]]:
     return by_date
 
 
-def lookup_space_weather(date_str: str) -> Dict[str, float | str]:
+def lookup_space_weather(date_str: str) -> dict[str, float | str]:
     """Return F10.7 and Kp for a calendar date (YYYY-MM-DD)."""
     from datetime import datetime
 

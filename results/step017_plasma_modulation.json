@@ -14,9 +14,9 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=96.9 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 16090.395312666522,
-    "plasma_screening_factor": 0.0009224450263559888,
-    "plasma_sign_factor": -0.7614080095100046,
+    "plasma_density_cm3": 20291.682934469423,
+    "plasma_screening_factor": 0.0001487545802289149,
+    "plasma_sign_factor": -0.6729998435920799,
     "solar_activity": 0.9690000000000001,
     "f10_7_sfu": 96.9,
     "kp_sum": 67.0,
@@ -33,8 +33,8 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=230.4 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 42413.02409380898,
-    "plasma_screening_factor": 9.995865932900516e-09,
+    "plasma_density_cm3": 53683.71568421961,
+    "plasma_screening_factor": 7.479630329357186e-11,
     "plasma_sign_factor": 1.0,
     "solar_activity": 2.3040000000000003,
     "f10_7_sfu": 230.4,
@@ -52,9 +52,9 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=130.7 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 13591.671526984304,
-    "plasma_screening_factor": 0.0027306347781882326,
-    "plasma_sign_factor": -0.714224496061428,
+    "plasma_density_cm3": 15813.54307238807,
+    "plasma_screening_factor": 0.001040307901037897,
+    "plasma_sign_factor": -0.6511606106950714,
     "solar_activity": 1.307,
     "f10_7_sfu": 130.7,
     "kp_sum": 317.0,
@@ -71,8 +71,8 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=129.0 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 1368482.25100728,
-    "plasma_screening_factor": 7.401100020061634e-259,
+    "plasma_density_cm3": 1385164.6295424853,
+    "plasma_screening_factor": 5.279266815169121e-262,
     "plasma_sign_factor": 1.0,
     "solar_activity": 1.29,
     "f10_7_sfu": 129.0,
@@ -90,8 +90,8 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=78.9 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 2672.6052369046174,
-    "plasma_screening_factor": 0.3132408499315248,
+    "plasma_density_cm3": 1748.671150131919,
+    "plasma_screening_factor": 0.467903140184298,
     "plasma_sign_factor": -1.0,
     "solar_activity": 0.789,
     "f10_7_sfu": 78.9,
@@ -109,9 +109,9 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=69.9 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 265.9327392089853,
-    "plasma_screening_factor": 0.8909191487446859,
-    "plasma_sign_factor": 0.8633972584577342,
+    "plasma_density_cm3": 251.26982546407675,
+    "plasma_screening_factor": 0.896611063565007,
+    "plasma_sign_factor": 0.8831820337691482,
     "solar_activity": 0.6990000000000001,
     "f10_7_sfu": 69.9,
     "kp_sum": 190.0,
@@ -147,8 +147,8 @@
     "data_source": "step_033",
     "derivation": "IRI electron density at perigee with Celestrak F10.7=110.2 sfu (F10.7_OBS)",
     "recommended_action": "Derive scalar-plasma coupling from TEP action; screening ansatz remains phenomenological",
-    "plasma_density_cm3": 1699.4872663320814,
-    "plasma_screening_factor": 0.47800594332283614,
+    "plasma_density_cm3": 1716.7755441545248,
+    "plasma_screening_factor": 0.47443015559579815,
     "plasma_sign_factor": -1.0,
     "solar_activity": 1.102,
     "f10_7_sfu": 110.2,
@@ -243,278 +243,278 @@
     "per_flyby": {
       "NEAR": {
         "exponential": {
-          "S": 0.0009224450263559888,
-          "dv_tep_mm_s": 1.586403195722739,
+          "S": 0.0001487545802289149,
+          "dv_tep_mm_s": 1.5270456032053303,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": 0.0017305147756031074,
+            "beta_fitted": 0.0018207797052178442,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 1346.0,
+            "snr": 103.53846153846155,
             "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.5361183953750265,
-          "dv_tep_mm_s": 922.0060940308707,
-          "scale_vs_exponential": 581.1927866237183,
+          "S": 0.5040302895591063,
+          "dv_tep_mm_s": 5174.14143731981,
+          "scale_vs_exponential": 3388.334589654087,
           "fit": {
-            "beta_fitted": 3.567919313219154e-07,
+            "beta_fitted": 3.5777419918325296e-08,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 1346.0,
+            "snr": 103.53846153846155,
             "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 1719.780746165047,
-          "scale_vs_exponential": 1084.075442360379,
+          "dv_tep_mm_s": 10265.536703847343,
+          "scale_vs_exponential": 6722.482080626517,
           "fit": {
-            "beta_fitted": 1.553922314315511e-07,
+            "beta_fitted": 1.4351078268268643e-08,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 1346.0,
+            "snr": 103.53846153846155,
             "status": "allowed"
           }
         },
         "saturating": {
-          "S": 0.020064651715459084,
-          "dv_tep_mm_s": 34.50680169875402,
-          "scale_vs_exponential": 21.751596184243244,
+          "S": 0.012710886558322063,
+          "dv_tep_mm_s": 130.48407250289497,
+          "scale_vs_exponential": 85.44870711719653,
           "fit": {
-            "beta_fitted": 2.850058683842679e-05,
+            "beta_fitted": 4.83782412602142e-06,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 1346.0,
+            "snr": 103.53846153846155,
             "status": "allowed"
           }
         }
       },
       "Galileo_1990": {
         "exponential": {
-          "S": 9.995865932900516e-09,
-          "dv_tep_mm_s": 0.1987218559225848,
+          "S": 7.479630329357186e-11,
+          "dv_tep_mm_s": 0.1372338175512307,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": 0.005329918603129757,
+            "beta_fitted": 0.008731721925085452,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 130.66666666666666,
+            "snr": 49.0,
             "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.4106935585849064,
-          "dv_tep_mm_s": 8164753.981825506,
-          "scale_vs_exponential": 41086341.22764138,
+          "S": 0.38391139773811506,
+          "dv_tep_mm_s": 704388110.0145005,
+          "scale_vs_exponential": 5132758984.508652,
           "fit": {
-            "beta_fitted": 3.7594468712519236e-13,
+            "beta_fitted": 9.862009139405495e-16,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 130.66666666666666,
+            "snr": 49.0,
             "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 19880404.2847863,
-          "scale_vs_exponential": 100041357.76857388,
+          "dv_tep_mm_s": 1834767381.652468,
+          "scale_vs_exponential": 13369644701.223381,
           "fit": {
-            "beta_fitted": 1.1476632458648737e-13,
+            "beta_fitted": 2.751735849188927e-16,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 130.66666666666666,
+            "snr": 49.0,
             "status": "allowed"
           }
         },
         "saturating": {
-          "S": 0.002938266611339917,
-          "dv_tep_mm_s": 58413.9281299266,
-          "scale_vs_exponential": 293948.18128451187,
+          "S": 0.0018360494576756786,
+          "dv_tep_mm_s": 3368723.6560440385,
+          "scale_vs_exponential": 24547328.9029977,
           "fit": {
-            "beta_fitted": 2.727048572381131e-10,
+            "beta_fitted": 1.2239421962324488e-12,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 130.66666666666666,
+            "snr": 49.0,
             "status": "allowed"
           }
         }
       },
       "Cassini": {
         "exponential": {
-          "S": 0.0027306347781882326,
-          "dv_tep_mm_s": -0.011927370112788957,
+          "S": 0.001040307901037897,
+          "dv_tep_mm_s": -5.326023415145495e-05,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": 0.0019340334704831914,
+            "beta_fitted": 125.74842831024559,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 2.1999999999999997,
-            "status": "amplitude_fit_sign_reference_mismatch"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.5601243636350426,
-          "dv_tep_mm_s": -2.4466144823286244,
-          "scale_vs_exponential": 205.1260637670056,
+          "S": 0.5385632864210887,
+          "dv_tep_mm_s": -0.027572612600122285,
+          "scale_vs_exponential": 517.6960454532486,
           "fit": {
-            "beta_fitted": 1.5987093834958968e-06,
+            "beta_fitted": 0.030250746920663853,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 2.1999999999999997,
-            "status": "amplitude_fit_sign_reference_mismatch"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": -4.367984399840805,
-          "scale_vs_exponential": 366.21521412815844,
+          "dv_tep_mm_s": -0.05119660640692832,
+          "scale_vs_exponential": 961.2538739755005,
           "fit": {
-            "beta_fitted": 7.381571124359443e-07,
+            "beta_fitted": 0.013255163678287593,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 2.1999999999999997,
-            "status": "amplitude_fit_sign_reference_mismatch"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "saturating": {
-          "S": 0.027895543254840643,
-          "dv_tep_mm_s": -0.12184729776222832,
-          "scale_vs_exponential": 10.215772346292772,
+          "S": 0.020758645115219916,
+          "dv_tep_mm_s": -0.0010627721835050194,
+          "scale_vs_exponential": 19.954328035487745,
           "fit": {
-            "beta_fitted": 8.725072492286019e-05,
+            "beta_fitted": 2.3233773741179324,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 2.1999999999999997,
-            "status": "amplitude_fit_sign_reference_mismatch"
+            "snr": 2.0,
+            "status": "allowed"
           }
         }
       },
       "Galileo_1992": {
         "exponential": {
-          "S": 7.401100020061634e-259,
-          "dv_tep_mm_s": 0.0002782606561873544,
+          "S": 5.279266815169121e-262,
+          "dv_tep_mm_s": -0.034811851294463965,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 0.06730401137901822,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 4.6,
+            "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.14708364132642385,
-          "dv_tep_mm_s": 5.5299334475924767e+253,
-          "scale_vs_exponential": 1.9873213566596143e+257,
+          "S": 0.14655084991367454,
+          "dv_tep_mm_s": -9.663664620271164e+258,
+          "scale_vs_exponential": 2.775969751947076e+260,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 0.0,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 4.6,
+            "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 3.7597202501397507e+254,
-          "scale_vs_exponential": 1.3511505009922462e+258,
+          "dv_tep_mm_s": -6.594069311753241e+259,
+          "scale_vs_exponential": 1.8942024243341168e+261,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 0.0,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 4.6,
+            "status": "allowed"
           }
         },
         "saturating": {
-          "S": 2.8306623107368464e-06,
-          "dv_tep_mm_s": 1.06424984109847e+249,
-          "scale_vs_exponential": 3.824650799291959e+252,
+          "S": 2.76289031194873e-06,
+          "dv_tep_mm_s": -1.8218690217761457e+254,
+          "scale_vs_exponential": 5.233473527062528e+255,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 0.0,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 4.6,
+            "status": "allowed"
           }
         }
       },
       "Rosetta_2005": {
         "exponential": {
-          "S": 0.3132408499315248,
-          "dv_tep_mm_s": 0.321182638866365,
+          "S": 0.467903140184298,
+          "dv_tep_mm_s": 0.1757984655197509,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": 0.0010102428095147484,
+            "beta_fitted": 0.002223360573892163,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 36.4,
+            "snr": 60.00000000000001,
             "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.7936274119595229,
-          "dv_tep_mm_s": 0.8137487384086877,
-          "scale_vs_exponential": 2.5336012596473667,
+          "S": 0.8440801071692572,
+          "dv_tep_mm_s": 0.31713398537495413,
+          "scale_vs_exponential": 1.8039633306089595,
           "fit": {
-            "beta_fitted": 0.0002924880180332412,
+            "beta_fitted": 0.001012448543037673,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 36.4,
+            "snr": 60.00000000000001,
             "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 1.0253536182671459,
-          "scale_vs_exponential": 3.192431639163929,
+          "dv_tep_mm_s": 0.375715506954083,
+          "scale_vs_exponential": 2.137194462097688,
           "fit": {
-            "beta_fitted": 0.0002149134650008743,
+            "beta_fitted": 0.0008076400493245689,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 36.4,
+            "snr": 60.00000000000001,
             "status": "allowed"
           }
         },
         "saturating": {
-          "S": 0.4260001650190584,
-          "dv_tep_mm_s": 0.4368008105846928,
-          "scale_vs_exponential": 1.359976405095897,
+          "S": 0.6341833352599149,
+          "dv_tep_mm_s": 0.23827251330901011,
+          "scale_vs_exponential": 1.3553731120721317,
           "fit": {
-            "beta_fitted": 0.0006704770803392994,
+            "beta_fitted": 0.0014822839713621839,
             "excluded": false,
             "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 36.4,
+            "snr": 60.00000000000001,
             "status": "allowed"
           }
         }
       },
       "Rosetta_2007": {
         "exponential": {
-          "S": 0.8909191487446859,
-          "dv_tep_mm_s": 6.762895846310001e-05,
+          "S": 0.896611063565007,
+          "dv_tep_mm_s": 6.6498078579098e-05,
           "scale_vs_exponential": 1.0,
           "fit": {
             "beta_fitted": null,
@@ -526,9 +526,9 @@
           }
         },
         "powerlaw": {
-          "S": 0.967740554181654,
-          "dv_tep_mm_s": 7.346040977346187e-05,
-          "scale_vs_exponential": 1.0862271346902916,
+          "S": 0.9694042049576491,
+          "dv_tep_mm_s": 7.18968565253578e-05,
+          "scale_vs_exponential": 1.0811869765505793,
           "fit": {
             "beta_fitted": null,
             "excluded": true,
@@ -540,8 +540,8 @@
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 7.590919844790619e-05,
-          "scale_vs_exponential": 1.1224363079511874,
+          "dv_tep_mm_s": 7.416602502616417e-05,
+          "scale_vs_exponential": 1.115310797107398,
           "fit": {
             "beta_fitted": null,
             "excluded": true,
@@ -552,9 +552,9 @@
           }
         },
         "saturating": {
-          "S": 0.9868350100272089,
-          "dv_tep_mm_s": 7.490985461149688e-05,
-          "scale_vs_exponential": 1.1076594452119133,
+          "S": 0.9882301441640818,
+          "dv_tep_mm_s": 7.329310160368314e-05,
+          "scale_vs_exponential": 1.1021837498132012,
           "fit": {
             "beta_fitted": null,
             "excluded": true,
@@ -621,55 +621,55 @@
       },
       "MESSENGER_2005": {
         "exponential": {
-          "S": 0.47800594332283614,
-          "dv_tep_mm_s": 4.2870208980271865e-07,
+          "S": 0.47443015559579815,
+          "dv_tep_mm_s": 2.962146923366389e-07,
           "scale_vs_exponential": 1.0,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 274.93574034838866,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "powerlaw": {
-          "S": 0.8471789670141656,
-          "dv_tep_mm_s": 7.597968156445941e-07,
-          "scale_vs_exponential": 1.7723188986418041,
+          "S": 0.8460840924358141,
+          "dv_tep_mm_s": 5.282601372947354e-07,
+          "scale_vs_exponential": 1.7833691270599905,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 127.128485834281,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "none": {
           "S": 1.0,
-          "dv_tep_mm_s": 8.96855145403875e-07,
-          "scale_vs_exponential": 2.0920241975414497,
+          "dv_tep_mm_s": 6.243589047678621e-07,
+          "scale_vs_exponential": 2.107791817626309,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 101.73278038819316,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 2.0,
+            "status": "allowed"
           }
         },
         "saturating": {
-          "S": 0.6473166392361953,
-          "dv_tep_mm_s": 5.805492586045257e-07,
-          "scale_vs_exponential": 1.3542020727533297,
+          "S": 0.6426816572357318,
+          "dv_tep_mm_s": 4.01264015626096e-07,
+          "scale_vs_exponential": 1.3546391384599916,
           "fit": {
-            "beta_fitted": null,
-            "excluded": true,
-            "exclusion_reason": "S/N < 2",
+            "beta_fitted": 183.42831399206383,
+            "excluded": false,
+            "exclusion_reason": null,
             "ppn_compliant": true,
-            "snr": 0.0,
-            "status": "below_snr_threshold"
+            "snr": 2.0,
+            "status": "allowed"
           }
         }
       },

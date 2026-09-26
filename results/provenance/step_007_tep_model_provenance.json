@@ -1,14 +1,14 @@
 {
   "step_name": "step_007_tep_model",
   "step_number": "007",
-  "timestamp": "2026-09-14T11:19:52.432133+00:00",
+  "timestamp": "2026-09-26T14:18:49.421574+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step007_tep_predictions.json",
       "description": "TEP predictions",
-      "size_bytes": 6479561,
-      "hash": "78198dd3e1b3344380655e0cd0c7d9b848f8739f13472417b0362351bdeb6e9d"
+      "size_bytes": 6479531,
+      "hash": "cdb0e2fc2438f5152dc25e2a2c13d0efedffa548fe2095f56da4e5edbd7ab4e3"
     }
   ],
   "parameters": {},

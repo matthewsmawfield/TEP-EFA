@@ -1,14 +1,14 @@
 {
   "step_name": "step_015_hierarchical_bayesian",
   "step_number": "015",
-  "timestamp": "2026-09-14T11:20:21.960130+00:00",
+  "timestamp": "2026-09-26T14:19:24.584303+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step015_hierarchical_bayesian_corner.png",
       "description": "Hierarchical Bayesian corner plot",
-      "size_bytes": 215806,
-      "hash": "aeddb49d55e4e35b1c88691a6a34b201174e7515035c94ced42973bd1ea1016b"
+      "size_bytes": 201414,
+      "hash": "6e22cff55999638c70d5df8c84ed62489d02217afd20a2faec2272fc6342fac0"
     }
   ],
   "parameters": {},

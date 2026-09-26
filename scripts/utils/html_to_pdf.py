@@ -26,8 +26,6 @@ import json
 import logging
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Union
-from urllib.parse import urljoin
 
 from playwright.async_api import async_playwright
 
@@ -70,7 +68,7 @@ class HTMLToPDFConverter:
         if self.playwright:
             await self.playwright.stop()
     
-    def _get_css_for_pdf(self, options: Dict) -> str:
+    def _get_css_for_pdf(self, options: dict) -> str:
         """Generate CSS optimizations for PDF output."""
         css = """
         <style>
@@ -125,9 +123,9 @@ class HTMLToPDFConverter:
     
     async def convert_file(
         self, 
-        input_path: Union[str, Path], 
-        output_path: Union[str, Path],
-        options: Optional[Dict] = None
+        input_path: str | Path, 
+        output_path: str | Path,
+        options: dict | None = None
     ) -> bool:
         """
         Convert HTML file to PDF.
@@ -232,7 +230,7 @@ class HTMLToPDFConverter:
                     }""",
                     timeout=15000
                 )
-                logger.info(f"All images loaded successfully")
+                logger.info("All images loaded successfully")
             except (TimeoutError, Exception) as e:
                 logger.warning(f"Could not verify all images loaded, proceeding anyway: {e}")
                 # Log how many images we found
@@ -260,7 +258,7 @@ class HTMLToPDFConverter:
             if self.context:
                 await self.context.close()
     
-    def _build_pdf_options(self, options: Dict) -> Dict:
+    def _build_pdf_options(self, options: dict) -> dict:
         """Build PDF generation options."""
         pdf_options = {
             'format': options.get('format', 'A4'),
@@ -304,7 +302,7 @@ class HTMLToPDFConverter:
         return pdf_options
 
 
-def create_preset_configs() -> Dict[str, Dict]:
+def create_preset_configs() -> dict[str, dict]:
     """Create preset configurations for common use cases."""
     return {
         'high_quality': {
@@ -487,7 +485,7 @@ Examples:
         
         if success:
             output_size = Path(args.output).stat().st_size / (1024 * 1024)
-            logger.info(f"✅ Conversion completed successfully")
+            logger.info("✅ Conversion completed successfully")
             logger.info(f"📄 Output: {args.output} ({output_size:.1f} MB)")
             return 0
         else:

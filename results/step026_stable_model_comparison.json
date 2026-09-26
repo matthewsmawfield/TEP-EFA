@@ -1,66 +1,66 @@
 {
-  "n_data": 4,
-  "extra_sigma_sys_quadrature_mm_s": 0.7217706915332263,
+  "n_data": 6,
+  "extra_sigma_sys_quadrature_mm_s": 0.6065782705184705,
   "log_likelihoods": {
-    "Null": -194.12721497990964,
-    "Anderson": -26.137016096316522,
-    "TEP_restricted": -7.9756008143082315,
-    "TEP_flexible": -6.338489852462069
+    "Null": -273.36087550794946,
+    "Anderson": -9.343965824351875,
+    "TEP_restricted": -21.83498463147462,
+    "TEP_flexible": -19.358863525987303
   },
   "fitted_parameters": {
     "Anderson": {
-      "A": 17.638247914866046,
-      "B": 0.14743592811447326
+      "A": 22.319924120470038,
+      "B": -0.5933355509746675
     },
     "TEP_restricted": {
-      "beta": 0.0017460136116924522,
+      "beta": 0.0018753311289048606,
       "fit_diagnostics": {
-        "optimal_scale_factor_x": 8.541530948710092,
+        "optimal_scale_factor_x": 9.01173623712954,
         "positive_beta_scale_feasible": true,
-        "log_likelihood_evaluated_at_beta": 0.0017460136116924522
+        "log_likelihood_evaluated_at_beta": 0.0018753311289048606
       }
     },
     "TEP_flexible": {
-      "beta": 0.000683648868733252,
-      "b_disf": 3.0662396933242415,
-      "offset": 1.08349089450375
+      "beta": 0.0024787397316698165,
+      "b_disf": 0.4728592626818278,
+      "offset": 0.20921946311907647
     }
   },
   "information_criteria": {
     "Null": {
-      "AIC": 388.2544299598193,
-      "AICc": 388.2544299598193,
-      "BIC": 388.2544299598193
+      "AIC": 546.7217510158989,
+      "AICc": 546.7217510158989,
+      "BIC": 546.7217510158989
     },
     "Anderson": {
-      "AIC": 56.274032192633044,
-      "AICc": 68.27403219263304,
-      "BIC": 55.046620914872825
+      "AIC": 22.68793164870375,
+      "AICc": 26.68793164870375,
+      "BIC": 22.27145058715986
     },
     "TEP_restricted": {
-      "AIC": 17.951201628616463,
-      "AICc": 19.951201628616463,
-      "BIC": 17.337495989736354
+      "AIC": 45.66996926294924,
+      "AICc": 46.66996926294924,
+      "BIC": 45.46172873217729
     },
     "TEP_flexible": {
-      "AIC": 18.676979704924136,
-      "AICc": Infinity,
-      "BIC": 16.83586278828381
+      "AIC": 44.717727051974606,
+      "AICc": 56.717727051974606,
+      "BIC": 44.09300545965877
     }
   },
   "bayes_factors": {
-    "Anderson_vs_Null": 2.2654599956487027e+72,
-    "TEP_restricted_vs_Null": 3.4961401494940566e+80,
-    "TEP_flexible_vs_Null": 4.4928001385345054e+80,
-    "TEP_restricted_vs_Anderson": 154323632.11926386,
-    "delta_BIC_Anderson_vs_Null": 333.20780904494643,
-    "delta_BIC_TEP_restricted_vs_Null": 370.91693397008294,
-    "delta_BIC_TEP_flexible_vs_Null": 371.41856717153547,
-    "delta_BIC_TEP_restricted_vs_Anderson": 37.70912492513647,
-    "log10_BF_Anderson_vs_Null": 72.35515639764633,
-    "log10_BF_TEP_restricted_vs_Null": 80.5435888338399,
-    "log10_BF_TEP_flexible_vs_Null": 80.65251709950506,
-    "log10_BF_TEP_restricted_vs_Anderson": 8.18843243619357,
+    "Anderson_vs_Null": 7.637227968892024e+113,
+    "TEP_restricted_vs_Null": 7.034461195474885e+108,
+    "TEP_flexible_vs_Null": 1.3945860623874689e+109,
+    "TEP_restricted_vs_Anderson": 9.210751890774582e-06,
+    "delta_BIC_Anderson_vs_Null": 524.4503004287391,
+    "delta_BIC_TEP_restricted_vs_Null": 501.26002228372164,
+    "delta_BIC_TEP_flexible_vs_Null": 502.6287455562401,
+    "delta_BIC_TEP_restricted_vs_Anderson": -23.190278145017434,
+    "log10_BF_Anderson_vs_Null": 113.88293575435199,
+    "log10_BF_TEP_restricted_vs_Null": 108.84723083826067,
+    "log10_BF_TEP_flexible_vs_Null": 109.14444532051434,
+    "log10_BF_TEP_restricted_vs_Anderson": -5.0357049160913245,
     "bic_approximation_valid": {
       "Anderson_vs_Null": false,
       "TEP_restricted_vs_Null": false,
@@ -70,13 +70,13 @@
     "bic_approximation_note": "The BIC approximation BF \u2248 exp(\u0394BIC/2) is a large-sample result. For n < 10 and extreme S/N it is unreliable.  When log10(BF) > 100 the value is driven by formal uncertainties and should not be reported as a literal probability ratio."
   },
   "model_selection": {
-    "best_model_BIC": "TEP_flexible",
+    "best_model_BIC": "Anderson",
     "akaike_weights": {
-      "TEP_restricted": 0.9999999999678759,
-      "Null": 1.0567448361248583e-80,
-      "Anderson": 3.2124077726101025e-11
+      "TEP_restricted": 4.580741338757044e-05,
+      "Null": 1.1914368506368767e-113,
+      "Anderson": 0.9999541925866124
     },
-    "interpretation": "BIC selects TEP_flexible model"
+    "interpretation": "BIC selects Anderson model"
   },
   "pre_specified_parameters": {
     "lambda_TEP_km": 4000,
@@ -87,53 +87,53 @@
     "v_trans_source": "TEP field equations",
     "geometry_source": "JPL Horizons ephemerides"
   },
-  "systematic_uncertainty_mm_s": 0.7217706915332263,
+  "systematic_uncertainty_mm_s": 0.6065782705184705,
   "systematic_uncertainty_model": "geometry_prediction_spread_std_ddof1",
-  "geometry_prediction_spread_mm_s": 0.7217706915332263,
+  "geometry_prediction_spread_mm_s": 0.6065782705184705,
   "likelihood_sensitivity_published_uncertainties_only": {
     "extra_sigma_sys_quadrature_mm_s": 0.0,
     "note": "Published per-flyby uncertainties without extra geometry-spread term. These produce extremely large BIC values because the tiny published uncertainties (~0.01\u20130.05 mm/s) are inconsistent with the ~1\u201310 mm/s residuals of the single-\u03b2 restricted scaling model. Reported for transparency and consistency checking only; the geometry-spread comparison is the scientifically meaningful one.",
     "log_likelihoods": {
-      "Null": -915049.3614503912,
-      "Anderson": -6311.066124235376,
-      "TEP_restricted": -2931.992322351306,
-      "TEP_flexible": -1461.3383360926882
+      "Null": -8368.022462518826,
+      "Anderson": -1005.1865856368615,
+      "TEP_restricted": -582.0312306676991,
+      "TEP_flexible": -499.1204263955153
     },
     "information_criteria": {
       "Null": {
-        "AIC": 1830098.7229007825,
-        "AICc": 1830098.7229007825,
-        "BIC": 1830098.7229007825
+        "AIC": 16736.04492503765,
+        "AICc": 16736.04492503765,
+        "BIC": 16736.04492503765
       },
       "Anderson": {
-        "AIC": 12626.132248470753,
-        "AICc": 12638.132248470753,
-        "BIC": 12624.904837192993
+        "AIC": 2014.373171273723,
+        "AICc": 2018.373171273723,
+        "BIC": 2013.9566902121792
       },
       "TEP_restricted": {
-        "AIC": 5865.984644702612,
-        "AICc": 5867.984644702612,
-        "BIC": 5865.370939063732
+        "AIC": 1166.0624613353982,
+        "AICc": 1167.0624613353982,
+        "BIC": 1165.8542208046263
       },
       "TEP_flexible": {
-        "AIC": 2928.6766721853764,
-        "AICc": Infinity,
-        "BIC": 2926.8355552687362
+        "AIC": 1004.2408527910306,
+        "AICc": 1016.2408527910306,
+        "BIC": 1003.6161311987148
       }
     },
     "bayes_factors": {
       "Anderson_vs_Null": Infinity,
       "TEP_restricted_vs_Null": Infinity,
       "TEP_flexible_vs_Null": Infinity,
-      "TEP_restricted_vs_Anderson": Infinity,
-      "delta_BIC_Anderson_vs_Null": 1817473.8180635895,
-      "delta_BIC_TEP_restricted_vs_Null": 1824233.3519617186,
-      "delta_BIC_TEP_flexible_vs_Null": 1827171.8873455138,
-      "delta_BIC_TEP_restricted_vs_Anderson": 6759.533898129261,
-      "log10_BF_Anderson_vs_Null": 394659.42509432574,
-      "log10_BF_TEP_restricted_vs_Null": 396127.23923042347,
-      "log10_BF_TEP_flexible_vs_Null": 396765.33408145333,
-      "log10_BF_TEP_restricted_vs_Anderson": 1467.8141360977577,
+      "TEP_restricted_vs_Anderson": 1.4558320500373249e+184,
+      "delta_BIC_Anderson_vs_Null": 14722.088234825473,
+      "delta_BIC_TEP_restricted_vs_Null": 15570.190704233026,
+      "delta_BIC_TEP_flexible_vs_Null": 15732.428793838937,
+      "delta_BIC_TEP_restricted_vs_Anderson": 848.1024694075529,
+      "log10_BF_Anderson_vs_Null": 3196.8608412387434,
+      "log10_BF_TEP_restricted_vs_Null": 3381.0239525148545,
+      "log10_BF_TEP_flexible_vs_Null": 3416.253506050041,
+      "log10_BF_TEP_restricted_vs_Anderson": 184.1631112761108,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -145,29 +145,16 @@
   },
   "strict_sign_gate": false,
   "ensemble_catalog": {
-    "n_eligible": 4,
+    "n_eligible": 6,
     "excluded_from_ensemble": [
-      {
-        "name": "Galileo_1992",
-        "exclusion_reason": "snr_below_threshold",
-        "dv_obs_mm_s": 0.0,
-        "sigma_mm_s": 0.05,
-        "snr": 0.0,
-        "dv_tep_mm_s_reference": 0.0002782606561873544,
-        "sign_product": 0.0,
-        "archival_anomaly_reference": "Anderson et al. (2008)",
-        "archival_anomaly_reference_doi": "10.1103/PhysRevLett.100.091102",
-        "archival_usability_notes": "Null detection despite low altitude; potential systematics or TEP cancellation",
-        "archival_detection_significance": "null"
-      },
       {
         "name": "Rosetta_2007",
         "exclusion_reason": "snr_below_threshold",
         "dv_obs_mm_s": 0.02,
         "sigma_mm_s": 0.05,
         "snr": 0.39999999999999997,
-        "dv_tep_mm_s_reference": 6.762895846310001e-05,
-        "sign_product": 1.3525791692620001e-06,
+        "dv_tep_mm_s_reference": 6.6498078579098e-05,
+        "sign_product": 1.32996157158196e-06,
         "archival_anomaly_reference": "Muller et al. (2008)",
         "archival_anomaly_reference_doi": null,
         "archival_usability_notes": "Consistent with zero; expected for higher altitude",
@@ -184,19 +171,6 @@
         "archival_anomaly_reference": "Muller et al. (2010)",
         "archival_anomaly_reference_doi": null,
         "archival_usability_notes": "Third Earth flyby; published null (Muller et al. 2010); geometry from Horizons when catalog asymmetry absent",
-        "archival_detection_significance": "null"
-      },
-      {
-        "name": "MESSENGER_2005",
-        "exclusion_reason": "snr_below_threshold",
-        "dv_obs_mm_s": 0.0,
-        "sigma_mm_s": 0.05,
-        "snr": 0.0,
-        "dv_tep_mm_s_reference": 4.2870208980271865e-07,
-        "sign_product": 0.0,
-        "archival_anomaly_reference": "Anderson et al. (2008)",
-        "archival_anomaly_reference_doi": "10.1103/PhysRevLett.100.091102",
-        "archival_usability_notes": "Consistent with zero; above screening threshold",
         "archival_detection_significance": "null"
       },
       {
@@ -255,68 +229,68 @@
     "ensemble_gate_policy": "Likelihood rows require a published (\u0394v_obs, \u03c3) pair with no imputation and S/N = |\u0394v_obs|/\u03c3 > 2. Sign agreement between \u0394v_obs and the TEP reference prediction at \u03b2_ref is enforced only when parameters.analysis.tep_physics.strict_sign_gate is true (default: false). Exclusion reasons are explicit (missing_observation, snr_below_threshold, sign_mismatch, missing_prediction) rather than silent omission."
   },
   "sign_agreement_model_comparison": {
-    "n_data": 3,
-    "extra_sigma_sys_quadrature_mm_s": 0.7682706990031473,
+    "n_data": 6,
+    "extra_sigma_sys_quadrature_mm_s": 0.6065782705184705,
     "log_likelihoods": {
-      "Null": -171.20720340853669,
-      "Anderson": -15.938752830429038,
-      "TEP_restricted": -6.87345673657928,
-      "TEP_flexible": -3.011438138493281
+      "Null": -273.36087550794946,
+      "Anderson": -9.343965824351875,
+      "TEP_restricted": -21.83498463147462,
+      "TEP_flexible": -19.358863525987303
     },
     "fitted_parameters": {
       "Anderson": {
-        "A": 24.99429509880896,
-        "B": -3.1777627692472046
+        "A": 22.319924120470038,
+        "B": -0.5933355509746675
       },
       "TEP_restricted": {
-        "beta": 0.0017462633220889125,
+        "beta": 0.0018753311289048606,
         "fit_diagnostics": {
-          "optimal_scale_factor_x": 8.542447123247838,
+          "optimal_scale_factor_x": 9.01173623712954,
           "positive_beta_scale_feasible": true,
-          "log_likelihood_evaluated_at_beta": 0.0017462633220889125
+          "log_likelihood_evaluated_at_beta": 0.0018753311289048606
         }
       },
       "TEP_flexible": {
-        "beta": 6.144254995346514e-06,
-        "b_disf": 133.99655019750838,
-        "offset": 2.4919095950736785
+        "beta": 0.0024787397316698165,
+        "b_disf": 0.4728592626818278,
+        "offset": 0.20921946311907647
       }
     },
     "information_criteria": {
       "Null": {
-        "AIC": 342.41440681707337,
-        "AICc": 342.41440681707337,
-        "BIC": 342.41440681707337
+        "AIC": 546.7217510158989,
+        "AICc": 546.7217510158989,
+        "BIC": 546.7217510158989
       },
       "Anderson": {
-        "AIC": 35.87750566085808,
-        "AICc": Infinity,
-        "BIC": 34.0747302381943
+        "AIC": 22.68793164870375,
+        "AICc": 26.68793164870375,
+        "BIC": 22.27145058715986
       },
       "TEP_restricted": {
-        "AIC": 15.74691347315856,
-        "AICc": 19.74691347315856,
-        "BIC": 14.84552576182667
+        "AIC": 45.66996926294924,
+        "AICc": 46.66996926294924,
+        "BIC": 45.46172873217729
       },
       "TEP_flexible": {
-        "AIC": 12.022876276986562,
-        "AICc": Infinity,
-        "BIC": 9.318713142990891
+        "AIC": 44.717727051974606,
+        "AICc": 56.717727051974606,
+        "BIC": 44.09300545965877
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": 9.01799613879639e+66,
-      "TEP_restricted_vs_Null": 1.3510727750179764e+71,
-      "TEP_flexible_vs_Null": 2.141957523371079e+72,
-      "TEP_restricted_vs_Anderson": 14981.962225571235,
-      "delta_BIC_Anderson_vs_Null": 308.33967657887905,
-      "delta_BIC_TEP_restricted_vs_Null": 327.5688810552467,
-      "delta_BIC_TEP_flexible_vs_Null": 333.0956936740825,
-      "delta_BIC_TEP_restricted_vs_Anderson": 19.229204476367627,
-      "log10_BF_Anderson_vs_Null": 66.95511004502025,
-      "log10_BF_TEP_restricted_vs_Null": 71.13067874275814,
-      "log10_BF_TEP_flexible_vs_Null": 72.33081085419497,
-      "log10_BF_TEP_restricted_vs_Anderson": 4.1755686977378845,
+      "Anderson_vs_Null": 7.637227968892024e+113,
+      "TEP_restricted_vs_Null": 7.034461195474885e+108,
+      "TEP_flexible_vs_Null": 1.3945860623874689e+109,
+      "TEP_restricted_vs_Anderson": 9.210751890774582e-06,
+      "delta_BIC_Anderson_vs_Null": 524.4503004287391,
+      "delta_BIC_TEP_restricted_vs_Null": 501.26002228372164,
+      "delta_BIC_TEP_flexible_vs_Null": 502.6287455562401,
+      "delta_BIC_TEP_restricted_vs_Anderson": -23.190278145017434,
+      "log10_BF_Anderson_vs_Null": 113.88293575435199,
+      "log10_BF_TEP_restricted_vs_Null": 108.84723083826067,
+      "log10_BF_TEP_flexible_vs_Null": 109.14444532051434,
+      "log10_BF_TEP_restricted_vs_Anderson": -5.0357049160913245,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -326,12 +300,13 @@
       "bic_approximation_note": "The BIC approximation BF \u2248 exp(\u0394BIC/2) is a large-sample result. For n < 10 and extreme S/N it is unreliable.  When log10(BF) > 100 the value is driven by formal uncertainties and should not be reported as a literal probability ratio."
     },
     "model_selection": {
-      "best_model_BIC": "TEP_flexible",
+      "best_model_BIC": "Anderson",
       "akaike_weights": {
-        "TEP_restricted": 1.0,
-        "Null": 8.583098086086657e-71
+        "TEP_restricted": 4.580741338757044e-05,
+        "Null": 1.1914368506368767e-113,
+        "Anderson": 0.9999541925866124
       },
-      "interpretation": "BIC selects TEP_flexible model"
+      "interpretation": "BIC selects Anderson model"
     },
     "pre_specified_parameters": {
       "lambda_TEP_km": 4000,
@@ -342,13 +317,16 @@
       "v_trans_source": "TEP field equations",
       "geometry_source": "JPL Horizons ephemerides"
     },
-    "systematic_uncertainty_mm_s": 0.7682706990031473,
+    "systematic_uncertainty_mm_s": 0.6065782705184705,
     "systematic_uncertainty_model": "geometry_prediction_spread_std_ddof1",
-    "geometry_prediction_spread_mm_s": 0.7682706990031473,
+    "geometry_prediction_spread_mm_s": 0.6065782705184705,
     "included_flybys": [
       "NEAR",
       "Galileo_1990",
-      "Rosetta_2005"
+      "Cassini",
+      "Galileo_1992",
+      "Rosetta_2005",
+      "MESSENGER_2005"
     ]
   },
   "ensemble_composition_robustness": {
@@ -358,67 +336,67 @@
   },
   "full_catalog_model_comparison": {
     "n_data": 9,
-    "extra_sigma_sys_quadrature_mm_s": 0.5202628606697809,
+    "extra_sigma_sys_quadrature_mm_s": 0.5018828616179711,
     "log_likelihoods": {
-      "Null": -371.3415649988994,
-      "Anderson": -50.96733202423874,
-      "TEP_restricted": -13.197064742077648,
-      "TEP_flexible": -12.534427684618374
+      "Null": -386.95064214229194,
+      "Anderson": -13.014547418570395,
+      "TEP_restricted": -26.890360861882375,
+      "TEP_flexible": -23.64762193124717
     },
     "fitted_parameters": {
       "Anderson": {
-        "A": 18.591069651558485,
-        "B": -0.41298066590912774
+        "A": 22.626994277599202,
+        "B": -0.8080480488681402
       },
       "TEP_restricted": {
-        "beta": 0.0017459255985108346,
+        "beta": 0.0018746064481162284,
         "fit_diagnostics": {
-          "optimal_scale_factor_x": 8.541208025088547,
+          "optimal_scale_factor_x": 9.009124319349018,
           "positive_beta_scale_feasible": true,
-          "log_likelihood_evaluated_at_beta": 0.0017459255985108346
+          "log_likelihood_evaluated_at_beta": 0.0018746064481162284
         }
       },
       "TEP_flexible": {
-        "beta": 0.0014040236126930696,
-        "b_disf": 1.3842850760096004,
-        "offset": 0.23183341109169395
+        "beta": 0.0024787397316698165,
+        "b_disf": 0.4841554210109903,
+        "offset": 0.15092086916932307
       }
     },
     "information_criteria": {
       "Null": {
-        "AIC": 742.6831299977988,
-        "AICc": 742.6831299977988,
-        "BIC": 742.6831299977988
+        "AIC": 773.9012842845839,
+        "AICc": 773.9012842845839,
+        "BIC": 773.9012842845839
       },
       "Anderson": {
-        "AIC": 105.93466404847749,
-        "AICc": 107.93466404847749,
-        "BIC": 106.32911320314993
+        "AIC": 30.02909483714079,
+        "AICc": 32.02909483714079,
+        "BIC": 30.42354399181323
       },
       "TEP_restricted": {
-        "AIC": 28.394129484155297,
-        "AICc": 28.96555805558387,
-        "BIC": 28.591354061491515
+        "AIC": 55.78072172376475,
+        "AICc": 56.35215029519332,
+        "BIC": 55.97794630110097
       },
       "TEP_flexible": {
-        "AIC": 31.068855369236747,
-        "AICc": 35.86885536923675,
-        "BIC": 31.660529101245405
+        "AIC": 53.29524386249434,
+        "AICc": 58.095243862494335,
+        "BIC": 53.886917594503
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": 1.522365787711963e+138,
-      "TEP_restricted_vs_Null": 1.1562691294265564e+155,
-      "TEP_flexible_vs_Null": 2.4922754466827628e+154,
-      "TEP_restricted_vs_Anderson": 7.595212259494826e+16,
-      "delta_BIC_Anderson_vs_Null": 636.3540167946488,
-      "delta_BIC_TEP_restricted_vs_Null": 714.0917759363073,
-      "delta_BIC_TEP_flexible_vs_Null": 711.0226008965534,
-      "delta_BIC_TEP_restricted_vs_Anderson": 77.73775914165842,
-      "log10_BF_Anderson_vs_Null": 138.1825190154426,
-      "log10_BF_TEP_restricted_vs_Null": 155.06305893081577,
-      "log10_BF_TEP_flexible_vs_Null": 154.39659603893563,
-      "log10_BF_TEP_restricted_vs_Anderson": 16.88053991537316,
+      "Anderson_vs_Null": 2.780609572484153e+161,
+      "TEP_restricted_vs_Null": 7.853659312717668e+155,
+      "TEP_flexible_vs_Null": 2.234257231586266e+156,
+      "TEP_restricted_vs_Anderson": 2.8244379903005853e-06,
+      "delta_BIC_Anderson_vs_Null": 743.4777402927707,
+      "delta_BIC_TEP_restricted_vs_Null": 717.923337983483,
+      "delta_BIC_TEP_flexible_vs_Null": 720.0143666900809,
+      "delta_BIC_TEP_restricted_vs_Anderson": -25.55440230928774,
+      "log10_BF_Anderson_vs_Null": 161.44414001352462,
+      "log10_BF_TEP_restricted_vs_Null": 155.89507205789494,
+      "log10_BF_TEP_flexible_vs_Null": 156.34913317228333,
+      "log10_BF_TEP_restricted_vs_Anderson": -5.54906795562969,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -428,13 +406,13 @@
       "bic_approximation_note": "The BIC approximation BF \u2248 exp(\u0394BIC/2) is a large-sample result. For n < 10 and extreme S/N it is unreliable.  When log10(BF) > 100 the value is driven by formal uncertainties and should not be reported as a literal probability ratio."
     },
     "model_selection": {
-      "best_model_BIC": "TEP_restricted",
+      "best_model_BIC": "Anderson",
       "akaike_weights": {
-        "TEP_restricted": 1.0,
-        "Null": 1.0427937848183223e-155,
-        "Anderson": 7.113388250189523e-18
+        "TEP_restricted": 5.227732361638954e-06,
+        "Null": 8.025990703674845e-162,
+        "Anderson": 0.9999947722676384
       },
-      "interpretation": "BIC selects TEP_restricted model"
+      "interpretation": "BIC selects Anderson model"
     },
     "pre_specified_parameters": {
       "lambda_TEP_km": 4000,
@@ -445,9 +423,9 @@
       "v_trans_source": "TEP field equations",
       "geometry_source": "JPL Horizons ephemerides"
     },
-    "systematic_uncertainty_mm_s": 0.5202628606697809,
+    "systematic_uncertainty_mm_s": 0.5018828616179711,
     "systematic_uncertainty_model": "geometry_prediction_spread_full_catalog_std_ddof1",
-    "geometry_prediction_spread_mm_s": 0.5202628606697809,
+    "geometry_prediction_spread_mm_s": 0.5018828616179711,
     "included_flybys": [
       "NEAR",
       "Galileo_1990",
@@ -460,8 +438,8 @@
       "Juno"
     ],
     "included_flyby_summary": {
-      "n_detections": 4,
-      "n_nulls": 5
+      "n_detections": 6,
+      "n_nulls": 3
     }
   },
   "full_catalog_skipped": [

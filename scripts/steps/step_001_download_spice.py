@@ -5,11 +5,11 @@ Download Rosetta 2005/2007 SPICE Kernels from ESA SPICE Service
 This script downloads the BSP trajectory files for Rosetta's Earth flybys.
 """
 
-import urllib.request
-import urllib.error
-from pathlib import Path
 import sys
 import time
+import urllib.error
+import urllib.request
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -78,7 +78,7 @@ def main():
     start_time = time.time()
     
     logger.header("ROSETTA 2005/2007 SPICE KERNEL DOWNLOAD")
-    logger.info(f"Source: ESA SPICE Service")
+    logger.info("Source: ESA SPICE Service")
     logger.info(f"URL: {ESA_SPICE_URL}")
     logger.info(f"Output directory: {KERNEL_DIR}")
     

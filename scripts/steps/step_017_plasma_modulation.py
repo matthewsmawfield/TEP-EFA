@@ -16,10 +16,11 @@ Chapman layer approximation, removing the Chapman caveat entirely.
 """
 
 import copy
-import numpy as np
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
+
+import numpy as np
 from scipy.interpolate import interp1d
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -254,7 +255,7 @@ def main():
     try:
         with open(predictions_file, encoding='utf-8') as f:
             data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+    except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Failed to load predictions file: {e}")
         logger.log_step_summary(0, "FAILED")
         return 1

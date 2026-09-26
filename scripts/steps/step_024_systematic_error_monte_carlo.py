@@ -12,18 +12,17 @@ Tests robustness against:
 This provides a quantitative systematic error budget similar to TEP-LLR Step 020.
 """
 
-import sys
 import json
-import numpy as np
+import sys
 from pathlib import Path
-from typing import Dict, List, Tuple
-from scipy import stats
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import BETA_BASELINE
+from scripts.utils.step_logger import StepLogger
 
 
 class SystematicErrorMonteCarlo:
@@ -97,7 +96,7 @@ class SystematicErrorMonteCarlo:
         perigee_altitude_km: float,
         perigee_velocity_km_s: float,
         n_trials: int = 1000  # Standard Monte Carlo sample size for statistical convergence; provides 95% CI with ±2% precision on uncertainty estimates; ±100 trials accounts for problem-dependent convergence requirements
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Inject trajectory uncertainties into perigee parameters.
         
@@ -138,7 +137,7 @@ class SystematicErrorMonteCarlo:
         cos_asymmetry: float,
         perigee_latitude_deg: float,
         n_trials: int = 1000
-    ) -> Tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray]:
         """
         Inject geometry reconstruction uncertainties into trajectory parameters.
 
@@ -178,7 +177,7 @@ class SystematicErrorMonteCarlo:
         cos_asymmetry: float,
         perigee_latitude_rad: float = 0.0,
         beta: float = None,
-        plasma_effects: Dict = None,
+        plasma_effects: dict = None,
         flyby_date: str = "",
         mission_name: str = "",
         dec_in_deg: float = None,
@@ -231,7 +230,7 @@ class SystematicErrorMonteCarlo:
         self,
         catalog_path: Path,
         n_trials: int = 1000
-    ) -> Dict:
+    ) -> dict:
         """
         Perform Monte Carlo systematic error analysis on all flybys.
         
@@ -441,7 +440,7 @@ def main():
         return results
         
     except Exception as e:
-        logger.error(f"Analysis failed: {str(e)}")
+        logger.error(f"Analysis failed: {e!s}")
         raise
 
 

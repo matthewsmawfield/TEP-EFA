@@ -13,14 +13,23 @@ that governs scalar field saturation across all mass scales. For Earth:
     R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km
     ΔR/R = (R_earth - R_sol) / R_earth ≈ 0.349
 
-FOUR INDEPENDENT CROSS-CORROBORATING METHODS:
-=============================================
+FOUR CROSS-CORROBORATING METHODS (only the last is a fully independent input):
+=============================================================================
 1. UCD Saturation (Primary): ΔR/R = 0.349  [Paper 6, R_sol = (3M/4πρ_T)^(1/3)]
 2. GNSS Direct:              ΔR/R = 0.341  [Paper 6, L_c = 4201 km]
+   — NOT independent: ρ_T is itself anchored on L_c through the corpus's
+     terrestrial calibration (Paper 6 §2 transfer sketch, L_c ~ O(1)·R_T(M_⊕)).
+     This entry is the calibration relation inverted — a shared-input
+     consistency check, not a separate measurement of S_⊕.
 3. Compton Wavelength:       ΔR/R = 0.381  [Paper 6, λ = ℏc/m_φ, m_φ ≈ 5×10⁻¹⁴ eV]
+   — NOT independent either: the quoted m_φ is calibrated so that its reduced
+     Compton wavelength reproduces the same ~4200 km terrestrial scale.
 4. Altitude Threshold:       ΔR/R = 0.392  [Paper 15, empirical null cutoff ~2500 km]
+   — flyby-empirical: a consistency check against the data being explained.
 
 Consensus (UCD + GNSS): 0.345 ± 0.004 (2% agreement)
+  — the GNSS figure is the calibration inverse, so the agreement verifies that
+  the adopted global ρ_T remains consistent with its own terrestrial anchor.
 
 IMPORTANT PHYSICS DISTINCTION:
 ==============================
@@ -48,7 +57,6 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from scipy.integrate import quad, solve_bvp
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -155,9 +163,18 @@ class UCDSolitonCalculator:
         """
         Derive ρ_T from GNSS correlation length and verify consistency.
 
-        L_c ≈ R_sol = (3M / 4πρ_T)^(1/3)
+        Under the corpus's terrestrial calibration (Paper 6 §2 transfer
+        sketch), the GNSS covariance scale is operationally identified with
+        the Earth realization of the geometric saturation scale:
+
+            L_c ~ O(1) · R_T(M_⊕),  R_T = (3M / 4πρ_T)^(1/3)
 
         Invert: ρ_T = 3M / (4π L_c³)
+
+        This is the calibration relation itself run in reverse: the corpus's
+        adopted ρ_T is anchored on this same L_c, so the returned value is a
+        shared-input consistency check (the global anchor recovered at its own
+        calibration point), not an independent determination of ρ_T.
 
         Args:
             L_c_km: GNSS correlation length in km
@@ -178,12 +195,17 @@ class UCDSolitonCalculator:
         APPROACH 2: Direct GNSS correlation length → characteristic suppression.
 
         From Paper 5 (GTE): GNSS correlation length L_c ≈ 4201 km
-        Interpreted as transition radius R_sol ≈ L_c.
+        Identified with the Earth saturation scale under the corpus's
+        terrestrial calibration ansatz (Paper 6 §2 transfer sketch):
+        L_c ~ O(1) · R_T(M_⊕).
 
         Formula: S_⊕ = (R_earth - L_c) / R_earth
 
-        This is an INDEPENDENT empirical method from the UCD saturation calculation,
-        providing cross-corroboration of the 0.34 characteristic suppression.
+        NOT independent of the UCD saturation calculation: the adopted ρ_T is
+        anchored on this same L_c, so this entry is the calibration relation
+        inverted. Its content is a shared-input consistency check — the adopted
+        global ρ_T recovers the terrestrial anchor to ~1% — not a separate
+        empirical determination of the 0.34 characteristic suppression.
 
         Literature basis:
         - Paper 5 (GTE): GNSS correlation length λ = 4201 ± 1967 km
@@ -211,6 +233,9 @@ class UCDSolitonCalculator:
         - Matches de Broglie wavelength for ultra-light bosons
 
         Formula: S_⊕ = (R_earth - λ) / R_earth
+
+        NOTE: m_φ is itself calibrated on the terrestrial ~4200 km scale, so
+        this approach shares the GNSS anchor and is not independent either.
         """
         hbar_eV_s = 6.582119569e-16  # eV·s (reduced Planck constant)
         c_m_s = 299792458  # m/s (speed of light)
@@ -537,7 +562,7 @@ def main():
             config = json.load(f)
             tep_config = config["parameters"]["analysis"]["tep_physics"]
             gnss_empirical = tep_config.get("characteristic_suppression")
-    except (ValueError, KeyError, IOError) as e:
+    except (OSError, ValueError, KeyError):
         gnss_empirical = None
 
     logger.section("UCD PARAMETERS (from Paper 7)")
@@ -557,33 +582,33 @@ def main():
     # Calculate geometric screening factor using ALL TEP approaches
     logger.subsection("Approach 1: UCD Saturation (Primary)")
     S_factor_1, R_sol_1 = calculator.calculate_characteristic_suppression()
-    logger.info(f"Formula: R_sol = (3M/4πρ_T)^(1/3)")
+    logger.info("Formula: R_sol = (3M/4πρ_T)^(1/3)")
     logger.info(f"ρ_T = {calculator.RHO_T} g/cm³ → R_sol = {R_sol_1 / 1000:.1f} km")
     logger.info(f"S_⊕ = {S_factor_1:.5f} ≈ {S_factor_1:.2f}")
 
     logger.subsection("Approach 2: GNSS Correlation Length Direct")
     S_factor_2, R_sol_2 = calculator.calculate_from_gnss_direct(4201)
-    logger.info(f"Formula: S_⊕ = (R_earth - L_c) / R_earth")
-    logger.info(f"L_c = 4201 km (Paper 5, GTE)")
+    logger.info("Formula: S_⊕ = (R_earth - L_c) / R_earth")
+    logger.info("L_c = 4201 km (Paper 5, GTE)")
     logger.info(f"R_sol ≈ L_c = {R_sol_2:.1f} km")
     logger.info(f"S_⊕ = {S_factor_2:.5f} ≈ {S_factor_2:.2f}")
-    logger.info(f"Literature: Paper 5 (GTE), Paper 15 (EFA)")
+    logger.info("Literature: Paper 5 (GTE), Paper 15 (EFA)")
 
     logger.subsection("Approach 4: Compton Wavelength (QFT)")
     S_factor_4, lambda_km, m_phi = calculator.calculate_from_compton_wavelength(5e-14)
-    logger.info(f"Formula: λ = ℏc/m_φ,  S_⊕ = (R_earth - λ)/R_earth")
+    logger.info("Formula: λ = ℏc/m_φ,  S_⊕ = (R_earth - λ)/R_earth")
     logger.info(f"m_φ = {m_phi:.0e} eV/c² (Paper 6)")
     logger.info(f"λ = {lambda_km:.0f} km (Compton wavelength)")
     logger.info(f"S_⊕ = {S_factor_4:.5f} ≈ {S_factor_4:.2f}")
-    logger.info(f"Literature: Standard QFT, de Broglie wavelength")
+    logger.info("Literature: Standard QFT, de Broglie wavelength")
 
     logger.subsection("Approach 5: Flyby Altitude Threshold (Empirical)")
     S_factor_5, R_sol_5 = calculator.calculate_from_altitude_threshold(2500)
-    logger.info(f"Formula: R_sol ≈ R_earth - altitude_threshold")
-    logger.info(f"Threshold = 2500 km (Paper 15: null results above)")
+    logger.info("Formula: R_sol ≈ R_earth - altitude_threshold")
+    logger.info("Threshold = 2500 km (Paper 15: null results above)")
     logger.info(f"R_sol = {R_sol_5:.1f} km")
     logger.info(f"S_⊕ = {S_factor_5:.5f} ≈ {S_factor_5:.2f}")
-    logger.info(f"Literature: Paper 15 (EFA), Anderson et al. 2008")
+    logger.info("Literature: Paper 15 (EFA), Anderson et al. 2008")
 
     # Cross-corroboration summary
     logger.section("CROSS-CORROBORATION SUMMARY")
@@ -609,8 +634,14 @@ def main():
     std_value = np.std([v for _, v in all_methods])
     logger.info("-" * 55)
     logger.info(f"{'Average':20s} | {avg_value:.3f} | ±{std_value:.3f} std")
-    logger.info(f"\nAll 4 TEP methods consistent with 0.34 ± 20%")
-    logger.info(f"Best agreement: UCD Saturation (0.349) and GNSS Direct (0.341)")
+    logger.info("\nAll 4 TEP methods consistent with 0.34 ± 20%")
+    logger.info(
+        "Independence ledger: GNSS Direct and Compton λ share the terrestrial "
+        "calibration anchor (ρ_T is set by L_c; m_φ reproduces the same scale), "
+        "so their agreement is a shared-input consistency check; the altitude "
+        "threshold is flyby-empirical."
+    )
+    logger.info("Best agreement: UCD Saturation (0.349) and GNSS Direct (0.341)")
 
     # Primary characteristic suppression (UCD saturation)
     characteristic_suppression = S_factor_1
@@ -624,9 +655,9 @@ def main():
         )
         if pct_diff < 5.0:
             logger.info(
-                f"✓ AGREEMENT: UCD Saturation matches GNSS value ({pct_diff:.2f}% diff)"
+                f"✓ CONSISTENT: UCD Saturation matches GNSS value ({pct_diff:.2f}% diff; shared-input check, not independent validation)"
             )
-            match_status = "CONFIRMED"
+            match_status = "CONSISTENT_SHARED_INPUT"
         else:
             logger.warning(f"UCD Saturation deviates from GNSS by {pct_diff:.f}%")
             match_status = "REVIEW_REQUIRED"
@@ -636,15 +667,20 @@ def main():
         pct_diff = None
         match_status = "UCD_PHYSICS_BASED_CALCULATION"
 
-    # Derive ρ_T from GNSS correlation length
-    logger.section("CROSS-VALIDATION: GNSS → ρ_T → R_sol")
+    # Derive ρ_T from GNSS correlation length (the calibration relation inverted:
+    # ρ_T is itself anchored on L_c, so this is a shared-input consistency check)
+    logger.section("CALIBRATION-INVERSE CONSISTENCY: GNSS → ρ_T → R_sol")
     rho_T_from_gnss = calculator.derive_from_gnss_correlation(4201)
     logger.info(f"GNSS L_c = 4201 km → ρ_T = {rho_T_from_gnss:.1f} g/cm³")
-    logger.info(f"Paper 7 ρ_T = {calculator.RHO_T} g/cm³")
+    logger.info(f"Adopted corpus ρ_T = {calculator.RHO_T} g/cm³")
     logger.info(
         f"Consistency: {abs(rho_T_from_gnss - calculator.RHO_T) / calculator.RHO_T * 100:.1f}% difference"
     )
-    logger.info(f"→ ρ_T validated: GNSS and UCD are self-consistent")
+    logger.info(
+        "→ the adopted global ρ_T recovers its own terrestrial anchor to ~4% "
+        "(shared-input check under the L_c ~ O(1)·R_T(M_⊕) identification, "
+        "Paper 6 §2 transfer sketch — not an independent validation)"
+    )
 
     # Run verification tests
     tests, sensitivity = run_verification_tests(calculator, logger)
@@ -677,6 +713,56 @@ def main():
             "difference": difference,
             "percent_difference": pct_diff,
         },
+        "canonical_amplitude_partition": {
+            "description": (
+                "Identity between the canonical clock-amplitude response "
+                "S_A(rho_bar) = min[1, (rho_bar/rho_T)^(1/3)] (Paper 0/Paper 26) "
+                "and the UCD embedding factor R_sol/R_earth: under the "
+                "uniform-density-equivalent construction (R_sol^3 = 3M/4pi*rho_T, "
+                "R_earth^3 = 3M/4pi*rho_bar) the two ratios coincide, so the "
+                "canonical amplitude response IS the saturated fraction of the "
+                "equivalent radius and the EFA clock-excursion factor S_earth = "
+                "1 - R_sol/R_earth = 1 - S_A is the complementary responsive "
+                "shell — a partition sum rule of one profile, not two "
+                "independent response estimates."
+            ),
+            "rho_bar_g_cm3": float(
+                calculator.M_EARTH
+                / ((4.0 / 3.0) * np.pi * calculator.R_EARTH**3)
+                / 1000.0
+            ),
+            "S_A_canonical": float(
+                min(
+                    1.0,
+                    (
+                        (
+                            calculator.M_EARTH
+                            / ((4.0 / 3.0) * np.pi * calculator.R_EARTH**3)
+                            / 1000.0
+                        )
+                        / calculator.RHO_T
+                    )
+                    ** (1.0 / 3.0),
+                )
+            ),
+            "R_sol_over_R_earth": float(R_sol / calculator.R_EARTH),
+            "S_earth_clock_excursion": float(characteristic_suppression),
+            "partition_sum_S_A_plus_S_earth": float(
+                min(
+                    1.0,
+                    (
+                        (
+                            calculator.M_EARTH
+                            / ((4.0 / 3.0) * np.pi * calculator.R_EARTH**3)
+                            / 1000.0
+                        )
+                        / calculator.RHO_T
+                    )
+                    ** (1.0 / 3.0),
+                )
+                + characteristic_suppression
+            ),
+        },
         "cross_corroboration": {
             "method_1_ucd_saturation": {
                 "value": S_factor_1,
@@ -688,13 +774,23 @@ def main():
                 "value": S_factor_2,
                 "formula": "S_⊕ = (R_earth - L_c) / R_earth",
                 "reference": "Paper 5 (GTE): L_c = 4201 km",
-                "status": "INDEPENDENT_EMPIRICAL",
+                "status": "SHARED_INPUT_CONSISTENCY",
+                "note": (
+                    "Calibration relation inverted: the adopted ρ_T is anchored "
+                    "on this same L_c under the Paper 6 §2 transfer-sketch "
+                    "identification L_c ~ O(1)·R_T(M_⊕). Not an independent "
+                    "determination of S_⊕."
+                ),
             },
             "method_4_compton_wavelength": {
                 "value": S_factor_4,
                 "formula": "λ = ℏc/m_φ, S_⊕ = (R_earth - λ)/R_earth",
                 "reference": "Paper 6: m_φ ≈ 5×10⁻¹⁴ eV/c², Standard QFT",
-                "status": "QUANTUM_FIELD_THEORY",
+                "status": "SHARED_ANCHOR_QFT",
+                "note": (
+                    "m_φ is calibrated so that λ = ℏ/m_φc reproduces the same "
+                    "~4200 km terrestrial scale; shares the GNSS anchor."
+                ),
             },
             "method_5_altitude_threshold": {
                 "value": S_factor_5,
@@ -714,6 +810,18 @@ def main():
             "consistency_percent": abs(rho_T_from_gnss - calculator.RHO_T)
             / calculator.RHO_T
             * 100,
+            "relationship": (
+                "L_c and R_sol are different objects (a station-clock "
+                "covariance decay length vs the geometric saturation scale "
+                "R_T(M_⊕)); they are related only through the corpus's stated "
+                "terrestrial calibration ansatz L_c ~ O(1)·R_T(M_⊕) (Paper 6 "
+                "§2 transfer sketch, modulated-sampling assumption, "
+                "undetermined O(1) prefactor). Because the adopted ρ_T is "
+                "anchored on L_c itself, this block records that the global "
+                "anchor recovers its own terrestrial calibration point to "
+                "~4% — a shared-input consistency check, explicitly NOT an "
+                "independent validation of R_sol or S_⊕."
+            ),
         },
         "verification_tests": tests,
         "sensitivity_analysis": sensitivity,

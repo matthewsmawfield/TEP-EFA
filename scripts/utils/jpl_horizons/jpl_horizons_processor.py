@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 """Batch processor for JPL/Horizons CGI response - Adapted for TEP-3I pipeline"""
 
-from io import StringIO
-from scipy import constants as c
-import sys
-import re
-import pandas as pd
 import json
-from pathlib import Path
+import re
+import sys
+from io import StringIO
+
+import pandas as pd
+from scipy import constants as c
 
 
 class JPLHorizonsProcessor:

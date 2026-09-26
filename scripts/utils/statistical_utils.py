@@ -4,12 +4,13 @@ Statistical utilities for TEP-EFA analysis.
 Ported from TEP-LLR Research-Grade Hardening Suite.
 """
 
+
 import numpy as np
 from scipy import linalg, stats
-from typing import Dict
+
 
 def robust_regression(y: np.ndarray, X: np.ndarray, weights: np.ndarray = None, 
-                      scale_errors_by_birge: bool = True) -> Dict:
+                      scale_errors_by_birge: bool = True) -> dict:
     """
     Perform numerically stable weighted linear regression using QR decomposition.
     
@@ -140,7 +141,7 @@ def detect_outliers_sigma(residuals: np.ndarray, sigma_threshold: float = 5.0) -
     sigma = 1.4826 * mad
     threshold = sigma_threshold * sigma
     return np.abs(residuals - median) > threshold
-def weighted_mean(values: np.ndarray, uncertainties: np.ndarray, scale_errors_by_birge: bool = True) -> Dict:
+def weighted_mean(values: np.ndarray, uncertainties: np.ndarray, scale_errors_by_birge: bool = True) -> dict:
     """
     Compute inverse-variance weighted mean with optional Birge scaling.
     
@@ -203,7 +204,7 @@ def permutation_spearman_test(
     n_permutations: int = 100000,
     alternative: str = 'greater',
     random_seed: int = 42,
-) -> Dict:
+) -> dict:
     """
     Permutation test for Spearman rank correlation.
 
@@ -282,7 +283,7 @@ def permutation_spearman_test(
     }
 
 
-def exact_spearman_pvalue(x: np.ndarray, y: np.ndarray) -> Dict:
+def exact_spearman_pvalue(x: np.ndarray, y: np.ndarray) -> dict:
     """
     Exact Spearman p-value via enumeration of all permutations.
 
@@ -333,7 +334,7 @@ def juno_falsification_power_analysis(
     measurement_precision_mm_s: float,
     alpha: float = 0.05,
     power_targets: tuple[float, ...] = (0.5, 0.8, 0.9, 0.95),
-) -> Dict:
+) -> dict:
     """
     Statistical power analysis for the Juno falsification test.
 

@@ -2,7 +2,9 @@
 
 <p>
     This study investigated whether the Temporal Equivalence Principle (TEP),
-    incorporating Temporal Shear Suppression, can explain the Earth flyby
+    through the clock-sector reduction-artefact channel identified in Paper 0
+    (v0.14) and scoped to its observable classes in Section 5.2,
+    can organize the Earth flyby
     anomaly—unexplained velocity shifts observed during spacecraft gravity
     assists. The analysis of twelve Earth flyby events spanning nine spacecraft
     (Galileo 1990/1992, NEAR, Cassini, Rosetta 2005/2007/2009, MESSENGER, Juno,
@@ -11,10 +13,10 @@
 
 <ol>
     <li>
-        Three-gated TEP ensemble: Inverse-variance fitting (Step 008) enters NEAR ($13.46 \pm 0.01$
-        mm/s), Galileo 1990 ($3.92 \pm 0.03$ mm/s), and Rosetta 2005 ($1.82 \pm
-        0.05$ mm/s) after pre-fit gates (S/N ≥ 2, sign agreement at $\beta_{\rm ref}=10^{-4}$). At $\beta_{\rm ref}$, Rosetta 2005 predicts $\Delta v_{\rm TEP} \approx 0.32$ mm/s vs $1.82$ mm/s observed; the full-model fit yields $\beta_{\rm fitted} \approx 1.01\times10^{-3}$. Cassini ($0.11 \pm 0.05$ mm/s) remains a fourth published anomaly but is excluded from the $\beta_{\rm fit}$ ensemble because $\Delta v_{\rm TEP}(\beta_{\rm ref}) < 0$ while the published anomaly is $>0$. The three gated $\beta_{\rm fit}$ values span roughly a factor of 5.3 ($1.01\times10^{-3}$ to $5.33\times10^{-3}$),
-        consistent with geometry- and plasma-dependent modulation. The flyby
+        Six-member TEP ensemble: Inverse-variance fitting (Step 008) enters NEAR ($13.46 \pm 0.13$
+        mm/s), Galileo 1990 ($3.92 \pm 0.08$ mm/s), Rosetta 2005 ($1.80 \pm
+        0.03$ mm/s), Cassini ($-2.00 \pm 1.00$ mm/s), Galileo 1992 ($-4.60 \pm 1.00$ mm/s), and MESSENGER ($+0.02 \pm 0.01$ mm/s) after pre-fit gates (S/N ≥ 2, sign agreement at $\beta_{\rm ref}=10^{-4}$) on the re-transcribed catalogue. All six reference predictions agree in sign with the published anomalies. At $\beta_{\rm ref}$, Rosetta 2005 predicts $\Delta v_{\rm TEP} \approx 0.18$ mm/s vs $1.80$ mm/s observed; the full-model fit yields $\beta_{\rm fitted} \approx 2.22\times10^{-3}$. Cassini and MESSENGER carry near-zero reference predictions, so their per-flyby rescalings are poorly constrained and contribute negligible pooled weight. The amplitude-informative gated $\beta_{\rm fit}$ values span roughly a factor of 4.8 ($1.82\times10^{-3}$ to $8.73\times10^{-3}$, with Galileo 1992 at $6.7\times10^{-2}$),
+        consistent with geometry-dependent modulation (the plasma term is a bounded heuristic envelope coefficient; the stronger Debye attenuation ansatz is quarantined at $S_{\rm plasma}=1$, Section 3.10). The flyby
         trajectory-response amplitudes $\beta_{\rm fit}$ are distinct from the
         bare conformal coupling $\beta_A = -1.0$ and from the Cassini source
         charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$. Cassini
@@ -24,13 +26,13 @@
 
     <li>
         TEP parameter estimate: The inverse-variance weighted
-        mean $\beta_{\rm fit} \approx 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$ summarizes the gated trio. This is the flyby trajectory-response amplitude, distinct from the bare conformal coupling $\beta_A = -1.0$ and from the Cassini source charge $\alpha_{\rm eff}$. Formal heterogeneity (reduced $\chi^2 \gg 1$, $I^2 \approx
-        100\%$) signals that a single rescaling does not exhaust geometry–plasma physics. Bootstrap resampling ($10^4$ draws) and
-        leave-one-out recomputations in Step 008 show moderate stability (coefficient $\approx 0.148$), with NEAR as the dominant lever.
+        mean $\beta_{\rm fit} \approx 1.95 \times 10^{-3} \pm 6.55 \times 10^{-4}$ (random-effects standard error; formal inverse-variance error $2.82 \times 10^{-4}$) summarizes the gated ensemble. This is the flyby trajectory-response amplitude, distinct from the bare conformal coupling $\beta_A = -1.0$ and from the Cassini source charge $\alpha_{\rm eff}$. Formal heterogeneity (reduced $\chi^2 \approx 178$, $I^2 \approx
+        99.4\%$) signals that a single rescaling does not exhaust the geometry physics carried by the envelope (the plasma term is a bounded heuristic envelope coefficient). Bootstrap resampling ($10^4$ draws) and
+        leave-one-out recomputations in Step 008 show moderate stability (coefficient $\approx 0.106$), with NEAR as the dominant lever.
     </li>
 
     <li>
-        PPN compliance via Temporal Topology screening: The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery. The fitted $\beta_{\rm fit}$ values are flyby trajectory-response amplitudes, not the Cassini source charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$. Cassini PPN compliance is evaluated through the solar source-charge projection (Section 4.6.1a): the Jakarta radial field solution gives $S_\Sigma^{(\odot)} \le 10^{-8}$ for the screened quadratic benchmark, well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 3.4\times 10^{-3}$. This supports the claim that TEP can reduce to the GR PPN light-propagation limit in the screened solar environment while reserving its discriminating predictions for observables outside the Cassini measurement class.
+        PPN compliance via Temporal Topology screening: The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery. The fitted $\beta_{\rm fit}$ values are flyby trajectory-response amplitudes, not the Cassini source charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$. Cassini PPN compliance is evaluated through the solar source-charge projection (Section 4.6.1a): the Jakarta radial field solution gives $S_\Sigma^{(\odot)} \le 10^{-8}$ for the screened quadratic benchmark, well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$ (canonical linear mapping, Paper 0 §7). This supports the claim that TEP can reduce to the GR PPN light-propagation limit in the screened solar environment while reserving its discriminating predictions for observables outside the Cassini measurement class.
     </li>
 
     <li>
@@ -67,7 +69,7 @@
     <li>
         Systematic uncertainty compression: Transitioning from
         empirical characteristic suppression factors to a UCD-derived estimate via
-        the Self-Consistent Field (SCF) solver and the corrected uncertainty analysis (Step 025) provides a rigorous uncertainty budget. The total relative uncertainty is 72.9%, with heterogeneity contributing 66.7% and systematic uncertainty contributing 29.2%. The systematic component is dominated by characteristic suppression uncertainty (25.0%, Paper 6 UCD) and relaxation length uncertainty (15.0%, SCF theoretical prior). This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
+        the Self-Consistent Field (SCF) solver and the corrected uncertainty analysis (Step 025) provides a rigorous uncertainty budget. The total relative uncertainty is 158.8%, with heterogeneity contributing 155.4% and systematic uncertainty contributing 29.2%. The systematic component is dominated by characteristic suppression uncertainty (25.0%, Paper 6 UCD) and relaxation length uncertainty (15.0%, SCF theoretical prior). This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
     </li>
 
     <li>
@@ -75,20 +77,22 @@
         model-comparison layer use inverse-variance/Gaussian weighted
         likelihoods, while Student's t likelihoods are retained in auxiliary
         Bayesian checks to test sensitivity to outliers. Residual diagnostics on
-        the gated trio are consistent with normality (Shapiro–Wilk $p \approx 0.50$),
+        the gated ensemble is consistent with normality (Shapiro–Wilk $p \approx 0.92$, $n = 6$),
         so heterogeneity diagnostics, not normality alone, dominate the
         statistical interpretation.
-        (NEAR, Galileo 1990, Rosetta 2005; Cassini analysed separately).
+        (NEAR, Galileo 1990, Rosetta 2005, Cassini, Galileo 1992, MESSENGER).
     </li>
 
     <li>
     Cosmographic CMB-frame directional consistency: Full 3D
     spacecraft state vectors from JPL Horizons were tested for CMB-frame
     velocity geometry (Step 040, n = 9). The exploratory both-aligned flag
-    yields Pearson r = +0.37, p = 0.36, and Mann-Whitney U = 16, p = 0.095.
-    Multivariate regression on residual ratio achieves R² = 0.22 (adjusted
-    R² = −0.24), and an optimal weighted combination of spacecraft and Earth
-    CMB projections gives r = −0.61, p = 0.11. These results are
+    yields Pearson r = −0.57, p = 0.11, and Mann-Whitney U = 7.5, p = 0.79.
+    Multivariate regression on residual ratio achieves R² = 0.96 (adjusted
+    R² = 0.94), and an optimal weighted combination of spacecraft and Earth
+    CMB projections gives r = 0.96, though the optimum sits at the boundary
+    of the scanned weight grid (w = −2.0) and is read as a boundary-limited
+    exploratory diagnostic, not a calibrated coefficient. These results are
     sample-limited and remain exploratory.
     </li>
 </ol>
@@ -100,8 +104,9 @@
     theoretical framework connecting spacecraft dynamics to fundamental physics.
     The flyby trajectory-response amplitude $\beta_{\rm fit} \sim 1.7\times10^{-3}$ (weighted mean)
     is a trajectory-response coefficient, not the bare coupling $\beta_A$ or the
-    Cassini source charge $\alpha_{\rm eff}$. With geometric screening via
-    Temporal Shear suppression, the flyby response is consistent with solar
+    Cassini source charge $\alpha_{\rm eff}$. Interpreted as the clock-sector
+    amplitude response under the amplitude–shear split, the flyby catalogue's
+    geometric organization is consistent with solar
     system constraints while explaining the anomalous velocity shifts.
 </p>
 
@@ -109,7 +114,7 @@
     Unlike ad hoc modifications to gravity, the TEP framework preserves
     all successes of general relativity in solar system tests while explaining
     anomalous behavior in the specific regime of planetary gravity assists. The
-    geometric screening via Temporal Shear suppression, calibrated by independent UCD
+    geometric amplitude response, calibrated by independent UCD
     saturation analysis, is essential for the flyby amplitude and environmental response: without it, the
     required $\beta_{\rm fit}$ would not produce the observed trajectory-dependent residuals.
 </p>
@@ -121,24 +126,24 @@
 
 <ul>
     <li>
-        Effect sizes: Cohen's $d$ relative to the published null population ($n_{\rm null}=5$) yields very large effects for NEAR ($d \approx 3.4$) and Galileo 1990 ($d \approx 1.0$), a small-to-medium effect for Rosetta 2005 ($d \approx 0.5$), and a negligible effect for Cassini ($d \approx 0.03$).  The coefficient of variation CV $\approx 68\%$ across the three gated $\beta_{\rm fit}$ fits reflects genuine geometry-dependent modulation at fixed envelope.
+        Effect sizes: Cohen's $d$ relative to the published null population ($n_{\rm null}=3$) yields a large effect for NEAR ($d \approx 2.5$), medium for Galileo 1990 ($d \approx 0.73$), large-in-magnitude negative for Galileo 1992 ($d \approx -0.87$), and small effects for Rosetta 2005 ($d \approx 0.34$) and Cassini ($d \approx -0.38$). The coefficient of variation CV $\approx 155\%$ across the six gated $\beta_{\rm fit}$ fits is inflated by the near-zero-prediction members and reflects genuine geometry-dependent modulation at fixed envelope.
     </li>
     <li>
-        Model comparison: On the full n = 9 catalog, Step 026 gives a large information-criterion separation between TEP restricted and Null ($\Delta{\rm BIC}\approx714$) and positive but not decisive preference over Anderson empirical ($\Delta{\rm BIC}\approx77.7$)
+        Model comparison: On the full n = 9 catalog, Step 026 gives a large information-criterion separation between TEP restricted and Null ($\Delta{\rm BIC}\approx718$); the Anderson empirical law, whose two parameters are fitted on the same catalogue, attains the smallest BIC overall and leads the TEP restricted tier by $\Delta{\rm BIC}\approx26$
     </li>
     <li>
-        Akaike model weight on TEP restricted $\approx 1$ in the reported two-model summary; Anderson and flexible tiers are documented in Step 026 outputs.
+        Akaike model weight concentrates on the Anderson empirical tier under the corrected catalogue; the TEP restricted and flexible tiers remain far above the Null and are documented in Step 026 outputs.
     </li>
     <li>
         Robustness: Bootstrap resampling, leave-one-out
         recomputations, and auxiliary robust checks are reported in Step 008/013.
     </li>
     <li>
-        Prediction accuracy: Step 008 reports $R^2 \approx 0.945$ between predicted and observed anomalies for the primary comparison table; prediction intervals are bootstrap-derived.
+        Prediction accuracy: Step 008 reports $R^2 \approx 0.85$ (correlation $r \approx 0.93$) between pooled-$\beta$ predicted and observed anomalies across the six-member ensemble; prediction intervals are bootstrap-derived.
     </li>
     <li>
-        Residual analysis: Shapiro–Wilk $p \approx 0.50$
-        on the gated trio; heterogeneity diagnostics dominate formal tests.
+        Residual analysis: Shapiro–Wilk $p \approx 0.92$
+        on the gated six-member ensemble; heterogeneity diagnostics dominate formal tests.
     </li>
     <li>
         Sensitivity analysis: All parameters stable across
@@ -147,7 +152,7 @@
 </ul>
 
 <p>
-    The catalog of Earth flyby events (four published anomalies, five published nulls/bounds, and several without public anomaly reports) provides the empirical substrate. Step 026's headline likelihood uses the full n = 9 catalog with a geometry-spread systematic uncertainty (σ_geom ≈ 0.520 mm/s) because the tiny published per-flyby uncertainties would otherwise produce astronomically large, scientifically meaningless values. Information-criterion comparison under this adopted likelihood favours TEP restricted over Null and yields positive but assumption-sensitive separation over Anderson; the magnitude of the separation depends on the treatment of systematic uncertainty and is interpreted as model-selection support rather than calibrated evidence.
+    The catalog of Earth flyby events (six published anomalies, three published nulls/bounds, and several without public anomaly reports) provides the empirical substrate. Step 026's headline likelihood uses the full n = 9 catalog with a geometry-spread systematic uncertainty (σ_geom ≈ 0.520 mm/s) because the tiny published per-flyby uncertainties would otherwise produce astronomically large, scientifically meaningless values. Information-criterion comparison under this adopted likelihood favours TEP restricted over Null and yields positive but assumption-sensitive separation over Anderson; the magnitude of the separation depends on the treatment of systematic uncertainty and is interpreted as model-selection support rather than calibrated evidence.
 </p>
 
 <h2>Robustness Assessment</h2>
@@ -158,7 +163,7 @@
 </p>
 
 <p>
-    Systematic error discrimination: The evidence against systematic error origins is primarily organisational rather than statistical. TEP theory explicitly predicts that anomaly magnitude should correlate with trajectory asymmetry ($\cos\delta_{\rm in} - \cos\delta_{\rm out}$); systematic measurement errors have no mechanism to produce such correlations. However, with only n = 3 gated detections, the monotonic ordering of anomaly magnitudes with trajectory asymmetry has a ceiling of p = 1/6 (~1σ): six orderings are possible and the observed one is favourable, but this is a qualitative consistency check, not a primary discriminator. Furthermore, Cassini's predicted sign is negative where the published anomaly is positive (one of four retained anomalies), and the geometry envelope carries seven nominal deterministic coefficients plus one fitted amplitude against four anomalies, so the model-selection support must be read as organisational under the adopted convention rather than calibrated evidence. The broader catalog rank correlation (Spearman ρ = 0.73, p = 0.008, n = 12) provides complementary but independent support. See Section 5.5 for comprehensive systematic uncertainty budget.
+    Systematic error discrimination: The evidence against systematic error origins is primarily organisational rather than statistical. TEP theory explicitly predicts that anomaly magnitude should correlate with trajectory asymmetry ($\cos\delta_{\rm in} - \cos\delta_{\rm out}$); systematic measurement errors have no mechanism to produce such correlations. Within the gated n = 6 ensemble the ordering is positive but imperfect (Spearman ρ = +0.66, p = 0.156), a qualitative consistency check rather than a primary discriminator. All six retained anomalies agree in sign with the reference prediction on the re-transcribed catalogue, and the geometry envelope carries seven nominal deterministic coefficients plus one fitted amplitude against six anomalies, so the model-selection support must be read as organisational under the adopted convention rather than calibrated evidence. The broader catalog rank correlations provide complementary but independent support: asymmetry-vs-magnitude gives ρ = 0.56 (p = 0.11, n = 9) and ρ = 0.68 (p = 0.090, n = 7 nonzero anomalies) in the Step 009 ordering diagnostic. See Section 5.5 for comprehensive systematic uncertainty budget.
 </p>
 
 <p>
@@ -173,34 +178,33 @@
 
 <p>
     β<sub>fit</sub> scatter as physical modulation: Fitted β<sub>A,eff</sub> spans roughly a factor of
-    5.3 for n = 4 valid fits (Step 009), reflecting geometry-dependent
+    4.8 across the amplitude-informative members, extending to $6.7\times10^{-2}$ for Galileo 1992 and formally divergent for the near-zero-prediction Cassini and MESSENGER members (Step 009), reflecting geometry-dependent
     modulation: altitude ($J_2$ gradient suppression), perigee latitude
-    (inclination-dependent coupling), plasma environment (ionospheric gradient
-    modulation), and velocity (disformal regime). Step 009 does not report a
-    formal variance decomposition because n ≤ 4 renders ANOVA-style
-    partitioning statistically meaningless (standard error on sample variance
-    exceeds 100% of the estimate). Instead, it reports deterministic geometry
+    (inclination-dependent coupling), and velocity (the response template's disformal branch);
+    the plasma term is a bounded heuristic envelope coefficient (Section 3.10). Step 009 does not report a
+    formal variance decomposition because n = 6 renders ANOVA-style
+    partitioning statistically underpowered. Instead, it reports deterministic geometry
     modulation metrics: beta scatter statistics, full-catalog detection-pattern
-    classification (75% accuracy, n = 12), and Spearman rank correlation
-    (ρ = 0.73, p = 0.008). Cross-validation on the gated trio reports stability
-    coefficient ≈ 0.148. The UCD-derived characteristic suppression $S_\oplus \approx
+    classification, and Spearman rank correlation
+    (ρ = 0.56 over the n = 9 catalogue; ρ = +0.66 in the gated ensemble). Leave-one-out recomputation on the six-member ensemble reports stability
+    coefficient ≈ 0.106. The UCD-derived characteristic suppression $S_\oplus \approx
     0.35$ provides a cross-scale prior. See Section 4.3 for the quantitative
     geometry modulation assessment and Section 5.5 for detailed interpretation.
 </p>
 
 <p>
-    Cassini status: At $\beta_{\rm ref}=10^{-4}$ the Step 007 envelope yields $\Delta v_{\rm TEP}\approx -0.023$ mm/s while the published anomaly is $+0.11$ mm/s, so Cassini has sign mismatch at $\beta_{\rm ref}$ and is retained in the primary pool (n = 4) but excluded from the sign-gated ensemble (n = 3). Addressing Cassini therefore requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta_{\rm fit}$.
+    Cassini status: At $\beta_{\rm ref}=10^{-4}$ the Step 007 envelope yields a negative $\Delta v_{\rm TEP}$ of negligible magnitude, and the corrected published anomaly is $-2.00 \pm 1.00$ mm/s, so Cassini is sign-consistent at $\beta_{\rm ref}$ and enters the gated ensemble (n = 6) — its residual tension is amplitude-only. Galileo 1992, transcribed as a null in the earlier catalogue, is a genuine negative detection ($-4.60 \pm 1.00$ mm/s) whose magnitude is underpredicted ($\approx -0.3$ mm/s). Addressing these amplitude shortfalls requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta_{\rm fit}$.
 </p>
 
 <p>
-    Juno falsification pressure: At the refit weighted-mean $\beta_{\rm fit}$, Step 039 predicts $\Delta v_{\rm TEP}^{\rm raw}\approx +0.11$ mm/s with uncertainty $\sim 0.038$ mm/s while the published bound is $0.00\pm 0.02$ mm/s. This raw-tension case is the headline stress test on universal $\beta_{\rm fit}$ before mission-specific OD survival factors are supplied (Step 021). Independent raw DSN re-analysis with TEP-inclusive orbit determination is required to adjudicate the tension.
+    Juno falsification pressure: At the refit weighted-mean $\beta_{\rm fit}$, Step 039 predicts $\Delta v_{\rm TEP}^{\rm raw}\approx +0.12$ mm/s with uncertainty $\sim 0.03$ mm/s while the published bound is $0.00\pm 0.02$ mm/s. This raw-tension case is the headline stress test on universal $\beta_{\rm fit}$ before mission-specific OD survival factors are supplied (Step 021). Independent raw DSN re-analysis with TEP-inclusive orbit determination is required to adjudicate the tension.
 </p>
 
 <p>
     Sample size as complete dataset: The analysis includes all
     accessible Earth gravity assist flybys with adequate DSN tracking between
     1990–2020. The rarity of suitable flyby events (low altitude, Doppler
-    tracking, no major maneuvers) means only a handful of literature anomalies exist; three enter the gated $\beta_{\rm fit}$ ensemble.    Step 008 bootstrap 95% CI $[1.01\times10^{-3},\,5.33\times10^{-3}]$ brackets the gated fits. Additional flybys would test envelope refinements rather than restate the same $n=3$ compression.
+    tracking, no major maneuvers) means only a handful of literature anomalies exist; six enter the gated $\beta_{\rm fit}$ ensemble.    Step 008 bootstrap 95% CI $[1.81\times10^{-3},\,8.97\times10^{-3}]$ brackets the gated fits (bootstrap median $1.96\times10^{-3}$). Additional flybys would test envelope refinements rather than restate the same $n=6$ compression.
 </p>
 
 <p>
@@ -211,17 +215,17 @@
     Cassini PPN compliance is evaluated through the solar source-charge projection
     (Section 4.6.1a), where the Jakarta radial field solution gives
     $S_\Sigma^{(\odot)} \le 10^{-8}$ for the screened quadratic benchmark,
-    well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 3.4\times 10^{-3}$.
+    well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$.
 </p>
 
 <p>
     Model comparison: Step 026 on the full n = 9 catalog gives a large
-    information-criterion separation between TEP restricted and Null ($\Delta{\rm BIC}\approx714$)
-    and a positive but not decisive preference over Anderson ($\Delta{\rm BIC}\approx77.7$).
-    The Anderson empirical model also shows strong separation vs Null ($\Delta{\rm BIC}\approx636$),
+    information-criterion separation between TEP restricted and Null ($\Delta{\rm BIC}\approx718$).
+    The Anderson empirical model, fitted on the same catalogue, attains the smallest BIC
+    overall ($\Delta{\rm BIC}\approx26$ ahead of TEP restricted; $\Delta{\rm BIC}\approx743$ ahead of Null),
     confirming that trajectory asymmetry carries genuine signal. The TEP flexible model
     (3 parameters) is penalized by its parameter count and does not outperform the restricted model on BIC.
-    Residual diagnostics on the gated trio are consistent with normality (Shapiro–Wilk $p\approx0.50$).
+    Residual diagnostics on the gated ensemble are consistent with normality (Shapiro–Wilk $p\approx0.92$, $n=6$).
 </p>
 
 <p>
@@ -299,7 +303,7 @@
 </p>
 <p>
     Extended spacecraft sample: Additional flyby events
-    would increase the sample size beyond the current four published anomaly cases (three sign-gated for the inverse-variance $\beta_{\rm fit}$ ensemble).
+    would increase the sample size beyond the current six published anomaly cases (all six sign-consistent in the inverse-variance $\beta_{\rm fit}$ ensemble).
     A sample of $n \approx 74$ primary detections would provide sufficient
     statistical power to distinguish between geometry-dependent modulation
     of $\beta_{\rm fit}$ and a single universal coupling constant at 80% power
@@ -332,10 +336,12 @@
         TEP effect.
     </li>
     <li>
-        Local-time plasma effects: Investigation of ionospheric
-        plasma density variations with local time could explain time-dependent
-        modulation of the TEP signal. Day-side vs. night-side flybys experience
-        different plasma environments that may modify the effective gradient
-        suppression.
+        Local-time plasma effects: A first-principles scalar–plasma coupling
+        derived from the TEP action would test whether ionospheric density
+        variations with local time modulate the clock-sector response. At
+        present plasma enters only as a bounded heuristic envelope coefficient,
+        with the stronger Debye attenuation ansatz quarantined at
+        $S_{\rm plasma}=1$ (Section 3.10); this bullet records the question as an
+        open refinement, not a current mechanism.
     </li>
 </ul>

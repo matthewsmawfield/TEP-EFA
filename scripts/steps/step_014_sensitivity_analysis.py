@@ -166,7 +166,7 @@ class SensitivityAnalyzer:
         try:
             with open(pred_file) as f:
                 data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load predictions: {e}")
             return None
         
@@ -177,7 +177,7 @@ class SensitivityAnalyzer:
                 with open(fit_file) as f:
                     fit_payload = json.load(f)
                     fit_data = fit_payload.get("individual_fits", fit_payload.get("fits", {}))
-            except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+            except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
                 self.logger.warning(f"Failed to load fitting results: {e}")
                 fit_data = {}
 

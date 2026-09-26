@@ -27,12 +27,15 @@ import json
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import numpy as np
 from scipy.optimize import least_squares
 
-from scripts.steps.step_012_od_filter_simulation import OrbitalMechanics3D, PhysicalConstants
+from scripts.steps.step_012_od_filter_simulation import (
+    OrbitalMechanics3D,
+    PhysicalConstants,
+)
 
 
 class GeocentricRangeRateObservable:
@@ -71,12 +74,12 @@ def _parse_ts(s: str) -> datetime:
     return datetime.strptime(s.strip(), "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
 
 
-def _load_json(path: Path) -> Dict[str, Any]:
+def _load_json(path: Path) -> dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def _state_at_perigee_from_038(project_root: Path) -> Tuple[np.ndarray, int, str]:
+def _state_at_perigee_from_038(project_root: Path) -> tuple[np.ndarray, int, str]:
     path = project_root / "results" / "step038_3d_state_vectors.json"
     if not path.is_file():
         raise FileNotFoundError(
@@ -123,14 +126,14 @@ class HorizonsMinimalODConfig:
 
 def _slice_arc(
     project_root: Path, cfg: HorizonsMinimalODConfig
-) -> Tuple[Dict[str, Any], Path, np.ndarray, np.ndarray, Optional[np.ndarray], np.ndarray, float]:
+) -> tuple[dict[str, Any], Path, np.ndarray, np.ndarray, np.ndarray | None, np.ndarray, float]:
     traj_path = project_root / "data" / "raw" / "jpl_horizons" / "Juno_2013" / "Juno_2013_trajectory.json"
     if not traj_path.is_file():
         raise FileNotFoundError(f"Missing Horizons trajectory: {traj_path}")
 
     traj = _load_json(traj_path)
-    ts: List[str] = traj["timestamp"]
-    v_los: List[float] = traj["velocity_m_s"]
+    ts: list[str] = traj["timestamp"]
+    v_los: list[float] = traj["velocity_m_s"]
     n = len(ts)
     if n != len(v_los):
         raise ValueError("Juno_2013_trajectory.json timestamp / velocity_m_s length mismatch.")
@@ -178,7 +181,7 @@ def _trf_solve(
     x0: np.ndarray,
     x_scale: np.ndarray,
     max_nfev: int,
-) -> Tuple[np.ndarray, Any]:
+) -> tuple[np.ndarray, Any]:
     lsq = least_squares(
         residual_fn,
         x0,
@@ -199,7 +202,7 @@ def _pack_velocity_only_result(
     post: np.ndarray,
     x_scale: np.ndarray,
     cfg: HorizonsMinimalODConfig,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     rms_pre = float(np.sqrt(np.mean(prefit**2)))
     rms_post = float(np.sqrt(np.mean(post**2)))
     return {
@@ -238,8 +241,8 @@ def _pack_velocity_only_result(
 
 def run_horizons_public_ephemeris_batch(
     project_root: Path,
-    cfg: Optional[HorizonsMinimalODConfig] = None,
-) -> Dict[str, Any]:
+    cfg: HorizonsMinimalODConfig | None = None,
+) -> dict[str, Any]:
     """
     Best-effort public-data batch fits: Horizons ``deldot`` and, when ``range_m``
     is present, joint ``|r|`` + ``deldot`` vs pure Kepler.
@@ -275,7 +278,7 @@ def run_horizons_public_ephemeris_batch(
         "included for comparison with the range+velocity joint fit."
     )
 
-    out: Dict[str, Any] = {
+    out: dict[str, Any] = {
         "data_sources": {
             "horizons_trajectory": str(traj_path.relative_to(project_root)),
             "step038": "results/step038_3d_state_vectors.json (Juno block)",
@@ -360,7 +363,7 @@ def run_horizons_public_ephemeris_batch(
 
 def run_horizons_los_minimal_od_batch(
     project_root: Path,
-    cfg: Optional[HorizonsMinimalODConfig] = None,
-) -> Dict[str, Any]:
+    cfg: HorizonsMinimalODConfig | None = None,
+) -> dict[str, Any]:
     """Backward-compatible name: full public report (velocity + joint when possible)."""
     return run_horizons_public_ephemeris_batch(project_root, cfg)

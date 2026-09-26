@@ -17,13 +17,11 @@ No new web requests needed — works from cached raw data.
 """
 
 import json
-import sys
-import re
 import math
 import os
-from pathlib import Path
+import sys
 from datetime import datetime, timezone
-from typing import Dict, Optional
+from pathlib import Path
 
 import numpy as np
 
@@ -51,7 +49,7 @@ except ImportError:
 OBLIQUITY_RAD = math.radians(23.439281)
 
 
-def load_flyby_date_anchors(catalog_path: Path) -> Dict[str, datetime]:
+def load_flyby_date_anchors(catalog_path: Path) -> dict[str, datetime]:
     """
     Map mission_name (e.g. Cassini) to catalog flyby_date at 12:00 UTC.
 
@@ -60,7 +58,7 @@ def load_flyby_date_anchors(catalog_path: Path) -> Dict[str, datetime]:
     """
     with open(catalog_path, encoding="utf-8") as f:
         c = json.load(f)
-    out: Dict[str, datetime] = {}
+    out: dict[str, datetime] = {}
     for fb in c.get("flybys", []):
         if not fb.get("usable_for_analysis", False):
             continue
@@ -76,7 +74,7 @@ def load_flyby_date_anchors(catalog_path: Path) -> Dict[str, datetime]:
 
 def geocentric_perigee_index(
     state: dict,
-    anchor_dt: Optional[datetime],
+    anchor_dt: datetime | None,
     half_window_hours: float,
 ) -> int:
     """Index of minimum geocentric range, optionally within ±half_window_hours of anchor."""
@@ -284,7 +282,7 @@ def compute_3d_state_vectors(data: dict) -> dict:
     }
 
 
-def build_trajectory_series(state: dict, mission_name: str, anchor_dt: Optional[datetime] = None) -> dict:
+def build_trajectory_series(state: dict, mission_name: str, anchor_dt: datetime | None = None) -> dict:
     """
     Serialize full Horizons arc geometry for time-resolved cosmography (Step 042).
 
@@ -348,7 +346,7 @@ def build_trajectory_series(state: dict, mission_name: str, anchor_dt: Optional[
     }
 
 
-def extract_perigee_state(state: dict, anchor_dt: Optional[datetime] = None) -> dict:
+def extract_perigee_state(state: dict, anchor_dt: datetime | None = None) -> dict:
     """Minimum geocentric range near catalog flyby anchor (see geocentric_perigee_index)."""
     wh = float(os.environ.get("TEP_038_PERIGEE_HALF_WINDOW_HOURS", "18"))
     idx = geocentric_perigee_index(state, anchor_dt, wh)
@@ -395,7 +393,7 @@ def main():
 
     raw_dir = PROJECT_ROOT / "data" / "raw" / "jpl_horizons"
     catalog_path = PROJECT_ROOT / "results" / "step003_archival_flyby_catalog.json"
-    anchors: Dict[str, datetime] = {}
+    anchors: dict[str, datetime] = {}
     if catalog_path.is_file():
         anchors = load_flyby_date_anchors(catalog_path)
         logger.info(f"Loaded {len(anchors)} flyby-date anchors from {catalog_path.name} for perigee search")
@@ -443,7 +441,7 @@ def main():
 
         state = compute_3d_state_vectors(data)
         if state is None:
-            logger.warning(f"  Insufficient data for 3D state computation")
+            logger.warning("  Insufficient data for 3D state computation")
             fail_count += 1
             continue
 

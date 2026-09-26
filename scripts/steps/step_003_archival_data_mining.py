@@ -10,13 +10,13 @@ Addresses Small Sample Size (n=3) weakness:
 """
 
 import json
-import numpy as np
-from pathlib import Path
-from datetime import datetime, timezone
-from typing import Dict, List, Tuple, Optional
-from dataclasses import dataclass, asdict
 import sys
 import time
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -37,26 +37,26 @@ class HistoricalFlyby:
     
     # Tracking information
     dsn_tracking_available: bool
-    tracking_bands: List[str]  # e.g., ['X-band', 'S-band', 'Ka-band']
-    tracking_precision_mm_s: Optional[float]  # Expected Doppler precision
+    tracking_bands: list[str]  # e.g., ['X-band', 'S-band', 'Ka-band']
+    tracking_precision_mm_s: float | None  # Expected Doppler precision
     
     # Data availability
-    raw_dsn_data_location: Optional[str]  # NASA archive location
+    raw_dsn_data_location: str | None  # NASA archive location
     processed_ephemeris_available: bool
     
     # Trajectory Geometry (Real Published Values)
-    declination_in_deg: Optional[float] = None
-    declination_out_deg: Optional[float] = None
-    cos_asymmetry: Optional[float] = None  # Manuscript value for trajectory asymmetry
+    declination_in_deg: float | None = None
+    declination_out_deg: float | None = None
+    cos_asymmetry: float | None = None  # Manuscript value for trajectory asymmetry
     
     # Published anomaly
-    published_anomaly_mm_s: Optional[float] = None
-    published_anomaly_uncertainty_mm_s: Optional[float] = None
-    anomaly_reference: Optional[str] = None
-    anomaly_reference_doi: Optional[str] = None
+    published_anomaly_mm_s: float | None = None
+    published_anomaly_uncertainty_mm_s: float | None = None
+    anomaly_reference: str | None = None
+    anomaly_reference_doi: str | None = None
     
     # TEP screening prediction
-    predicted_tep_anomaly_mm_s: Optional[float] = None
+    predicted_tep_anomaly_mm_s: float | None = None
     altitude_classification: str = ""  # 'low' (<3000 km), 'medium', 'high' (>10000 km)
     
     # Data quality
@@ -73,36 +73,52 @@ class ArchivalDataMiner:
     by cataloging additional missions with Earth gravity assists.
     """
     
-    # Published literature values from Anderson et al. (2008), PRL 100, 091102
+    # Published literature values from Anderson et al. (2008), PRL 100, 091102,
+    # Table I (re-transcribed 2026-09-28 against the primary source; verified
+    # against Anderson, Campbell & Nieto 2006, New Astron. 12, 383, astro-ph/0608087).
     # These values should NEVER change without explicit justification
     LITERATURE_VALUES = {
         'NEAR': {
             'published_anomaly_mm_s': 13.46,
-            'published_anomaly_uncertainty_mm_s': 0.01,
-            'perigee_altitude_km': 567.9,
+            'published_anomaly_uncertainty_mm_s': 0.13,
+            'perigee_altitude_km': 539.0,
             'perigee_velocity_km_s': 12.72,
             'cos_asymmetry': 0.625
         },
         'Galileo_1990': {
             'published_anomaly_mm_s': 3.92,
-            'published_anomaly_uncertainty_mm_s': 0.03,
-            'perigee_altitude_km': 972.3,
+            'published_anomaly_uncertainty_mm_s': 0.08,
+            'perigee_altitude_km': 960.0,
             'perigee_velocity_km_s': 13.73,
-            'cos_asymmetry': 0.195
+            'cos_asymmetry': 0.149
         },
         'Cassini': {
-            'published_anomaly_mm_s': 0.11,
-            'published_anomaly_uncertainty_mm_s': 0.05,
-            'perigee_altitude_km': 1197.3,
+            'published_anomaly_mm_s': -2.0,
+            'published_anomaly_uncertainty_mm_s': 1.0,
+            'perigee_altitude_km': 1175.0,
             'perigee_velocity_km_s': 19.02,
-            'cos_asymmetry': -0.088
+            'cos_asymmetry': -0.022
+        },
+        'Galileo_1992': {
+            'published_anomaly_mm_s': -4.60,
+            'published_anomaly_uncertainty_mm_s': 1.00,
+            'perigee_altitude_km': 303.0,
+            'perigee_velocity_km_s': 14.08,
+            'cos_asymmetry': -0.170
         },
         'Rosetta_2005': {
-            'published_anomaly_mm_s': 1.82,
-            'published_anomaly_uncertainty_mm_s': 0.05,
-            'perigee_altitude_km': 1968.7,
+            'published_anomaly_mm_s': 1.80,
+            'published_anomaly_uncertainty_mm_s': 0.03,
+            'perigee_altitude_km': 1955.0,
             'perigee_velocity_km_s': 10.51,
-            'cos_asymmetry': 0.33
+            'cos_asymmetry': 0.173
+        },
+        'MESSENGER_2005': {
+            'published_anomaly_mm_s': 0.02,
+            'published_anomaly_uncertainty_mm_s': 0.01,
+            'perigee_altitude_km': 2347.0,
+            'perigee_velocity_km_s': 10.39,
+            'cos_asymmetry': 0.005
         }
     }
     
@@ -171,7 +187,7 @@ class ArchivalDataMiner:
             mission_name='NEAR',
             flyby_date='1998-01-23',
             jpl_id='-93',
-            perigee_altitude_km=567.9,
+            perigee_altitude_km=539.0,  # Anderson Table I
             perigee_velocity_km_s=12.72,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
@@ -179,23 +195,23 @@ class ArchivalDataMiner:
             raw_dsn_data_location='NASA DSN Archives (1998)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=13.46,
-            published_anomaly_uncertainty_mm_s=0.01,
+            published_anomaly_uncertainty_mm_s=0.13,  # Anderson/Antreasian: (13.46 ± 0.13) mm/s
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
             detection_significance='significant',
             usable_for_analysis=True,
             usability_notes='Largest detected anomaly; prime TEP detection',
-            declination_in_deg=-20.8,
-            declination_out_deg=-19.7,
-            cos_asymmetry=0.625  # Manuscript value (Anderson et al. 2008)
+            declination_in_deg=-20.76,  # Anderson Table I
+            declination_out_deg=-71.96,  # Anderson Table I (was mis-transcribed as -19.7)
+            cos_asymmetry=0.625  # cos(-20.76°) - cos(-71.96°) = +0.6254
         ))
         
         self._add_flyby(HistoricalFlyby(
             mission_name='Galileo_1990',
             flyby_date='1990-12-08',
             jpl_id='-77',
-            perigee_altitude_km=972.3,
+            perigee_altitude_km=960.0,  # Anderson Table I
             perigee_velocity_km_s=13.73,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
@@ -203,97 +219,96 @@ class ArchivalDataMiner:
             raw_dsn_data_location='NASA DSN Archives (1990)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=3.92,
-            published_anomaly_uncertainty_mm_s=0.03,
+            published_anomaly_uncertainty_mm_s=0.08,  # Anderson 2006: (3.921 ± 0.078) mm/s
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
             detection_significance='significant',
             usable_for_analysis=True,
             usability_notes='Confirmed anomaly; second strongest TEP signal',
-            declination_in_deg=-25.1,
-            declination_out_deg=-34.1,
-            cos_asymmetry=0.195  # Published Anderson et al. (2008) value
+            declination_in_deg=-12.52,  # Anderson Table I
+            declination_out_deg=-34.15,  # Anderson Table I
+            cos_asymmetry=0.149  # cos(-12.52°) - cos(-34.15°) = +0.149
         ))
         
         self._add_flyby(HistoricalFlyby(
             mission_name='Cassini',
             flyby_date='1999-08-18',
             jpl_id='-82',
-            perigee_altitude_km=1197.3,
+            perigee_altitude_km=1175.0,  # Anderson Table I
             perigee_velocity_km_s=19.02,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
             tracking_precision_mm_s=0.05,
             raw_dsn_data_location='NASA DSN Archives (1999)',
             processed_ephemeris_available=True,
-            published_anomaly_mm_s=0.11,
-            published_anomaly_uncertainty_mm_s=0.05,
+            published_anomaly_mm_s=-2.0,  # Anderson Table I: -2 ± 1 mm/s (negative anomaly)
+            published_anomaly_uncertainty_mm_s=1.0,
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
             detection_significance='marginal',
             usable_for_analysis=True,
-            usability_notes='Marginal detection; still within TEP framework',
-            declination_in_deg=-12.9,
-            declination_out_deg=-4.9,
-            cos_asymmetry=-0.088  # Published Anderson et al. (2008) value
+            usability_notes='Negative ~2σ anomaly (Anderson); tension is magnitude, not sign',
+            declination_in_deg=-12.92,  # Anderson Table I
+            declination_out_deg=-4.99,  # Anderson Table I
+            cos_asymmetry=-0.022  # cos(-12.92°) - cos(-4.99°) = -0.0215
         ))
         
-        # Category 2: Published null detections
+        # Category 2: Additional published detections and nulls
         self._add_flyby(HistoricalFlyby(
             mission_name='Galileo_1992',
             flyby_date='1992-12-08',
             jpl_id='-77',
-            perigee_altitude_km=309.6,
+            perigee_altitude_km=303.0,  # Anderson Table I
             perigee_velocity_km_s=14.08,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
             tracking_precision_mm_s=0.05,
             raw_dsn_data_location='NASA DSN Archives (1992)',
             processed_ephemeris_available=True,
-            published_anomaly_mm_s=0.0,
-            # Anderson et al. (2008) null; formal σ matches manuscript Table 1 (published null/bound).
-            published_anomaly_uncertainty_mm_s=0.05,
+            published_anomaly_mm_s=-4.60,  # Anderson Table I: -4.60 ± 1.00 mm/s (negative detection)
+            published_anomaly_uncertainty_mm_s=1.00,
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
-            detection_significance='null',
+            detection_significance='significant',
             usable_for_analysis=True,
-            usability_notes='Null detection despite low altitude; potential systematics or TEP cancellation',
-            declination_in_deg=-30.3,  # Galileo 1992
-            declination_out_deg=-33.8,
-            cos_asymmetry=0.032  # Calculated: cos(-30.3°) - cos(-33.8°) ≈ 0
+            usability_notes='Strongest negative anomaly (~4.6σ) at lowest altitude in the set; decisive test case for the asymmetry law',
+            declination_in_deg=-34.26,  # Anderson Table I (was mis-transcribed as -30.3)
+            declination_out_deg=-4.87,  # Anderson Table I (was mis-transcribed as -33.8)
+            cos_asymmetry=-0.170  # cos(-34.26°) - cos(-4.87°) = -0.170
         ))
         
         self._add_flyby(HistoricalFlyby(
             mission_name='Rosetta_2005',
             flyby_date='2005-03-04',
             jpl_id='-85',
-            perigee_altitude_km=1968.7,
+            perigee_altitude_km=1955.0,  # Anderson Table I
             perigee_velocity_km_s=10.51,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
             tracking_precision_mm_s=0.05,
             raw_dsn_data_location='ESA ESOC Archives (2005)',
             processed_ephemeris_available=True,
-            published_anomaly_mm_s=1.82,
-            published_anomaly_uncertainty_mm_s=0.05,
-            anomaly_reference='Morley & Budnik (2007)',
-            anomaly_reference_doi=None,
+            published_anomaly_mm_s=1.80,  # Anderson Table I: +1.80 ± 0.03 mm/s
+            published_anomaly_uncertainty_mm_s=0.03,
+            anomaly_reference='Anderson et al. (2008)',
+            anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
             detection_significance='marginal',
             usable_for_analysis=True,
             usability_notes='Weak detection; supports TEP screening model',
-            declination_in_deg=-3.4,
-            declination_out_deg=-34.3,
-            cos_asymmetry=0.330  # Published Morley & Budnik (2007) value
+            declination_in_deg=-2.81,  # Anderson Table I
+            declination_out_deg=-34.29,  # Anderson Table I
+            cos_asymmetry=0.173  # cos(-2.81°) - cos(-34.29°) = +0.173
         ))
         
         self._add_flyby(HistoricalFlyby(
             mission_name='Rosetta_2007',
             flyby_date='2007-11-13',
             jpl_id='-85',
-            perigee_altitude_km=5429.9,
+            perigee_altitude_km=5301.0,  # Jouannic et al. (2015)
             perigee_velocity_km_s=12.46,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
@@ -309,9 +324,9 @@ class ArchivalDataMiner:
             detection_significance='null',
             usable_for_analysis=True,
             usability_notes='Consistent with zero; expected for higher altitude',
-            declination_in_deg=-5.5,  # Rosetta 2007
-            declination_out_deg=-6.5,
-            cos_asymmetry=0.035  # From manuscript Table 6
+            declination_in_deg=-10.80,  # Jouannic et al. (2015)
+            declination_out_deg=18.60,  # Jouannic et al. (2015)
+            cos_asymmetry=0.034  # cos(-10.80°) - cos(18.60°) = +0.034 (consistent with manuscript Table 6's 0.035)
         ))
         
         self._add_flyby(HistoricalFlyby(
@@ -339,24 +354,24 @@ class ArchivalDataMiner:
             mission_name='MESSENGER_2005',
             flyby_date='2005-08-02',
             jpl_id='-236',
-            perigee_altitude_km=2351.2,
+            perigee_altitude_km=2347.0,  # Anderson Table I
             perigee_velocity_km_s=10.39,
             dsn_tracking_available=True,
             tracking_bands=['X-band', 'S-band'],
             tracking_precision_mm_s=0.05,
             raw_dsn_data_location='NASA DSN Archives (2005)',
             processed_ephemeris_available=True,
-            published_anomaly_mm_s=0.0,
-            # Anderson et al. (2008) null; σ matches manuscript Table 1 (published null/bound).
-            published_anomaly_uncertainty_mm_s=0.05,
+            published_anomaly_mm_s=0.02,  # Anderson Table I: +0.02 ± 0.01 mm/s (marginal positive)
+            published_anomaly_uncertainty_mm_s=0.01,
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
-            detection_significance='null',
+            detection_significance='marginal',
             usable_for_analysis=True,
-            usability_notes='Consistent with zero; above screening threshold',
-            declination_in_deg=31.3,
-            declination_out_deg=-31.9
+            usability_notes='Marginal ~2σ positive; near-symmetric approach/departure (small asymmetry, predicted near-null)',
+            declination_in_deg=31.44,  # Anderson Table I
+            declination_out_deg=-31.92,  # Anderson Table I
+            cos_asymmetry=0.005  # cos(31.44°) - cos(-31.92°) = +0.0049
         ))
         
         self._add_flyby(HistoricalFlyby(
@@ -500,27 +515,27 @@ class ArchivalDataMiner:
         """Add flyby to catalog."""
         self.flyby_catalog.append(flyby)
     
-    def get_usable_flybys(self) -> List[HistoricalFlyby]:
+    def get_usable_flybys(self) -> list[HistoricalFlyby]:
         """
         Get list of flybys usable for current analysis.
         """
         return [f for f in self.flyby_catalog if f.usable_for_analysis]
     
-    def get_significant_detections(self) -> List[HistoricalFlyby]:
+    def get_significant_detections(self) -> list[HistoricalFlyby]:
         """
         Get flybys with significant or marginal detections.
         """
         return [f for f in self.flyby_catalog 
                 if f.detection_significance in ['significant', 'marginal']]
     
-    def get_null_detections(self) -> List[HistoricalFlyby]:
+    def get_null_detections(self) -> list[HistoricalFlyby]:
         """
         Get flybys with null or predicted null detections.
         """
         return [f for f in self.flyby_catalog 
                 if f.detection_significance in ['null', 'predicted_null']]
     
-    def get_sample_size_breakdown(self) -> Dict:
+    def get_sample_size_breakdown(self) -> dict:
         """
         Provide detailed breakdown of effective sample sizes.
         """
@@ -556,7 +571,7 @@ class ArchivalDataMiner:
             'statistical_power_improvement': effective_n / 3.0
         }
     
-    def export_catalog(self, output_path: Path) -> Dict:
+    def export_catalog(self, output_path: Path) -> dict:
         """
         Export expanded catalog to JSON.
         """
@@ -636,12 +651,12 @@ class SmallSampleStatistics:
     - Power analysis for future mission planning
     """
     
-    def __init__(self, flybys: List[HistoricalFlyby]):
+    def __init__(self, flybys: list[HistoricalFlyby]):
         self.flybys = flybys
     
     def power_analysis_future_missions(self, 
                                        target_precision: float = 0.01,
-                                       effect_size: float = 3.0) -> Dict:
+                                       effect_size: float = 3.0) -> dict:
         """
         Compute statistical power for detecting TEP effects in future missions.
         

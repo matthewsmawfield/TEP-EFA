@@ -3,8 +3,9 @@
 
 import re
 import sys
+
 import requests
-from pathlib import Path
+
 
 class QueryError(Exception):
     """Base class for query exceptions"""
@@ -58,11 +59,11 @@ class JPLHorizonsQuery:
         req = requests.get(self._url, params=self._pfx + query, timeout=120)
 
         if req.status_code != 200:
-            raise QueryError("Unexpected response status: {}".format(req.status_code))
+            raise QueryError(f"Unexpected response status: {req.status_code}")
 
         if "Cannot" in req.text:
             issue = ''.join([s if "Cannot" in s else '' for s in req.text.splitlines()])
-            raise QueryError("Query failed: {}".format(issue))
+            raise QueryError(f"Query failed: {issue}")
 
         return req.text
 

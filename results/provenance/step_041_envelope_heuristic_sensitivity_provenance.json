@@ -1,14 +1,14 @@
 {
   "step_name": "step_041_envelope_heuristic_sensitivity",
   "step_number": "041",
-  "timestamp": "2026-09-14T11:19:53.586603+00:00",
+  "timestamp": "2026-09-26T14:18:50.880840+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step041_envelope_heuristic_sensitivity.json",
       "description": "Envelope heuristic sensitivity",
-      "size_bytes": 237436,
-      "hash": "fd866f6288948c8a5daf139a233303c6e9d722e59ceb33da9a2c610455693a01"
+      "size_bytes": 237508,
+      "hash": "9dbc509a6da2a9f8c313fbeebe8ef60a5e59ce88fe8e9174c776a9066f213b5b"
     }
   ],
   "parameters": {},

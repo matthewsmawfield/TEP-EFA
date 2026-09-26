@@ -3,7 +3,7 @@
 TEP Cosmological Distance Models
 =================================
 
-Version: TEP v0.10 (Jakarta)
+Version: TEP v0.14 (Jakarta)
 
 Provides the luminosity-distance--redshift relation for competing hypotheses,
 used by standard-siren and cosmology analyses across the TEP corpus.
@@ -33,16 +33,17 @@ Functions ``f_T_suppression``, ``f_T``, ``conformal_factor_native``,
 
 import numpy as np
 from scipy.integrate import cumulative_trapezoid, quad
+
 from . import constants as tep_const
 
 C_KM_S = 299792.458  # speed of light, km/s
 C_KMS = C_KM_S  # alias for backward compatibility
 
-_Z_CAP_FACTOR = 3.0
-# Numerical guardrail for exploratory parameter scans. The validated native
-# TEP parameter ranges stay well above this floor; hitting it means the scan is
-# outside the calibrated EFT regime rather than a new physical branch.
 _A_MIN = 0.1
+# The native TEP suppression factor S(z) = exp(-(z/z_T)^n_T) decays faster than
+# any power of z at high redshift, so A(z) -> 1 and alpha_A(z) -> 0 as z -> infinity.
+# No artificial redshift cap is used: the model is evaluated at the requested z
+# and reduces to the standard radiation-era rate at z >> z_T.
 
 
 def _as_array(z):
@@ -62,22 +63,12 @@ def _validate_tep_params(z_T, n_T, epsilon_T=None):
         raise ValueError("epsilon_T must be finite and non-negative")
 
 
-def _z_effective(z, z_T):
-    z_arr = _as_array(z)
-    cap = z_T * _Z_CAP_FACTOR
-    if np.any(z_arr > cap):
-        import warnings
-        warnings.warn(
-            f"_z_effective: z values above {cap} capped to {cap} for numerical stability. "
-            "High-z physics may differ from full TEP model.",
-            RuntimeWarning, stacklevel=3
-        )
-    return np.where(z_arr > cap, cap, z_arr)
-
-
 def f_T_suppression(z, z_T, n_T):
     """
     Early-universe suppression factor S(z) = exp(-(z/z_T)^n_T).
+
+    Decays super-exponentially at z >> z_T, ensuring the native TEP model
+    asymptotes to the standard expansion rate in the radiation era.
 
     Matches hi_class ``tep_f_transition`` (suppression only; the full
     transition function is ``f_T`` = ln(1+z) * S(z)).
@@ -87,8 +78,8 @@ def f_T_suppression(z, z_T, n_T):
     out = np.zeros_like(z_arr, dtype=float)
     mask = z_arr > 0.0
     if np.any(mask):
-        z_eff = _z_effective(z_arr[mask], z_T)
-        out[mask] = np.exp(-np.power(z_eff / z_T, n_T))
+        z_pos = z_arr[mask]
+        out[mask] = np.exp(-np.power(z_pos / z_T, n_T))
     return _scalar_result(z, out)
 
 
@@ -112,6 +103,9 @@ def conformal_factor_native(z, epsilon_T, z_T, n_T):
     """
     Covariant conformal factor A(z) = exp(epsilon_T * ln(1+z) * S(z)).
 
+    At z >> z_T the suppression S(z) makes A(z) -> 1, so the Jordan-frame
+    metric reduces to the Einstein-frame static geometry and H_TEP -> H_LCDM.
+
     Matches hi_class ``tep_gamma_factor``.
     """
     _validate_tep_params(z_T, n_T, epsilon_T)
@@ -133,7 +127,8 @@ def alpha_A_native(z, epsilon_T, z_T, n_T):
     Jordan-frame coupling alpha_A = d ln A / d ln a_J.
 
     Since a_J = 1 / (1 + z), this is the negative of
-    d ln A / d ln(1+z).
+    d ln A / d ln(1+z).  At z >> z_T, alpha_A -> 0 because the
+    suppression S(z) decays faster than ln(1+z) grows.
 
     Matches hi_class ``tep_M_factor`` intermediate.
     """
@@ -147,7 +142,7 @@ def alpha_A_native(z, epsilon_T, z_T, n_T):
         z_pos = z_arr[mask]
         S = f_T_suppression(z_pos, z_T, n_T)
         dS = np.zeros_like(S)
-        deriv_mask = (z_pos > 1e-10) & (z_pos <= z_T * _Z_CAP_FACTOR)
+        deriv_mask = z_pos > 1e-10
         if np.any(deriv_mask):
             z_d = z_pos[deriv_mask]
             S_d = S[deriv_mask]
@@ -161,6 +156,9 @@ def alpha_A_native(z, epsilon_T, z_T, n_T):
 def jordan_frame_M(z, epsilon_T, z_T, n_T):
     """
     Jordan-frame expansion modifier M(z) = A(z) / (1 - alpha_A(z)).
+
+    H_TEP = M * H_LCDM.  At z >> z_T, A -> 1 and alpha_A -> 0, so M -> 1
+    and the effective rate reduces to the standard radiation-era rate.
 
     Matches hi_class ``tep_M_factor``; H_TEP = M * H_LCDM.
     """
@@ -284,13 +282,17 @@ def hubble_modifier_tep_c0(z, phi0, n=1.0, beta_A=tep_const.BETA_A):
     return phenomenological_redshift_factor(z, phi0, n, beta_A) / denom
 
 
-def luminosity_distance_tep(z, H0, phi0, n=1.0, beta_A=tep_const.BETA_A, Om=0.315):
+def luminosity_distance_tep(z, H0, phi0, n=1.0, beta_A=tep_const.BETA_A, Om=0.315, C_T_optical=1.0):
     """
     Endpoint-only TEP luminosity distance in Mpc: d_L^TEP = A(z) * d_L^LCDM.
 
+    The C_T_optical parameter incorporates the phenomenological transport
+    closure from integrating the spatial-gradient variance (sigma^2 = <(nabla chi)^2>)
+    along the optical ray bundle, as required by the non-linear disformal transport equation.
+
     Accepts scalar or array-like z.
     """
-    return phenomenological_redshift_factor(z, phi0, n, beta_A) * luminosity_distance_lcdm(z, H0, Om)
+    return C_T_optical * phenomenological_redshift_factor(z, phi0, n, beta_A) * luminosity_distance_lcdm(z, H0, Om)
 
 
 def luminosity_distance_tep_c0_jordan(
@@ -301,6 +303,7 @@ def luminosity_distance_tep_c0_jordan(
     beta_A=tep_const.BETA_A,
     Om=0.315,
     include_gw_endpoint=True,
+    C_T_optical=1.0
 ):
     """
     TEP-C0 Jordan-frame GW luminosity distance in Mpc.
@@ -308,6 +311,9 @@ def luminosity_distance_tep_c0_jordan(
     The matter-frame distance integral uses physical Jordan-frame redshift and
     H_J = [A / (1 - alpha_A)] H_LCDM. For standard-siren comparisons, the
     default also applies the GW endpoint factor A(z).
+
+    For optical (EM) observations, C_T_optical represents the spatial-gradient 
+    variance coordinate correction.
     """
     if H0 <= 0.0:
         raise ValueError("H0 must be positive")
@@ -326,6 +332,7 @@ def luminosity_distance_tep_c0_jordan(
     dl = (1.0 + z_arr) * (C_KM_S / H0) * integrals
     if include_gw_endpoint:
         dl = phenomenological_redshift_factor(z_arr, phi0, n, beta_A) * dl
+    dl = C_T_optical * dl
     return dl if np.ndim(z) else float(dl[0])
 
 
@@ -343,7 +350,8 @@ def redshift_at_distance(dl_target, H0, Om=0.315, z_max=3.0):
         return 0.0
     if H0 <= 0.0:
         raise ValueError("H0 must be positive")
-    f = lambda z: luminosity_distance_lcdm(z, H0, Om) - dl_target
+    def f(z):
+        return luminosity_distance_lcdm(z, H0, Om) - dl_target
     if f(1e-4) > 0:
         return 1e-4
     while f(z_max) < 0.0 and z_max < 100.0:
@@ -556,8 +564,9 @@ class TEPCosmologyFitter:
 
     def load_data(self):
         """Load SNe data for fitting."""
-        import pandas as pd
         from pathlib import Path
+
+        import pandas as pd
 
         if self.data_path is None:
             # Try default locations

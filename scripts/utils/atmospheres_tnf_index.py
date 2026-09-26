@@ -5,11 +5,14 @@ from __future__ import annotations
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import requests
 
-from scripts.utils.pds3_lbl_time import interval_overlaps_window, parse_pds3_lbl_start_stop_utc
+from scripts.utils.pds3_lbl_time import (
+    interval_overlaps_window,
+    parse_pds3_lbl_start_stop_utc,
+)
 
 DEFAULT_JUNO_OCRU_TNF_INDEX = (
     "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/"

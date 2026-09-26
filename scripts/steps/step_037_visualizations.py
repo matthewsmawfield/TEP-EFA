@@ -5,12 +5,13 @@ Flyby TEP Pipeline - Visualization Generator
 Generates publication-quality figures for the TEP flyby analysis manuscript.
 """
 
-import sys
 import json
-import numpy as np
-import matplotlib.pyplot as plt
-from pathlib import Path
+import sys
 import time
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Import style settings
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -92,7 +93,7 @@ def load_pipeline_data(logger=None):
     try:
         with open(results_dir / 'step008_fitting_results.json', encoding='utf-8') as f:
             fitting_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+    except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
         if logger:
             logger.error(f"Failed to load fitting data: {e}")
         return None, None
@@ -102,7 +103,7 @@ def load_pipeline_data(logger=None):
     try:
         with open(results_dir / 'step007_tep_predictions.json', encoding='utf-8') as f:
             predictions_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+    except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
         if logger:
             logger.error(f"Failed to load predictions data: {e}")
         return None, None
@@ -271,7 +272,7 @@ def generate_ppn_constraint_figure(fitting_data, output_dir):
     """Generate Figure 3: PPN constraint visualization."""
 
     # Use the same screened-coupling convention as Step 008:
-    # |gamma - 1| ~= 2 beta_eff^2.
+    # |gamma - 1| ~= 4 |beta_eff| (linear source-charge mapping, diagnostic only).
     fits = []
     for name, data in fitting_data['individual_fits'].items():
         if data['fit']['beta_fitted']:

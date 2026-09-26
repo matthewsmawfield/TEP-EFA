@@ -22,18 +22,17 @@ Key features:
 - Comparison with simplified formula on the same geometry
 """
 
-import numpy as np
 import json
-from pathlib import Path
 import sys
-from scipy.integrate import quad
-from scipy.interpolate import RegularGridInterpolator
+from pathlib import Path
+
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import BETA_BASELINE
+from scripts.utils.step_logger import StepLogger
 
 
 class Field3DIntegrator:
@@ -304,7 +303,7 @@ def main():
     try:
         with open(predictions_file) as f:
             data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+    except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Failed to load predictions file: {e}")
         logger.log_step_summary(0, "FAILED")
         return 1

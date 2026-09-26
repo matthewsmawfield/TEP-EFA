@@ -29,33 +29,22 @@ from scripts.steps.step_038_extract_3d_vectors import (
     parse_raw_response,
 )
 
+# NOTE: Local specialized density/geoid classes remain in enhanced_physics
 from scripts.utils.physics import (
-    C_LIGHT,
-    G_NEWTON,
-    R_EARTH,
-    M_EARTH,
-    J2_EARTH,
-    M_PL_GEV as M_PL,
-    CHARACTERISTIC_SUPPRESSION,
     BETA_BASELINE,
-    KG_M3_TO_GEV4,
-    LAMBDA_BASELINE_GEV,
-    LAMBDA_TEP_M,
-    R_TRANSITION_M,
-    RHO_T,
-    SUPPRESSION_EXPONENT,
-    DISFORMAL_COUPLING_STRENGTH,
+    C_LIGHT,
+    CHARACTERISTIC_SUPPRESSION,
     DISFORMAL_VELOCITY_THRESHOLD_KM_S,
-    get_tep_metadata,
+    KG_M3_TO_GEV4,
+    LAMBDA_TEP_M,
+    R_EARTH,
+    R_TRANSITION_M,
+    SUPPRESSION_EXPONENT,
     ucd_screening_factor,
 )
-
-# NOTE: Local specialized density/geoid classes remain in enhanced_physics
-from scripts.utils.enhanced_physics import (
-    EarthDensityModel,
-    EarthGeoidModel,
+from scripts.utils.physics import (
+    M_PL_GEV as M_PL,
 )
-
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep_geometry_envelope import (
     compose_geometry_envelope,
@@ -847,11 +836,11 @@ def compute_tep_predictions_for_catalog(
             dv_tep = model.tep_velocity_shift(geometry, plasma_effects)
         except (ValueError, FileNotFoundError, RuntimeError) as e:
             if logger:
-                logger.warning(f"  Skipping {name}: {str(e)}")
+                logger.warning(f"  Skipping {name}: {e!s}")
             continue
         except Exception as e:
             if logger:
-                logger.error(f"  Unexpected error modeling {name}: {str(e)}")
+                logger.error(f"  Unexpected error modeling {name}: {e!s}")
             raise
 
         dv_grad = dv_tep / ctx["s_disf"] if ctx["s_disf"] else dv_tep

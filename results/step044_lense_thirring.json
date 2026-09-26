@@ -1,0 +1,196 @@
+{
+  "step": "044",
+  "name": "lense_thirring_frame_dragging",
+  "model": "a_LT = -2 v x Omega_g; Omega_g = (G/c^2 r^3)[J - 3(J.r_hat)r_hat]; J_Earth = 5.86e33 kg m^2/s along +z (equatorial state vectors)",
+  "integration": "osculating Kepler hyperbola from step038 perigee state vectors; dt/dnu = r^2/h; full arc",
+  "flyby_results": [
+    {
+      "mission": "NEAR",
+      "perigee_range_km": 6910.6468646,
+      "perigee_speed_km_s": 12.712118754306166,
+      "dv_lt_vector_mm_s": [
+        -0.00019307499966799327,
+        -0.00010032932295537469,
+        0.00013899015460114316
+      ],
+      "dv_lt_magnitude_mm_s": 0.0002581902237063386,
+      "dv_lt_along_track_mm_s": 6.647447362945571e-07,
+      "observed_anomaly_mm_s": 13.46,
+      "fraction_of_anomaly": 1.9182037422462004e-05,
+      "excluded_lt1pct": true
+    },
+    {
+      "mission": "Galileo_1990",
+      "perigee_range_km": 7340.7422852,
+      "perigee_speed_km_s": 13.699761732136825,
+      "dv_lt_vector_mm_s": [
+        0.00011591419997271568,
+        -0.00019048167262737697,
+        0.00023350797314930735
+      ],
+      "dv_lt_magnitude_mm_s": 0.00032287047385373533,
+      "dv_lt_along_track_mm_s": 9.83299619964072e-06,
+      "observed_anomaly_mm_s": 3.92,
+      "fraction_of_anomaly": 8.236491679942228e-05,
+      "excluded_lt1pct": true
+    },
+    {
+      "mission": "Galileo_1992",
+      "perigee_range_km": 6681.4750789,
+      "perigee_speed_km_s": 14.022036458233172,
+      "dv_lt_vector_mm_s": [
+        0.0001791939812084732,
+        -8.169327935876982e-05,
+        -0.0003522103720082137
+      ],
+      "dv_lt_magnitude_mm_s": 0.0004035299504917782,
+      "dv_lt_along_track_mm_s": -1.2111720777190303e-05,
+      "observed_anomaly_mm_s": -4.6,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "Cassini",
+      "perigee_range_km": 7563.8011978,
+      "perigee_speed_km_s": 18.886454112740054,
+      "dv_lt_vector_mm_s": [
+        0.0001137527580992719,
+        0.00019081205240639157,
+        0.0002261609161988669
+      ],
+      "dv_lt_magnitude_mm_s": 0.00031701370527887577,
+      "dv_lt_along_track_mm_s": 1.6167821764864367e-05,
+      "observed_anomaly_mm_s": -2.0,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "Rosetta_2005",
+      "perigee_range_km": 8333.7836108,
+      "perigee_speed_km_s": 10.506440379701305,
+      "dv_lt_vector_mm_s": [
+        0.00019634726076200222,
+        2.8174248679454685e-05,
+        0.0001693327401219379
+      ],
+      "dv_lt_magnitude_mm_s": 0.0002608056977418193,
+      "dv_lt_along_track_mm_s": -2.458418689814674e-06,
+      "observed_anomaly_mm_s": 1.8,
+      "fraction_of_anomaly": 0.00014489205430101072,
+      "excluded_lt1pct": true
+    },
+    {
+      "mission": "Rosetta_2007",
+      "perigee_range_km": 11681.101406000002,
+      "perigee_speed_km_s": 12.400511870961365,
+      "dv_lt_vector_mm_s": [
+        -6.031793235087408e-05,
+        6.49386140685509e-05,
+        -0.0001063240584198094
+      ],
+      "dv_lt_magnitude_mm_s": 0.00013841994783660288,
+      "dv_lt_along_track_mm_s": -1.1403941034308736e-06,
+      "observed_anomaly_mm_s": 0.02,
+      "fraction_of_anomaly": 0.006920997391830144,
+      "excluded_lt1pct": true
+    },
+    {
+      "mission": "Rosetta_2009",
+      "perigee_range_km": 8862.1586734,
+      "perigee_speed_km_s": 13.315164694159158,
+      "dv_lt_vector_mm_s": [
+        1.179160154240517e-05,
+        -0.00021652192319156978,
+        -5.7516416737087475e-05
+      ],
+      "dv_lt_magnitude_mm_s": 0.00022434108692744004,
+      "dv_lt_along_track_mm_s": 4.944012549796859e-06,
+      "observed_anomaly_mm_s": 0.0,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "MESSENGER_2005",
+      "perigee_range_km": 8713.9238152,
+      "perigee_speed_km_s": 10.35811242010543,
+      "dv_lt_vector_mm_s": [
+        -1.764153115346534e-05,
+        4.257734269783405e-06,
+        0.0002663783936059612
+      ],
+      "dv_lt_magnitude_mm_s": 0.00026699588105932116,
+      "dv_lt_along_track_mm_s": -1.0363120686692774e-06,
+      "observed_anomaly_mm_s": 0.02,
+      "fraction_of_anomaly": 0.013349794052966059,
+      "excluded_lt1pct": false
+    },
+    {
+      "mission": "Juno",
+      "perigee_range_km": 6940.3534622,
+      "perigee_speed_km_s": 14.864781393930741,
+      "dv_lt_vector_mm_s": [
+        -0.00014258712960200985,
+        -8.180778583592666e-05,
+        0.00031870055123813147
+      ],
+      "dv_lt_magnitude_mm_s": 0.0003585995603887518,
+      "dv_lt_along_track_mm_s": 1.0868523894689542e-05,
+      "observed_anomaly_mm_s": 0.0,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "Stardust",
+      "perigee_range_km": 12379.498515,
+      "perigee_speed_km_s": 10.303870536162172,
+      "dv_lt_vector_mm_s": [
+        2.3883560468492683e-05,
+        -2.1579990433444607e-06,
+        -0.00012400272277874772
+      ],
+      "dv_lt_magnitude_mm_s": 0.00012630026396277317,
+      "dv_lt_along_track_mm_s": -1.5918497019956497e-06,
+      "observed_anomaly_mm_s": null,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "OSIRIS-REx",
+      "perigee_range_km": 23592.756704,
+      "perigee_speed_km_s": 8.521522601369774,
+      "dv_lt_vector_mm_s": [
+        -2.584028402993912e-06,
+        3.2341484866170306e-05,
+        5.93290961326967e-06
+      ],
+      "dv_lt_magnitude_mm_s": 3.2982544817151846e-05,
+      "dv_lt_along_track_mm_s": -1.1580653984666815e-08,
+      "observed_anomaly_mm_s": null,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    },
+    {
+      "mission": "BepiColombo",
+      "perigee_range_km": 19062.480020000003,
+      "perigee_speed_km_s": 7.593365114498305,
+      "dv_lt_vector_mm_s": [
+        -6.87019451626619e-06,
+        -4.1658310544169915e-05,
+        -3.435956709923537e-05
+      ],
+      "dv_lt_magnitude_mm_s": 5.44352299649105e-05,
+      "dv_lt_along_track_mm_s": 3.768688419587227e-08,
+      "observed_anomaly_mm_s": null,
+      "fraction_of_anomaly": null,
+      "excluded_lt1pct": null
+    }
+  ],
+  "summary": {
+    "n_flybys": 12,
+    "dv_lt_range_mm_s": [
+      3.2982544817151846e-05,
+      0.0004035299504917782
+    ],
+    "conclusion": "Lense-Thirring contribution is at most 4.04e-04 mm/s, at least three orders below every published nonzero anomaly"
+  }
+}

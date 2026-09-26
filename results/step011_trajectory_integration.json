@@ -2,7 +2,7 @@
   "integration_method": "full_3d_trajectory_with_geometry_dependent_beta",
   "model_version": "2.0",
   "physics": {
-    "beta_baseline": 0.0017325390640540415,
+    "beta_baseline": 0.0019487725462354747,
     "restoration_length_km": 4200.0,
     "characteristic_suppression": 0.3492387380317062,
     "modulation_equation": "\u03b2_eff = \u03b2\u2080 \u00d7 f_incl \u00d7 f_J2 \u00d7 f_plasma \u00d7 f_velocity \u00d7 f_screen"
@@ -41,10 +41,50 @@
     "plasma_exponent": 0.3,
     "velocity_critical_km_s": {
       "value": 16.8,
-      "source": "TEP_field_equation_analytical_derivation",
-      "derivation": "Transition velocity v_trans = (c/sqrt(2)) * (lambda_TEP/R_earth)^(1/2) * (|grad_phi|*lambda_TEP/M_Pl)^(1/2) \u2248 16.8 km/s",
-      "status": "first_principles_derivation",
-      "data_source": "TEP_field_equations_Jakarta_v0.8"
+      "source": "empirical_response_template_scale",
+      "derivation": "Transition scale v_trans = 16.8 km/s carried as a phenomenological template parameter (\u00b120%); the closed form (c/sqrt(2)) * (lambda_TEP/R_earth)^(1/2) * (|grad_phi|*lambda_TEP/M_Pl)^(1/2) \u2248 14-16.5 km/s at the UCD-pinned field amplitude is retained as a dimensional anchor only. Under the canonical B(phi) envelope no km/s disformal transition exists (required B_0 ~ 1.6e18, excluded by ~26 orders vs the holonomy-target bound).",
+      "status": "phenomenological_template_scale",
+      "data_source": "empirical_template_with_audit",
+      "derivation_audit": {
+        "claim_status": "phenomenological_template_scale",
+        "status_note": "v_trans is an empirical response-template scale (\u00b120%), not a field-equation output; under the canonical B(phi) envelope no km/s disformal transition exists (see literal_microscopic_balance). The closed form below is retained as a dimensional anchor only.",
+        "formula": "v_trans = (c/sqrt(2)) * sqrt(lambda/R) * sqrt(epsilon_phi)",
+        "balance_condition": "B_eff (v/c)^2 = A^2 - 1; B_eff = (A^2 - 1)/(v_trans/c)^2 is a bookkeeping identity of the template (b_eff_implied == b_eff_shell_aspect identically), not an action-level coefficient",
+        "inputs": {
+          "lambda_m": 4200000.0,
+          "radius_m": 6371000.0,
+          "mean_density_kg_m3": 5513.443375519388,
+          "beta_A": -1.0,
+          "x_radius_over_lambda": 1.516904761904762
+        },
+        "helmholtz_solved": {
+          "varphi_particular": 1.819002013357788e-09,
+          "varphi_surface": 3.8255896703908154e-10,
+          "epsilon_phi_solved": 6.347560572233766e-10,
+          "v_trans_solved_km_s": 4.336406379744961,
+          "note": "Linear uniform-sphere response; underestimates the UCD-calibrated surface field combination."
+        },
+        "ucd_saturation_pinned": {
+          "rho_T_kg_m3": 20000.0,
+          "epsilon_phi_ucd": 6.598424575953611e-09,
+          "derivation": "epsilon_phi = |beta_A| rho_T lambda^2 / M_Pl^2 -- field pinned at the UCD saturation density inside R_sol, not the mean-density linear response",
+          "v_trans_ucd_km_s": 13.981271721201642,
+          "v_trans_ucd_plus_40pct_rhoT_km_s": 16.54286379436468,
+          "note": "Central rho_T gives ~14 km/s; the +40% GNSS uncertainty edge gives ~16.5 km/s, bracketing the 16.8 km/s value used by the pipeline."
+        },
+        "calibrated": {
+          "epsilon_phi_calibrated": 1e-08,
+          "epsilon_phi_source": "UCD saturation-pinned surface field combination (see ucd_saturation_pinned)",
+          "v_trans_calibrated_km_s": 17.21181017692113
+        },
+        "v_trans_used_km_s": 16.8,
+        "b_eff_implied": 6.067619047619049,
+        "b_eff_shell_aspect": 6.067619047619048,
+        "literal_microscopic_balance": {
+          "b0_required_for_v_trans": 1.5860611227024753e+18,
+          "note": "B_0 required if the canonical weak-field envelope tail at the solved surface field set the scale; exceeds the calibrated Paper-0/28 envelope normalization by ~21 orders and the projected 1e-19-fractional holonomy bound (|B_0| <= 5e-8) by ~26 orders. No km/s disformal transition therefore exists under the canonical action; the fitted b_disf consistent with zero is the expected admissible-branch outcome."
+        }
+      }
     },
     "velocity_exponent": 4.0,
     "uncertainty": 1000.0,
@@ -55,33 +95,33 @@
   "variance_analysis": {
     "f_total_range": {
       "min": 0.00020400005125355427,
-      "max": 0.3883276799365573
+      "max": 0.3909968560352343
     },
-    "f_total_variance": 0.017601186077188333,
+    "f_total_variance": 0.017671707689004182,
     "beta_eff_range": {
-      "min": 3.534380578658094e-07,
-      "max": 0.0006727928751435604
+      "min": 3.975496993135563e-07,
+      "max": 0.0007619639387058489
     },
-    "beta_eff_variance": 5.2833332547072495e-08,
-    "beta_eff_ratio": 1903.566580254923
+    "beta_eff_variance": 6.711209941628758e-08,
+    "beta_eff_ratio": 1916.6507735297544
   },
   "individual_results": {
     "NEAR": {
-      "dv_integrated_mm_s": 10.395431343380894,
-      "dv_perigee_mm_s": 1.586403195722739,
-      "difference_mm_s": 8.809028147658156,
-      "ratio_integrated_perigee": 6.552830561240081,
+      "dv_integrated_mm_s": 11.692856818392954,
+      "dv_perigee_mm_s": 1.5270456032053303,
+      "difference_mm_s": 10.165811215187624,
+      "ratio_integrated_perigee": 7.657175917896084,
       "path_length_km": 1809864.7636790727,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.865496500844955e-06,
-        "std": 4.795641801579086e-05,
-        "min": 1.4368631145212402e-226,
-        "max": 0.001132588287439229
+        "mean": 4.347938591808267e-06,
+        "std": 5.394172794365949e-05,
+        "min": 1.6161940866864346e-226,
+        "max": 0.0012739435470994819
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 1.4368631145212402e-226,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 1.6161940866864346e-226,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.1425537917116444,
         "f_j2_altitude": 7.351919218511267e-224,
         "f_plasma": 0.9873132793129012,
@@ -92,41 +132,41 @@
       },
       "modulation_factors": {
         "f_inclination": 1.080657062017727,
-        "f_j2_altitude": 0.7525153076184323,
-        "f_plasma": 0.24093546170361155,
+        "f_j2_altitude": 0.7634680971376387,
+        "f_plasma": 0.23079516684754794,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.1959313632791391,
+        "f_geometry_total": 0.19041690405710016,
         "f_screening": 1.0,
-        "f_total": 0.1959313632791391,
-        "beta_eff": 0.00033945874075447203,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.19041690405710016,
+        "beta_eff": 0.00037107923496563117,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 567.9,
+        "altitude_km": 539.0,
         "latitude_deg": 32.52813888888889,
         "velocity_km_s": 12.72,
-        "plasma_density_cm3": 261976.62415078055,
+        "plasma_density_cm3": 302703.95418214286,
         "source": "Chapman_layer_model",
         "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
       }
     },
     "Galileo_1990": {
-      "dv_integrated_mm_s": 1.2103965239063708,
-      "dv_perigee_mm_s": 0.1987218559225848,
-      "difference_mm_s": 1.011674667983786,
-      "ratio_integrated_perigee": 6.090907908880942,
+      "dv_integrated_mm_s": 0.8217737948874639,
+      "dv_perigee_mm_s": 0.1372338175512307,
+      "difference_mm_s": 0.6845399773362333,
+      "ratio_integrated_perigee": 5.988128943368407,
       "path_length_km": 2335944.361348582,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.6843948564245844e-06,
-        "std": 5.0122769852976167e-05,
-        "min": 9.668e-319,
-        "max": 0.0010923398816208125
+        "mean": 4.144234144360661e-06,
+        "std": 5.637845625379347e-05,
+        "min": 1.08746e-318,
+        "max": 0.0012286718473635226
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 4.8514611298985806e-198,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 5.456958781034439e-198,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0855342684215643,
         "f_j2_altitude": 2.6127087779168167e-195,
         "f_plasma": 0.9873132793129012,
@@ -137,41 +177,41 @@
       },
       "modulation_factors": {
         "f_inclination": 1.0608223618522366,
-        "f_j2_altitude": 0.6147120592252623,
-        "f_plasma": 0.4346273202631805,
+        "f_j2_altitude": 0.6185041872308088,
+        "f_plasma": 0.4271579454060242,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.28342060529134694,
+        "f_geometry_total": 0.2802681836738649,
         "f_screening": 1.0,
-        "f_total": 0.28342060529134694,
-        "beta_eff": 0.0004910372702251002,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.2802681836738649,
+        "beta_eff": 0.0005461789419269094,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 972.3,
+        "altitude_km": 960.0,
         "latitude_deg": 23.92136111111111,
         "velocity_km_s": 13.73,
-        "plasma_density_cm3": 34683.19511395651,
+        "plasma_density_cm3": 36883.16740124002,
         "source": "Chapman_layer_model",
         "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
       }
     },
     "Cassini": {
-      "dv_integrated_mm_s": 0.02771619031158761,
-      "dv_perigee_mm_s": -0.011927370112788957,
-      "difference_mm_s": 0.03964356042437657,
-      "ratio_integrated_perigee": -2.3237469827375703,
+      "dv_integrated_mm_s": -0.004383692790400606,
+      "dv_perigee_mm_s": -5.326023415145495e-05,
+      "difference_mm_s": -0.004330432556249151,
+      "ratio_integrated_perigee": 82.30705065874844,
       "path_length_km": 4119269.2273443,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 1.62961689245163e-06,
-        "std": 2.682201427510109e-05,
+        "mean": 1.8330049386939806e-06,
+        "std": 3.016959682960579e-05,
         "min": 0.0,
-        "max": 0.000650252782590513
+        "max": 0.0007314090614848556
       },
       "modulation_factors_at_perigee": {
         "beta_eff": 0.0,
-        "beta_0": 0.0017325390640540415,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0167476533996924,
         "f_j2_altitude": 0.0,
         "f_plasma": 0.9873132793129012,
@@ -182,18 +222,18 @@
       },
       "modulation_factors": {
         "f_inclination": 1.0582372648224307,
-        "f_j2_altitude": 0.5493010059558688,
+        "f_j2_altitude": 0.5554599846704401,
         "f_plasma": 0.9873132793129012,
         "f_velocity": 0.6086884717269062,
-        "f_geometry_total": 0.3493361260821408,
+        "f_geometry_total": 0.3532530199917499,
         "f_screening": 1.0,
-        "f_total": 0.3493361260821408,
-        "beta_eff": 0.000605238484922617,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.3532530199917499,
+        "beta_eff": 0.0006884097872346935,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 1197.3,
+        "altitude_km": 1175.0,
         "latitude_deg": -22.845555555555553,
         "velocity_km_s": 19.02,
         "plasma_density_cm3": 100.0,
@@ -202,21 +242,21 @@
       }
     },
     "Galileo_1992": {
-      "dv_integrated_mm_s": 0.04030891095152818,
-      "dv_perigee_mm_s": 0.0002782606561873544,
-      "difference_mm_s": 0.04003065029534082,
-      "ratio_integrated_perigee": 144.86025981476868,
+      "dv_integrated_mm_s": 0.6284346727229317,
+      "dv_perigee_mm_s": -0.034811851294463965,
+      "difference_mm_s": 0.6632465240173957,
+      "ratio_integrated_perigee": -18.052319809342343,
       "path_length_km": 2309900.3709474555,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.229013036605796e-06,
-        "std": 4.3901339701525134e-05,
-        "min": 1.41638209913071e-278,
-        "max": 0.0011362417767258168
+        "mean": 3.6320173597987856e-06,
+        "std": 4.93805463486052e-05,
+        "min": 1.5931568915430836e-278,
+        "max": 0.0012780530184340027
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 1.94708272398573e-234,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 2.190092816074258e-234,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.016922399517847,
         "f_j2_altitude": 1.1193311140298331e-231,
         "f_plasma": 0.9873132793129012,
@@ -227,41 +267,41 @@
       },
       "modulation_factors": {
         "f_inclination": 1.0804254668676425,
-        "f_j2_altitude": 0.8562568958398531,
-        "f_plasma": 0.16385442422613258,
+        "f_j2_altitude": 0.8590872110477069,
+        "f_plasma": 0.1622440722987651,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.15158529274159524,
+        "f_geometry_total": 0.15059165452765963,
         "f_screening": 1.0,
-        "f_total": 0.15158529274159524,
-        "beta_eff": 0.00026262744121088134,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.15059165452765963,
+        "beta_eff": 0.0002934688820356802,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 309.6,
+        "altitude_km": 303.0,
         "latitude_deg": -32.42327777777778,
         "velocity_km_s": 14.08,
-        "plasma_density_cm3": 953133.7870775047,
+        "plasma_density_cm3": 985111.9396030627,
         "source": "Chapman_layer_model",
         "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
       }
     },
     "Rosetta_2005": {
-      "dv_integrated_mm_s": 1.391222173490877,
-      "dv_perigee_mm_s": 0.321182638866365,
-      "difference_mm_s": 1.070039534624512,
-      "ratio_integrated_perigee": 4.331560941155742,
+      "dv_integrated_mm_s": 0.44608513763609836,
+      "dv_perigee_mm_s": 0.1757984655197509,
+      "difference_mm_s": 0.2702866721163475,
+      "ratio_integrated_perigee": 2.5374802693370544,
       "path_length_km": 1108396.4535648597,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.7402836802818626e-06,
-        "std": 4.098845083929288e-05,
-        "min": 1.5148936123802903e-157,
-        "max": 0.0006764822215871827
+        "mean": 4.207098300115741e-06,
+        "std": 4.61041077604498e-05,
+        "min": 1.7039633584747328e-157,
+        "max": 0.0007609121253293506
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 2.6883433614238822e-93,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 3.0238681749191654e-93,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0843026377743856,
         "f_j2_altitude": 1.4494265386806024e-90,
         "f_plasma": 0.9873132793129012,
@@ -272,18 +312,18 @@
       },
       "modulation_factors": {
         "f_inclination": 1.0530436749333894,
-        "f_j2_altitude": 0.3735054867230335,
+        "f_j2_altitude": 0.37607278225563295,
         "f_plasma": 0.9873132793129012,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.3883276799365573,
+        "f_geometry_total": 0.3909968560352343,
         "f_screening": 1.0,
-        "f_total": 0.3883276799365573,
-        "beta_eff": 0.0006727928751435604,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.3909968560352343,
+        "beta_eff": 0.0007619639387058489,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 1968.7,
+        "altitude_km": 1955.0,
         "latitude_deg": 20.709166666666665,
         "velocity_km_s": 10.51,
         "plasma_density_cm3": 100.0,
@@ -292,21 +332,21 @@
       }
     },
     "Rosetta_2007": {
-      "dv_integrated_mm_s": 0.00019150824960671256,
-      "dv_perigee_mm_s": 6.762895846310001e-05,
-      "difference_mm_s": 0.00012387929114361255,
-      "ratio_integrated_perigee": 2.83174920860572,
+      "dv_integrated_mm_s": 0.00020545643113445886,
+      "dv_perigee_mm_s": 6.6498078579098e-05,
+      "difference_mm_s": 0.00013895835255536086,
+      "ratio_integrated_perigee": 3.089659664227335,
       "path_length_km": 2427976.2941625714,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 6.168986970520653e-07,
-        "std": 7.577451866382413e-06,
+        "mean": 6.938921433669915e-07,
+        "std": 8.52317299736579e-06,
         "min": 0.0,
-        "max": 0.00013653478441870927
+        "max": 0.0001535753190226828
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 1.471817446732625e-203,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 1.6555109739063678e-203,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0452289226340212,
         "f_j2_altitude": 8.231983935013326e-201,
         "f_plasma": 0.9873132793129012,
@@ -317,18 +357,18 @@
       },
       "modulation_factors": {
         "f_inclination": 1.1356634321612977,
-        "f_j2_altitude": 0.06620175570104725,
+        "f_j2_altitude": 0.07060895541940684,
         "f_plasma": 0.9873132793129012,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.07422908847568203,
+        "f_geometry_total": 0.07917068578469329,
         "f_screening": 1.0,
-        "f_total": 0.07422908847568203,
-        "beta_eff": 0.0001286047954732428,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.07917068578469329,
+        "beta_eff": 0.00015428565892384544,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 5429.9,
+        "altitude_km": 5301.0,
         "latitude_deg": -64.74566666666666,
         "velocity_km_s": 12.46,
         "plasma_density_cm3": 100.0,
@@ -337,21 +377,21 @@
       }
     },
     "Rosetta_2009": {
-      "dv_integrated_mm_s": 0.008564471673487747,
+      "dv_integrated_mm_s": 0.00963338005854262,
       "dv_perigee_mm_s": 0.0012001144942585659,
-      "difference_mm_s": 0.007364357179229181,
-      "ratio_integrated_perigee": 7.136378832570389,
+      "difference_mm_s": 0.008433265564284056,
+      "ratio_integrated_perigee": 8.027050839423575,
       "path_length_km": 2451561.841096756,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 1.9555546955692723e-06,
-        "std": 2.575307571910352e-05,
-        "min": 4.848110759193273e-301,
-        "max": 0.0005024877186028831
+        "mean": 2.1996221513585436e-06,
+        "std": 2.8967246963585293e-05,
+        "min": 5.453190259685814e-301,
+        "max": 0.0005652018422848392
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 4.848110759193273e-301,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 5.453190259685814e-301,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.061669498828719,
         "f_j2_altitude": 2.6695937614553905e-298,
         "f_plasma": 0.9873132793129012,
@@ -368,8 +408,8 @@
         "f_geometry_total": 0.2780195871089687,
         "f_screening": 1.0,
         "f_total": 0.2780195871089687,
-        "beta_eff": 0.00048167979523846367,
-        "beta_0": 0.0017325390640540415
+        "beta_eff": 0.0005417969386736802,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -382,21 +422,21 @@
       }
     },
     "MESSENGER_2005": {
-      "dv_integrated_mm_s": 0.0003242034539751212,
-      "dv_perigee_mm_s": 4.2870208980271865e-07,
-      "difference_mm_s": 0.00032377475188531847,
-      "ratio_integrated_perigee": 756.2441650898274,
+      "dv_integrated_mm_s": 0.0002969537558586359,
+      "dv_perigee_mm_s": 2.962146923366389e-07,
+      "difference_mm_s": 0.00029665754116629925,
+      "ratio_integrated_perigee": 1002.495026550395,
       "path_length_km": 1140539.8706600338,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.290589923049366e-06,
-        "std": 3.596833977363858e-05,
-        "min": 6.60628259987612e-154,
-        "max": 0.0005879510245618927
+        "mean": 3.701279489740662e-06,
+        "std": 4.045745030447981e-05,
+        "min": 7.43079473959274e-154,
+        "max": 0.0006613315907095163
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 2.922100902145296e-106,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 3.2868003576818874e-106,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0812855905665506,
         "f_j2_altitude": 1.5798533629299996e-103,
         "f_plasma": 0.9873132793129012,
@@ -407,18 +447,18 @@
       },
       "modulation_factors": {
         "f_inclination": 1.1096100664743906,
-        "f_j2_altitude": 0.30855607459000894,
+        "f_j2_altitude": 0.30920472318929887,
         "f_plasma": 0.9873132793129012,
         "f_velocity": 1.0,
-        "f_geometry_total": 0.33803328600148463,
+        "f_geometry_total": 0.33874390178751174,
         "f_screening": 1.0,
-        "f_total": 0.33803328600148463,
-        "beta_eff": 0.0005856558729481243,
-        "beta_0": 0.0017325390640540415
+        "f_total": 0.33874390178751174,
+        "beta_eff": 0.0006601348160081888,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
-        "altitude_km": 2351.2,
+        "altitude_km": 2347.0,
         "latitude_deg": 46.94794444444444,
         "velocity_km_s": 10.39,
         "plasma_density_cm3": 100.0,
@@ -427,21 +467,21 @@
       }
     },
     "Juno": {
-      "dv_integrated_mm_s": 0.1415802771894256,
+      "dv_integrated_mm_s": 0.15925052600519898,
       "dv_perigee_mm_s": 0.01316795791180281,
-      "difference_mm_s": 0.12841231927762278,
-      "ratio_integrated_perigee": 10.751878016144266,
+      "difference_mm_s": 0.14608256809339618,
+      "ratio_integrated_perigee": 12.093790629635768,
       "path_length_km": 2693525.409391039,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.0564561396889195e-06,
-        "std": 4.328100835825246e-05,
+        "mean": 3.4379241065197904e-06,
+        "std": 4.868279313979128e-05,
         "min": 0.0,
-        "max": 0.0011153751943786577
+        "max": 0.0012545821347722205
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 5.800547528241624e-238,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 6.524498068009348e-238,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0923475307135555,
         "f_j2_altitude": 3.104346173159331e-235,
         "f_plasma": 0.9873132793129012,
@@ -458,8 +498,8 @@
         "f_geometry_total": 0.25151830708083694,
         "f_screening": 1.0,
         "f_total": 0.25151830708083694,
-        "beta_eff": 0.00043576529234229025,
-        "beta_0": 0.0017325390640540415
+        "beta_eff": 0.0004901519717147587,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -472,21 +512,21 @@
       }
     },
     "Stardust": {
-      "dv_integrated_mm_s": 9.684967476546183e-05,
+      "dv_integrated_mm_s": 0.0001089372189121846,
       "dv_perigee_mm_s": -0.0003350289101257082,
-      "difference_mm_s": 0.00043187858489117,
-      "ratio_integrated_perigee": -0.28907855960586293,
+      "difference_mm_s": 0.0004439661290378928,
+      "ratio_integrated_perigee": -0.3251576673526759,
       "path_length_km": 1733288.2439553256,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 5.51253298516197e-07,
-        "std": 5.905438685914099e-06,
-        "min": 3.166044133761672e-195,
-        "max": 9.308891467775777e-05
+        "mean": 6.200537214187771e-07,
+        "std": 6.642480405409966e-06,
+        "min": 3.561189479680424e-195,
+        "max": 0.00010470708860000187
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 3.166044133761672e-195,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 3.561189479680424e-195,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.026616842881901,
         "f_j2_altitude": 1.8028955449166844e-192,
         "f_plasma": 0.9873132793129012,
@@ -503,8 +543,8 @@
         "f_geometry_total": 0.05366933372098292,
         "f_screening": 1.0,
         "f_total": 0.05366933372098292,
-        "beta_eff": 9.298421721335576e-05,
-        "beta_0": 0.0017325390640540415
+        "beta_eff": 0.0001045893241302013,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -517,21 +557,21 @@
       }
     },
     "OSIRIS-REx": {
-      "dv_integrated_mm_s": 4.910810111354939e-10,
+      "dv_integrated_mm_s": 5.523714947235127e-10,
       "dv_perigee_mm_s": 2.1460540362927517e-06,
-      "difference_mm_s": -2.1455629552816162e-06,
-      "ratio_integrated_perigee": 0.0002288297511761738,
+      "difference_mm_s": -2.1455016647980284e-06,
+      "ratio_integrated_perigee": 0.0002573893692246999,
       "path_length_km": 1683328.561982093,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.2614688836211807e-09,
-        "std": 2.825225888056535e-08,
-        "min": 4.8126101287338465e-208,
-        "max": 3.565520404927135e-07
+        "mean": 3.66852393268979e-09,
+        "std": 3.177834636914472e-08,
+        "min": 5.413258892221291e-208,
+        "max": 4.0105232963149275e-07
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 6.421669935528216e-160,
-        "beta_0": 0.0017325390640540415,
+        "beta_eff": 7.223141071382371e-160,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": 1.0799164110844357,
         "f_j2_altitude": 3.476320622775851e-157,
         "f_plasma": 0.9873132793129012,
@@ -548,8 +588,8 @@
         "f_geometry_total": 0.00020400005125355427,
         "f_screening": 1.0,
         "f_total": 0.00020400005125355427,
-        "beta_eff": 3.534380578658094e-07,
-        "beta_0": 0.0017325390640540415
+        "beta_eff": 3.975496993135563e-07,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -576,7 +616,7 @@
       },
       "modulation_factors_at_perigee": {
         "beta_eff": NaN,
-        "beta_0": 0.0017325390640540415,
+        "beta_0": 0.0019487725462354747,
         "f_inclination": NaN,
         "f_j2_altitude": NaN,
         "f_plasma": 0.9873132793129012,
@@ -593,8 +633,8 @@
         "f_geometry_total": 0.00181288015770383,
         "f_screening": 1.0,
         "f_total": 0.00181288015770383,
-        "beta_eff": 3.140885691670337e-06,
-        "beta_0": 0.0017325390640540415
+        "beta_eff": 3.5328910809482618e-06,
+        "beta_0": 0.0019487725462354747
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -610,63 +650,63 @@
   "modulation_summary": [
     {
       "name": "NEAR",
-      "f_total": 0.1959313632791391,
-      "beta_eff": 0.00033945874075447203
+      "f_total": 0.19041690405710016,
+      "beta_eff": 0.00037107923496563117
     },
     {
       "name": "Galileo_1990",
-      "f_total": 0.28342060529134694,
-      "beta_eff": 0.0004910372702251002
+      "f_total": 0.2802681836738649,
+      "beta_eff": 0.0005461789419269094
     },
     {
       "name": "Cassini",
-      "f_total": 0.3493361260821408,
-      "beta_eff": 0.000605238484922617
+      "f_total": 0.3532530199917499,
+      "beta_eff": 0.0006884097872346935
     },
     {
       "name": "Galileo_1992",
-      "f_total": 0.15158529274159524,
-      "beta_eff": 0.00026262744121088134
+      "f_total": 0.15059165452765963,
+      "beta_eff": 0.0002934688820356802
     },
     {
       "name": "Rosetta_2005",
-      "f_total": 0.3883276799365573,
-      "beta_eff": 0.0006727928751435604
+      "f_total": 0.3909968560352343,
+      "beta_eff": 0.0007619639387058489
     },
     {
       "name": "Rosetta_2007",
-      "f_total": 0.07422908847568203,
-      "beta_eff": 0.0001286047954732428
+      "f_total": 0.07917068578469329,
+      "beta_eff": 0.00015428565892384544
     },
     {
       "name": "Rosetta_2009",
       "f_total": 0.2780195871089687,
-      "beta_eff": 0.00048167979523846367
+      "beta_eff": 0.0005417969386736802
     },
     {
       "name": "MESSENGER_2005",
-      "f_total": 0.33803328600148463,
-      "beta_eff": 0.0005856558729481243
+      "f_total": 0.33874390178751174,
+      "beta_eff": 0.0006601348160081888
     },
     {
       "name": "Juno",
       "f_total": 0.25151830708083694,
-      "beta_eff": 0.00043576529234229025
+      "beta_eff": 0.0004901519717147587
     },
     {
       "name": "Stardust",
       "f_total": 0.05366933372098292,
-      "beta_eff": 9.298421721335576e-05
+      "beta_eff": 0.0001045893241302013
     },
     {
       "name": "OSIRIS-REx",
       "f_total": 0.00020400005125355427,
-      "beta_eff": 3.534380578658094e-07
+      "beta_eff": 3.975496993135563e-07
     },
     {
       "name": "BepiColombo",
       "f_total": 0.00181288015770383,
-      "beta_eff": 3.140885691670337e-06
+      "beta_eff": 3.5328910809482618e-06
     }
   ]
 }

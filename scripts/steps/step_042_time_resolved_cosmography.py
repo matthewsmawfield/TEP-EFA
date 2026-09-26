@@ -29,9 +29,9 @@ import json
 import math
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 import numpy as np
 from scipy import stats
@@ -82,9 +82,9 @@ def _utc_iso_to_datetime(iso: str) -> datetime:
     return datetime.fromisoformat(iso)
 
 
-def _pearson_along_arc(x: List[float], y: List[float]) -> Tuple[Optional[float], Optional[float], int]:
-    xc: List[float] = []
-    yc: List[float] = []
+def _pearson_along_arc(x: list[float], y: list[float]) -> tuple[float | None, float | None, int]:
+    xc: list[float] = []
+    yc: list[float] = []
     for a, b in zip(x, y):
         if math.isfinite(a) and math.isfinite(b):
             xc.append(a)
@@ -120,10 +120,10 @@ def _to_json_serializable(obj: Any) -> Any:
 
 
 def _compute_arc_epochs(
-    traj: Dict[str, Any],
+    traj: dict[str, Any],
     g40: Any,
     logger: StepLogger,
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     n = int(traj["n_points"])
     hours = [float(h) for h in traj["hours_from_perigee"]]
     range_km = [float(r) for r in traj["range_km"]]
@@ -150,7 +150,7 @@ def _compute_arc_epochs(
         and len(sc_rz) == n
     )
 
-    epochs: List[Dict[str, Any]] = []
+    epochs: list[dict[str, Any]] = []
     for i in range(n):
         dt = _utc_iso_to_datetime(utc_iso[i])
         ephem = g40.earth_sun_ephemeris_state(dt, logger, quiet=True)
@@ -202,7 +202,7 @@ def _compute_arc_epochs(
     return epochs
 
 
-def _arc_temporal_derivative_geometry(epochs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def _arc_temporal_derivative_geometry(epochs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     Along-arc time derivatives via np.gradient against UTC seconds from arc start.
     Pairs are geometry-only (Doppler-like structure in CMB projections vs. range-driven factors).
@@ -217,7 +217,7 @@ def _arc_temporal_derivative_geometry(epochs: List[Dict[str, Any]]) -> List[Dict
     if np.any(np.diff(t_sec) <= 0):
         return []
 
-    specs: List[Tuple[str, str, str]] = [
+    specs: list[tuple[str, str, str]] = [
         (
             "total_velocity_cmb_proj_kms",
             "cmb_disformal_enhancement",
@@ -251,7 +251,7 @@ def _arc_temporal_derivative_geometry(epochs: List[Dict[str, Any]]) -> List[Dict
             )
         )
 
-    out: List[Dict[str, Any]] = []
+    out: list[dict[str, Any]] = []
     for ka, kb, label in specs:
         try:
             ya = np.array([float(e[ka]) for e in epochs], dtype=float)
@@ -268,25 +268,25 @@ def _arc_temporal_derivative_geometry(epochs: List[Dict[str, Any]]) -> List[Dict
 
 
 def _residual_sequential_derivative_correlations(
-    idxs: List[int],
-    y_res: List[float],
-    epochs: List[Dict[str, Any]],
-) -> Tuple[int, List[Dict[str, Any]]]:
+    idxs: list[int],
+    y_res: list[float],
+    epochs: list[dict[str, Any]],
+) -> tuple[int, list[dict[str, Any]]]:
     """
     For matched Horizons epochs in chronological order, use pairs where geometry
     indices differ by exactly 1 (consecutive 1-minute samples). Relates d(residual)/dt
     to d(geometry)/dt along the real trajectory (requires time-varying sidecar values).
     """
-    keys: List[Tuple[str, str]] = [
+    keys: list[tuple[str, str]] = [
         ("cmb_disformal_enhancement", "d_residual_dt_vs_dt_cmb_disformal_enhancement"),
         ("total_velocity_cmb_proj_kms", "d_residual_dt_vs_dt_total_velocity_cmb_proj_kms"),
         ("sc_velocity_cmb_proj_kms", "d_residual_dt_vs_dt_sc_velocity_cmb_proj_kms"),
         ("sc_geocentric_cmb_parallel_km", "d_residual_dt_vs_dt_sc_geocentric_cmb_parallel_km"),
         ("cmb_modulation_factor", "d_residual_dt_vs_dt_cmb_modulation_factor"),
     ]
-    out: List[Dict[str, Any]] = []
-    drv_res: List[float] = []
-    geom_series: Dict[str, List[float]] = {g: [] for g, _ in keys}
+    out: list[dict[str, Any]] = []
+    drv_res: list[float] = []
+    geom_series: dict[str, list[float]] = {g: [] for g, _ in keys}
 
     for k in range(len(idxs) - 1):
         j0, j1 = idxs[k], idxs[k + 1]
@@ -316,8 +316,8 @@ def _residual_sequential_derivative_correlations(
 
     for gkey, label in keys:
         ys = geom_series[gkey]
-        xs: List[float] = []
-        yc: List[float] = []
+        xs: list[float] = []
+        yc: list[float] = []
         for a, b in zip(drv_res, ys):
             if math.isfinite(a) and math.isfinite(b):
                 xs.append(a)
@@ -335,7 +335,7 @@ def _residual_sequential_derivative_correlations(
     return n_pairs, out
 
 
-def _shape_metrics(epochs: List[Dict[str, Any]], perigee_index: int) -> Dict[str, Any]:
+def _shape_metrics(epochs: list[dict[str, Any]], perigee_index: int) -> dict[str, Any]:
     hours = [float(e["hours_from_perigee"]) for e in epochs]
     enh = [float(e["cmb_disformal_enhancement"]) for e in epochs]
     sc_cos = [float(e["sc_cmb_cos_theta"]) for e in epochs]
@@ -390,9 +390,9 @@ def _shape_metrics(epochs: List[Dict[str, Any]], perigee_index: int) -> Dict[str
 
 def _optional_residual_geometry_correlations(
     mission: str,
-    epochs: List[Dict[str, Any]],
+    epochs: list[dict[str, Any]],
     logger: StepLogger,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     If data/time_resolved_flyby_residuals/<mission>.json exists and validates,
     align residual samples to Horizons arc epochs and correlate with geometry.
@@ -400,10 +400,10 @@ def _optional_residual_geometry_correlations(
     Raises RuntimeError on schema / mission mismatch (no silent skip for corrupt files).
     """
     from scripts.utils.flyby_time_series_residuals import (
-        residuals_dir,
-        load_validated_residual_file,
-        build_residual_timeline,
         align_geometry_epochs_to_residuals,
+        build_residual_timeline,
+        load_validated_residual_file,
+        residuals_dir,
     )
 
     path = residuals_dir(PROJECT_ROOT) / f"{mission}.json"
@@ -446,10 +446,10 @@ def _optional_residual_geometry_correlations(
         ("cmb_modulation_factor", "residual_vs_cmb_modulation_factor"),
         ("both_aligned_flag", "residual_vs_both_aligned_flag"),
     ]
-    correlations: List[Dict[str, Any]] = []
+    correlations: list[dict[str, Any]] = []
     for gkey, label in keys_xy:
-        xs: List[float] = []
-        ys: List[float] = []
+        xs: list[float] = []
+        ys: list[float] = []
         for k in range(n_match):
             j = idxs[k]
             v = epochs[j].get(gkey)
@@ -497,14 +497,14 @@ def _optional_residual_geometry_correlations(
     }
 
 
-def _load_catalog_published_anomalies(catalog_path: Path) -> Dict[str, Optional[float]]:
+def _load_catalog_published_anomalies(catalog_path: Path) -> dict[str, float | None]:
     if not catalog_path.is_file():
         raise RuntimeError(
             f"Missing {catalog_path.name}; run Step 003 before Step 042 for pooled epoch export."
         )
     with open(catalog_path, encoding="utf-8") as f:
         c = json.load(f)
-    out: Dict[str, Optional[float]] = {}
+    out: dict[str, float | None] = {}
     for fb in c.get("flybys", []):
         if not fb.get("usable_for_analysis", False):
             continue
@@ -515,9 +515,9 @@ def _load_catalog_published_anomalies(catalog_path: Path) -> Dict[str, Optional[
 
 
 def _build_pooled_epoch_rows(
-    out_missions: Dict[str, Any],
-    published_by_mission: Dict[str, Optional[float]],
-) -> List[Dict[str, Any]]:
+    out_missions: dict[str, Any],
+    published_by_mission: dict[str, float | None],
+) -> list[dict[str, Any]]:
     keys_geom = (
         "utc_iso",
         "hours_from_perigee",
@@ -535,7 +535,7 @@ def _build_pooled_epoch_rows(
         "both_aligned_flag",
         "heliocentric_distance_au",
     )
-    pooled: List[Dict[str, Any]] = []
+    pooled: list[dict[str, Any]] = []
     for mission, block in sorted(out_missions.items()):
         if not isinstance(block, dict):
             continue
@@ -543,7 +543,7 @@ def _build_pooled_epoch_rows(
         for e in block.get("epoch_table", []):
             if not isinstance(e, dict):
                 continue
-            row: Dict[str, Any] = {"mission": mission}
+            row: dict[str, Any] = {"mission": mission}
             for k in keys_geom:
                 row[k] = e.get(k)
             row["published_anomaly_mm_s_mission_aggregate"] = pub
@@ -575,7 +575,7 @@ def main() -> int:
         "and the same CMB/solar modulation functions as Step 040."
     )
 
-    out_missions: Dict[str, Any] = {}
+    out_missions: dict[str, Any] = {}
 
     for mission, traj in sorted(missions.items()):
         if not isinstance(traj, dict):

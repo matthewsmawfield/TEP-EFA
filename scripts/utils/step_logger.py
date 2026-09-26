@@ -8,14 +8,13 @@ and output file management for pipeline steps.
 Each log entry is prefixed with the step number for easy filtering and tracing.
 """
 
-import logging
-import sys
-import re
-import json
 import hashlib
+import json
+import logging
+import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional, Dict, List, Any
 
 
 def extract_step_number(step_name: str) -> str:
@@ -43,7 +42,7 @@ class StepPrefixFormatter(logging.Formatter):
 class StepLogger:
     """Highly verbose logger for pipeline steps with step number prefixes."""
     
-    def __init__(self, step_name: str, project_root: Optional[Path] = None):
+    def __init__(self, step_name: str, project_root: Path | None = None):
         """
         Initialize step logger.
         
@@ -412,7 +411,7 @@ class StepLogger:
         return self.log_file
 
 
-def get_step_logger(step_name: str, project_root: Optional[Path] = None) -> StepLogger:
+def get_step_logger(step_name: str, project_root: Path | None = None) -> StepLogger:
     """
     Convenience function to get a step logger.
     

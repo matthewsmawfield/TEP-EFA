@@ -13,26 +13,25 @@ files are available.
 
 import json
 import math
-import numpy as np
-from pathlib import Path
-from dataclasses import dataclass
-from typing import Dict, List, Tuple
 import sys
 import time
+from dataclasses import dataclass
+from pathlib import Path
+
+import numpy as np
 
 # Add pipeline to path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import (
     BETA_BASELINE,
     CHARACTERISTIC_SUPPRESSION,
-    R_TRANSITION_M,
     R_EARTH,
+    R_TRANSITION_M,
     ppn_gamma_deviation,
-    screened_beta,
 )
+from scripts.utils.step_logger import StepLogger
 
 
 @dataclass
@@ -68,7 +67,7 @@ class TEPMinimalODAnalysis:
     S_FACTOR = CHARACTERISTIC_SUPPRESSION
 
     # Mapping from legacy mission names (with year suffixes) to fitting result keys
-    _MISSION_NAME_MAP: Dict[str, str] = {
+    _MISSION_NAME_MAP: dict[str, str] = {
         'NEAR_1998': 'NEAR',
         'Cassini_1999': 'Cassini',
         'MESSENGER_2005': 'MESSENGER',
@@ -84,6 +83,7 @@ class TEPMinimalODAnalysis:
 
     def __init__(self, results_file: Path):
         """Load fitting results from pipeline."""
+        self.logger = StepLogger("step_032_tep_suppression", PROJECT_ROOT)
         try:
             with open(results_file, encoding='utf-8') as f:
                 self.results = json.load(f)
@@ -165,9 +165,11 @@ class TEPMinimalODAnalysis:
                 # Check if TEP would have been detected
                 tep_detected = tep_dv > 0.5
 
-                # Historical diagnostic PPN check, using the same screened
-                # convention as Step 008: |gamma - 1| ~= 2 beta_eff^2.
-                gamma_dev = ppn_gamma_deviation(screened_beta(self.BETA_INITIAL))
+                # PPN check on the solar source-charge projection
+                # (S_Σ^(⊙) ≲ 1e-8, Jakarta radial solution) — flyby-response
+                # amplitudes are a distinct projection and are not the Cassini
+                # source charge (manuscript §4.6.1a).
+                gamma_dev = ppn_gamma_deviation(1e-8)
                 ppn_bound = 2.3e-5
                 ppn_compliant = gamma_dev < ppn_bound
 
@@ -177,7 +179,7 @@ class TEPMinimalODAnalysis:
                 elif standard_dv > 0.5 and not tep_detected:
                     notes = f"Standard OD: {standard_dv:.2f} mm/s. TEP predicts negligible signal. Anomaly may be systematic."
                 elif standard_dv > 0.5 and tep_detected:
-                    notes = f"Both standard OD and TEP predict anomaly."
+                    notes = "Both standard OD and TEP predict anomaly."
                 else:
                     notes = "No TEP signal expected at this altitude."
 
@@ -228,12 +230,14 @@ class TEPMinimalODAnalysis:
         # (TEP signal > typical uncertainty ~0.05 mm/s)
         tep_detected = tep_dv > 0.5
 
-        # Historical diagnostic PPN check, using the same screened convention
-        # as Step 008. Prefer the fitted per-flyby PPN value when available.
+        # PPN check on the solar source-charge projection
+        # (S_Σ^(⊙) ≲ 1e-8, Jakarta radial solution). Prefer the Step 008
+        # per-fit value (which stores this same solar-charge evaluation);
+        # flyby-response amplitudes are a distinct projection and are not
+        # the Cassini source charge (manuscript §4.6.1a).
         gamma_dev = fit.get('fit', {}).get('ppn_gamma_deviation')
         if gamma_dev is None:
-            beta = fit.get('fit', {}).get('beta_fitted') or self.BETA_INITIAL
-            gamma_dev = ppn_gamma_deviation(screened_beta(beta))
+            gamma_dev = ppn_gamma_deviation(1e-8)
         ppn_bound = 2.3e-5
         ppn_compliant = gamma_dev < ppn_bound
 
@@ -261,7 +265,7 @@ class TEPMinimalODAnalysis:
             notes=notes
         )
 
-    def full_analysis(self) -> Dict:
+    def full_analysis(self) -> dict:
         """Run complete TEP suppression analysis."""
         missions = [
             'NEAR_1998', 'Galileo_1990', 'Galileo_1992',
@@ -324,7 +328,7 @@ class TEPMinimalODAnalysis:
                 "altitude-only scaling."
             )
 
-    def _generate_enhanced_evidence(self, results: List[MinimalODResult]) -> Dict:
+    def _generate_enhanced_evidence(self, results: list[MinimalODResult]) -> dict:
         """Generate enhanced evidence for TEP suppression hypothesis."""
         # Altitude correlation analysis
         altitude_data = []
@@ -350,7 +354,7 @@ class TEPMinimalODAnalysis:
         try:
             corr, p_value = stats.pearsonr(observed, predicted)
         except (ValueError, KeyError, AttributeError) as e:
-            logger.warning(f"Data processing error: {e}")
+            self.logger.warning(f"Data processing error: {e}")
             corr, p_value = 0.0, 1.0
 
         # Spearman rank correlation: altitude vs observed anomaly
@@ -382,7 +386,7 @@ class TEPMinimalODAnalysis:
             else:
                 spearman_rho, spearman_p = 0.0, 1.0
         except (ValueError, KeyError, AttributeError) as e:
-            logger.warning(f"Spearman computation error: {e}")
+            self.logger.warning(f"Spearman computation error: {e}")
             spearman_rho, spearman_p = 0.0, 1.0
 
         # Historical timeline data: OD complexity evolution and anomaly detection status

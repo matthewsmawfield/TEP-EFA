@@ -9,16 +9,22 @@ Addresses Model Incompleteness weakness:
 - Proper residual calculation (not per-flyby linear scaling)
 """
 
-import numpy as np
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Tuple, List, Optional, Callable, Dict, Any
+
+import numpy as np
 from scipy.integrate import solve_ivp
 
 # Standardized Physics constants for Jakarta v0.8
 from scripts.utils.physics import (
-    C_LIGHT, G_NEWTON, R_EARTH, M_EARTH, J2_EARTH, M_PL_GEV as M_PL,
-    BETA_BASELINE, get_tep_metadata
+    BETA_BASELINE,
+    C_LIGHT,
+    G_NEWTON,
+    J2_EARTH,
+    M_EARTH,
+    R_EARTH,
 )
+from scripts.utils.physics import M_PL_GEV as M_PL
 
 # Conversion factors
 KG_M3_TO_GEV4 = 4.318e-21  # kg/m^3 to GeV^4 conversion factor
@@ -74,7 +80,7 @@ class EarthGeoidModel:
         return r
     
     def geodetic_to_geocentric(self, lat_geodetic: float, alt: float, 
-                                lon: float) -> Tuple[float, float, float]:
+                                lon: float) -> tuple[float, float, float]:
         """
         Convert geodetic coordinates (lat, lon, alt) to geocentric (x, y, z).
         
@@ -107,7 +113,7 @@ class EarthGeoidModel:
         
         return x, y, z
     
-    def geocentric_to_geodetic(self, x: float, y: float, z: float) -> Tuple[float, float, float]:
+    def geocentric_to_geodetic(self, x: float, y: float, z: float) -> tuple[float, float, float]:
         """
         Convert geocentric (x, y, z) to geodetic (lat, lon, alt).
         
@@ -174,7 +180,7 @@ class EarthGeoidModel:
         
         return U0 + U2 + U3 + U4
     
-    def gravity_acceleration(self, x: float, y: float, z: float) -> Tuple[float, float, float]:
+    def gravity_acceleration(self, x: float, y: float, z: float) -> tuple[float, float, float]:
         """
         Compute gravitational acceleration vector at position (x, y, z).
         
@@ -491,7 +497,7 @@ class TEP3DTrajectoryIntegrator:
             frac = 1.0 - np.exp(-delta_r / self.lambda_rest)
             return self.phi_surface + (self.phi_space - self.phi_surface) * frac
     
-    def tep_acceleration(self, x: float, y: float, z: float, vx: float = 0.0, vy: float = 0.0, vz: float = 0.0) -> Tuple[float, float, float]:
+    def tep_acceleration(self, x: float, y: float, z: float, vx: float = 0.0, vy: float = 0.0, vz: float = 0.0) -> tuple[float, float, float]:
         """
         Compute TEP Temporal Topology acceleration at geocentric (x, y, z).
         
@@ -593,13 +599,13 @@ class TEP3DTrajectoryIntegrator:
         return [vx, vy, vz, ax, ay, az]
     
     def integrate_trajectory(self,
-                            t_span: Tuple[float, float],
-                            y0: List[float],
+                            t_span: tuple[float, float],
+                            y0: list[float],
                             method: str = 'RK45',
                             rtol: float = 1e-9,
                             atol: float = 1e-12,
                             dense_output: bool = True,
-                            events: Optional[Callable] = None) -> dict:
+                            events: Callable | None = None) -> dict:
         """
         Integrate spacecraft trajectory.
         

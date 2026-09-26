@@ -44,18 +44,17 @@ Author: TEP-EFA Pipeline
 Date: 2026-04-20
 """
 
-import sys
 import json
-import numpy as np
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Any
+import re
+import sys
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any
+
+import numpy as np
 import requests
-import time
-import re
-import zipfile
-import io
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -66,10 +65,13 @@ from scripts.utils.dsn_pds_ingest import (
     ingest_mission_tracking,
     load_perigee_datetime,
 )
-from scripts.utils.dsn_tracking_discovery import discover_dsn_tracking_file, is_trk234_archive
+from scripts.utils.dsn_tracking_discovery import (
+    discover_dsn_tracking_file,
+    is_trk234_archive,
+)
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.trk234_extract import extract_trk234_measurements
 from scripts.utils.trk218_extract import extract_trk218_measurements
+from scripts.utils.trk234_extract import extract_trk234_measurements
 
 
 @dataclass
@@ -100,7 +102,7 @@ class MinimalODConfig:
     doppler_averaging_interval: int = 0  # No averaging
     
     # Estimation parameters - minimal set
-    estimation_params: List[str] = field(default_factory=lambda: [
+    estimation_params: list[str] = field(default_factory=lambda: [
         "Initial_state_6_params",
         "SRP_coefficient_1_param"
     ])
@@ -109,7 +111,7 @@ class MinimalODConfig:
     integrator: str = "DOP853"
     step_size: float = 60.0  # seconds
     
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         return {
             'gravity': {
                 'model': self.gravity_model,
@@ -143,11 +145,11 @@ class DSNDataProduct:
     """Represents a DSN tracking data product."""
     mission: str
     product_type: str  # TRK-2-34, TRK-2-25, ODF, TNF
-    date_range: Tuple[datetime, datetime]
-    stations: List[str]
-    frequency_bands: List[str]
-    file_path: Optional[Path] = None
-    metadata: Dict = field(default_factory=dict)
+    date_range: tuple[datetime, datetime]
+    stations: list[str]
+    frequency_bands: list[str]
+    file_path: Path | None = None
+    metadata: dict = field(default_factory=dict)
     
 
 class PDSDataInterface:
@@ -228,7 +230,7 @@ class PDSDataInterface:
         }
     }
     
-    def __init__(self, data_dir: Optional[Path] = None):
+    def __init__(self, data_dir: Path | None = None):
         self.session = requests.Session()
         self.session.headers.update({
             'Accept': 'application/json',
@@ -240,7 +242,7 @@ class PDSDataInterface:
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
     
-    def query_data_availability(self, mission: str) -> Dict:
+    def query_data_availability(self, mission: str) -> dict:
         """
         Query PDS for data availability for specified mission.
         
@@ -335,7 +337,7 @@ Expected file patterns:
 """
         return instructions
     
-    def search_pds_api(self, mission: str) -> Dict:
+    def search_pds_api(self, mission: str) -> dict:
         """
         Search PDS API for mission data products.
         
@@ -402,7 +404,7 @@ Expected file patterns:
         
         return results
     
-    def acquire_data(self, mission: str, force_download: bool = False) -> Dict:
+    def acquire_data(self, mission: str, force_download: bool = False) -> dict:
         """
         Attempt to acquire DSN data for mission.
         
@@ -449,7 +451,7 @@ Expected file patterns:
             'note': 'Raw DSN data requires manual download from NASA PDS'
         }
     
-    def _scan_local_data(self, mission: str) -> Dict:
+    def _scan_local_data(self, mission: str) -> dict:
         """Scan for perigee-matched DSN tracking products."""
         mission_dir = self.data_dir / mission
         if not mission_dir.is_dir():
@@ -488,10 +490,10 @@ class TRKDataParser:
     """
     
     def __init__(self):
-        self.measurements: List[Dict] = []
-        self.parse_errors: List[str] = []
+        self.measurements: list[dict] = []
+        self.parse_errors: list[str] = []
     
-    def parse_file(self, filepath: Path) -> Dict:
+    def parse_file(self, filepath: Path) -> dict:
         """
         Parse a DSN tracking data file.
         
@@ -520,13 +522,13 @@ class TRKDataParser:
                 result = self._parse_ascii(filepath)
             return result
 
-    def _parse_binary_tracking(self, filepath: Path) -> Dict:
+    def _parse_binary_tracking(self, filepath: Path) -> dict:
         """Parse binary TRK-2-34 or TRK-2-18 archives."""
         if is_trk234_archive(filepath):
             return self._parse_trk234_binary(filepath)
         return self._parse_trk218_binary(filepath)
 
-    def _parse_trk218_binary(self, filepath: Path) -> Dict:
+    def _parse_trk218_binary(self, filepath: Path) -> dict:
         extracted = extract_trk218_measurements(filepath)
         measurements = []
         for record in extracted:
@@ -547,7 +549,7 @@ class TRKDataParser:
             'measurements': measurements,
         }
 
-    def _parse_trk234_binary(self, filepath: Path) -> Dict:
+    def _parse_trk234_binary(self, filepath: Path) -> dict:
         """Parse binary TRK-2-34 format using trk234 library if available."""
         try:
             extracted = extract_trk234_measurements(filepath)
@@ -579,7 +581,7 @@ class TRKDataParser:
         except Exception as e:
             raise RuntimeError(f"trk234 parsing error: {e}. Cannot proceed with raw data reanalysis.")
     
-    def _parse_ascii(self, filepath: Path) -> Dict:
+    def _parse_ascii(self, filepath: Path) -> dict:
         """Parse ASCII tracking data file."""
         measurements = []
         
@@ -636,7 +638,7 @@ class TRKDataParser:
                 'measurements': []
             }
     
-    def _parse_tnf(self, filepath: Path) -> Dict:
+    def _parse_tnf(self, filepath: Path) -> dict:
         """Parse Tracking Network File format."""
         # TNF parsing would require specific format knowledge
         return {
@@ -645,7 +647,7 @@ class TRKDataParser:
             'measurements': []
         }
     
-    def _parse_timestamp(self, ts_str: str) -> Optional[datetime]:
+    def _parse_timestamp(self, ts_str: str) -> datetime | None:
         """Parse various timestamp formats."""
         formats = [
             '%Y-%m-%dT%H:%M:%S',
@@ -676,12 +678,12 @@ class MinimalODProcessor:
     C_LIGHT = 299792458.0  # m/s
     X_BAND_FREQ = 8.4e9  # Hz
     
-    def __init__(self, config: Optional[MinimalODConfig] = None):
+    def __init__(self, config: MinimalODConfig | None = None):
         self.config = config or MinimalODConfig()
         self.c = self.C_LIGHT
         self.lambda_x = self.c / self.X_BAND_FREQ
     
-    def doppler_to_velocity(self, doppler_hz: float, frequency_hz: Optional[float] = None) -> float:
+    def doppler_to_velocity(self, doppler_hz: float, frequency_hz: float | None = None) -> float:
         """
         Convert Doppler frequency shift to radial velocity.
         
@@ -695,9 +697,9 @@ class MinimalODProcessor:
         return -0.5 * wavelength * doppler_hz
     
     def extract_perigee_residuals(self, 
-                                   measurements: List[Dict],
+                                   measurements: list[dict],
                                    perigee_time: datetime,
-                                   window_hours: float = 4.0) -> Dict:
+                                   window_hours: float = 4.0) -> dict:
         """
         Extract velocity residuals around perigee passage.
         
@@ -793,7 +795,7 @@ class MinimalODProcessor:
             'minimal_od_config': self.config.to_dict()
         }
 
-    def reference_format_validation(self, measurements: List[Dict]) -> Dict:
+    def reference_format_validation(self, measurements: list[dict]) -> dict:
         """Validate TRK-2-34 parsing and minimal OD chain without flyby claims."""
         if not measurements:
             return {
@@ -844,9 +846,9 @@ class MinimalODProcessor:
         }
     
     def falsification_test(self, 
-                          residuals: Dict,
+                          residuals: dict,
                           predicted_signal_mm_s: float,
-                          confidence: float = 0.95) -> Dict:
+                          confidence: float = 0.95) -> dict:
         """
         Compare the pairwise-Doppler proxy mean to a statistical detection threshold.
 
@@ -934,7 +936,7 @@ class DSNReanalysisPipeline:
         self.results_dir = PROJECT_ROOT / 'results'
         self.results_dir.mkdir(parents=True, exist_ok=True)
     
-    def run_reanalysis(self, mission: str = 'Juno_2013') -> Dict:
+    def run_reanalysis(self, mission: str = 'Juno_2013') -> dict:
         """
         Execute complete raw DSN reanalysis for a mission.
         
@@ -1083,7 +1085,7 @@ class DSNReanalysisPipeline:
         logger.log_step_summary(0, "SUCCESS")
         return results
 
-    def run_reference_format_validation(self, mission: str) -> Dict:
+    def run_reference_format_validation(self, mission: str) -> dict:
         """Run TRK-2-34 format validation on a reference archive without flyby claims."""
         logger = StepLogger("step_006_dsn_framework", PROJECT_ROOT)
         logger.header(f"STEP 006: TRK-2-34 REFERENCE VALIDATION - {mission}")
@@ -1098,7 +1100,7 @@ class DSNReanalysisPipeline:
         }
 
         mission_dir = self.data_dir / mission
-        all_measurements: List[Dict] = []
+        all_measurements: list[dict] = []
         for data_file in sorted(mission_dir.rglob('*')):
             if data_file.is_file() and data_file.suffix.lower() not in {'.txt', '.json', '.md', '.lbl', '.xml'}:
                 logger.info(f"Parsing: {data_file.name}")
@@ -1133,7 +1135,7 @@ class DSNReanalysisPipeline:
         logger.log_step_summary(0, "SUCCESS")
         return results
     
-    def _save_dsn_request_template(self, mission: str, acquisition: Dict):
+    def _save_dsn_request_template(self, mission: str, acquisition: dict):
         """Save formal DSN data request template."""
         mission_config = self.pds_interface.MISSION_COLLECTIONS.get(mission, {})
         
@@ -1179,13 +1181,13 @@ class DSNReanalysisPipeline:
         with open(request_file, 'w', encoding='utf-8') as f:
             json.dump(template, f, indent=2)
     
-    def _save_results(self, results: Dict):
+    def _save_results(self, results: dict):
         """Save analysis results to JSON."""
         output_file = self.results_dir / 'step006_dsn_reanalysis.json'
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(results, f, indent=2, default=str)
     
-    def check_all_missions(self) -> Dict:
+    def check_all_missions(self) -> dict:
         """Check data availability for all supported missions."""
         logger = StepLogger("step_006_dsn_framework", PROJECT_ROOT)
         logger.header("DSN DATA AVAILABILITY CHECK - ALL MISSIONS")
@@ -1200,7 +1202,7 @@ class DSNReanalysisPipeline:
             if availability['local_data']['found']:
                 logger.success(f"  Local data: {availability['local_data']['n_files']} files")
             else:
-                logger.warning(f"  No local data")
+                logger.warning("  No local data")
 
 
 def main():
@@ -1272,7 +1274,7 @@ def main():
         and bool(extract_trk234_measurements(reference_candidate))
     )
 
-    combined_results: Dict[str, Any] = {
+    combined_results: dict[str, Any] = {
         'step': '006_dsn_framework',
         'timestamp': datetime.now().isoformat(),
     }
@@ -1362,10 +1364,7 @@ def main():
     if results['status'] == 'PENDING_DATA_DOWNLOAD':
         logger.log_step_summary(duration, "PARTIAL - DATA DOWNLOAD REQUIRED")
         return 0  # Not a failure, just needs external data
-    elif results['status'] == 'COMPLETE':
-        logger.log_step_summary(duration, "SUCCESS")
-        return 0
-    elif results['status'] == 'REFERENCE_FORMAT_VALIDATION_COMPLETE':
+    elif results['status'] == 'COMPLETE' or results['status'] == 'REFERENCE_FORMAT_VALIDATION_COMPLETE':
         logger.log_step_summary(duration, "SUCCESS")
         return 0
     elif results['status'] == 'PARTIAL - NO RAW DSN DATA':

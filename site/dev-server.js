@@ -13,7 +13,7 @@ class DevServer {
         this.buildQueue = false;
         this.liveServerProcess = null;
         this.watcherReady = false;
-        this.port = 51813; // Unique port for TEP-EFA
+        this.port = 55515; // Unique port for TEP-EFA (Paper 15)
     }
 
     async killPort() {

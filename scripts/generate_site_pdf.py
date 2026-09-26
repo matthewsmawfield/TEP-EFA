@@ -11,11 +11,11 @@ Usage:
     python scripts/generate_site_pdf.py --quality high --wait-time 5
 """
 
-import asyncio
 import argparse
+import asyncio
+import re
 import subprocess
 import sys
-import re
 from pathlib import Path
 
 # Add utils to path
@@ -261,7 +261,7 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
             print(f"📄 Copied compressed PDF to root: {root_pdf}")
             print(f"   Size: {root_pdf.stat().st_size / (1024*1024):.2f} MB")
         
-        print(f"\n✅ Complete! PDF available at:")
+        print("\n✅ Complete! PDF available at:")
         print(f"   {final_pdf}")
         print(f"   {base_dir / final_pdf.name}")
         

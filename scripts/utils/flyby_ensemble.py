@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any
 
 from scripts.utils.physics import validate_screened_coupling
 
@@ -38,23 +38,23 @@ ENSEMBLE_GATE_POLICY = (
 SNR_THRESHOLD: float = 2.0
 
 
-def flyby_snr(dv_obs: Optional[float], dv_unc: Optional[float]) -> float:
+def flyby_snr(dv_obs: float | None, dv_unc: float | None) -> float:
     if dv_obs is None or dv_unc is None or dv_unc <= 0:
         return 0.0
     return abs(dv_obs) / dv_unc
 
 
-def flyby_sign_product(dv_tep: Optional[float], dv_obs: Optional[float]) -> Optional[float]:
+def flyby_sign_product(dv_tep: float | None, dv_obs: float | None) -> float | None:
     if dv_tep is None or dv_obs is None:
         return None
     return dv_tep * dv_obs
 
 
 def flyby_ensemble_exclusion_reason(
-    prediction: Dict[str, Any],
+    prediction: dict[str, Any],
     *,
-    enforce_sign_agreement: Optional[bool] = None,
-) -> Optional[str]:
+    enforce_sign_agreement: bool | None = None,
+) -> str | None:
     observed = prediction.get("observed", {})
     dv_obs = observed.get("dv_obs_mm_s")
     dv_unc = observed.get("sigma_mm_s")
@@ -77,11 +77,11 @@ def flyby_ensemble_exclusion_reason(
     return None
 
 
-def flyby_ensemble_eligible(prediction: Dict[str, Any]) -> bool:
+def flyby_ensemble_eligible(prediction: dict[str, Any]) -> bool:
     return flyby_ensemble_exclusion_reason(prediction) is None
 
 
-def load_step008_ensemble_summary(step008: Dict[str, Any]) -> Dict[str, float]:
+def load_step008_ensemble_summary(step008: dict[str, Any]) -> dict[str, float]:
     overall = step008.get("overall_analysis")
     if not overall:
         raise ValueError("step008_fitting_results.json is missing overall_analysis")
@@ -107,7 +107,7 @@ def load_step008_ensemble_summary(step008: Dict[str, Any]) -> Dict[str, float]:
     }
 
 
-def load_validated_step008_ensemble_summary(step008: Dict[str, Any]) -> Dict[str, float]:
+def load_validated_step008_ensemble_summary(step008: dict[str, Any]) -> dict[str, float]:
     summary = load_step008_ensemble_summary(step008)
     validate_screened_coupling(summary["beta_weighted"], summary["beta_eff_weighted"])
     return summary

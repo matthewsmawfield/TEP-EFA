@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 REQUIRED_TOP_LEVEL = {"mission", "quantity", "quantity_description", "reference", "utc_iso", "value_mm_s"}
 
@@ -18,16 +18,16 @@ JUNO_042_REFERENCE = "NASA PDS TRK ingest; Step 030 Juno 2013 reanalysis"
 
 
 def build_juno_pairwise_042_sidecar_from_rows(
-    residuals: List[Dict[str, Any]],
-) -> Optional[Dict[str, Any]]:
+    residuals: list[dict[str, Any]],
+) -> dict[str, Any] | None:
     """
     Build the Step 042 sidecar payload from Step 030 pairwise proxy rows.
 
     Each row must carry ``timestamp`` and ``velocity_mm_s`` from real TRK processing.
     Returns None if fewer than three valid samples (caller should skip export).
     """
-    utc_iso: List[str] = []
-    value_mm_s: List[float] = []
+    utc_iso: list[str] = []
+    value_mm_s: list[float] = []
     for row in residuals:
         ts_raw = row.get("timestamp")
         if ts_raw is None or "velocity_mm_s" not in row:
@@ -59,7 +59,7 @@ def build_juno_pairwise_042_sidecar_from_rows(
     }
 
 
-def write_juno_042_sidecar(project_root: Path, payload: Dict[str, Any]) -> Path:
+def write_juno_042_sidecar(project_root: Path, payload: dict[str, Any]) -> Path:
     """Write validated Juno sidecar to data/time_resolved_flyby_residuals/Juno.json."""
     out_dir = residuals_dir(project_root)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -72,7 +72,7 @@ def write_juno_042_sidecar(project_root: Path, payload: Dict[str, Any]) -> Path:
     return out_path
 
 
-def save_juno_pairwise_step030_archive(project_root: Path, rows: List[Dict[str, Any]]) -> Path:
+def save_juno_pairwise_step030_archive(project_root: Path, rows: list[dict[str, Any]]) -> Path:
     """
     Persist full pairwise proxy rows under results/ for reproducibility and for
     materializing ``data/time_resolved_flyby_residuals/Juno.json`` without re-parsing TRK.
@@ -95,7 +95,7 @@ def save_juno_pairwise_step030_archive(project_root: Path, rows: List[Dict[str, 
     return out_path
 
 
-def save_juno_ramp_pairwise_step030_archive(project_root: Path, rows: List[Dict[str, Any]]) -> Path:
+def save_juno_ramp_pairwise_step030_archive(project_root: Path, rows: list[dict[str, Any]]) -> Path:
     """
     Persist per-station sequential Δ ``ramp_freq_hz`` rows (Hz, not mm/s).
 
@@ -127,7 +127,7 @@ def residuals_dir(project_root: Path) -> Path:
     return project_root / "data" / "time_resolved_flyby_residuals"
 
 
-def load_validated_residual_file(path: Path) -> Dict[str, Any]:
+def load_validated_residual_file(path: Path) -> dict[str, Any]:
     if not path.is_file():
         raise FileNotFoundError(str(path))
     with open(path, encoding="utf-8") as f:
@@ -163,14 +163,14 @@ def _parse_utc_iso(s: str) -> datetime:
     return dt.astimezone(timezone.utc)
 
 
-def build_residual_timeline(data: Dict[str, Any]) -> List[Tuple[datetime, float, Optional[float]]]:
+def build_residual_timeline(data: dict[str, Any]) -> list[tuple[datetime, float, float | None]]:
     """Return list of (t_utc, value_mm_s, sigma_or_none)."""
-    out: List[Tuple[datetime, float, Optional[float]]] = []
+    out: list[tuple[datetime, float, float | None]] = []
     sigs = data.get("sigma_mm_s")
     for i, ts in enumerate(data["utc_iso"]):
         t = _parse_utc_iso(str(ts))
         v = float(data["value_mm_s"][i])
-        sig: Optional[float] = None
+        sig: float | None = None
         if isinstance(sigs, list) and i < len(sigs) and sigs[i] is not None:
             sig = float(sigs[i])
         out.append((t, v, sig))
@@ -179,10 +179,10 @@ def build_residual_timeline(data: Dict[str, Any]) -> List[Tuple[datetime, float,
 
 
 def align_geometry_epochs_to_residuals(
-    epoch_utc_iso: List[str],
-    residual_timeline: List[Tuple[datetime, float, Optional[float]]],
+    epoch_utc_iso: list[str],
+    residual_timeline: list[tuple[datetime, float, float | None]],
     max_delta_s: float,
-) -> Tuple[List[int], List[float], List[float], int]:
+) -> tuple[list[int], list[float], list[float], int]:
     """
     For each geometry epoch (in order), take nearest residual by absolute time if within max_delta_s.
 
@@ -198,9 +198,9 @@ def align_geometry_epochs_to_residuals(
     res_times = [t for t, _, _ in residual_timeline]
     res_vals = [v for _, v, _ in residual_timeline]
 
-    epoch_indices: List[int] = []
-    y_residual: List[float] = []
-    delta_t: List[float] = []
+    epoch_indices: list[int] = []
+    y_residual: list[float] = []
+    delta_t: list[float] = []
     skipped = 0
 
     for i, giso in enumerate(epoch_utc_iso):

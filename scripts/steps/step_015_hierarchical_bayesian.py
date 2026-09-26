@@ -22,40 +22,39 @@ Key features:
 - Bayesian inference using emcee (MCMC)
 """
 
-import numpy as np
 import json
 import math
 import sys
 from pathlib import Path
-from typing import Any, Dict, Tuple
+from typing import Any
 
-import emcee
 import corner
+import emcee
 import matplotlib.pyplot as plt
+import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import (
-    RHO_T, SUPPRESSION_EXPONENT, LAMBDA_TEP_M, BETA_BASELINE,
-    CHARACTERISTIC_SUPPRESSION, J2_EARTH, R_EARTH,
-    DISFORMAL_VELOCITY_THRESHOLD_KM_S
+    BETA_BASELINE,
+    LAMBDA_TEP_M,
 )
+from scripts.utils.step_logger import StepLogger
 
 # Physical constants from physics.py (centralized TEP parameters)
 LAMBDA_TEP_KM = LAMBDA_TEP_M / 1000.0  # Convert m to km
 BETA_THEORETICAL = BETA_BASELINE * 1e-4  # Convert baseline to actual coupling
 
 
-def _tep_physics_pipeline_config() -> Dict[str, Any]:
+def _tep_physics_pipeline_config() -> dict[str, Any]:
     cfg_path = PROJECT_ROOT / "config" / "pipeline_config.json"
     with open(cfg_path, "r", encoding="utf-8") as f:
         cfg = json.load(f)
     return cfg["parameters"]["analysis"]["tep_physics"]
 
 
-def _beta_prior_center_from_step008(data: Dict[str, Any]) -> Tuple[float, str]:
+def _beta_prior_center_from_step008(data: dict[str, Any]) -> tuple[float, str]:
     """
     Central value for log-β_0 prior mean.
 
@@ -123,7 +122,7 @@ def _beta_prior_center_from_step008(data: Dict[str, Any]) -> Tuple[float, str]:
     )
 
 
-def _beta_prior_log_sigma_from_step008(data: Dict[str, Any], beta_center: float) -> float:
+def _beta_prior_log_sigma_from_step008(data: dict[str, Any], beta_center: float) -> float:
     """
     Gaussian width (in natural-log space of β) for the log-β_0 prior.
 
@@ -137,12 +136,15 @@ def _beta_prior_log_sigma_from_step008(data: Dict[str, Any], beta_center: float)
     if not isinstance(bs, dict):
         raise ValueError("step008_fitting_results.json: missing beta_statistics")
 
-    sig = bs.get("inflated_uncertainty")
+    sig = bs.get("random_effects_uncertainty")
+    if sig is None:
+        sig = bs.get("inflated_uncertainty")
     if sig is None:
         sig = bs.get("weighted_uncertainty")
     if sig is None:
         raise ValueError(
-            "step008 beta_statistics must contain inflated_uncertainty or weighted_uncertainty"
+            "step008 beta_statistics must contain random_effects_uncertainty, "
+            "inflated_uncertainty or weighted_uncertainty"
         )
     sig = float(sig)
     if not math.isfinite(sig) or sig <= 0.0 or not math.isfinite(beta_center) or beta_center <= 0.0:
@@ -275,7 +277,7 @@ class PerFlybyGeometryAnalyzer:
         r_squared = 1 - ss_res / ss_tot if ss_tot > 0 else 0.0
 
         self.logger.subsection("GEOMETRY FACTOR REGRESSION")
-        self.logger.info(f"  log10|G_eff| = c0 + c1·alt_norm + c2·vel_norm + c3·asym_norm")
+        self.logger.info("  log10|G_eff| = c0 + c1·alt_norm + c2·vel_norm + c3·asym_norm")
         self.logger.info(f"  c0 = {coeffs[0]:.3f}, c1 = {coeffs[1]:.3f}, "
                         f"c2 = {coeffs[2]:.3f}, c3 = {coeffs[3]:.3f}")
         self.logger.info(f"  R² = {r_squared:.3f}")
@@ -289,13 +291,13 @@ class PerFlybyGeometryAnalyzer:
         self.logger.info(f"  Median G_eff = {g_eff_median:.2f}")
         self.logger.info(f"  Mean   G_eff = {g_eff_mean:.2f} ± {g_eff_std:.2f}")
         self.logger.info(f"  Range: [{np.min(g_effs):.2f}, {np.max(g_effs):.2f}]")
-        self.logger.info(f"")
-        self.logger.info(f"  If beta_0 = 1.00e-4 (theoretical reference):")
+        self.logger.info("")
+        self.logger.info("  If beta_0 = 1.00e-4 (theoretical reference):")
         self.logger.info(f"    The effective geometry factor varies by a factor of "
                         f"{np.max(g_effs)/np.min(np.abs(g_effs)):.1f} across flybys.")
-        self.logger.info(f"    This confirms geometry-dependent TEP coupling.")
-        self.logger.info(f"")
-        self.logger.info(f"  Empirically, the median implied coupling is:")
+        self.logger.info("    This confirms geometry-dependent TEP coupling.")
+        self.logger.info("")
+        self.logger.info("  Empirically, the median implied coupling is:")
         self.logger.info(f"    beta_0,implied = 1e-4 × G_eff,median = {1e-4 * g_eff_median:.2e}")
 
         return {
@@ -344,7 +346,7 @@ class HierarchicalTEPModel:
         try:
             with open(results_file, encoding="utf-8") as f:
                 data = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+        except (OSError, FileNotFoundError, json.JSONDecodeError) as e:
             self.logger.error(f"Failed to load fitting results: {e}")
             return None
 
@@ -592,6 +594,74 @@ class HierarchicalTEPModel:
                 f"residual = {pred['residual']:+.2f} mm/s"
             )
 
+        # Likelihood-profile diagnostic: profile the joint log-likelihood
+        # over a beta_0 grid with the remaining parameters held at their
+        # posterior medians. Records where the data alone peaks, so the
+        # agreement (or offset) between this layer and the Step 008 pooled
+        # estimate is auditable independently of the prior anchoring.
+        theta_med = np.array([
+            np.log(np.median(beta_0_samples)),
+            np.log(np.median(b_disf_samples)),
+            np.log(np.median(sigma_samples)),
+            np.median(alpha_res_samples),
+        ])
+        beta_grid = np.logspace(
+            np.log10(np.median(beta_0_samples) / 30.0),
+            np.log10(np.median(beta_0_samples) * 30.0),
+            121,
+        )
+        profile_ll = []
+        for bg in beta_grid:
+            t = theta_med.copy()
+            t[0] = np.log(bg)
+            profile_ll.append(float(self.log_likelihood(t, flybys)))
+        profile_ll = np.asarray(profile_ll)
+        imax = int(np.argmax(profile_ll))
+        likelihood_profile = {
+            "description": (
+                "Profile log-likelihood over beta_0 with b_disf, sigma, "
+                "alpha_res held at posterior medians; prior-free diagnostic "
+                "of where the data place the population coupling."
+            ),
+            "beta0_at_likelihood_max": float(beta_grid[imax]),
+            "ll_at_likelihood_max": float(profile_ll[imax]),
+            "ll_at_step008_center": float(
+                self.log_likelihood(
+                    np.array(
+                        [
+                            np.log(self._beta_prior_center),
+                            theta_med[1],
+                            theta_med[2],
+                            theta_med[3],
+                        ]
+                    ),
+                    flybys,
+                )
+            ),
+            "delta_ll_step008_vs_max": float(
+                self.log_likelihood(
+                    np.array(
+                        [
+                            np.log(self._beta_prior_center),
+                            theta_med[1],
+                            theta_med[2],
+                            theta_med[3],
+                        ]
+                    ),
+                    flybys,
+                )
+                - profile_ll[imax]
+            ),
+            "beta0_grid_min": float(beta_grid[0]),
+            "beta0_grid_max": float(beta_grid[-1]),
+        }
+        self.logger.info(
+            f"Likelihood profile (prior-free): max at β_0 = "
+            f"{likelihood_profile['beta0_at_likelihood_max']:.3e}; "
+            f"ΔLL(Step-008 center vs max) = "
+            f"{likelihood_profile['delta_ll_step008_vs_max']:+.2f}"
+        )
+
         results = {
             "prior_beta_0_center": float(self._beta_prior_center),
             "prior_beta_0_center_source": self._beta_prior_center_source,
@@ -606,6 +676,7 @@ class HierarchicalTEPModel:
             'sigma_std': float(np.std(sigma_samples)),
             'alpha_res_median': float(np.median(alpha_res_samples)),
             'alpha_res_std': float(np.std(alpha_res_samples)),
+            'likelihood_profile_beta0': likelihood_profile,
             'posterior_predictions': posterior_predictions,
             'samples': samples.tolist()
         }

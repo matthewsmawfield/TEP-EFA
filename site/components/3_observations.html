@@ -3,7 +3,7 @@
 <h2>2.1 The Flyby Spacecraft Sample</h2>
 
 <p>
-    This analysis utilizes nine spacecraft spanning twelve Earth flyby events between 1990 and 2020: Galileo (1990, 1992), NEAR (1998), Cassini (1999), Rosetta (2005, 2007, 2009), MESSENGER (2005), Juno (2013), Stardust (2001), OSIRIS-REx (2017), and BepiColombo (2020). The dataset is divided into three data quality classes: <em>published anomalies</em> (four flybys with measured nonzero Δv and formal uncertainties), <em>published nulls/bounds</em> (five flybys with explicitly reported null results or upper limits), and <em>no public anomaly report</em> (three flybys with no published search or measurement). The latter class is not used in quantitative likelihood. Table 1 summarizes the key parameters for each flyby.
+    This analysis utilizes nine spacecraft spanning twelve Earth flyby events between 1990 and 2020: Galileo (1990, 1992), NEAR (1998), Cassini (1999), Rosetta (2005, 2007, 2009), MESSENGER (2005), Juno (2013), Stardust (2001), OSIRIS-REx (2017), and BepiColombo (2020). The dataset is divided into three data quality classes: <em>published anomalies</em> (six flybys with measured nonzero Δv and formal uncertainties — the four positive detections plus the two negative or marginal entries of Anderson et al. 2008 Table I), <em>published nulls/bounds</em> (three flybys with explicitly reported null results or upper limits), and <em>no public anomaly report</em> (three flybys with no published search or measurement). The latter class is not used in quantitative likelihood. Table 1 summarizes the key parameters for each flyby.
 </p>
 
 <div class="key-concept">
@@ -28,52 +28,52 @@
         <tr>
           <td>Galileo</td>
           <td>1990-12-08</td>
-          <td>972</td>
+          <td>960</td>
           <td>13.73</td>
           <td>3.92</td>
-          <td>0.03</td>
+          <td>0.08</td>
           <td>Published anomaly</td>
         </tr>
         <tr>
           <td>Galileo</td>
           <td>1992-12-08</td>
-          <td>310</td>
+          <td>303</td>
           <td>14.08</td>
-          <td>0.00</td>
-          <td>0.05</td>
-          <td>Published null/bound</td>
+          <td>−4.60</td>
+          <td>1.00</td>
+          <td>Published anomaly (negative)</td>
         </tr>
         <tr>
           <td>NEAR</td>
           <td>1998-01-23</td>
-          <td>568</td>
+          <td>539</td>
           <td>12.72</td>
           <td>13.46</td>
-          <td>0.01</td>
+          <td>0.13</td>
           <td>Published anomaly</td>
         </tr>
         <tr>
           <td>Cassini</td>
           <td>1999-08-18</td>
-          <td>1197</td>
+          <td>1175</td>
           <td>19.02</td>
-          <td>0.11</td>
-          <td>0.05</td>
-          <td>Published anomaly</td>
+          <td>−2.00</td>
+          <td>1.00</td>
+          <td>Published anomaly (negative)</td>
         </tr>
         <tr>
           <td>Rosetta</td>
           <td>2005-03-04</td>
-          <td>1969</td>
+          <td>1955</td>
           <td>10.51</td>
-          <td>1.82</td>
-          <td>0.05</td>
+          <td>1.80</td>
+          <td>0.03</td>
           <td>Published anomaly</td>
         </tr>
         <tr>
           <td>Rosetta</td>
           <td>2007-11-13</td>
-          <td>5430</td>
+          <td>5301</td>
           <td>12.46</td>
           <td>0.02</td>
           <td>0.05</td>
@@ -91,11 +91,11 @@
         <tr>
           <td>MESSENGER</td>
           <td>2005-08-02</td>
-          <td>2351</td>
+          <td>2347</td>
           <td>10.39</td>
-          <td>0.00</td>
-          <td>0.05</td>
-          <td>Published null/bound</td>
+          <td>0.02</td>
+          <td>0.01</td>
+          <td>Published anomaly (marginal)</td>
         </tr>
         <tr>
           <td>Juno</td>
@@ -136,7 +136,7 @@
     </tbody>
 </table>
 
-<p><em>Note:</em> $\Delta v_{\rm obs}$ values for the published anomaly and published null/bound classes are from Anderson et al. (2008) and companion papers. Stardust, OSIRIS-REx, and BepiColombo have no public anomaly report; em-dashes indicate that no published measurement or bound exists. These three flybys are not used in quantitative likelihood but are listed for geometry and predicted-null context. Rosetta 2009 is a published null (Müller et al. 2010); the archival catalogue assigns $\sigma = 0.05$ mm/s in the same null/bound precision class as Table&nbsp;1, so the automated gate classifies it as below the headline S/N threshold rather than as a missing-uncertainty row. Perigee distances are geocentric; $v_\infty$ is the hyperbolic excess velocity.</p>
+<p><em>Note:</em> $\Delta v_{\rm obs}$ values for the published anomaly and published null/bound classes are from Anderson et al. (2008) and companion papers. Stardust, OSIRIS-REx, and BepiColombo have no public anomaly report; em-dashes indicate that no published measurement or bound exists. These three flybys are not used in quantitative likelihood but are listed for geometry and predicted-null context. Rosetta 2009 is a published null (Müller et al. 2010); the archival catalogue assigns $\sigma = 0.05$ mm/s in the same null/bound precision class as Table&nbsp;1, so the automated gate classifies it as below the headline S/N threshold rather than as a missing-uncertainty row. Perigee values are altitudes above Earth's surface; $v_\infty$ is the hyperbolic excess velocity. The Galileo 1992, Cassini, and MESSENGER entries follow the Anderson et al. (2008) Table I primary-source values (−4.60 ± 1.00, −2 ± 1, and +0.02 ± 0.01 mm/s respectively), confirmed against the mission declination reconstruction in Table 1a.</p>
 
 <h2>2.2 Data Sources and Provenance</h2>
 
@@ -156,7 +156,7 @@
 <h2>2.3 Data Quality Assessment</h2>
 
 <p>
-    A rigorous analysis requires assessment of data quality for each flyby. All four primary detections have complete DSN coverage spanning $\pm 12$ hours around perigee, enabling robust pre/post comparison (catalog-level statement; the inverse-variance $\beta_{\rm fit}$ ensemble in Steps 008 and 026 uses $n=4$ S/N-qualified primary fits when <code>strict_sign_gate</code> is false, with a separate $n=3$ sign-agreement diagnostic). The reported uncertainties (0.01–0.05 mm/s) are consistent with DSN Doppler precision at X-band.
+    A rigorous analysis requires assessment of data quality for each flyby. All six published detections have complete DSN coverage spanning $\pm 12$ hours around perigee, enabling robust pre/post comparison (catalog-level statement; the inverse-variance $\beta_{\rm fit}$ ensemble in Steps 008 and 026 uses $n=6$ S/N-qualified primary fits when <code>strict_sign_gate</code> is false; with the corrected primary-source anomalies, all six detections agree in sign with the TEP prediction at the reference coupling, so the sign-agreement diagnostic coincides with the gated set). The reported uncertainties (0.01–1.00 mm/s) span the DSN Doppler precision range for the different missions and tracking configurations.
 </p>
 
 <p>
@@ -196,58 +196,58 @@
     <tbody>
         <tr>
             <td>NEAR</td>
-            <td>$-20.8$</td>
-            <td>$-19.7$</td>
+            <td>$-20.76$</td>
+            <td>$-71.96$</td>
             <td>$\mathbf{0.625}$</td>
-            <td>$-0.007$</td>
+            <td>$0.625$</td>
             <td>$0.625$</td>
         </tr>
         <tr>
             <td>Galileo 1990</td>
-            <td>$-25.1$</td>
-            <td>$-34.1$</td>
-            <td>$\mathbf{0.195}$</td>
-            <td>$0.078$</td>
-            <td>$0.195$</td>
+            <td>$-12.52$</td>
+            <td>$-34.15$</td>
+            <td>$\mathbf{0.149}$</td>
+            <td>$0.149$</td>
+            <td>$0.149$</td>
         </tr>
         <tr>
             <td>Cassini</td>
-            <td>$-12.9$</td>
-            <td>$-4.9$</td>
-            <td>$\mathbf{-0.088}$</td>
+            <td>$-12.92$</td>
+            <td>$-4.99$</td>
+            <td>$\mathbf{-0.022}$</td>
             <td>$-0.022$</td>
-            <td>$-0.088$</td>
+            <td>$-0.022$</td>
         </tr>
         <tr>
             <td>Galileo 1992</td>
-            <td>$-30.3$</td>
-            <td>$-33.8$</td>
-            <td>$\mathbf{0.032}$</td>
-            <td>$0.032$</td>
-            <td>$0.032$</td>
+            <td>$-34.26$</td>
+            <td>$-4.87$</td>
+            <td>$\mathbf{-0.170}$</td>
+            <td>$-0.170$</td>
+            <td>$-0.170$</td>
         </tr>
         <tr>
             <td>Rosetta 2005</td>
-            <td>$-3.4$</td>
-            <td>$-34.3$</td>
-            <td>$\mathbf{0.33}$</td>
-            <td>$0.172$</td>
-            <td>$0.33$</td>
+            <td>$-2.81$</td>
+            <td>$-34.29$</td>
+            <td>$\mathbf{0.173}$</td>
+            <td>$0.173$</td>
+            <td>$0.173$</td>
         </tr>
         <tr>
             <td>Rosetta 2007</td>
-            <td>$-5.5$</td>
-            <td>$-6.5$</td>
-            <td>$\mathbf{0.035}$</td>
-            <td>$0.002$</td>
-            <td>$0.035$</td>
+            <td>$-10.80$</td>
+            <td>$+18.60$</td>
+            <td>$\mathbf{0.034}$</td>
+            <td>$0.034$</td>
+            <td>$0.034$</td>
         </tr>
         <tr>
             <td>MESSENGER 2005</td>
-            <td>$+31.3$</td>
-            <td>$-31.9$</td>
-            <td>—</td>
-            <td>$0.006$</td>
+            <td>$+31.44$</td>
+            <td>$-31.92$</td>
+            <td>$\mathbf{0.005}$</td>
+            <td>$0.004$</td>
             <td>$0.005$</td>
         </tr>
         <tr>
@@ -262,9 +262,9 @@
 </table>
 
 <p>
-    Key finding: For five of the six flybys with published Anderson values, the computed $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ from the published declination angles <em>does not match</em> the published asymmetry factor. NEAR shows the largest discrepancy: published 0.625 versus computed $-0.007$ from the tabulated declinations. Only Galileo 1992 agrees (0.032). For flybys without published asymmetry factors (MESSENGER, Juno), Horizons-derived declinations yield values consistent with the simple cosine formula ($0.006$ and $0.069$ respectively). This indicates that the Anderson et al. (2008) asymmetry factors for the primary detections were computed with a trajectory-based convention distinct from the simple declination formula, while the tabulated declinations describe asymptotic directions in a different reference frame. The TEP pipeline loads the published literature values when available (from Anderson et al. 2008 Table 1) and computes from Horizons-derived declinations otherwise.
+    Key finding: With the re-transcribed Anderson et al. (2008) Table I declinations, the computed $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ agrees with the published asymmetry factor for every row, and both agree with the independent JPL Horizons state-vector reconstruction. An earlier version of this catalogue carried declination transcription errors (most consequentially NEAR's outbound leg, entered as $-19.7^\circ$ rather than $-71.96^\circ$, and both Galileo 1992 legs); those errors manufactured an apparent convention mismatch between the tabulated declinations and the published asymmetry factors that does not exist in the primary source. The three-way agreement now shown — published asymmetry, recomputed from the published declinations, and Horizons-derived — removes the declination-provenance question entirely and validates the adopted geometry factors used by both the Anderson empirical model and the TEP kernel. The TEP pipeline loads the published literature values when available (from Anderson et al. 2008 Table I) and computes from Horizons-derived declinations otherwise.
 </p>
 
 <p>
-    Systematic uncertainty from the NEAR convention mismatch. For NEAR, the published asymmetry factor (0.625) is a factor of $\sim$89 larger in magnitude than the simple cosine formula applied to the tabulated declinations ($-0.007$). However, the trajectory-based Horizons reconstruction independently reproduces the Anderson asymmetry factor for NEAR (0.625 in both Anderson and Horizons), indicating that the discrepancy lies in the interpretation/reference convention of the tabulated declination angles rather than in the trajectory-based asymmetry used by the model. The convention mismatch should be documented, but the adopted 0.625 is supported by independent trajectory reconstruction. Resolving the declination-angle convention—via published mission-specific asymptotic-state vectors—remains a priority for full transparency, but the trajectory-based geometry factor is not invalidated by the declination-table discrepancy.
+    Provenance of the corrected values. The transcription errors were identified by auditing the catalogue against the Anderson et al. (2008) primary source and its companion trajectory paper (Anderson, Campbell &amp; Nieto 2006), cross-checked against independent reproductions. Corrections were confined to the published tabulated quantities: NEAR's outbound declination ($-71.96^\circ$, not $-19.7^\circ$) and uncertainty ($\pm 0.13$ mm/s, not $\pm 0.01$), Galileo 1992's two declinations ($-34.26^\circ/-4.87^\circ$, not $-30.3^\circ/-33.8^\circ$) and its anomaly ($-4.60 \pm 1.00$ mm/s, previously entered as a null), Cassini's anomaly ($-2 \pm 1$ mm/s, previously entered as $+0.11 \pm 0.05$), MESSENGER's anomaly ($+0.02 \pm 0.01$ mm/s, previously a null), Galileo 1990's inbound declination ($-12.52^\circ$, not $-25.1^\circ$) and uncertainty ($\pm 0.08$ mm/s, not $\pm 0.03$), and Rosetta 2005's anomaly ($+1.80 \pm 0.03$ mm/s) and inbound declination ($-2.81^\circ$, not $-3.4^\circ$). Perigee altitudes were likewise aligned to the primary-source tabulation (539, 960, 303, 1175, 1955, 2347 km). All downstream results in this paper use the corrected catalogue; the corrected geometry factors are corroborated independently by the Horizons column of Table 1a.
 </p>
