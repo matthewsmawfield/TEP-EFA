@@ -1,0 +1,93 @@
+[INFO] [STEP 023] LOGGER INITIALIZED: step_023_thermal_recoil_modeling (Step 023)
+[INFO] [STEP 023] LOGGER INITIALIZED: step_023_thermal_recoil_modeling (Step 023)
+
+======================================================================
+THERMAL RECOIL MODELING RESULTS
+======================================================================
+
+Analyzed 7 flybys
+RTG-powered flybys: 3
+
+Summary:
+  All excluded: False
+  Maximum thermal fraction: inf
+  Conclusion: Thermal recoil may contribute to some anomalies
+
+Per-flyby results:
+
+  NEAR:
+    Has RTG: False
+    Spacecraft mass: 805 kg
+    Thermal force: 6.00e-09 N
+    Thermal acceleration: 7.46e-12 m/s²
+    Integrated Δv from thermal: 6.44e-04 mm/s
+    Observed anomaly: 13.46 mm/s
+    Thermal fraction: 4.79e-05
+    Excluded: True
+
+  Galileo_1990:
+    Has RTG: True
+    RTG power: 5700 W
+    Spacecraft mass: 2222 kg
+    Thermal force: 1.90e-07 N
+    Thermal acceleration: 8.56e-11 m/s²
+    Integrated Δv from thermal: 7.39e-03 mm/s
+    Observed anomaly: 3.92 mm/s
+    Thermal fraction: 1.89e-03
+    Excluded: True
+
+  Cassini:
+    Has RTG: True
+    RTG power: 14000 W
+    Spacecraft mass: 5712 kg
+    Thermal force: 4.67e-07 N
+    Thermal acceleration: 8.18e-11 m/s²
+    Integrated Δv from thermal: 7.06e-03 mm/s
+    Observed anomaly: -2.00 mm/s
+    Thermal fraction: inf
+    Excluded: False
+
+  Galileo_1992:
+    Has RTG: True
+    RTG power: 5700 W
+    Spacecraft mass: 2222 kg
+    Thermal force: 1.90e-07 N
+    Thermal acceleration: 8.56e-11 m/s²
+    Integrated Δv from thermal: 7.39e-03 mm/s
+    Observed anomaly: -4.60 mm/s
+    Thermal fraction: inf
+    Excluded: False
+
+  Rosetta_2005:
+    Has RTG: False
+    Spacecraft mass: 2900 kg
+    Thermal force: 6.67e-09 N
+    Thermal acceleration: 2.30e-12 m/s²
+    Integrated Δv from thermal: 1.99e-04 mm/s
+    Observed anomaly: 1.80 mm/s
+    Thermal fraction: 1.10e-04
+    Excluded: True
+
+  Rosetta_2007:
+    Has RTG: False
+    Spacecraft mass: 2900 kg
+    Thermal force: 6.67e-09 N
+    Thermal acceleration: 2.30e-12 m/s²
+    Integrated Δv from thermal: 1.99e-04 mm/s
+    Observed anomaly: 0.02 mm/s
+    Thermal fraction: 9.94e-03
+    Excluded: True
+
+  MESSENGER_2005:
+    Has RTG: False
+    Spacecraft mass: 1108 kg
+    Thermal force: 6.67e-09 N
+    Thermal acceleration: 6.02e-12 m/s²
+    Integrated Δv from thermal: 5.20e-04 mm/s
+    Observed anomaly: 0.02 mm/s
+    Thermal fraction: 2.60e-02
+    Excluded: False
+[INFO] [STEP 023] ✓ Thermal recoil excluded for all 7 flybys
+[INFO] [STEP 023]   Output: step023_thermal_recoil_modeling.json (Thermal recoil modeling results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step023_thermal_recoil_modeling.json

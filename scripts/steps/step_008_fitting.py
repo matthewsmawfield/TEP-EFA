@@ -59,13 +59,20 @@ must satisfy this constraint for physical viability of the TEP framework.
 
 β Scaling Derivation:
 --------------------
-The TEP field equation gives φ ∝ β^(-1/(n+1)) = β^(-1/4) for n=3.
-The scalar force F ∝ β × ∇φ ∝ β × β^(-1/4) = β^(3/4).
-Therefore Δv_TEP ∝ β^(3/4), and inverting:
+Under the canonical amplitude-sector normalization (Paper 0 v0.14), the
+Earth-well excursion is the unscreened linear response of the source,
+ψ_uns = M_EARTH/(4π M_Pl² R_EARTH) = 1.3926e-9, which is parameter-free and
+independent of β. The predicted anomaly is therefore strictly linear in the
+coupling:
 
-    β_fitted = β_ref × (Δv_obs / Δv_TEP)^(4/3)
+    Δv_TEP ∝ β  ⇒  β_fitted = β_ref × (Δv_obs / Δv_TEP)
 
-This scaling is derived from first-principles field theory, not fitted empirically.
+This replaces the v0.1 (4/3) inversion, which followed from the
+β-dependence of the inverse-power density minimum (φ_min ∝ β^{−1/4} ⇒
+Δv ∝ β^{3/4}). That minimum admits no admissible extremum under
+β_A = −1 (Paper 0 constraint F1), so the associated response map is
+removed with the branch itself. The linear inversion is the amplitude
+rescaling of the shared canonical profile, not a fitted exponent.
 
 Enhanced Statistical Validation:
 -------------------------------
@@ -107,8 +114,10 @@ The fitting results demonstrate that the TEP scalar force framework with
 Temporal Shear screening provides a self-consistent, PPN-compliant explanation
 for the Earth flyby anomaly. Per-flyby fitted amplitudes can span a wide factor
 across the full catalog of geometries; the inverse-variance Step 008 mean aggregates all S/N-qualified fits in the relaxed-gate configuration, with an additional sign-agreement-restricted diagnostic for auditability.
-The (4/3) scaling is derived from first-principles field theory
-(φ ∝ β^(-1/4) → Δv ∝ β^(3/4)), not fitted empirically.
+The β inversion is linear under the canonical amplitude-sector
+normalization (β-independent Earth-well excursion; Paper 0 v0.14),
+replacing the v0.1 (4/3) map that traced to the excluded inverse-power
+density minimum.
 
 Reproducibility:
 ---------------
@@ -255,7 +264,8 @@ def fit_beta_to_observation(
         If None, reads ``parameters.analysis.tep_physics.strict_sign_gate`` from
         ``config/pipeline_config.json``. When True, opposite signs at β_ref
         exclude closed-form β fitting (legacy behaviour). When False, the same
-        magnitude mapping β ∝ |Δv_obs/Δv_TEP|^(4/3) is applied with
+        magnitude mapping β ∝ |Δv_obs/Δv_TEP| (linear; canonical
+        β-independent excursion normalization) is applied with
         ``sign_agreement: false`` and status ``amplitude_fit_sign_reference_mismatch``.
     """
     if strict_sign_gate is None:
@@ -368,13 +378,14 @@ def fit_beta_to_observation(
         )
 
     # Fit β to match observation — per-geometry effective amplitude; inverse-variance pooling in Step 008
-    # The scaling follows a 3/4 power law derived from the Temporal Topology field dependence (n=3):
-    # dv_tep ∝ β * ∇φ ∝ β * β^(-1/4) = β^(3/4)
-    # Therefore β_eff = β_initial * (dv_obs / dv_tep)^(4/3)
+    # Canonical amplitude sector (Paper 0 v0.14): the Earth-well excursion is
+    # β-independent (ψ_uns = 1.3926e-9 unscreened source response), so the
+    # prediction is strictly linear in β and the inversion is the linear map:
+    #   dv_tep ∝ β ⇒ β_eff = β_initial × (dv_obs / dv_tep)
     # This gives the effective beta for this geometry (path-resolved through topology/shear)
     if dv_tep != 0:
         ratio = abs(dv_obs / dv_tep)
-        beta_eff_observed = BETA_INITIAL * (ratio ** (4 / 3))
+        beta_eff_observed = BETA_INITIAL * ratio
     else:
         beta_eff_observed = None
 
@@ -390,16 +401,16 @@ def fit_beta_to_observation(
                 "dv_obs": dv_obs,
                 "dv_tep": dv_tep,
                 "ratio": ratio,
-                "exponent": 4 / 3,
+                "exponent": 1.0,
                 "note": "beta_eff varies with geometry per TEP v0.8 Temporal Topology",
             },
-            formula="β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)",
+            formula="β_eff = β_initial × (Δv_obs / Δv_tep)",
             result=beta_fitted,
         )
 
-    # Calculate uncertainty using error propagation for f(x) = c*x^(4/3)
+    # Calculate uncertainty using error propagation for f(x) = c*x (linear map)
     if dv_tep != 0 and beta_fitted is not None and dv_obs != 0:
-        uncertainty = beta_fitted * (4 / 3) * (dv_unc / abs(dv_obs))
+        uncertainty = beta_fitted * (dv_unc / abs(dv_obs))
     else:
         uncertainty = None
 
@@ -410,9 +421,9 @@ def fit_beta_to_observation(
                 "beta_fitted": beta_fitted,
                 "dv_unc": dv_unc,
                 "abs_dv_obs": abs(dv_obs),
-                "exponent_factor": 4 / 3,
+                "exponent_factor": 1.0,
             },
-            formula="σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)",
+            formula="σ_β = β_fitted × (σ_Δv / |Δv_obs|)",
             result=uncertainty,
         )
 
@@ -980,7 +991,7 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
         obs_unc = fit_data["observed"]["sigma_mm_s"]
 
-        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))  # scale prediction with power law
+        pred_scaled = pred * (beta_weighted / BETA_INITIAL)  # linear in β (canonical β-independent excursion)
 
         observed.append(obs)
         predicted_tep.append(pred_scaled)
@@ -1172,8 +1183,8 @@ def residual_analysis(all_fits: dict) -> dict:
     for name, fit_data in successful.items():
         obs = fit_data["observed"]["dv_obs_mm_s"]
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
-        # Scale prediction by WEIGHTED MEAN beta (power law: 3/4 exponent)
-        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))
+        # Scale prediction by WEIGHTED MEAN beta (linear: canonical β-independent excursion)
+        pred_scaled = pred * (beta_weighted / BETA_INITIAL)
 
         residual = obs - pred_scaled
         residuals.append(residual)
@@ -1228,8 +1239,8 @@ def prediction_accuracy_metrics(all_fits: dict) -> dict:
     for fit_data in successful.values():
         obs = fit_data["observed"]["dv_obs_mm_s"]
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
-        # Scale prediction by WEIGHTED MEAN beta (power law: 3/4 exponent)
-        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))
+        # Scale prediction by WEIGHTED MEAN beta (linear: canonical β-independent excursion)
+        pred_scaled = pred * (beta_weighted / BETA_INITIAL)
 
         observed.append(obs)
         predicted.append(pred_scaled)
@@ -1767,7 +1778,7 @@ def main():
             elif status == "amplitude_fit_sign_reference_mismatch":
                 logger.info(
                     "    Opposite signs at β_ref; strict_sign_gate=false — β is fitted from "
-                    "|Δv_obs/Δv_TEP|^(4/3) as an amplitude diagnostic (not a signed prediction match)."
+                    "|Δv_obs/Δv_TEP| linearly as an amplitude diagnostic (not a signed prediction match)."
                 )
             elif status == "no_signal":
                 logger.info("    Observed anomaly is consistent with zero.")

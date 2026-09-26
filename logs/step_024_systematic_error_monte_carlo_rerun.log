@@ -1,0 +1,84 @@
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+
+======================================================================
+SYSTEMATIC ERROR MONTE CARLO ANALYSIS RESULTS
+======================================================================
+
+Monte Carlo trials: 1000
+Reference β: 4.74e-03
+
+Systematic error magnitudes:
+  dsn_antenna_phase: 0.1
+  derivation: Antenna phase center motion = 0.1 mm/s represents typical DSN antenna mechanical motion during tracking; ±50% uncertainty accounts for varying antenna types and environmental conditions
+  source: DSN antenna phase center motion specifications
+  dsn_tropospheric: 0.05
+  dsn_station_position: 0.02
+  trajectory_altitude: 1.0
+  trajectory_velocity: 1.0
+  calibration_drift: 0.01
+  geometry_cos_asymmetry: 0.01
+  geometry_latitude_deg: 2.0
+
+Systematic error budget:
+  Mean systematic uncertainty: 74.40%
+  Max systematic uncertainty: 392.48%
+  Interpretation: Systematic uncertainties contribute 74.4% on average to TEP predictions
+
+Per-flyby results:
+
+  NEAR:
+    Observed Δv: 13.46 mm/s
+    TEP Δv (mean ± std): 8.864 ± 0.151 mm/s
+    TEP Δv (95% CI): [8.573, 9.139] mm/s
+    Residual (mean ± std): 4.599 ± 0.189 mm/s
+    Systematic uncertainty fraction: 1.71%
+
+  Galileo_1990:
+    Observed Δv: 3.92 mm/s
+    TEP Δv (mean ± std): 1.113 ± 0.078 mm/s
+    TEP Δv (95% CI): [0.964, 1.266] mm/s
+    Residual (mean ± std): 2.802 ± 0.140 mm/s
+    Systematic uncertainty fraction: 6.98%
+
+  Cassini:
+    Observed Δv: -2.00 mm/s
+    TEP Δv (mean ± std): -0.001 ± 0.002 mm/s
+    TEP Δv (95% CI): [-0.006, -0.000] mm/s
+    Residual (mean ± std): -2.004 ± 0.120 mm/s
+    Systematic uncertainty fraction: 0.00%
+
+  Galileo_1992:
+    Observed Δv: -4.60 mm/s
+    TEP Δv (mean ± std): -0.683 ± 0.040 mm/s
+    TEP Δv (95% CI): [-0.758, -0.607] mm/s
+    Residual (mean ± std): -3.918 ± 0.134 mm/s
+    Systematic uncertainty fraction: 0.00%
+
+  Rosetta_2005:
+    Observed Δv: 1.80 mm/s
+    TEP Δv (mean ± std): 1.650 ± 0.093 mm/s
+    TEP Δv (95% CI): [1.477, 1.833] mm/s
+    Residual (mean ± std): 0.145 ± 0.159 mm/s
+    Systematic uncertainty fraction: 5.64%
+
+  Rosetta_2007:
+    Observed Δv: 0.02 mm/s
+    TEP Δv (mean ± std): 0.001 ± 0.001 mm/s
+    TEP Δv (95% CI): [0.000, 0.003] mm/s
+    Residual (mean ± std): 0.021 ± 0.122 mm/s
+    Systematic uncertainty fraction: 114.00%
+
+  MESSENGER_2005:
+    Observed Δv: 0.02 mm/s
+    TEP Δv (mean ± std): 0.000 ± 0.001 mm/s
+    TEP Δv (95% CI): [-0.000, 0.002] mm/s
+    Residual (mean ± std): 0.023 ± 0.126 mm/s
+    Systematic uncertainty fraction: 392.48%
+[INFO] [STEP 024] ✓ Monte Carlo systematic error analysis completed with 1000 trials
+[INFO] [STEP 024]   Output: step024_systematic_error_monte_carlo.json (Systematic error Monte Carlo results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step024_systematic_error_monte_carlo.json

@@ -1,0 +1,56 @@
+[INFO] [STEP 037] LOGGER INITIALIZED: step_037_visualizations (Step 037)
+[INFO] [STEP 037] ================================================================================
+[INFO] [STEP 037] STEP 037: VISUALIZATION GENERATION
+[INFO] [STEP 037] ================================================================================
+[INFO] [STEP 037] Output directory: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results
+[INFO] [STEP 037] ✓ Data loaded successfully
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] Figure 1: Altitude vs Anomaly correlation
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_037_visualizations.py:191: UserWarning: Glyph 9632 (\N{BLACK SQUARE}) missing from font(s) Georgia.
+  plt.tight_layout()
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_037_visualizations.py:191: UserWarning: Glyph 9651 (\N{WHITE UP-POINTING TRIANGLE}) missing from font(s) Georgia.
+  plt.tight_layout()
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_037_visualizations.py:193: UserWarning: Glyph 9632 (\N{BLACK SQUARE}) missing from font(s) Georgia.
+  plt.savefig(output_file, dpi=600, bbox_inches='tight')
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_037_visualizations.py:193: UserWarning: Glyph 9651 (\N{WHITE UP-POINTING TRIANGLE}) missing from font(s) Georgia.
+  plt.savefig(output_file, dpi=600, bbox_inches='tight')
+[INFO] [STEP 037] ✓ Generated: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure1_altitude_anomaly.png
+[INFO] [STEP 037]   Output: step037_figure1_altitude_anomaly.png (Altitude vs Anomaly figure)
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] Figure 2: Fitted β comparison
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_037_visualizations.py:264: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all Axes decorations.
+  plt.tight_layout()
+[INFO] [STEP 037] ✓ Generated: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure2_beta_comparison.png
+[INFO] [STEP 037]   Output: step037_figure2_beta_comparison.png (Fitted beta comparison figure)
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] Figure 3: PPN constraint analysis
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] ✓ Generated: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure3_ppn_constraints.png
+[INFO] [STEP 037]   Output: step037_figure3_ppn_constraints.png (PPN constraint figure)
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] Figure 4: Temporal screening profile
+[INFO] [STEP 037] --------------------------------------------------------------------------------
+[INFO] [STEP 037] ✓ Generated: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure4_screening_profile.png
+[INFO] [STEP 037]   Output: step037_figure4_screening_profile.png (Screening profile figure)
+[INFO] [STEP 037] ✓ All figures generated successfully
+[INFO] [STEP 037] 
+[INFO] [STEP 037] ================================================================================
+[INFO] [STEP 037] STEP SUMMARY: step_037_visualizations
+[INFO] [STEP 037] ================================================================================
+[INFO] [STEP 037] Step Number: 037
+[INFO] [STEP 037] Status: SUCCESS
+[INFO] [STEP 037] Duration: 1.09s
+[INFO] [STEP 037] Calculations Logged: 0
+[INFO] [STEP 037] Output Files: 4
+[INFO] [STEP 037] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_037_visualizations.log
+[INFO] [STEP 037] 
+[INFO] [STEP 037] Generated 4 output file(s):
+[INFO] [STEP 037]   • step037_figure1_altitude_anomaly.png: 419.72 KB - Altitude vs Anomaly figure
+[INFO] [STEP 037]   • step037_figure2_beta_comparison.png: 176.17 KB - Fitted beta comparison figure
+[INFO] [STEP 037]   • step037_figure3_ppn_constraints.png: 182.99 KB - PPN constraint figure
+[INFO] [STEP 037]   • step037_figure4_screening_profile.png: 245.17 KB - Screening profile figure
+[INFO] [STEP 037] ================================================================================
+[INFO] [STEP 037] STEP 037 COMPLETE: SUCCESS
+[INFO] [STEP 037] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_037_visualizations_provenance.json

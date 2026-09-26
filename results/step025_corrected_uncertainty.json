@@ -1,14 +1,14 @@
 {
   "corrected_uncertainty_budget": {
-    "statistical_relative_uncertainty": 0.14456345266776038,
+    "statistical_relative_uncertainty": 0.12302338460891651,
     "systematic_relative_uncertainty": 0.29172075688918675,
-    "heterogeneity_relative_uncertainty": 1.5538749278559614,
-    "total_relative_uncertainty": 1.5876167305954523,
+    "heterogeneity_relative_uncertainty": 1.4943139620069683,
+    "total_relative_uncertainty": 1.527484851057318,
     "variance_contributions": {
-      "statistical": 0.008291358440160457,
-      "systematic": 0.03376317886747132,
-      "heterogeneity": 0.9579454626923682,
-      "total": 1.0
+      "statistical": 0.006486665732563199,
+      "systematic": 0.03647378550862064,
+      "heterogeneity": 0.9570395487588159,
+      "total": 0.9999999999999998
     }
   },
   "systematic_breakdown": {
@@ -19,13 +19,13 @@
     "total_systematic": 0.29172075688918675
   },
   "heterogeneity_metrics": {
-    "I_squared_percent": 99.43908259282036,
-    "heterogeneity_relative_uncertainty": 1.5538749278559614
+    "I_squared_percent": 99.57569245757963,
+    "heterogeneity_relative_uncertainty": 1.4943139620069683
   },
   "resolution": {
     "issue": "Contradiction between 0.03% and 102% claims",
     "root_cause": "Confusion between variance contributions and total relative uncertainty",
     "fix": "Clearly distinguish between fractional variance contributions and total relative uncertainty",
-    "interpretation": "Total uncertainty is 158.8%, with heterogeneity (95.8%) and systematic (3.4%) as dominant sources"
+    "interpretation": "Total uncertainty is 152.7%, with heterogeneity (95.7%) and systematic (3.6%) as dominant sources"
   }
 }

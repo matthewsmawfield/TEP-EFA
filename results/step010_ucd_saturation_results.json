@@ -12,6 +12,7 @@
     "delta_R_km": 2225.1023600342423,
     "characteristic_suppression_primary": 0.34925480458864266,
     "characteristic_suppression_scf": 0.9979979978411939,
+    "scf_branch_note": "SCF value is computed on the excluded inverse-power realization (Paper 0 constraint F1) as a documented contrast diagnostic only; it is not an independent corroboration of the UCD saturation radius and is excluded from the methods average.",
     "scf_convergence_history": [],
     "gnss_empirical_value": 0.349,
     "difference": 0.0002548045886426875,

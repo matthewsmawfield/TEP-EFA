@@ -1,0 +1,58 @@
+[INFO] [STEP 042] LOGGER INITIALIZED: step_042_time_resolved_cosmography (Step 042)
+[INFO] [STEP 042] ================================================================================
+[INFO] [STEP 042] STEP 042: TIME-RESOLVED COSMOGRAPHIC GEOMETRY ALONG FLYBY ARCS
+[INFO] [STEP 042] ================================================================================
+[INFO] [STEP 042] Using Earth/Sun ephemeris from Astropy (TEP_SOLAR_SYSTEM_EPHEMERIS='de440') and the same CMB/solar modulation functions as Step 040.
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +43.53 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9336340233644098
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +44.52 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9920893591060139
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +27.40 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9454592763425079
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +32.82 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9409080680297958
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +28.58 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9341239436095921
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +28.77 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.8767374725114215
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +40.60 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9339366051141875
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: -40.87 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9471295676833853
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: -46.15 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.8619140776062408
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +26.98 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.920705174724597
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +40.20 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9372012723508414
+[INFO] [STEP 042]   Arc epochs: 4320
+[INFO] [STEP 042]   Peak CMB disformal enhancement vs perigee: +36.75 h
+[INFO] [STEP 042]   Temporal r(disformal, 1/range): -0.9486305337348973
+[INFO] [STEP 042] Pooled epoch table: step042_pooled_geometry_epochs.json (51840 rows)
+[INFO] [STEP 042] 
+Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step042_time_resolved_cosmography.json
+[INFO] [STEP 042] 
+[INFO] [STEP 042] ================================================================================
+[INFO] [STEP 042] STEP SUMMARY: step_042_time_resolved_cosmography
+[INFO] [STEP 042] ================================================================================
+[INFO] [STEP 042] Step Number: 042
+[INFO] [STEP 042] Status: SUCCESS
+[INFO] [STEP 042] Duration: 12.00s
+[INFO] [STEP 042] Calculations Logged: 0
+[INFO] [STEP 042] Output Files: 0
+[INFO] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_042_time_resolved_cosmography.log
+[INFO] [STEP 042] No output files generated
+[INFO] [STEP 042] ================================================================================
+[INFO] [STEP 042] STEP 042 COMPLETE: SUCCESS
+[INFO] [STEP 042] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_042_time_resolved_cosmography_provenance.json

@@ -149,13 +149,13 @@ class CrossValidator:
         """
         Scale the step007 raw prediction by the LOO β.
 
-        dv_pred(β) = dv_pred_ref * (β / β_ref)^(3/4)
-        The TEP velocity shift follows a 3/4 power law in β because the
-        scalar force ∝ β * ∇φ ∝ β * β^(-1/4) = β^(3/4).
+        dv_pred(β) = dv_pred_ref * (β / β_ref)
+        Canonical linear response: the Paper 0 excursion normalization is
+        β-independent, so the velocity shift is strictly linear in β.
         """
         if flyby['dv_pred_ref'] is None or flyby['beta_ref'] == 0:
             return None
-        return flyby['dv_pred_ref'] * ((beta_loo / flyby['beta_ref']) ** 0.75) if flyby['beta_ref'] != 0 else 0.0
+        return flyby['dv_pred_ref'] * (beta_loo / flyby['beta_ref']) if flyby['beta_ref'] != 0 else 0.0
 
     @staticmethod
     def _loo_training_beta_weighted_mean(train):

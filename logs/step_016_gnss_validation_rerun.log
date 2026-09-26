@@ -1,0 +1,37 @@
+[INFO] [STEP 016] LOGGER INITIALIZED: step_016_gnss_validation (Step 016)
+[INFO] [STEP 016] LOGGER INITIALIZED: step_016_gnss_validation (Step 016)
+[INFO] [STEP 016] Universal coupling β:
+[INFO] [STEP 016]   Flyby-derived: 4.74e-03 ± 1.32e+01 (mission spread)
+[INFO] [STEP 016]   Theoretical (Paper 1): 1.00e-04
+[INFO] [STEP 016]   Difference vs theory: 4.64e-03 (0.0σ vs mission spread)
+[INFO] [STEP 016]   Theory anchor: ✓ CONSISTENT (< 2σ mission spread)
+[INFO] [STEP 016] Screening length λ:
+[INFO] [STEP 016]   GNSS-derived (Paper 5): 4201 ± 1967 km
+[INFO] [STEP 016]   Flyby model (physics.py): 4200 ± 630 km (SCF prior)
+[INFO] [STEP 016]   Difference: 1 km (0.0σ combined)
+[INFO] [STEP 016]   (Both constants share the same GNSS anchor — bookkeeping check only.)
+[INFO] [STEP 016]   GNSS cross-scale: ✓ CONSISTENT (< 2σ)
+[INFO] [STEP 016] Density modulation exponent α_d:
+[INFO] [STEP 016]   Paper 6 (UCD): 0.334 (from physics.py)
+[INFO] [STEP 016]   Flyby multi-parameter fit: 0.334 (assumed)
+[INFO] [STEP 016] Consistency across manuscript series:
+[INFO] [STEP 016]   Paper 1 (Theory): β = 1e-4
+[INFO] [STEP 016]   Paper 5 (GTE): λ = 4201 ± 1967 km
+[INFO] [STEP 016]   Paper 6 (UCD): α_d = 0.334, ρ_c = 20 g/cm³
+[INFO] [STEP 016]   Paper 9 (Exp): Identifies conformal loophole
+[INFO] [STEP 016]   Paper 10 (Cos): Suppressed density scaling
+[INFO] [STEP 016] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step016_gnss_cross_validation.json
+[INFO] [STEP 016] 
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] STEP SUMMARY: step_016_gnss_validation
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] Step Number: 016
+[INFO] [STEP 016] Status: SUCCESS
+[INFO] [STEP 016] Duration: 0.00s
+[INFO] [STEP 016] Calculations Logged: 0
+[INFO] [STEP 016] Output Files: 0
+[INFO] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_016_gnss_validation.log
+[INFO] [STEP 016] No output files generated
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] STEP 016 COMPLETE: SUCCESS
+[INFO] [STEP 016] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_016_gnss_validation_provenance.json

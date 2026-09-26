@@ -12,9 +12,9 @@
         "sigma_mm_s": 0.13
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 1.5270456032053303,
-        "dv_grad_mm_s": 0.8928973538679067,
-        "dv_disf_mm_s": 0.6341482493374236,
+        "dv_tep_mm_s": 0.3036414271704807,
+        "dv_grad_mm_s": 0.17754586128672503,
+        "dv_disf_mm_s": 0.12609556588375567,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -46,9 +46,9 @@
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 0.0018207797052178442,
-        "beta_eff": 0.0006358868064840219,
-        "uncertainty": 2.3447386000824143e-05,
+        "beta_fitted": 0.004432860207985661,
+        "beta_eff": 0.0015481265049078789,
+        "uncertainty": 4.281365728366537e-05,
         "snr": 103.53846153846155,
         "excluded": false,
         "exclusion_reason": null,
@@ -56,7 +56,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 20.554033819143747,
+        "sign_product": 4.0870136097146705,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -73,9 +73,9 @@
         "sigma_mm_s": 0.08
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.1372338175512307,
-        "dv_grad_mm_s": 0.11714508411945099,
-        "dv_disf_mm_s": 0.02008873343177972,
+        "dv_tep_mm_s": 0.027287902947916113,
+        "dv_grad_mm_s": 0.02329341078837007,
+        "dv_disf_mm_s": 0.003994492159546042,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -100,16 +100,16 @@
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.8172619047619047,
         "cos_dec_asymmetry": 0.149,
-        "field_gradient_ratio": 0.7958589293063869,
+        "field_gradient_ratio": 0.7958589293063868,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 7331000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 0.008731721925085452,
-        "beta_eff": 0.0030494555459606235,
-        "uncertainty": 0.00023759787551252932,
+        "beta_fitted": 0.014365339863169504,
+        "beta_eff": 0.005016933165209881,
+        "uncertainty": 0.0002931702012891736,
         "snr": 49.0,
         "excluded": false,
         "exclusion_reason": null,
@@ -117,7 +117,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 0.5379565648008243,
+        "sign_product": 0.10696857955583117,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -134,9 +134,9 @@
         "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -5.326023415145495e-05,
-        "dv_grad_mm_s": -5.5784210686916894e-05,
-        "dv_disf_mm_s": 2.5239765354619464e-06,
+        "dv_tep_mm_s": -1.0590393289654255e-05,
+        "dv_grad_mm_s": -1.1092266865508048e-05,
+        "dv_disf_mm_s": 5.018735758537929e-07,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -168,9 +168,9 @@
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 125.74842831024559,
-        "beta_eff": 43.91622241254064,
-        "uncertainty": 83.83228554016372,
+        "beta_fitted": 18.885039915881105,
+        "beta_eff": 6.595387507900716,
+        "uncertainty": 9.442519957940553,
         "snr": 2.0,
         "excluded": false,
         "exclusion_reason": null,
@@ -178,7 +178,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 0.0001065204683029099,
+        "sign_product": 2.118078657930851e-05,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -195,9 +195,9 @@
         "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -0.034811851294463965,
-        "dv_grad_mm_s": -0.07516141437552928,
-        "dv_disf_mm_s": 0.04034956308106532,
+        "dv_tep_mm_s": -0.006922072390837614,
+        "dv_grad_mm_s": -0.014945276736485835,
+        "dv_disf_mm_s": 0.008023204345648221,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -229,9 +229,9 @@
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 0.06730401137901822,
-        "beta_eff": 0.023505167998479914,
-        "uncertainty": 0.0195084090953676,
+        "beta_fitted": 0.06645408687272297,
+        "beta_eff": 0.023208341436479145,
+        "uncertainty": 0.014446540624504995,
         "snr": 4.6,
         "excluded": false,
         "exclusion_reason": null,
@@ -239,7 +239,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 0.16013451595453423,
+        "sign_product": 0.03184153299785302,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -256,9 +256,9 @@
         "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.1757984655197509,
-        "dv_grad_mm_s": 0.17485227015320132,
-        "dv_disf_mm_s": 0.0009461953665495793,
+        "dv_tep_mm_s": 0.03495619047181799,
+        "dv_grad_mm_s": 0.03476804670526763,
+        "dv_disf_mm_s": 0.00018814376655035964,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -290,9 +290,9 @@
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 0.002223360573892163,
-        "beta_eff": 0.0007764836410155491,
-        "uncertainty": 4.940801275315918e-05,
+        "beta_fitted": 0.005149302528978886,
+        "beta_eff": 0.0017983359169640592,
+        "uncertainty": 8.582170881631476e-05,
         "snr": 60.00000000000001,
         "excluded": false,
         "exclusion_reason": null,
@@ -300,7 +300,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 0.3164372379355516,
+        "sign_product": 0.06292114284927239,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -317,9 +317,9 @@
         "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 6.6498078579098e-05,
-        "dv_grad_mm_s": 6.40110807810027e-05,
-        "dv_disf_mm_s": 2.4869977980952903e-06,
+        "dv_tep_mm_s": 1.3222638172343492e-05,
+        "dv_grad_mm_s": 1.2728117537728261e-05,
+        "dv_disf_mm_s": 4.945206346152307e-07,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -338,13 +338,13 @@
       },
       "cos_dec_asymmetry": 0.034,
       "disformal_transition": {
-        "xi": 0.005294904889724972,
-        "xi_abs": 0.005294904889724972,
+        "xi": 0.00529490488972497,
+        "xi_abs": 0.00529490488972497,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.7416666666666667,
         "cos_dec_asymmetry": 0.034,
-        "field_gradient_ratio": 0.2831142473545363,
+        "field_gradient_ratio": 0.2831142473545362,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 11672000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -377,9 +377,9 @@
         "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.0012001144942585659,
-        "dv_grad_mm_s": 0.0011509544085803942,
-        "dv_disf_mm_s": 4.916008567817172e-05,
+        "dv_tep_mm_s": 0.00023863365772426885,
+        "dv_grad_mm_s": 0.00022885854783638425,
+        "dv_disf_mm_s": 9.775109887884606e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -437,9 +437,9 @@
         "sigma_mm_s": 0.01
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 2.962146923366389e-07,
-        "dv_grad_mm_s": 2.9616890074618125e-07,
-        "dv_disf_mm_s": 4.5791590457650034e-11,
+        "dv_tep_mm_s": 5.8900043155992084e-08,
+        "dv_grad_mm_s": 5.8890937845810266e-08,
+        "dv_disf_mm_s": 9.105310181818204e-12,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -458,22 +458,22 @@
       },
       "cos_dec_asymmetry": 0.005,
       "disformal_transition": {
-        "xi": 0.00109395144636728,
-        "xi_abs": 0.00109395144636728,
+        "xi": 0.0010939514463672799,
+        "xi_abs": 0.0010939514463672799,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.618452380952381,
         "cos_dec_asymmetry": 0.005,
-        "field_gradient_ratio": 0.5720256599412167,
+        "field_gradient_ratio": 0.5720256599412166,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 8718000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
       },
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 274.93574034838866,
-        "beta_eff": 96.0182109990841,
-        "uncertainty": 183.29049356559244,
+        "beta_fitted": 33.955832505982364,
+        "beta_eff": 11.858692093205269,
+        "uncertainty": 16.977916252991182,
         "snr": 2.0,
         "excluded": false,
         "exclusion_reason": null,
@@ -481,7 +481,7 @@
         "ppn_gamma_deviation": 3.9999999200000014e-08,
         "status": "allowed",
         "sign_agreement": true,
-        "sign_product": 5.924293846732778e-09,
+        "sign_product": 1.1780008631198417e-09,
         "strict_sign_gate": false,
         "amplitude_matched_reference_only": false
       }
@@ -498,9 +498,9 @@
         "sigma_mm_s": 0.02
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.01316795791180281,
-        "dv_grad_mm_s": 0.01312828008536646,
-        "dv_disf_mm_s": 3.9677826436350025e-05,
+        "dv_tep_mm_s": 0.002618348479487422,
+        "dv_grad_mm_s": 0.002610458844874764,
+        "dv_disf_mm_s": 7.88963461265807e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -558,9 +558,9 @@
         "sigma_mm_s": null
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -0.0003350289101257082,
-        "dv_grad_mm_s": -0.0004029029312684536,
-        "dv_disf_mm_s": 6.787402114274537e-05,
+        "dv_tep_mm_s": -6.661795574435252e-05,
+        "dv_grad_mm_s": -8.011418965139675e-05,
+        "dv_disf_mm_s": 1.3496233907044227e-05,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -579,13 +579,13 @@
       },
       "cos_dec_asymmetry": -0.053487520847351866,
       "disformal_transition": {
-        "xi": -0.004818519936497191,
-        "xi_abs": 0.004818519936497191,
+        "xi": -0.00481851993649719,
+        "xi_abs": 0.00481851993649719,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.6136904761904762,
         "cos_dec_asymmetry": -0.053487520847351866,
-        "field_gradient_ratio": 0.23920068792901367,
+        "field_gradient_ratio": 0.23920068792901364,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 12379900.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -617,9 +617,9 @@
         "sigma_mm_s": 0.02
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 2.1460540362927517e-06,
-        "dv_grad_mm_s": 1.844446707989327e-06,
-        "dv_disf_mm_s": 3.016073283034247e-07,
+        "dv_tep_mm_s": 4.2672655551157307e-07,
+        "dv_grad_mm_s": 3.667542276263438e-07,
+        "dv_disf_mm_s": 5.997232788522926e-08,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -676,9 +676,9 @@
         "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -3.475335833742982e-07,
-        "dv_grad_mm_s": -3.87012294244369e-07,
-        "dv_disf_mm_s": 3.9478710870070774e-08,
+        "dv_tep_mm_s": -6.910441510321669e-08,
+        "dv_grad_mm_s": -7.695445709690507e-08,
+        "dv_disf_mm_s": 7.850041993688388e-09,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -760,70 +760,70 @@
       "note": "EGM96/WGS84 zonal harmonics and Jakarta v0.8 coupling scales from scripts/utils/physics.py; not fitted in Step 008 restricted tier."
     }
   },
-  "coupling_constant": 0.0006805868647581122,
-  "beta": 0.0019487725462354747,
-  "beta_eff": 0.0006805868647581122,
-  "uncertainty": 0.0006549125125801008,
-  "chi2": 891.3968324036429,
+  "coupling_constant": 0.0016555408633894457,
+  "beta": 0.004740427344114228,
+  "beta_eff": 0.0016555408633894457,
+  "uncertainty": 0.001284638299761141,
+  "chi2": 1178.3905540492274,
   "dof": 5,
-  "reduced_chi2": 178.27936648072858,
-  "p_value": 1.9365266826935006e-190,
+  "reduced_chi2": 235.67811080984546,
+  "p_value": 1.4079923233989182e-252,
   "overall_analysis": {
     "n_fits": 6,
     "n_primary_detections": 6,
     "n_excluded": 0,
     "beta_statistics": {
-      "mean": 66.79404142203624,
-      "std": 103.78958629587467,
-      "weighted_mean": 0.0019487725462354747,
-      "weighted_uncertainty": 0.00028172128774794295,
-      "inflated_uncertainty": 0.00028172128774794295,
-      "random_effects_mean": 0.004266721150817073,
-      "random_effects_uncertainty": 0.0006549125125801008,
-      "between_flyby_tau": 0.0011264446679582214,
-      "random_effects_prediction_uncertainty": 0.0013029919374675685,
-      "min": 0.0018207797052178442,
-      "max": 274.93574034838866
+      "mean": 8.821879001889387,
+      "std": 13.18265696365941,
+      "weighted_mean": 0.004740427344114228,
+      "weighted_uncertainty": 0.0005831834163655893,
+      "inflated_uncertainty": 0.0005831834163655893,
+      "random_effects_mean": 0.008400307207161162,
+      "random_effects_uncertainty": 0.001284638299761141,
+      "between_flyby_tau": 0.0022266573940929613,
+      "random_effects_prediction_uncertainty": 0.0025706611429517604,
+      "min": 0.004432860207985661,
+      "max": 33.955832505982364
     },
     "beta_eff_statistics": {
-      "mean": 23.327066734269447,
-      "std": 36.24734413880414,
-      "weighted_mean": 0.0006805868647581122,
-      "weighted_uncertainty": 9.838798700975875e-05,
-      "random_effects_mean": 0.0014901043102445435,
-      "random_effects_uncertainty": 0.00022872081941464827,
-      "between_flyby_tau": 0.0003933981143002735,
-      "random_effects_prediction_uncertainty": 0.0004550552599066614,
-      "min": 0.0006358868064840219,
-      "max": 96.0182109990841,
-      "ppn_gamma_deviation": 9.263969609625538e-07
+      "mean": 3.080941889688258,
+      "std": 4.603894481893295,
+      "weighted_mean": 0.0016555408633894457,
+      "weighted_uncertainty": 0.00020367024037253755,
+      "random_effects_mean": 0.002933712688107611,
+      "random_effects_uncertainty": 0.00044864545863577775,
+      "between_flyby_tau": 0.0007776350183419936,
+      "random_effects_prediction_uncertainty": 0.0008977744534716166,
+      "min": 0.0015481265049078789,
+      "max": 11.858692093205269,
+      "ppn_gamma_deviation": 5.4816311007045424e-06
     },
     "heterogeneity_tests": {
-      "chi_squared": 891.3968324036429,
+      "chi_squared": 1178.3905540492274,
       "degrees_of_freedom": 5,
-      "reduced_chi_squared": 178.27936648072858,
-      "cochran_Q": 891.3968324036429,
-      "I_squared_percent": 99.43908259282036,
+      "reduced_chi_squared": 235.67811080984546,
+      "cochran_Q": 1178.3905540492274,
+      "I_squared_percent": 99.57569245757963,
       "heterogeneity_interpretation": "extreme",
-      "p_value": 1.9365266826935006e-190,
+      "p_value": 1.4079923233989182e-252,
       "limitation_note": "TEP v0.8 Interpretation: High I\u00b2 may reflect PHYSICAL geometry-dependent \u03b2_eff variation, but it also means the inverse-variance fixed-effect uncertainty is not a population-level uncertainty. Each flyby samples different Temporal Shear \u03a3_\u03bc = \u2207_\u03bc ln A(\u03c6) due to altitude, latitude, velocity, and trajectory asymmetry. The Step 008 inverse-variance mean over all qualified fits is the primary pooled diagnostic; beta_statistics_sign_gated_diagnostic records the legacy sign-agreement-restricted subset when it differs."
     },
-    "recommended_beta": 0.0019487725462354747,
-    "recommended_beta_eff": 0.0006805868647581122,
-    "recommended_uncertainty": 0.0006549125125801008,
+    "recommended_beta": 0.004740427344114228,
+    "recommended_beta_eff": 0.0016555408633894457,
+    "recommended_uncertainty": 0.001284638299761141,
     "recommended_uncertainty_model": "random_effects_standard_error",
     "beta_statistics_sign_gated_diagnostic": {
       "n_fits": 6,
-      "mean": 66.79404142203624,
-      "std": 103.78958629587467,
-      "weighted_mean": 0.0019487725462354747,
-      "weighted_uncertainty": 0.00028172128774794295,
-      "inflated_uncertainty": 0.00028172128774794295,
-      "weighted_mean_beta_eff": 0.0006805868647581122,
-      "weighted_uncertainty_beta_eff": 9.838798700975875e-05
+      "mean": 8.821879001889387,
+      "std": 13.18265696365941,
+      "weighted_mean": 0.004740427344114228,
+      "weighted_uncertainty": 0.0005831834163655893,
+      "inflated_uncertainty": 0.0005831834163655893,
+      "weighted_mean_beta_eff": 0.0016555408633894457,
+      "weighted_uncertainty_beta_eff": 0.00020367024037253755
     },
-    "recommended_beta_sign_gated_diagnostic": 0.0019487725462354747,
-    "recommended_uncertainty_sign_gated_diagnostic": 0.00028172128774794295,
+    "recommended_beta_sign_gated_diagnostic": 0.004740427344114228,
+    "recommended_uncertainty_sign_gated_diagnostic": 0.0005831834163655893,
     "ensemble_selection": {
       "strict_sign_gate": false,
       "n_snr_qualified_beta_fits": 6,
@@ -831,7 +831,7 @@
       "note": "recommended_beta is the inverse-variance mean over all S/N-qualified flybys with a successful closed-form \u03b2 fit in this run. recommended_beta_sign_gated_diagnostic restricts to sign_agreement==true (\u0394v_obs\u00b7\u0394v_TEP(\u03b2_ref) \u2265 0) for backward-compatible reporting."
     },
     "t_critical": 2.570581835636314,
-    "t_confidence_interval": 0.0007241876249969335,
+    "t_confidence_interval": 0.0014991206969537133,
     "ppn_compliance": true
   },
   "ensemble_config": {
@@ -845,51 +845,51 @@
   "robustness_analysis": {
     "bootstrap": {
       "n_bootstrap": 10000,
-      "bootstrap_mean": 0.26920075117896175,
-      "bootstrap_std": 6.709869705139427,
-      "bootstrap_median": 0.0019634214761694866,
-      "ci_95_lower": 0.0018135014763151851,
-      "ci_95_upper": 0.008968558841082169,
-      "ci_68_lower": 0.0018639701596566006,
-      "ci_68_upper": 0.0025209382219472157,
+      "bootstrap_mean": 0.04504018881332528,
+      "bootstrap_std": 0.9542444181535013,
+      "bootstrap_median": 0.004771494151365999,
+      "ci_95_lower": 0.004420424559673064,
+      "ci_95_upper": 0.014672999460821836,
+      "ci_68_lower": 0.004540689720151524,
+      "ci_68_upper": 0.005926731120595575,
       "status": "success"
     },
     "leave_one_out": {
       "status": "success",
       "leave_one_out_results": {
         "NEAR": {
-          "beta_without_this": 0.0024935306395386506,
+          "beta_without_this": 0.005878703654437468,
           "remaining_n": 5
         },
         "Galileo_1990": {
-          "beta_without_this": 0.0018948574840537257,
+          "beta_without_this": 0.004576065142758517,
           "remaining_n": 5
         },
         "Cassini": {
-          "beta_without_this": 0.0019487725382700033,
+          "beta_without_this": 0.004740427038534782,
           "remaining_n": 5
         },
         "Galileo_1992": {
-          "beta_without_this": 0.001948696096593973,
+          "beta_without_this": 0.004740000619533843,
           "remaining_n": 5
         },
         "Rosetta_2005": {
-          "beta_without_this": 0.0018875281946358006,
+          "beta_without_this": 0.00464079676690395,
           "remaining_n": 5
         },
         "MESSENGER_2005": {
-          "beta_without_this": 0.0019487725425922453,
+          "beta_without_this": 0.004740427174142748,
           "remaining_n": 5
         }
       },
-      "stability_coefficient": 0.10551521136220128,
+      "stability_coefficient": 0.09173183928383276,
       "conclusion_robust": true,
-      "interpretation": "moderately robust"
+      "interpretation": "highly robust"
     },
     "statistical_power": {
       "status": "success",
       "n_current": 6,
-      "effect_size_cv": 1.5538749278559614,
+      "effect_size_cv": 1.4943139620069683,
       "cv_detectable_80_percent_power": 1.1437423758834482,
       "heterogeneity_detectable": true,
       "n_required_for_current_cv": 4.0,
@@ -954,18 +954,18 @@
       "models": {
         "TEP": {
           "k_parameters": 1,
-          "chi2": 1182.3778233837663,
-          "BIC": 1169.8414901391648,
-          "AIC": 1170.0497306699367,
-          "akaike_weight": 2.638701715058767e-255,
+          "chi2": 1178.3905540492276,
+          "BIC": 1165.854220804626,
+          "AIC": 1166.062461335398,
+          "akaike_weight": 1.9373800988652583e-254,
           "comparison_basis": "observational_uncertainty_only"
         },
         "TEP_heuristic_pessimistic": {
           "k_parameters": 8,
-          "chi2": 1182.3778233837663,
-          "BIC": 1182.3838064237611,
-          "AIC": 1184.0497306699367,
-          "akaike_weight_three_model": 2.4061845064398612e-258,
+          "chi2": 1178.3905540492276,
+          "BIC": 1178.3965370892224,
+          "AIC": 1180.062461335398,
+          "akaike_weight_three_model": 1.7666619725794546e-257,
           "comparison_basis": "observational_uncertainty_only_with_heuristic_envelope_count_penalty",
           "note": "Conservative upper bound: adds k_heuristic_envelope_coefficients to k as if each nominal envelope coefficient were an extra free parameter."
         },
@@ -986,9 +986,9 @@
         }
       },
       "tep_structured_uncertainty_sensitivity": {
-        "chi2": 42.90994393076035,
-        "BIC": 49.16456857801332,
-        "AIC": 49.37280910878527,
+        "chi2": 42.05534301836137,
+        "BIC": 48.40703921609119,
+        "AIC": 48.61527974686314,
         "comparison_basis": "observational_plus_structured_theoretical_uncertainty"
       },
       "model_comparison": {
@@ -996,89 +996,89 @@
         "best_model_aic": "Empirical",
         "tep_evidence_weight": 1.0,
         "tep_vs_null_bayes_factor_approx": 1.0142320547350045e+304,
-        "log_evidence_delta": 7783.101717449244,
+        "log_evidence_delta": 7785.095352116513,
         "headline_basis": "TEP vs Null on shared observational uncertainties",
         "bic_bf_literal_posterior_valid": false,
         "tep_vs_null_bayes_factor_approx_note": "BIC-based BF ~ exp(0.5*(BIC_null-BIC_tep)) is a large-sample surrogate; with published formal sigma only, chi^2_null is enormous and log_evidence_delta reaches ~1e6 while the reported BF is capped at exp(700). Do not interpret as posterior odds. Prefer Step 026 headline likelihood with sigma_geom added in quadrature.",
         "best_model_bic_pessimistic_tep_vs_null": "TEP",
-        "log_evidence_delta_tep_pessimistic_vs_null": 7776.830559306945,
-        "tep_pessimistic_akaike_weight_three_model": 2.4061845064398612e-258
+        "log_evidence_delta_tep_pessimistic_vs_null": 7778.824193974215,
+        "tep_pessimistic_akaike_weight_three_model": 1.7666619725794546e-257
       }
     },
     "prediction_accuracy": {
       "n_predictions": 6,
-      "MAE_mm_s": 1.63612863558666,
-      "RMSE_mm_s": 2.2294690372012758,
-      "MAPE_percent": 62.518660089278065,
-      "R_squared": 0.8497408628493825,
-      "correlation": 0.930352685616419,
+      "MAE_mm_s": 1.6657707637792203,
+      "RMSE_mm_s": 2.2374831680806446,
+      "MAPE_percent": 62.4512055909268,
+      "R_squared": 0.8486586673176266,
+      "correlation": 0.9303526856164192,
       "prediction_quality": "good",
-      "beta_used": 0.0019487725462354747
+      "beta_used": 0.004740427344114228
     },
     "residual_analysis": {
       "residuals": {
-        "NEAR": -0.7035745062974801,
-        "Galileo_1990": 2.647135983633664,
-        "Cassini": -1.9995060034271122,
-        "Galileo_1992": -4.27711491492046,
-        "Rosetta_2005": 0.1694431526764577,
-        "MESSENGER_2005": 0.019997252564785253
+        "NEAR": -0.9339012416481527,
+        "Galileo_1990": 2.6264367870216323,
+        "Cassini": -1.999497970100648,
+        "Galileo_1992": -4.271864187605352,
+        "Rosetta_2005": 0.1429271884132879,
+        "MESSENGER_2005": 0.01999720788624854
       },
       "statistics": {
-        "mean": -0.6906031726283577,
-        "std": 2.1198111816373717,
-        "skewness": -0.17841284940285493,
-        "kurtosis": -0.5790726093776541,
-        "normality_p_value": 0.9188254670114431,
+        "mean": -0.735983702672164,
+        "std": 2.1129739508203054,
+        "skewness": -0.12554267181907133,
+        "kurtosis": -0.5952355450276943,
+        "normality_p_value": 0.9463289972971951,
         "normal_distribution": true
       },
       "interpretation": "residuals_appear_normal"
     },
     "systematic_uncertainty_budget": {
       "status": "success",
-      "total_relative_systematic_uncertainty": 8760.766095232852,
+      "total_relative_systematic_uncertainty": 44058.840929505146,
       "systematic_uncertainty_by_flyby": {
         "NEAR": {
-          "beta": 0.0018207797052178442,
-          "systematic_uncertainty": 15.951425108360555,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 0.004432860207985661,
+          "systematic_uncertainty": 195.30668276637334,
+          "relative_systematic_uncertainty": 44058.840929505146
         },
         "Galileo_1990": {
-          "beta": 0.008731721925085452,
-          "systematic_uncertainty": 76.49657339428995,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 0.014365339863169504,
+          "systematic_uncertainty": 632.9202239296644,
+          "relative_systematic_uncertainty": 44058.840929505146
         },
         "Cassini": {
-          "beta": 125.74842831024559,
-          "systematic_uncertainty": 1101652.5672692184,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 18.885039915881105,
+          "systematic_uncertainty": 832052.9696011608,
+          "relative_systematic_uncertainty": 44058.840929505146
         },
         "Galileo_1992": {
-          "beta": 0.06730401137901822,
-          "systematic_uncertainty": 589.6347009624689,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 0.06645408687272297,
+          "systematic_uncertainty": 2927.8900426408177,
+          "relative_systematic_uncertainty": 44058.840929505146
         },
         "Rosetta_2005": {
-          "beta": 0.002223360573892163,
-          "systematic_uncertainty": 19.478341933231917,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 0.005149302528978886,
+          "systematic_uncertainty": 226.87230102217927,
+          "relative_systematic_uncertainty": 44058.840929505146
         },
         "MESSENGER_2005": {
-          "beta": 274.93574034838866,
-          "systematic_uncertainty": 2408647.712411906,
-          "relative_systematic_uncertainty": 8760.766095232852
+          "beta": 33.955832505982364,
+          "systematic_uncertainty": 1496054.6230099972,
+          "relative_systematic_uncertainty": 44058.840929505146
         }
       },
       "uncertainty_breakdown": {
-        "measurement_uncertainty": 8760.766090375913,
+        "measurement_uncertainty": 44058.84092853938,
         "trajectory_uncertainty": 0.01,
         "characteristic_suppression_uncertainty": 0.25,
         "multipole_coefficient_uncertainty": 0.001,
         "relaxation_length_uncertainty": 0.15
       },
       "dominant_uncertainty_source": "measurement_uncertainty",
-      "dominant_contribution_percent": 876076.6090375914,
-      "interpretation": "Systematic uncertainty dominated by measurement_uncertainty (876076.6% of total)"
+      "dominant_contribution_percent": 4405884.092853938,
+      "interpretation": "Systematic uncertainty dominated by measurement_uncertainty (4405884.1% of total)"
     }
   },
   "limitations": {
@@ -1090,8 +1090,8 @@
   },
   "conclusion": {
     "tep_explains_flyby_anomaly": true,
-    "recommended_beta": 0.0019487725462354747,
-    "recommended_uncertainty": 0.0006549125125801008,
+    "recommended_beta": 0.004740427344114228,
+    "recommended_uncertainty": 0.001284638299761141,
     "confidence": "limited",
     "evidence_strength": "limited",
     "sample_size_note": "Based on 6 primary detections. Enhanced validation includes a fair TEP-vs-Null comparison on shared observational uncertainties plus separate structured-uncertainty sensitivity tests."

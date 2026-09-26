@@ -17,22 +17,22 @@
     "derivation": "Space weather correlation analysis with n=6 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
     "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
     "correlation": {
-      "uncertainty": 0.8114629724090763,
+      "uncertainty": 0.8106468185349339,
       "uncertainty_fraction": 0.5,
-      "uncertainty_absolute": 0.8114629724090763,
+      "uncertainty_absolute": 0.8106468185349339,
       "status": "preliminary",
       "calibration_status": "exploratory_hypothesis_generating",
       "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-      "derivation": "Pearson correlation r=0.0188 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=6 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
+      "derivation": "Pearson correlation r=0.0574 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=6 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
       "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements; consider multi-mission coordinated campaigns to increase statistical power",
-      "pearson_r": 0.018835070161380904,
-      "p_value": 0.9717507357214306,
+      "pearson_r": 0.05739030508219192,
+      "p_value": 0.914009054083163,
       "n_samples": 6,
       "r_ci_95": [
-        -0.8050317740042683,
-        0.8178941708138842
+        -0.7910129964976078,
+        0.83028064057226
       ],
-      "interpretation": "r=0.02, p=0.97 (n=6): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.",
+      "interpretation": "r=0.06, p=0.91 (n=6): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.",
       "statistical_power_note": "With n=6, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
     },
     "data_points": [
@@ -43,7 +43,7 @@
         "Kp_sum": 67.0,
         "P_env": 161.823,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.0018207797052178442,
+        "beta": 0.004432860207985661,
         "altitude": 539.0,
         "dv_obs": 13.46
       },
@@ -54,7 +54,7 @@
         "Kp_sum": 153.0,
         "P_env": 582.912,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.008731721925085452,
+        "beta": 0.014365339863169504,
         "altitude": 960.0,
         "dv_obs": 3.92
       },
@@ -65,7 +65,7 @@
         "Kp_sum": 317.0,
         "P_env": 545.0189999999999,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 125.74842831024559,
+        "beta": 18.885039915881105,
         "altitude": 1175.0,
         "dv_obs": -2.0
       },
@@ -76,7 +76,7 @@
         "Kp_sum": 313.0,
         "P_env": 532.77,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.06730401137901822,
+        "beta": 0.06645408687272297,
         "altitude": 303.0,
         "dv_obs": -4.6
       },
@@ -87,7 +87,7 @@
         "Kp_sum": 37.0,
         "P_env": 108.09300000000002,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.002223360573892163,
+        "beta": 0.005149302528978886,
         "altitude": 1955.0,
         "dv_obs": 1.8
       },
@@ -98,7 +98,7 @@
         "Kp_sum": 173.0,
         "P_env": 300.846,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 274.93574034838866,
+        "beta": 33.955832505982364,
         "altitude": 2347.0,
         "dv_obs": 0.02
       }

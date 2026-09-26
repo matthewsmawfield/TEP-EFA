@@ -1,0 +1,16 @@
+Field excursion normalization: phi_space - phi_earth = 3.391e+09 GeV; eta_surface = -1.393e-09
+              NEAR: eta_p=-1.22e-09  dtau=-2.02 us  dv_app=+0.180 mm/s  obs=13.46
+      Galileo_1990: eta_p=-1.11e-09  dtau=-1.62 us  dv_app=+0.066 mm/s  obs=3.92
+      Galileo_1992: eta_p=-1.29e-09  dtau=-1.82 us  dv_app=+0.058 mm/s  obs=-4.6
+           Cassini: eta_p=-1.05e-09  dtau=-1.01 us  dv_app=+0.007 mm/s  obs=-2.0
+      Rosetta_2005: eta_p=-8.73e-10  dtau=-2.01 us  dv_app=+0.501 mm/s  obs=1.8
+      Rosetta_2007: eta_p=-3.93e-10  dtau=-0.71 us  dv_app=+0.005 mm/s  obs=0.02
+      Rosetta_2009: eta_p=-7.70e-10  dtau=-1.21 us  dv_app=+0.047 mm/s  obs=0.0
+    MESSENGER_2005: eta_p=-7.97e-10  dtau=-1.86 us  dv_app=+0.488 mm/s  obs=0.02
+              Juno: eta_p=-1.22e-09  dtau=-1.57 us  dv_app=+0.044 mm/s  obs=0.0
+          Stardust: eta_p=-3.33e-10  dtau=-0.80 us  dv_app=+0.040 mm/s  obs=None
+        OSIRIS-REx: eta_p=-2.31e-11  dtau=-0.08 us  dv_app=+0.019 mm/s  obs=None
+       BepiColombo: eta_p=-6.78e-11  dtau=-0.27 us  dv_app=+0.051 mm/s  obs=None
+
+Saved /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step043_clock_sector_od.json
+Ensemble (detections, n=3): {'n': 3, 'pearson_r': -0.4263542503577079, 'spearman_rho': -0.5}  C_A=4.217e+00 chi2=11724.7

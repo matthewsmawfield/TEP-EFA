@@ -12,9 +12,9 @@
         "sigma_mm_s": 0.13
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 1.5270456032053303,
-        "dv_grad_mm_s": 0.8928973538679067,
-        "dv_disf_mm_s": 0.6341482493374236,
+        "dv_tep_mm_s": 0.3036414271704807,
+        "dv_grad_mm_s": 0.17754586128672503,
+        "dv_disf_mm_s": 0.12609556588375567,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -348,9 +348,9 @@
         "sigma_mm_s": 0.08
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.1372338175512307,
-        "dv_grad_mm_s": 0.11714508411945099,
-        "dv_disf_mm_s": 0.02008873343177972,
+        "dv_tep_mm_s": 0.027287902947916113,
+        "dv_grad_mm_s": 0.02329341078837007,
+        "dv_disf_mm_s": 0.003994492159546042,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -666,7 +666,7 @@
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.8172619047619047,
         "cos_dec_asymmetry": 0.149,
-        "field_gradient_ratio": 0.7958589293063869,
+        "field_gradient_ratio": 0.7958589293063868,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 7331000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -684,9 +684,9 @@
         "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -5.326023415145495e-05,
-        "dv_grad_mm_s": -5.5784210686916894e-05,
-        "dv_disf_mm_s": 2.5239765354619464e-06,
+        "dv_tep_mm_s": -1.0590393289654255e-05,
+        "dv_grad_mm_s": -1.1092266865508048e-05,
+        "dv_disf_mm_s": 5.018735758537929e-07,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -1020,9 +1020,9 @@
         "sigma_mm_s": 1.0
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -0.034811851294463965,
-        "dv_grad_mm_s": -0.07516141437552928,
-        "dv_disf_mm_s": 0.04034956308106532,
+        "dv_tep_mm_s": -0.006922072390837614,
+        "dv_grad_mm_s": -0.014945276736485835,
+        "dv_disf_mm_s": 0.008023204345648221,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -1356,9 +1356,9 @@
         "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.1757984655197509,
-        "dv_grad_mm_s": 0.17485227015320132,
-        "dv_disf_mm_s": 0.0009461953665495793,
+        "dv_tep_mm_s": 0.03495619047181799,
+        "dv_grad_mm_s": 0.03476804670526763,
+        "dv_disf_mm_s": 0.00018814376655035964,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -1692,9 +1692,9 @@
         "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 6.6498078579098e-05,
-        "dv_grad_mm_s": 6.40110807810027e-05,
-        "dv_disf_mm_s": 2.4869977980952903e-06,
+        "dv_tep_mm_s": 1.3222638172343492e-05,
+        "dv_grad_mm_s": 1.2728117537728261e-05,
+        "dv_disf_mm_s": 4.945206346152307e-07,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -2004,13 +2004,13 @@
         "mission_name": "Rosetta_2007"
       },
       "disformal_transition": {
-        "xi": 0.005294904889724972,
-        "xi_abs": 0.005294904889724972,
+        "xi": 0.00529490488972497,
+        "xi_abs": 0.00529490488972497,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.7416666666666667,
         "cos_dec_asymmetry": 0.034,
-        "field_gradient_ratio": 0.2831142473545363,
+        "field_gradient_ratio": 0.2831142473545362,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 11672000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -2028,9 +2028,9 @@
         "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.0012001144942585659,
-        "dv_grad_mm_s": 0.0011509544085803942,
-        "dv_disf_mm_s": 4.916008567817172e-05,
+        "dv_tep_mm_s": 0.00023863365772426885,
+        "dv_grad_mm_s": 0.00022885854783638425,
+        "dv_disf_mm_s": 9.775109887884606e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -45565,9 +45565,9 @@
         "sigma_mm_s": 0.01
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 2.962146923366389e-07,
-        "dv_grad_mm_s": 2.9616890074618125e-07,
-        "dv_disf_mm_s": 4.5791590457650034e-11,
+        "dv_tep_mm_s": 5.8900043155992084e-08,
+        "dv_grad_mm_s": 5.8890937845810266e-08,
+        "dv_disf_mm_s": 9.105310181818204e-12,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -45877,13 +45877,13 @@
         "mission_name": "MESSENGER_2005"
       },
       "disformal_transition": {
-        "xi": 0.00109395144636728,
-        "xi_abs": 0.00109395144636728,
+        "xi": 0.0010939514463672799,
+        "xi_abs": 0.0010939514463672799,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.618452380952381,
         "cos_dec_asymmetry": 0.005,
-        "field_gradient_ratio": 0.5720256599412167,
+        "field_gradient_ratio": 0.5720256599412166,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 8718000.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -45901,9 +45901,9 @@
         "sigma_mm_s": 0.02
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 0.01316795791180281,
-        "dv_grad_mm_s": 0.01312828008536646,
-        "dv_disf_mm_s": 3.9677826436350025e-05,
+        "dv_tep_mm_s": 0.002618348479487422,
+        "dv_grad_mm_s": 0.002610458844874764,
+        "dv_disf_mm_s": 7.88963461265807e-06,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -46237,9 +46237,9 @@
         "sigma_mm_s": null
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -0.0003350289101257082,
-        "dv_grad_mm_s": -0.0004029029312684536,
-        "dv_disf_mm_s": 6.787402114274537e-05,
+        "dv_tep_mm_s": -6.661795574435252e-05,
+        "dv_grad_mm_s": -8.011418965139675e-05,
+        "dv_disf_mm_s": 1.3496233907044227e-05,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -89750,13 +89750,13 @@
         "mission_name": "Stardust"
       },
       "disformal_transition": {
-        "xi": -0.004818519936497191,
-        "xi_abs": 0.004818519936497191,
+        "xi": -0.00481851993649719,
+        "xi_abs": 0.00481851993649719,
         "regime_classification": "conformal_dominated",
         "v_trans_km_s": 16.8,
         "v_over_v_trans": 0.6136904761904762,
         "cos_dec_asymmetry": -0.053487520847351866,
-        "field_gradient_ratio": 0.23920068792901367,
+        "field_gradient_ratio": 0.23920068792901364,
         "definition": "(v/v_trans)^2 * |asym| * (|grad_phi|/|grad_phi_earth|) * sgn(asym)",
         "field_gradient_ratio_r_m": 12379900.0,
         "field_gradient_ratio_r_ref_m": 6372000.0
@@ -89774,9 +89774,9 @@
         "sigma_mm_s": 0.02
       },
       "tep_predictions": {
-        "dv_tep_mm_s": 2.1460540362927517e-06,
-        "dv_grad_mm_s": 1.844446707989327e-06,
-        "dv_disf_mm_s": 3.016073283034247e-07,
+        "dv_tep_mm_s": 4.2672655551157307e-07,
+        "dv_grad_mm_s": 3.667542276263438e-07,
+        "dv_disf_mm_s": 5.997232788522926e-08,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,
@@ -133311,9 +133311,9 @@
         "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "dv_tep_mm_s": -3.475335833742982e-07,
-        "dv_grad_mm_s": -3.87012294244369e-07,
-        "dv_disf_mm_s": 3.9478710870070774e-08,
+        "dv_tep_mm_s": -6.910441510321669e-08,
+        "dv_grad_mm_s": -7.695445709690507e-08,
+        "dv_disf_mm_s": 7.850041993688388e-09,
         "model_version": "v5.4-Yogyakarta-geometry-envelope",
         "topology_n": 3,
         "beta_reference": 0.0001,

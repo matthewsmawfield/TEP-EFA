@@ -8,7 +8,7 @@
   "derivation": "Variance decomposition analysis of fitted beta heterogeneity; \u00b150% uncertainty accounts for systematic uncertainty in parameter estimation and model assumptions",
   "recommended_action": "Validate with independent analysis and larger sample size",
   "step": "009_variance_analysis",
-  "timestamp": "2026-09-26T14:48:20.842074+00:00",
+  "timestamp": "2026-09-26T17:21:19.778685+00:00",
   "variance_decomposition": {
     "status": "underpowered_for_variance_partition",
     "warning": "With n=6 valid fits and n_sign_gated=6, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.",
@@ -21,71 +21,71 @@
     "beta_scatter": {
       "n_fits": 6,
       "n_sign_gated": 6,
-      "beta_span": 150998.9042389367,
-      "beta_min": 0.0018207797052178442,
-      "beta_max": 274.93574034838866,
-      "log_mean": -0.6808096807624654,
-      "log_std": 2.355158277275929,
+      "beta_span": 7660.02781788877,
+      "beta_min": 0.004432860207985661,
+      "beta_max": 33.955832505982364,
+      "log_mean": -0.8091162777115152,
+      "log_std": 1.7663687079569468,
       "note": "The TEP prediction (Step 007) already includes the geometry envelope, so beta_fitted is the coupling required to match the observed anomaly after geometry, plasma, J2, and disformal modulation have been accounted for. Residual scatter in beta_fitted therefore reflects genuine coupling heterogeneity or model incompleteness, not unmodeled geometry. With n <= 4, this scatter cannot be decomposed into structural, observational, or environmental components with any statistical reliability.",
       "per_mission": [
         {
           "mission": "NEAR",
-          "beta_fitted": 0.0018207797052178442,
-          "beta_uncertainty": 2.3447386000824143e-05,
+          "beta_fitted": 0.004432860207985661,
+          "beta_uncertainty": 4.281365728366537e-05,
           "sign_agreement": true
         },
         {
           "mission": "Galileo_1990",
-          "beta_fitted": 0.008731721925085452,
-          "beta_uncertainty": 0.00023759787551252932,
+          "beta_fitted": 0.014365339863169504,
+          "beta_uncertainty": 0.0002931702012891736,
           "sign_agreement": true
         },
         {
           "mission": "Cassini",
-          "beta_fitted": 125.74842831024559,
-          "beta_uncertainty": 83.83228554016372,
+          "beta_fitted": 18.885039915881105,
+          "beta_uncertainty": 9.442519957940553,
           "sign_agreement": true
         },
         {
           "mission": "Galileo_1992",
-          "beta_fitted": 0.06730401137901822,
-          "beta_uncertainty": 0.0195084090953676,
+          "beta_fitted": 0.06645408687272297,
+          "beta_uncertainty": 0.014446540624504995,
           "sign_agreement": true
         },
         {
           "mission": "Rosetta_2005",
-          "beta_fitted": 0.002223360573892163,
-          "beta_uncertainty": 4.940801275315918e-05,
+          "beta_fitted": 0.005149302528978886,
+          "beta_uncertainty": 8.582170881631476e-05,
           "sign_agreement": true
         },
         {
           "mission": "MESSENGER_2005",
-          "beta_fitted": 274.93574034838866,
-          "beta_uncertainty": 183.29049356559244,
+          "beta_fitted": 33.955832505982364,
+          "beta_uncertainty": 16.977916252991182,
           "sign_agreement": true
         }
       ]
     },
     "detection_pattern": {
       "n_total": 12,
-      "true_positives": 1,
+      "true_positives": 0,
       "true_negatives": 8,
-      "false_negatives": 3,
+      "false_negatives": 4,
       "false_positives": 0,
-      "classification_accuracy": 0.75,
+      "classification_accuracy": 0.6666666666666666,
       "catalog": [
         {
           "mission": "NEAR",
-          "dv_pred_mm_s": 1.5270456032053303,
+          "dv_pred_mm_s": 0.3036414271704807,
           "dv_obs_mm_s": 13.46,
           "sigma_mm_s": 0.13,
-          "predicted_detected": true,
+          "predicted_detected": false,
           "observed_detected": true,
-          "category": "true_positive"
+          "category": "false_negative"
         },
         {
           "mission": "Galileo_1990",
-          "dv_pred_mm_s": 0.1372338175512307,
+          "dv_pred_mm_s": 0.027287902947916113,
           "dv_obs_mm_s": 3.92,
           "sigma_mm_s": 0.08,
           "predicted_detected": false,
@@ -94,7 +94,7 @@
         },
         {
           "mission": "Cassini",
-          "dv_pred_mm_s": -5.326023415145495e-05,
+          "dv_pred_mm_s": -1.0590393289654255e-05,
           "dv_obs_mm_s": -2.0,
           "sigma_mm_s": 1.0,
           "predicted_detected": false,
@@ -103,7 +103,7 @@
         },
         {
           "mission": "Galileo_1992",
-          "dv_pred_mm_s": -0.034811851294463965,
+          "dv_pred_mm_s": -0.006922072390837614,
           "dv_obs_mm_s": -4.6,
           "sigma_mm_s": 1.0,
           "predicted_detected": false,
@@ -112,7 +112,7 @@
         },
         {
           "mission": "Rosetta_2005",
-          "dv_pred_mm_s": 0.1757984655197509,
+          "dv_pred_mm_s": 0.03495619047181799,
           "dv_obs_mm_s": 1.8,
           "sigma_mm_s": 0.03,
           "predicted_detected": false,
@@ -121,7 +121,7 @@
         },
         {
           "mission": "Rosetta_2007",
-          "dv_pred_mm_s": 6.6498078579098e-05,
+          "dv_pred_mm_s": 1.3222638172343492e-05,
           "dv_obs_mm_s": 0.02,
           "sigma_mm_s": 0.05,
           "predicted_detected": false,
@@ -130,7 +130,7 @@
         },
         {
           "mission": "Rosetta_2009",
-          "dv_pred_mm_s": 0.0012001144942585659,
+          "dv_pred_mm_s": 0.00023863365772426885,
           "dv_obs_mm_s": 0.0,
           "sigma_mm_s": 0.05,
           "predicted_detected": false,
@@ -139,7 +139,7 @@
         },
         {
           "mission": "MESSENGER_2005",
-          "dv_pred_mm_s": 2.962146923366389e-07,
+          "dv_pred_mm_s": 5.8900043155992084e-08,
           "dv_obs_mm_s": 0.02,
           "sigma_mm_s": 0.01,
           "predicted_detected": false,
@@ -148,7 +148,7 @@
         },
         {
           "mission": "Juno",
-          "dv_pred_mm_s": 0.01316795791180281,
+          "dv_pred_mm_s": 0.002618348479487422,
           "dv_obs_mm_s": 0.0,
           "sigma_mm_s": 0.02,
           "predicted_detected": false,
@@ -157,7 +157,7 @@
         },
         {
           "mission": "Stardust",
-          "dv_pred_mm_s": -0.0003350289101257082,
+          "dv_pred_mm_s": -6.661795574435252e-05,
           "dv_obs_mm_s": 0.0,
           "sigma_mm_s": 0.05,
           "predicted_detected": false,
@@ -166,7 +166,7 @@
         },
         {
           "mission": "OSIRIS-REx",
-          "dv_pred_mm_s": 2.1460540362927517e-06,
+          "dv_pred_mm_s": 4.2672655551157307e-07,
           "dv_obs_mm_s": 0.0,
           "sigma_mm_s": 0.02,
           "predicted_detected": false,
@@ -175,7 +175,7 @@
         },
         {
           "mission": "BepiColombo",
-          "dv_pred_mm_s": -3.475335833742982e-07,
+          "dv_pred_mm_s": -6.910441510321669e-08,
           "dv_obs_mm_s": 0.0,
           "sigma_mm_s": 0.03,
           "predicted_detected": false,
@@ -266,8 +266,8 @@
         "explained_fraction": null,
         "explained_percent": null,
         "status": "underpowered",
-        "f10.7_correlation": 0.018835070161380904,
-        "f10.7_p_value": 0.9717507357214306,
+        "f10.7_correlation": 0.05739030508219192,
+        "f10.7_p_value": 0.914009054083163,
         "note": "Use rank_correlation instead"
       },
       "stage4_residual": {
@@ -283,9 +283,9 @@
   },
   "mission_analysis": {
     "NEAR": {
-      "beta_fitted": 0.0018207797052178442,
-      "beta_eff": 0.0006358868064840219,
-      "beta_uncertainty": 2.3447386000824143e-05,
+      "beta_fitted": 0.004432860207985661,
+      "beta_eff": 0.0015481265049078789,
+      "beta_uncertainty": 4.281365728366537e-05,
       "physical_parameters": {
         "altitude_km": 539.0,
         "perigee_latitude_deg": 0.0,
@@ -309,9 +309,9 @@
       }
     },
     "Galileo_1990": {
-      "beta_fitted": 0.008731721925085452,
-      "beta_eff": 0.0030494555459606235,
-      "beta_uncertainty": 0.00023759787551252932,
+      "beta_fitted": 0.014365339863169504,
+      "beta_eff": 0.005016933165209881,
+      "beta_uncertainty": 0.0002931702012891736,
       "physical_parameters": {
         "altitude_km": 960.0,
         "perigee_latitude_deg": 0.0,
@@ -335,9 +335,9 @@
       }
     },
     "Cassini": {
-      "beta_fitted": 125.74842831024559,
-      "beta_eff": 43.91622241254064,
-      "beta_uncertainty": 83.83228554016372,
+      "beta_fitted": 18.885039915881105,
+      "beta_eff": 6.595387507900716,
+      "beta_uncertainty": 9.442519957940553,
       "physical_parameters": {
         "altitude_km": 1175.0,
         "perigee_latitude_deg": 0.0,
@@ -361,9 +361,9 @@
       }
     },
     "Galileo_1992": {
-      "beta_fitted": 0.06730401137901822,
-      "beta_eff": 0.023505167998479914,
-      "beta_uncertainty": 0.0195084090953676,
+      "beta_fitted": 0.06645408687272297,
+      "beta_eff": 0.023208341436479145,
+      "beta_uncertainty": 0.014446540624504995,
       "physical_parameters": {
         "altitude_km": 303.0,
         "perigee_latitude_deg": 0.0,
@@ -387,9 +387,9 @@
       }
     },
     "Rosetta_2005": {
-      "beta_fitted": 0.002223360573892163,
-      "beta_eff": 0.0007764836410155491,
-      "beta_uncertainty": 4.940801275315918e-05,
+      "beta_fitted": 0.005149302528978886,
+      "beta_eff": 0.0017983359169640592,
+      "beta_uncertainty": 8.582170881631476e-05,
       "physical_parameters": {
         "altitude_km": 1955.0,
         "perigee_latitude_deg": 0.0,
@@ -465,9 +465,9 @@
       }
     },
     "MESSENGER_2005": {
-      "beta_fitted": 274.93574034838866,
-      "beta_eff": 96.0182109990841,
-      "beta_uncertainty": 183.29049356559244,
+      "beta_fitted": 33.955832505982364,
+      "beta_eff": 11.858692093205269,
+      "beta_uncertainty": 16.977916252991182,
       "physical_parameters": {
         "altitude_km": 2347.0,
         "perigee_latitude_deg": 0.0,
@@ -598,15 +598,15 @@
   "synthesis_conclusions": [
     "Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=6 valid fits (n_sign_gated=6), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).",
     "",
-    "Beta scatter statistics (n=6): Fitted beta spans a factor of 150998.9 (log STD = 2.355 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.",
+    "Beta scatter statistics (n=6): Fitted beta spans a factor of 7660.0 (log STD = 1.766 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.",
     "",
-    "Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at \u03b2_ref = 10\u207b\u2074 correctly classifies 9/12 flybys (accuracy 75.00%)\u20141 true positive, 8 true negatives, 3 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at \u03b2_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at \u03b2_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.",
+    "Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at \u03b2_ref = 10\u207b\u2074 correctly classifies 8/12 flybys (accuracy 66.67%)\u20140 true positive, 8 true negatives, 4 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at \u03b2_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at \u03b2_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.",
     "",
     "Rank correlation across the full catalog (n=12): Spearman rho = 0.56 (p = 0.059) between predicted and observed anomaly magnitudes. This does not reach conventional significance, consistent with the small catalog.",
     "",
     "Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=6) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).",
     "",
-    "The 150998.9x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter."
+    "The 7660.0x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter."
   ],
   "heuristic_parameter_metadata": {
     "RESIDUAL_INCLINATION_SCALE": {
@@ -675,6 +675,6 @@
   "manuscript_citations": {
     "results_section": "Section 4.3 - Deterministic Geometry Modulation Analysis",
     "discussion_section": "Section 5.7 - Physics of Beta Scatter",
-    "key_claim": "150998.9x beta scatter assessed via deterministic geometry modulation; formal variance partitioning deferred to n >= 10"
+    "key_claim": "7660.0x beta scatter assessed via deterministic geometry modulation; formal variance partitioning deferred to n >= 10"
   }
 }

@@ -444,16 +444,18 @@ class HierarchicalTEPModel:
         
         for flyby in flybys:
             # The pre-computed components already contain the full perigee physics
-            # We only scale by the inferred population-level beta_0 relative to 
+            # We only scale by the inferred population-level beta_0 relative to
             # the reference beta = 1e-4 used in step_007
-            # TEP predictions follow 3/4 power law: dv ∝ β^(3/4)
-            # Both gradient and disformal components scale with the same exponent
+            # Canonical linear response: dv ∝ β (the excursion normalization
+            # is β-independent under the Paper 0 amplitude sector; the v0.1
+            # 3/4 law traced to the excluded density-minimum branch).
+            # Both gradient and disformal components scale with the same factor
             # because they arise from the same scalar field.
             beta_i = beta_0 * (1 + alpha_res)
             # beta must be positive (coupling strength); negative is unphysical
             if beta_i <= 0:
                 return -np.inf
-            scale = (beta_i / 1e-4) ** 0.75
+            scale = beta_i / 1e-4
             
             # Decomposed Prediction: scale pre-computed components by inferred couplings
             dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
@@ -530,7 +532,7 @@ class HierarchicalTEPModel:
                 # beta must be positive; skip unphysical samples
                 if beta_i <= 0:
                     continue
-                scale = (beta_i / 1e-4) ** 0.75
+                scale = beta_i / 1e-4
                 dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
                 preds.append(dv_pred)
             

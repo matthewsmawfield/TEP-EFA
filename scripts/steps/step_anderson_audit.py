@@ -219,8 +219,8 @@ def load_step008_fits():
 
 def compute_fitted_beta_tep_prediction(name, tep_data, step008_fits):
     """
-    Compute TEP prediction at fitted β using the 3/4 power law:
-        dv_fitted = dv_ref * (β_fitted / β_ref)^(3/4)
+    Compute TEP prediction at fitted β using the canonical linear law:
+        dv_fitted = dv_ref * (β_fitted / β_ref)
     For flybys without individual fits, use the pooled β.
     """
     tep_pred = tep_data.get("predictions", {}).get(name, {})
@@ -233,12 +233,12 @@ def compute_fitted_beta_tep_prediction(name, tep_data, step008_fits):
     beta_ref = fit_info.get("beta_ref", 1e-4)
 
     if beta_fitted is not None and beta_ref is not None and beta_ref > 0:
-        return dv_ref * (beta_fitted / beta_ref) ** (3 / 4)
+        return dv_ref * (beta_fitted / beta_ref)
 
     # Fallback: pooled beta for null flybys
     pooled_beta = step008_fits.get("_pooled_beta", 5.65e-4)
     if beta_ref is not None and beta_ref > 0:
-        return dv_ref * (pooled_beta / beta_ref) ** (3 / 4)
+        return dv_ref * (pooled_beta / beta_ref)
     return None
 
 

@@ -355,20 +355,23 @@ def generate_screening_profile_figure(output_dir):
     altitudes = np.linspace(0, 50000, 1000)  # km
     r = R_EARTH + altitudes  # distance from center
     
-    # Simplified screening model (exponential relaxation)
-    phi_surface = 6.14e7  # GeV (at Earth's surface)
-    phi_space = 4.56e19   # GeV (deep space)
-    lambda_scr = 500  # screening length in km (simplified)
-    
+    # Canonical excursion profile (Paper 0 amplitude sector): the temporal-well
+    # depth psi(r) = psi_uns * M_Pl * exp(-h/lambda_TEP), positive inside the
+    # well and relaxing to the ambient baseline over lambda_TEP (~4200 km,
+    # GNSS-anchored; issue 15-8). psi_uns = M_EARTH/(4 pi M_Pl^2 R_EARTH) =
+    # 1.3926e-9 -> psi_uns * M_Pl = 3.39e9 GeV at the surface.
+    # (Replaces the v0.1 inverse-power field minimum, excluded under Paper 0 F1.)
+    psi_surface = 3.39e9   # GeV (canonical Earth well depth at surface)
+    lambda_scr = 4200  # relaxation length in km (LAMBDA_TEP_M corpus anchor)
+
     delta_r = altitudes
-    frac = 1.0 - np.exp(-delta_r / lambda_scr)
-    phi = phi_surface + (phi_space - phi_surface) * frac
-    
+    phi = psi_surface * np.exp(-delta_r / lambda_scr)
+
     # Create figure
     fig, ax = plt.subplots(figsize=(10, 6))
-    
+
     # Plot screening profile with blue-grey color
-    ax.plot(altitudes, phi / 1e18, linewidth=2.5, color=BLUE_GREY_COLORS['primary'], label='screened field φ(r)')
+    ax.plot(altitudes, phi / 1e9, linewidth=2.5, color=BLUE_GREY_COLORS['primary'], label='temporal-well excursion ψ(r)')
     
     # Add Earth's surface
     ax.axvline(x=0, color=BLUE_GREY_COLORS['secondary'], linestyle='-', linewidth=2, alpha=0.8, label='Earth surface')
@@ -387,7 +390,7 @@ def generate_screening_profile_figure(output_dir):
 
     # Styling - no title
     ax.set_xlabel('Altitude above Earth surface (km)', fontsize=12)
-    ax.set_ylabel('screened field φ (× 10¹⁸ GeV)', fontsize=12)
+    ax.set_ylabel('well excursion ψ (× 10⁹ GeV)', fontsize=12)
     ax.set_xlim(0, 50000)
     ax.set_yscale('log')
     ax.grid(True, alpha=0.4, which='both')

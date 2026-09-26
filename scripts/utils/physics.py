@@ -48,9 +48,9 @@ N_TOPOLOGY: Final[int] = 3                   # Continuous gradient suppression i
 # and have significant systematic uncertainty. They are NOT fundamental constants.
 LAMBDA_TEP_M: Final[float] = 4200000.0       # Unified relaxation length [m] (±15% from GNSS calibration)
 R_TRANSITION_M: Final[float] = 4146000.0     # PREM-derived transition radius [m] (±10% from PREM model)
-RHO_T: Final[float] = 20.0                   # Temporal Topology saturation density [g/cm³] (±40% from GNSS calibration)
-RHO_T_ERROR: Final[float] = 8.0             # 40% systematic uncertainty from GNSS calibration
-RHO_T_SOURCE: Final[str] = "GNSS atomic clock correlations (Paper 6, UCD) - ±40% uncertainty"
+RHO_T: Final[float] = 20.0                   # Temporal Topology saturation density [g/cm³]; formal scaling constant of R_T(M), not an interior density (Paper 6)
+RHO_T_ERROR: Final[float] = 8.0             # Conservative 40% band carried by the pipeline; Paper 6 canonical operational value is 20 ± 7 g/cm³ (35% inter-center) with wider epoch/window band [8,70]
+RHO_T_SOURCE: Final[str] = "GNSS atomic clock correlations (Paper 6, UCD) - conservative ±40% band"
 LAMBDA_TEP_UNCERTAINTY: Final[float] = 0.15  # ±15% systematic uncertainty
 R_TRANSITION_UNCERTAINTY: Final[float] = 0.10  # ±10% systematic uncertainty
 SUPPRESSION_EXPONENT: Final[float] = 0.334    # Theoretical density scaling (≈ 1/3, ±0.05 from multi-scale validation)
@@ -76,6 +76,26 @@ UCD_EMBEDDING_FACTOR: Final[float] = R_TRANSITION_M / R_EARTH
 
 # Conversion Factors
 KG_M3_TO_GEV4: Final[float] = 4.318e-21  # kg/m³ to GeV⁴ conversion (Natural Units)
+KG_TO_GEV: Final[float] = 5.60958885e26   # kg to GeV conversion (c = 1)
+HBAR_C_GEV_M: Final[float] = 1.973269804e-16  # ħc [GeV·m]
+
+# Canonical terrestrial-well excursion (Paper 0 v0.14 amplitude sector).
+# The excursion coordinate psi(r) is the depth of Earth's temporal well
+# relative to the ambient baseline -- positive inside the well, relaxing to
+# zero at the ambient level. Its unscreened surface value is the linear
+# source response of the radial-ODE closure, machine-computed in Paper 0
+# step_01 (results/step_01_radial_ode.json: potentials.none.Earth.psi_uns):
+#   psi_uns = M_EARTH / (4 pi M_Pl^2 R_EARTH) = 2 G M_EARTH / (R_EARTH c^2)
+# in the reduced-Planck-mass convention. This replaces the v0.1 density-
+# minimum prescription phi_min ~ rho^{-1/(n+1)} (inverse-power/chameleon
+# branch), which admits no admissible minimum under beta_A = -1 (Paper 0
+# constraint F1) and runs the field opposite to the corpus convention.
+# Parameter-free: fixed by Earth's measured mass and radius alone.
+PSI_UNS_EARTH: Final[float] = (
+    M_EARTH * KG_TO_GEV
+    / (4.0 * math.pi * M_PL_GEV**2 * (R_EARTH / HBAR_C_GEV_M))
+)  # = 1.3926e-9 dimensionless
+DELTA_PHI_EARTH_GEV: Final[float] = PSI_UNS_EARTH * M_PL_GEV  # well depth [GeV]
 
 
 def screened_beta(beta: float, surface_suppression: float = CHARACTERISTIC_SUPPRESSION) -> float:

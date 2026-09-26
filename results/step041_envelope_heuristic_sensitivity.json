@@ -19,25 +19,25 @@
   "baseline": {
     "analyze_fit_quality_status": null,
     "n_fits": 6,
-    "beta_weighted": 0.0019487725462354747,
+    "beta_weighted": 0.004740427344114228,
     "model_comparison": {
       "n_data_points": 6,
       "skip_empirical_comparison": false,
       "models": {
         "TEP": {
           "k_parameters": 1,
-          "chi2": 1182.3778233837663,
-          "BIC": 1169.8414901391648,
-          "AIC": 1170.0497306699367,
-          "akaike_weight": 2.638701715058767e-255,
+          "chi2": 1178.3905540492276,
+          "BIC": 1165.854220804626,
+          "AIC": 1166.062461335398,
+          "akaike_weight": 1.9373800988652583e-254,
           "comparison_basis": "observational_uncertainty_only"
         },
         "TEP_heuristic_pessimistic": {
           "k_parameters": 8,
-          "chi2": 1182.3778233837663,
-          "BIC": 1182.3838064237611,
-          "AIC": 1184.0497306699367,
-          "akaike_weight_three_model": 2.4061845064398612e-258,
+          "chi2": 1178.3905540492276,
+          "BIC": 1178.3965370892224,
+          "AIC": 1180.062461335398,
+          "akaike_weight_three_model": 1.7666619725794546e-257,
           "comparison_basis": "observational_uncertainty_only_with_heuristic_envelope_count_penalty",
           "note": "Conservative upper bound: adds k_heuristic_envelope_coefficients to k as if each nominal envelope coefficient were an extra free parameter."
         },
@@ -58,9 +58,9 @@
         }
       },
       "tep_structured_uncertainty_sensitivity": {
-        "chi2": 42.90994393076035,
-        "BIC": 49.16456857801332,
-        "AIC": 49.37280910878527,
+        "chi2": 42.05534301836137,
+        "BIC": 48.40703921609119,
+        "AIC": 48.61527974686314,
         "comparison_basis": "observational_plus_structured_theoretical_uncertainty"
       },
       "model_comparison": {
@@ -68,59 +68,59 @@
         "best_model_aic": "Empirical",
         "tep_evidence_weight": 1.0,
         "tep_vs_null_bayes_factor_approx": 1.0142320547350045e+304,
-        "log_evidence_delta": 7783.101717449244,
+        "log_evidence_delta": 7785.095352116513,
         "headline_basis": "TEP vs Null on shared observational uncertainties",
         "bic_bf_literal_posterior_valid": false,
         "tep_vs_null_bayes_factor_approx_note": "BIC-based BF ~ exp(0.5*(BIC_null-BIC_tep)) is a large-sample surrogate; with published formal sigma only, chi^2_null is enormous and log_evidence_delta reaches ~1e6 while the reported BF is capped at exp(700). Do not interpret as posterior odds. Prefer Step 026 headline likelihood with sigma_geom added in quadrature.",
         "best_model_bic_pessimistic_tep_vs_null": "TEP",
-        "log_evidence_delta_tep_pessimistic_vs_null": 7776.830559306945,
-        "tep_pessimistic_akaike_weight_three_model": 2.4061845064398612e-258
+        "log_evidence_delta_tep_pessimistic_vs_null": 7778.824193974215,
+        "tep_pessimistic_akaike_weight_three_model": 1.7666619725794546e-257
       }
     }
   },
   "monte_carlo_summary": {
     "fraction_best_bic_tep": 0.0,
     "fraction_best_bic_tep_pessimistic_vs_null": 1.0,
-    "beta_weighted_std_monte_carlo": 0.0005614974361027315,
-    "beta_weighted_min": 0.0012325611622770413,
-    "beta_weighted_max": 0.004252498248070979
+    "beta_weighted_std_monte_carlo": 0.0010023550626286363,
+    "beta_weighted_min": 0.0033658035037146877,
+    "beta_weighted_max": 0.00849625483599379
   },
   "one_at_a_time_leverage": {
     "per_key": {
       "inclination_scale": {
-        "beta_weighted_at_low": 0.0020451400434660645,
-        "beta_weighted_at_high": 0.0018599210971942425,
-        "beta_range": 0.00018521894627182198
+        "beta_weighted_at_low": 0.004913741248021402,
+        "beta_weighted_at_high": 0.004578710501862405,
+        "beta_range": 0.0003350307461589975
       },
       "j2_cos2_amp": {
-        "beta_weighted_at_low": 0.0019482574228829267,
-        "beta_weighted_at_high": 0.0019492879056777154,
-        "beta_range": 1.0304827947886942e-06
+        "beta_weighted_at_low": 0.004739482468927005,
+        "beta_weighted_at_high": 0.004741372593065386,
+        "beta_range": 1.8901241383810496e-06
       },
       "j2_alt_decay_km": {
-        "beta_weighted_at_low": 0.002865630346835674,
-        "beta_weighted_at_high": 0.0016081699276797544,
-        "beta_range": 0.0012574604191559196
+        "beta_weighted_at_low": 0.00647465184041208,
+        "beta_weighted_at_high": 0.0040997363411200615,
+        "beta_range": 0.0023749154992920183
       },
       "plasma_density_scale_cm3": {
-        "beta_weighted_at_low": 0.0023991388882997036,
-        "beta_weighted_at_high": 0.001742579912247338,
-        "beta_range": 0.0006565589760523657
+        "beta_weighted_at_low": 0.0055314054874263194,
+        "beta_weighted_at_high": 0.00436630109249144,
+        "beta_range": 0.0011651043949348792
       },
       "plasma_density_exponent": {
-        "beta_weighted_at_low": 0.0014545647315132376,
-        "beta_weighted_at_high": 0.0025337605395717886,
-        "beta_range": 0.001079195808058551
+        "beta_weighted_at_low": 0.0038276054738481235,
+        "beta_weighted_at_high": 0.0057629893305027055,
+        "beta_range": 0.001935383856654582
       },
       "velocity_screening_exponent": {
-        "beta_weighted_at_low": 0.0019487725493603585,
-        "beta_weighted_at_high": 0.001948772543991067,
-        "beta_range": 5.369291599874315e-12
+        "beta_weighted_at_low": 0.00474042743018275,
+        "beta_weighted_at_high": 0.0047404272769564085,
+        "beta_range": 1.5322634133729807e-10
       },
       "asymmetry_coherence_threshold": {
-        "beta_weighted_at_low": 0.0019487727203301541,
-        "beta_weighted_at_high": 0.001962096489464682,
-        "beta_range": 1.332376913452775e-05
+        "beta_weighted_at_low": 0.004740430667345144,
+        "beta_weighted_at_high": 0.004775329305944126,
+        "beta_range": 3.4898638598982075e-05
       }
     },
     "leverage_rank_by_beta_range": [
@@ -147,7 +147,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012852954323574696
+      "beta_weighted": 0.003467938024056613
     },
     {
       "sample_index": 1,
@@ -162,7 +162,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002273571052869769
+      "beta_weighted": 0.005319936264848659
     },
     {
       "sample_index": 2,
@@ -177,7 +177,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025551654813562616
+      "beta_weighted": 0.005908978334991412
     },
     {
       "sample_index": 3,
@@ -192,7 +192,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019616621302233034
+      "beta_weighted": 0.004768916989420025
     },
     {
       "sample_index": 4,
@@ -207,7 +207,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013816195849091497
+      "beta_weighted": 0.0036546234820087294
     },
     {
       "sample_index": 5,
@@ -222,7 +222,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003787189612567909
+      "beta_weighted": 0.007904779407807271
     },
     {
       "sample_index": 6,
@@ -237,7 +237,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001452742255466926
+      "beta_weighted": 0.0038017763032555225
     },
     {
       "sample_index": 7,
@@ -252,7 +252,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002105181953577867
+      "beta_weighted": 0.005016237511324489
     },
     {
       "sample_index": 8,
@@ -267,7 +267,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021949069921451563
+      "beta_weighted": 0.0051766347264633845
     },
     {
       "sample_index": 9,
@@ -282,7 +282,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002216307596437154
+      "beta_weighted": 0.005219261182036256
     },
     {
       "sample_index": 10,
@@ -297,7 +297,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017014240935919933
+      "beta_weighted": 0.00427922616932562
     },
     {
       "sample_index": 11,
@@ -312,7 +312,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018286277642365935
+      "beta_weighted": 0.004543435036863629
     },
     {
       "sample_index": 12,
@@ -327,7 +327,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018291648344205247
+      "beta_weighted": 0.0045309500220041075
     },
     {
       "sample_index": 13,
@@ -342,7 +342,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0034946263418518895
+      "beta_weighted": 0.007468614067452309
     },
     {
       "sample_index": 14,
@@ -357,7 +357,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019431052947155609
+      "beta_weighted": 0.0047384005738366625
     },
     {
       "sample_index": 15,
@@ -372,7 +372,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0032370351381953533
+      "beta_weighted": 0.007040376436567389
     },
     {
       "sample_index": 16,
@@ -387,7 +387,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002738710804768282
+      "beta_weighted": 0.006253918105580688
     },
     {
       "sample_index": 17,
@@ -402,7 +402,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017275949387624678
+      "beta_weighted": 0.0043237825358534605
     },
     {
       "sample_index": 18,
@@ -417,7 +417,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002351491516282767
+      "beta_weighted": 0.005448908730930538
     },
     {
       "sample_index": 19,
@@ -432,7 +432,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001745780934595929
+      "beta_weighted": 0.004357068322225639
     },
     {
       "sample_index": 20,
@@ -447,7 +447,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012702391332411597
+      "beta_weighted": 0.0034377383282534475
     },
     {
       "sample_index": 21,
@@ -462,7 +462,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016338180657116477
+      "beta_weighted": 0.004161352875433892
     },
     {
       "sample_index": 22,
@@ -477,7 +477,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020076515205613554
+      "beta_weighted": 0.004832743831579183
     },
     {
       "sample_index": 23,
@@ -492,7 +492,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002927914650109498
+      "beta_weighted": 0.006543634387531266
     },
     {
       "sample_index": 24,
@@ -507,7 +507,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001824140744930531
+      "beta_weighted": 0.004525141489691547
     },
     {
       "sample_index": 25,
@@ -522,7 +522,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002870926880728431
+      "beta_weighted": 0.006462746399151262
     },
     {
       "sample_index": 26,
@@ -537,7 +537,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015955964114869748
+      "beta_weighted": 0.004079559757013762
     },
     {
       "sample_index": 27,
@@ -552,7 +552,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003079475705952705
+      "beta_weighted": 0.006680256489051578
     },
     {
       "sample_index": 28,
@@ -567,7 +567,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022491510752402125
+      "beta_weighted": 0.005304324379313631
     },
     {
       "sample_index": 29,
@@ -582,7 +582,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016090408195648877
+      "beta_weighted": 0.004103096931449179
     },
     {
       "sample_index": 30,
@@ -597,7 +597,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019602687842501377
+      "beta_weighted": 0.004826509454334456
     },
     {
       "sample_index": 31,
@@ -612,7 +612,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016506807601752722
+      "beta_weighted": 0.0042044276403023365
     },
     {
       "sample_index": 32,
@@ -627,7 +627,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0027902944065067016
+      "beta_weighted": 0.006205673039562964
     },
     {
       "sample_index": 33,
@@ -642,7 +642,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018692668324384086
+      "beta_weighted": 0.004584773386732496
     },
     {
       "sample_index": 34,
@@ -657,7 +657,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002789040104912878
+      "beta_weighted": 0.006192985866677021
     },
     {
       "sample_index": 35,
@@ -672,7 +672,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018008357088132071
+      "beta_weighted": 0.004460909309404111
     },
     {
       "sample_index": 36,
@@ -687,7 +687,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019425040428423218
+      "beta_weighted": 0.004720650397384396
     },
     {
       "sample_index": 37,
@@ -702,7 +702,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002961651289579377
+      "beta_weighted": 0.00647811857310373
     },
     {
       "sample_index": 38,
@@ -717,7 +717,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016598092435867692
+      "beta_weighted": 0.004193222571185663
     },
     {
       "sample_index": 39,
@@ -732,7 +732,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0030783963984263047
+      "beta_weighted": 0.006732997053650445
     },
     {
       "sample_index": 40,
@@ -747,7 +747,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023112471370981408
+      "beta_weighted": 0.005514481703859997
     },
     {
       "sample_index": 41,
@@ -762,7 +762,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001967069754992007
+      "beta_weighted": 0.004777688075997167
     },
     {
       "sample_index": 42,
@@ -777,7 +777,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015582038036897447
+      "beta_weighted": 0.004037154182861333
     },
     {
       "sample_index": 43,
@@ -792,7 +792,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001355547334982283
+      "beta_weighted": 0.003608090698332409
     },
     {
       "sample_index": 44,
@@ -807,7 +807,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001711896822931716
+      "beta_weighted": 0.004351304087493016
     },
     {
       "sample_index": 45,
@@ -822,7 +822,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023163076780331536
+      "beta_weighted": 0.005444639593720564
     },
     {
       "sample_index": 46,
@@ -837,7 +837,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018576815047709099
+      "beta_weighted": 0.004574055131079102
     },
     {
       "sample_index": 47,
@@ -852,7 +852,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003756732815553107
+      "beta_weighted": 0.007771331506960581
     },
     {
       "sample_index": 48,
@@ -867,7 +867,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017284712873863394
+      "beta_weighted": 0.004343431595661541
     },
     {
       "sample_index": 49,
@@ -882,7 +882,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016582229267653043
+      "beta_weighted": 0.0042146755272672925
     },
     {
       "sample_index": 50,
@@ -897,7 +897,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002734065114161883
+      "beta_weighted": 0.00613081763272708
     },
     {
       "sample_index": 51,
@@ -912,7 +912,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022969608850612663
+      "beta_weighted": 0.005431740588124189
     },
     {
       "sample_index": 52,
@@ -927,7 +927,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020314802339474348
+      "beta_weighted": 0.004933600952287574
     },
     {
       "sample_index": 53,
@@ -942,7 +942,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001606113724207989
+      "beta_weighted": 0.004093484424178593
     },
     {
       "sample_index": 54,
@@ -957,7 +957,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014762754285761162
+      "beta_weighted": 0.0038553212737502812
     },
     {
       "sample_index": 55,
@@ -972,7 +972,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023546516827966306
+      "beta_weighted": 0.0054611034122703205
     },
     {
       "sample_index": 56,
@@ -987,7 +987,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003556520468929524
+      "beta_weighted": 0.0075845270241110116
     },
     {
       "sample_index": 57,
@@ -1002,7 +1002,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001629657612957749
+      "beta_weighted": 0.004141463675968115
     },
     {
       "sample_index": 58,
@@ -1017,7 +1017,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015598699485084285
+      "beta_weighted": 0.004003793967293123
     },
     {
       "sample_index": 59,
@@ -1032,7 +1032,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013186820519227984
+      "beta_weighted": 0.003530856394076075
     },
     {
       "sample_index": 60,
@@ -1047,7 +1047,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0032348063373687204
+      "beta_weighted": 0.006922117189018398
     },
     {
       "sample_index": 61,
@@ -1062,7 +1062,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025403580138719053
+      "beta_weighted": 0.005792863259308848
     },
     {
       "sample_index": 62,
@@ -1077,7 +1077,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015090659608247717
+      "beta_weighted": 0.0039175958169260705
     },
     {
       "sample_index": 63,
@@ -1092,7 +1092,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0032511284497936605
+      "beta_weighted": 0.006938183922463513
     },
     {
       "sample_index": 64,
@@ -1107,7 +1107,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015965002460168703
+      "beta_weighted": 0.004131228024518264
     },
     {
       "sample_index": 65,
@@ -1122,7 +1122,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015471126291736808
+      "beta_weighted": 0.00397932559985124
     },
     {
       "sample_index": 66,
@@ -1137,7 +1137,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023566206168216305
+      "beta_weighted": 0.005457231625132657
     },
     {
       "sample_index": 67,
@@ -1152,7 +1152,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014776282895721058
+      "beta_weighted": 0.0038451314210108806
     },
     {
       "sample_index": 68,
@@ -1167,7 +1167,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025263912971352697
+      "beta_weighted": 0.005845422907112107
     },
     {
       "sample_index": 69,
@@ -1182,7 +1182,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014583224580297035
+      "beta_weighted": 0.0038202042253097047
     },
     {
       "sample_index": 70,
@@ -1197,7 +1197,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021252306127101384
+      "beta_weighted": 0.005107234962571311
     },
     {
       "sample_index": 71,
@@ -1212,7 +1212,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002506281422476329
+      "beta_weighted": 0.005843396353080104
     },
     {
       "sample_index": 72,
@@ -1227,7 +1227,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017336974495602774
+      "beta_weighted": 0.004334338536395995
     },
     {
       "sample_index": 73,
@@ -1242,7 +1242,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002295065658406308
+      "beta_weighted": 0.005367378260935853
     },
     {
       "sample_index": 74,
@@ -1257,7 +1257,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020859068248434997
+      "beta_weighted": 0.004980226531773954
     },
     {
       "sample_index": 75,
@@ -1272,7 +1272,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017521069904666935
+      "beta_weighted": 0.004385657833541512
     },
     {
       "sample_index": 76,
@@ -1287,7 +1287,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012966334933672383
+      "beta_weighted": 0.00348831877177328
     },
     {
       "sample_index": 77,
@@ -1302,7 +1302,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002084754996141783
+      "beta_weighted": 0.005084085913879844
     },
     {
       "sample_index": 78,
@@ -1317,7 +1317,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003413661726109449
+      "beta_weighted": 0.007343854214005718
     },
     {
       "sample_index": 79,
@@ -1332,7 +1332,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016076047308676545
+      "beta_weighted": 0.004151772683228182
     },
     {
       "sample_index": 80,
@@ -1347,7 +1347,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024795325968881253
+      "beta_weighted": 0.005678678403840508
     },
     {
       "sample_index": 81,
@@ -1362,7 +1362,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002246669281765891
+      "beta_weighted": 0.005399310335285343
     },
     {
       "sample_index": 82,
@@ -1377,7 +1377,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020827860279149122
+      "beta_weighted": 0.0049932206363106175
     },
     {
       "sample_index": 83,
@@ -1392,7 +1392,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019585040088539838
+      "beta_weighted": 0.0047743516958579525
     },
     {
       "sample_index": 84,
@@ -1407,7 +1407,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018277943373152532
+      "beta_weighted": 0.004505285030286106
     },
     {
       "sample_index": 85,
@@ -1422,7 +1422,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018617569499494988
+      "beta_weighted": 0.004603813963413413
     },
     {
       "sample_index": 86,
@@ -1437,7 +1437,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013813439594709451
+      "beta_weighted": 0.0036567338825208504
     },
     {
       "sample_index": 87,
@@ -1452,7 +1452,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023410237545707325
+      "beta_weighted": 0.005572701202242431
     },
     {
       "sample_index": 88,
@@ -1467,7 +1467,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024468035027578857
+      "beta_weighted": 0.0057527481061456125
     },
     {
       "sample_index": 89,
@@ -1482,7 +1482,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021165522308027093
+      "beta_weighted": 0.005034948117730725
     },
     {
       "sample_index": 90,
@@ -1497,7 +1497,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024318350701247196
+      "beta_weighted": 0.005728177217848261
     },
     {
       "sample_index": 91,
@@ -1512,7 +1512,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021151975172896196
+      "beta_weighted": 0.005141020423451917
     },
     {
       "sample_index": 92,
@@ -1527,7 +1527,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022862842564506216
+      "beta_weighted": 0.005401821488260289
     },
     {
       "sample_index": 93,
@@ -1542,7 +1542,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001452428220432814
+      "beta_weighted": 0.003816620721652005
     },
     {
       "sample_index": 94,
@@ -1557,7 +1557,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002804925339159038
+      "beta_weighted": 0.006245833263350344
     },
     {
       "sample_index": 95,
@@ -1572,7 +1572,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021469362879620963
+      "beta_weighted": 0.005120964962662185
     },
     {
       "sample_index": 96,
@@ -1587,7 +1587,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0026459540905244424
+      "beta_weighted": 0.006009851166324388
     },
     {
       "sample_index": 97,
@@ -1602,7 +1602,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014336650197099945
+      "beta_weighted": 0.003759241157971973
     },
     {
       "sample_index": 98,
@@ -1617,7 +1617,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015063946289807072
+      "beta_weighted": 0.003903583921398107
     },
     {
       "sample_index": 99,
@@ -1632,7 +1632,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018262478169239929
+      "beta_weighted": 0.004530478895734999
     },
     {
       "sample_index": 100,
@@ -1647,7 +1647,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0028971147976726815
+      "beta_weighted": 0.006455721332049017
     },
     {
       "sample_index": 101,
@@ -1662,7 +1662,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015897058500592193
+      "beta_weighted": 0.004101480707121575
     },
     {
       "sample_index": 102,
@@ -1677,7 +1677,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0027395281013759417
+      "beta_weighted": 0.006251289309059355
     },
     {
       "sample_index": 103,
@@ -1692,7 +1692,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021306414225667485
+      "beta_weighted": 0.005058298077576645
     },
     {
       "sample_index": 104,
@@ -1707,7 +1707,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002478739216321943
+      "beta_weighted": 0.0056927999068298405
     },
     {
       "sample_index": 105,
@@ -1722,7 +1722,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012988004855188713
+      "beta_weighted": 0.003492080963129787
     },
     {
       "sample_index": 106,
@@ -1737,7 +1737,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0027121587029053126
+      "beta_weighted": 0.006145790693036995
     },
     {
       "sample_index": 107,
@@ -1752,7 +1752,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017115650819700368
+      "beta_weighted": 0.004292849037178353
     },
     {
       "sample_index": 108,
@@ -1767,7 +1767,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002178820687352421
+      "beta_weighted": 0.005258399052273609
     },
     {
       "sample_index": 109,
@@ -1782,7 +1782,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022597080556900195
+      "beta_weighted": 0.00528778255677357
     },
     {
       "sample_index": 110,
@@ -1797,7 +1797,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019504107406729757
+      "beta_weighted": 0.004783873402668754
     },
     {
       "sample_index": 111,
@@ -1812,7 +1812,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002193642525277527
+      "beta_weighted": 0.005171642927968073
     },
     {
       "sample_index": 112,
@@ -1827,7 +1827,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016878492007329849
+      "beta_weighted": 0.004275523906557562
     },
     {
       "sample_index": 113,
@@ -1842,7 +1842,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002249798139078856
+      "beta_weighted": 0.0053524188619561595
     },
     {
       "sample_index": 114,
@@ -1857,7 +1857,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016480173368402006
+      "beta_weighted": 0.0041914389452077485
     },
     {
       "sample_index": 115,
@@ -1872,7 +1872,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013643152686933619
+      "beta_weighted": 0.0036225292282310944
     },
     {
       "sample_index": 116,
@@ -1887,7 +1887,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018378243409763473
+      "beta_weighted": 0.004532663014164647
     },
     {
       "sample_index": 117,
@@ -1902,7 +1902,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018140412447853365
+      "beta_weighted": 0.004574980258117794
     },
     {
       "sample_index": 118,
@@ -1917,7 +1917,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002343457630629373
+      "beta_weighted": 0.005496585255229148
     },
     {
       "sample_index": 119,
@@ -1932,7 +1932,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014089981053778853
+      "beta_weighted": 0.003722265484327361
     },
     {
       "sample_index": 120,
@@ -1947,7 +1947,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002055682703443572
+      "beta_weighted": 0.005035406845957196
     },
     {
       "sample_index": 121,
@@ -1962,7 +1962,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020527661038606403
+      "beta_weighted": 0.0050268210358999765
     },
     {
       "sample_index": 122,
@@ -1977,7 +1977,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018903329069971306
+      "beta_weighted": 0.004626807493508502
     },
     {
       "sample_index": 123,
@@ -1992,7 +1992,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001687062655186842
+      "beta_weighted": 0.004275178414607223
     },
     {
       "sample_index": 124,
@@ -2007,7 +2007,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003229133926535003
+      "beta_weighted": 0.00699322047660499
     },
     {
       "sample_index": 125,
@@ -2022,7 +2022,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016948539327502686
+      "beta_weighted": 0.004261835147571793
     },
     {
       "sample_index": 126,
@@ -2037,7 +2037,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021174846852234216
+      "beta_weighted": 0.00513602646920656
     },
     {
       "sample_index": 127,
@@ -2052,7 +2052,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020982924770398454
+      "beta_weighted": 0.005018811450608539
     },
     {
       "sample_index": 128,
@@ -2067,7 +2067,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017405504494207085
+      "beta_weighted": 0.004360921678512066
     },
     {
       "sample_index": 129,
@@ -2082,7 +2082,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017000907710731314
+      "beta_weighted": 0.004268961933485666
     },
     {
       "sample_index": 130,
@@ -2097,7 +2097,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002206292338959132
+      "beta_weighted": 0.005200332324388937
     },
     {
       "sample_index": 131,
@@ -2112,7 +2112,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018609397834350558
+      "beta_weighted": 0.004573867018516048
     },
     {
       "sample_index": 132,
@@ -2127,7 +2127,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016529755420465247
+      "beta_weighted": 0.004183821291961802
     },
     {
       "sample_index": 133,
@@ -2142,7 +2142,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002165971995924201
+      "beta_weighted": 0.005141686910791402
     },
     {
       "sample_index": 134,
@@ -2157,7 +2157,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020084154384677816
+      "beta_weighted": 0.004838206111063451
     },
     {
       "sample_index": 135,
@@ -2172,7 +2172,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0028865001694296922
+      "beta_weighted": 0.006355248504506258
     },
     {
       "sample_index": 136,
@@ -2187,7 +2187,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002721221014295401
+      "beta_weighted": 0.006066282206197583
     },
     {
       "sample_index": 137,
@@ -2202,7 +2202,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014913233580045842
+      "beta_weighted": 0.00387749183624789
     },
     {
       "sample_index": 138,
@@ -2217,7 +2217,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002187061987582959
+      "beta_weighted": 0.005165893727809341
     },
     {
       "sample_index": 139,
@@ -2232,7 +2232,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019041771402383612
+      "beta_weighted": 0.004662843530271833
     },
     {
       "sample_index": 140,
@@ -2247,7 +2247,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002130618987976158
+      "beta_weighted": 0.005136864983421531
     },
     {
       "sample_index": 141,
@@ -2262,7 +2262,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002018585385470594
+      "beta_weighted": 0.004882822330186246
     },
     {
       "sample_index": 142,
@@ -2277,7 +2277,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019431013218044577
+      "beta_weighted": 0.004731259035197824
     },
     {
       "sample_index": 143,
@@ -2292,7 +2292,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020977376687551694
+      "beta_weighted": 0.005113232663693936
     },
     {
       "sample_index": 144,
@@ -2307,7 +2307,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002913664145999561
+      "beta_weighted": 0.006398677271736746
     },
     {
       "sample_index": 145,
@@ -2322,7 +2322,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019674374411771368
+      "beta_weighted": 0.0047701557429351065
     },
     {
       "sample_index": 146,
@@ -2337,7 +2337,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018893453776713707
+      "beta_weighted": 0.004696861355649077
     },
     {
       "sample_index": 147,
@@ -2352,7 +2352,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021642536910418215
+      "beta_weighted": 0.005228667848441324
     },
     {
       "sample_index": 148,
@@ -2367,7 +2367,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018084735886499065
+      "beta_weighted": 0.0044867214609541324
     },
     {
       "sample_index": 149,
@@ -2382,7 +2382,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001427962871070521
+      "beta_weighted": 0.003748380668956941
     },
     {
       "sample_index": 150,
@@ -2397,7 +2397,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003372012490633328
+      "beta_weighted": 0.007277851459195784
     },
     {
       "sample_index": 151,
@@ -2412,7 +2412,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024745936272375915
+      "beta_weighted": 0.00566659899609383
     },
     {
       "sample_index": 152,
@@ -2427,7 +2427,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003061431731699849
+      "beta_weighted": 0.006794134609078099
     },
     {
       "sample_index": 153,
@@ -2442,7 +2442,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0036744737819375613
+      "beta_weighted": 0.007733549120935962
     },
     {
       "sample_index": 154,
@@ -2457,7 +2457,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024473469010936285
+      "beta_weighted": 0.005666322263898557
     },
     {
       "sample_index": 155,
@@ -2472,7 +2472,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016039680034600338
+      "beta_weighted": 0.004135714950182787
     },
     {
       "sample_index": 156,
@@ -2487,7 +2487,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002282680204986334
+      "beta_weighted": 0.005334527926134159
     },
     {
       "sample_index": 157,
@@ -2502,7 +2502,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012871713494395614
+      "beta_weighted": 0.0034766412174442526
     },
     {
       "sample_index": 158,
@@ -2517,7 +2517,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003283147496512945
+      "beta_weighted": 0.007071975418129084
     },
     {
       "sample_index": 159,
@@ -2532,7 +2532,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014852983570928238
+      "beta_weighted": 0.0038588146665727604
     },
     {
       "sample_index": 160,
@@ -2547,7 +2547,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0035992253510793294
+      "beta_weighted": 0.007499693398563964
     },
     {
       "sample_index": 161,
@@ -2562,7 +2562,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017739327898732581
+      "beta_weighted": 0.0044098243517729846
     },
     {
       "sample_index": 162,
@@ -2577,7 +2577,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013741783829701907
+      "beta_weighted": 0.0036513482481490777
     },
     {
       "sample_index": 163,
@@ -2592,7 +2592,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019830508081300465
+      "beta_weighted": 0.004830115966404716
     },
     {
       "sample_index": 164,
@@ -2607,7 +2607,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015520333370882481
+      "beta_weighted": 0.0039891056663054775
     },
     {
       "sample_index": 165,
@@ -2622,7 +2622,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0029631758254989806
+      "beta_weighted": 0.006487263182400204
     },
     {
       "sample_index": 166,
@@ -2637,7 +2637,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001702297001090092
+      "beta_weighted": 0.004286820095959631
     },
     {
       "sample_index": 167,
@@ -2652,7 +2652,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0028034435694467967
+      "beta_weighted": 0.006319123557058844
     },
     {
       "sample_index": 168,
@@ -2667,7 +2667,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017394910614445408
+      "beta_weighted": 0.004444810211489745
     },
     {
       "sample_index": 169,
@@ -2682,7 +2682,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018675967664332912
+      "beta_weighted": 0.004585103785160193
     },
     {
       "sample_index": 170,
@@ -2697,7 +2697,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002070173905284143
+      "beta_weighted": 0.004951176568808623
     },
     {
       "sample_index": 171,
@@ -2712,7 +2712,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021864319210317946
+      "beta_weighted": 0.005156350102580255
     },
     {
       "sample_index": 172,
@@ -2727,7 +2727,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017358651409903113
+      "beta_weighted": 0.004409504193677868
     },
     {
       "sample_index": 173,
@@ -2742,7 +2742,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001640769197521843
+      "beta_weighted": 0.004217435371197738
     },
     {
       "sample_index": 174,
@@ -2757,7 +2757,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014663635718637055
+      "beta_weighted": 0.0038328109160355004
     },
     {
       "sample_index": 175,
@@ -2772,7 +2772,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018712700001274167
+      "beta_weighted": 0.004647300253794704
     },
     {
       "sample_index": 176,
@@ -2787,7 +2787,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001761652939629005
+      "beta_weighted": 0.00439050732952613
     },
     {
       "sample_index": 177,
@@ -2802,7 +2802,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002960422519718035
+      "beta_weighted": 0.0065047858809406485
     },
     {
       "sample_index": 178,
@@ -2817,7 +2817,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017736640197168689
+      "beta_weighted": 0.004413460416128927
     },
     {
       "sample_index": 179,
@@ -2832,7 +2832,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014821624366710053
+      "beta_weighted": 0.003886443553
     },
     {
       "sample_index": 180,
@@ -2847,7 +2847,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0028868699859459102
+      "beta_weighted": 0.006446837570207195
     },
     {
       "sample_index": 181,
@@ -2862,7 +2862,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001964358999790665
+      "beta_weighted": 0.00477178039712888
     },
     {
       "sample_index": 182,
@@ -2877,7 +2877,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018136112192940004
+      "beta_weighted": 0.00455822190007084
     },
     {
       "sample_index": 183,
@@ -2892,7 +2892,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015421436419732434
+      "beta_weighted": 0.003970800040499794
     },
     {
       "sample_index": 184,
@@ -2907,7 +2907,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.00225256136872226
+      "beta_weighted": 0.005278639679113929
     },
     {
       "sample_index": 185,
@@ -2922,7 +2922,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020352792864712435
+      "beta_weighted": 0.004888736398038936
     },
     {
       "sample_index": 186,
@@ -2937,7 +2937,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022630188507880697
+      "beta_weighted": 0.005298837750958437
     },
     {
       "sample_index": 187,
@@ -2952,7 +2952,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017681323632368596
+      "beta_weighted": 0.004472635807393936
     },
     {
       "sample_index": 188,
@@ -2967,7 +2967,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025024466480974865
+      "beta_weighted": 0.005738368906901678
     },
     {
       "sample_index": 189,
@@ -2982,7 +2982,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015159231181336174
+      "beta_weighted": 0.0039332291685535955
     },
     {
       "sample_index": 190,
@@ -2997,7 +2997,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020031500685786215
+      "beta_weighted": 0.004906311867483746
     },
     {
       "sample_index": 191,
@@ -3012,7 +3012,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002319180780331156
+      "beta_weighted": 0.005476224641956762
     },
     {
       "sample_index": 192,
@@ -3027,7 +3027,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001357862101082959
+      "beta_weighted": 0.003622232949204774
     },
     {
       "sample_index": 193,
@@ -3042,7 +3042,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017653931529388288
+      "beta_weighted": 0.004395933853563713
     },
     {
       "sample_index": 194,
@@ -3057,7 +3057,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001866760174044746
+      "beta_weighted": 0.00459463287998225
     },
     {
       "sample_index": 195,
@@ -3072,7 +3072,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001859765185296851
+      "beta_weighted": 0.004666049927021246
     },
     {
       "sample_index": 196,
@@ -3087,7 +3087,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020402774080854214
+      "beta_weighted": 0.004897927968218781
     },
     {
       "sample_index": 197,
@@ -3102,7 +3102,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024923381395848257
+      "beta_weighted": 0.0057598517420579904
     },
     {
       "sample_index": 198,
@@ -3117,7 +3117,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015409667754870454
+      "beta_weighted": 0.003984671215654217
     },
     {
       "sample_index": 199,
@@ -3132,7 +3132,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015267295660200163
+      "beta_weighted": 0.003940106567797266
     },
     {
       "sample_index": 200,
@@ -3147,7 +3147,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018437217372979256
+      "beta_weighted": 0.00453988668854529
     },
     {
       "sample_index": 201,
@@ -3162,7 +3162,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022489599990062007
+      "beta_weighted": 0.005319794772216271
     },
     {
       "sample_index": 202,
@@ -3177,7 +3177,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020575798913793266
+      "beta_weighted": 0.0049311257780320986
     },
     {
       "sample_index": 203,
@@ -3192,7 +3192,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017562075585916264
+      "beta_weighted": 0.004384203659573692
     },
     {
       "sample_index": 204,
@@ -3207,7 +3207,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002142800269698739
+      "beta_weighted": 0.005077497785833765
     },
     {
       "sample_index": 205,
@@ -3222,7 +3222,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002303204178281691
+      "beta_weighted": 0.0053683401569777365
     },
     {
       "sample_index": 206,
@@ -3237,7 +3237,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015708816378821673
+      "beta_weighted": 0.004038527253152281
     },
     {
       "sample_index": 207,
@@ -3252,7 +3252,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024725069646568056
+      "beta_weighted": 0.0056853897376832625
     },
     {
       "sample_index": 208,
@@ -3267,7 +3267,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016760100055539726
+      "beta_weighted": 0.004225523294407414
     },
     {
       "sample_index": 209,
@@ -3282,7 +3282,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015561982191494084
+      "beta_weighted": 0.004038469379313374
     },
     {
       "sample_index": 210,
@@ -3297,7 +3297,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018693592857710007
+      "beta_weighted": 0.0045917567609215955
     },
     {
       "sample_index": 211,
@@ -3312,7 +3312,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001492761582903034
+      "beta_weighted": 0.003877808190027267
     },
     {
       "sample_index": 212,
@@ -3327,7 +3327,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018626582975532825
+      "beta_weighted": 0.00457875663649544
     },
     {
       "sample_index": 213,
@@ -3342,7 +3342,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013772361553334792
+      "beta_weighted": 0.0036780065199224503
     },
     {
       "sample_index": 214,
@@ -3357,7 +3357,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0031566537051145567
+      "beta_weighted": 0.006839487999859184
     },
     {
       "sample_index": 215,
@@ -3372,7 +3372,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017858973009905507
+      "beta_weighted": 0.00443617712379612
     },
     {
       "sample_index": 216,
@@ -3387,7 +3387,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019164991974237402
+      "beta_weighted": 0.004667811249597942
     },
     {
       "sample_index": 217,
@@ -3402,7 +3402,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0030294191624422218
+      "beta_weighted": 0.006623160080152749
     },
     {
       "sample_index": 218,
@@ -3417,7 +3417,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001650015233234124
+      "beta_weighted": 0.004175628317193192
     },
     {
       "sample_index": 219,
@@ -3432,7 +3432,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018287876358392995
+      "beta_weighted": 0.004514158910242806
     },
     {
       "sample_index": 220,
@@ -3447,7 +3447,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015207345018074037
+      "beta_weighted": 0.0039294224876374175
     },
     {
       "sample_index": 221,
@@ -3462,7 +3462,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002194939606344766
+      "beta_weighted": 0.005178718542526526
     },
     {
       "sample_index": 222,
@@ -3477,7 +3477,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002863999344889816
+      "beta_weighted": 0.0063200773582190355
     },
     {
       "sample_index": 223,
@@ -3492,7 +3492,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017394892496177463
+      "beta_weighted": 0.0043467241978285415
     },
     {
       "sample_index": 224,
@@ -3507,7 +3507,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002197342732816497
+      "beta_weighted": 0.0051803101994818395
     },
     {
       "sample_index": 225,
@@ -3522,7 +3522,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017630462341464647
+      "beta_weighted": 0.004469369053427867
     },
     {
       "sample_index": 226,
@@ -3537,7 +3537,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023098842397955162
+      "beta_weighted": 0.005494125104617243
     },
     {
       "sample_index": 227,
@@ -3552,7 +3552,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023733567081234965
+      "beta_weighted": 0.005563095298078091
     },
     {
       "sample_index": 228,
@@ -3567,7 +3567,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012758416340060957
+      "beta_weighted": 0.003447081351119073
     },
     {
       "sample_index": 229,
@@ -3582,7 +3582,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020347557117011295
+      "beta_weighted": 0.0048905456768913
     },
     {
       "sample_index": 230,
@@ -3597,7 +3597,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018376885248447283
+      "beta_weighted": 0.0045340662155372545
     },
     {
       "sample_index": 231,
@@ -3612,7 +3612,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017673480051659742
+      "beta_weighted": 0.004412385018277688
     },
     {
       "sample_index": 232,
@@ -3627,7 +3627,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020239690276603354
+      "beta_weighted": 0.004886982558366958
     },
     {
       "sample_index": 233,
@@ -3642,7 +3642,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018664945999425455
+      "beta_weighted": 0.00459336220670472
     },
     {
       "sample_index": 234,
@@ -3657,7 +3657,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018951480558934948
+      "beta_weighted": 0.00464413175480521
     },
     {
       "sample_index": 235,
@@ -3672,7 +3672,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001569430076337159
+      "beta_weighted": 0.004044751962542619
     },
     {
       "sample_index": 236,
@@ -3687,7 +3687,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002021932654320168
+      "beta_weighted": 0.004885756188573071
     },
     {
       "sample_index": 237,
@@ -3702,7 +3702,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002892863661062308
+      "beta_weighted": 0.006403863175370267
     },
     {
       "sample_index": 238,
@@ -3717,7 +3717,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002146934100192879
+      "beta_weighted": 0.005090342928704251
     },
     {
       "sample_index": 239,
@@ -3732,7 +3732,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019099155965141882
+      "beta_weighted": 0.004655009008448309
     },
     {
       "sample_index": 240,
@@ -3747,7 +3747,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0028430138719675916
+      "beta_weighted": 0.006412858710249398
     },
     {
       "sample_index": 241,
@@ -3762,7 +3762,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020543078590431114
+      "beta_weighted": 0.0049326582468806075
     },
     {
       "sample_index": 242,
@@ -3777,7 +3777,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002156223358197353
+      "beta_weighted": 0.005139775914076759
     },
     {
       "sample_index": 243,
@@ -3792,7 +3792,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002590227790214145
+      "beta_weighted": 0.0059829689202504826
     },
     {
       "sample_index": 244,
@@ -3807,7 +3807,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021502479752292867
+      "beta_weighted": 0.005132595663693619
     },
     {
       "sample_index": 245,
@@ -3822,7 +3822,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002347703680817611
+      "beta_weighted": 0.005443885735258729
     },
     {
       "sample_index": 246,
@@ -3837,7 +3837,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003398515500211996
+      "beta_weighted": 0.007276595557070459
     },
     {
       "sample_index": 247,
@@ -3852,7 +3852,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001891708801271077
+      "beta_weighted": 0.004629032838177188
     },
     {
       "sample_index": 248,
@@ -3867,7 +3867,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001437678742411421
+      "beta_weighted": 0.0037702103313106573
     },
     {
       "sample_index": 249,
@@ -3882,7 +3882,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023375647940064434
+      "beta_weighted": 0.0054452071535861886
     },
     {
       "sample_index": 250,
@@ -3897,7 +3897,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.00186507748160812
+      "beta_weighted": 0.004671693966151051
     },
     {
       "sample_index": 251,
@@ -3912,7 +3912,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002056856968759772
+      "beta_weighted": 0.005027977556607731
     },
     {
       "sample_index": 252,
@@ -3927,7 +3927,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.00290462579920805
+      "beta_weighted": 0.006457936790814262
     },
     {
       "sample_index": 253,
@@ -3942,7 +3942,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001711077685054301
+      "beta_weighted": 0.004293363029264592
     },
     {
       "sample_index": 254,
@@ -3957,7 +3957,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0031626977037671478
+      "beta_weighted": 0.006951608112832722
     },
     {
       "sample_index": 255,
@@ -3972,7 +3972,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003207132064233541
+      "beta_weighted": 0.007011733687901265
     },
     {
       "sample_index": 256,
@@ -3987,7 +3987,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0029569241733501134
+      "beta_weighted": 0.006565103489395493
     },
     {
       "sample_index": 257,
@@ -4002,7 +4002,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014055218379836925
+      "beta_weighted": 0.003704055634162463
     },
     {
       "sample_index": 258,
@@ -4017,7 +4017,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020310801039834098
+      "beta_weighted": 0.004924456522281809
     },
     {
       "sample_index": 259,
@@ -4032,7 +4032,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016169126889000157
+      "beta_weighted": 0.004119068716455415
     },
     {
       "sample_index": 260,
@@ -4047,7 +4047,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0031498866723212583
+      "beta_weighted": 0.00684074280287754
     },
     {
       "sample_index": 261,
@@ -4062,7 +4062,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017056725756414044
+      "beta_weighted": 0.004292159533066949
     },
     {
       "sample_index": 262,
@@ -4077,7 +4077,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016937521506046813
+      "beta_weighted": 0.004268359183683153
     },
     {
       "sample_index": 263,
@@ -4092,7 +4092,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019165941983273333
+      "beta_weighted": 0.004684581801958581
     },
     {
       "sample_index": 264,
@@ -4107,7 +4107,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025926355934427726
+      "beta_weighted": 0.005863258327696187
     },
     {
       "sample_index": 265,
@@ -4122,7 +4122,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015409142948369552
+      "beta_weighted": 0.004026764662040733
     },
     {
       "sample_index": 266,
@@ -4137,7 +4137,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024365456316272367
+      "beta_weighted": 0.005631532485963258
     },
     {
       "sample_index": 267,
@@ -4152,7 +4152,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016837210851848804
+      "beta_weighted": 0.004242097738583975
     },
     {
       "sample_index": 268,
@@ -4167,7 +4167,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002362132323363222
+      "beta_weighted": 0.005546431996765349
     },
     {
       "sample_index": 269,
@@ -4182,7 +4182,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001784187876050133
+      "beta_weighted": 0.0045135978244094195
     },
     {
       "sample_index": 270,
@@ -4197,7 +4197,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001744030544454752
+      "beta_weighted": 0.004446731492924461
     },
     {
       "sample_index": 271,
@@ -4212,7 +4212,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017433479991949385
+      "beta_weighted": 0.00440760719170655
     },
     {
       "sample_index": 272,
@@ -4227,7 +4227,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014050712788187861
+      "beta_weighted": 0.0037145989882858325
     },
     {
       "sample_index": 273,
@@ -4242,7 +4242,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016110211397274371
+      "beta_weighted": 0.00410108245555198
     },
     {
       "sample_index": 274,
@@ -4257,7 +4257,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023282784518429333
+      "beta_weighted": 0.0054220084813802055
     },
     {
       "sample_index": 275,
@@ -4272,7 +4272,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001425655377350539
+      "beta_weighted": 0.003753763908429684
     },
     {
       "sample_index": 276,
@@ -4287,7 +4287,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003374802584456725
+      "beta_weighted": 0.007153814516037363
     },
     {
       "sample_index": 277,
@@ -4302,7 +4302,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003629767618915746
+      "beta_weighted": 0.007696439613346789
     },
     {
       "sample_index": 278,
@@ -4317,7 +4317,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019629408131300557
+      "beta_weighted": 0.004759442730497519
     },
     {
       "sample_index": 279,
@@ -4332,7 +4332,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022393426207888987
+      "beta_weighted": 0.00525957788041658
     },
     {
       "sample_index": 280,
@@ -4347,7 +4347,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014021650484953429
+      "beta_weighted": 0.0037027429116629953
     },
     {
       "sample_index": 281,
@@ -4362,7 +4362,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018960062491160954
+      "beta_weighted": 0.0046385917518890485
     },
     {
       "sample_index": 282,
@@ -4377,7 +4377,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017506268048005746
+      "beta_weighted": 0.004376655312175211
     },
     {
       "sample_index": 283,
@@ -4392,7 +4392,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018438530552862405
+      "beta_weighted": 0.0045733430296007824
     },
     {
       "sample_index": 284,
@@ -4407,7 +4407,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003689107334978932
+      "beta_weighted": 0.007731373302836587
     },
     {
       "sample_index": 285,
@@ -4422,7 +4422,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001494334888069985
+      "beta_weighted": 0.0038749967902239548
     },
     {
       "sample_index": 286,
@@ -4437,7 +4437,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017344070648125228
+      "beta_weighted": 0.00439620615769645
     },
     {
       "sample_index": 287,
@@ -4452,7 +4452,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001831797951427351
+      "beta_weighted": 0.0045487640393195505
     },
     {
       "sample_index": 288,
@@ -4467,7 +4467,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014932634816527597
+      "beta_weighted": 0.003931530645578273
     },
     {
       "sample_index": 289,
@@ -4482,7 +4482,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016660165255319465
+      "beta_weighted": 0.00420796398760216
     },
     {
       "sample_index": 290,
@@ -4497,7 +4497,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017681507218772637
+      "beta_weighted": 0.004398940936068737
     },
     {
       "sample_index": 291,
@@ -4512,7 +4512,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0026654773278076867
+      "beta_weighted": 0.005980952019773341
     },
     {
       "sample_index": 292,
@@ -4527,7 +4527,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015369187394052744
+      "beta_weighted": 0.003975432921050288
     },
     {
       "sample_index": 293,
@@ -4542,7 +4542,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018944314300189849
+      "beta_weighted": 0.004633702526204176
     },
     {
       "sample_index": 294,
@@ -4557,7 +4557,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0038951543564696087
+      "beta_weighted": 0.008083886912375578
     },
     {
       "sample_index": 295,
@@ -4572,7 +4572,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015405795502238518
+      "beta_weighted": 0.003985921491444991
     },
     {
       "sample_index": 296,
@@ -4587,7 +4587,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016520707872623816
+      "beta_weighted": 0.004181324292011856
     },
     {
       "sample_index": 297,
@@ -4602,7 +4602,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001460289687883029
+      "beta_weighted": 0.003813404247697153
     },
     {
       "sample_index": 298,
@@ -4617,7 +4617,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025994079943255236
+      "beta_weighted": 0.005890078718864053
     },
     {
       "sample_index": 299,
@@ -4632,7 +4632,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019055647901375327
+      "beta_weighted": 0.00469265850126282
     },
     {
       "sample_index": 300,
@@ -4647,7 +4647,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016321322977746553
+      "beta_weighted": 0.004180946376054403
     },
     {
       "sample_index": 301,
@@ -4662,7 +4662,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019160083655738343
+      "beta_weighted": 0.004791654490813749
     },
     {
       "sample_index": 302,
@@ -4677,7 +4677,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001797271597358315
+      "beta_weighted": 0.0045565629613093005
     },
     {
       "sample_index": 303,
@@ -4692,7 +4692,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016846421884463246
+      "beta_weighted": 0.004291242439602028
     },
     {
       "sample_index": 304,
@@ -4707,7 +4707,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012412680401271286
+      "beta_weighted": 0.0033888060208502094
     },
     {
       "sample_index": 305,
@@ -4722,7 +4722,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003091264172694747
+      "beta_weighted": 0.006715918951497305
     },
     {
       "sample_index": 306,
@@ -4737,7 +4737,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016784017862546807
+      "beta_weighted": 0.004240001114937294
     },
     {
       "sample_index": 307,
@@ -4752,7 +4752,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002304356659023165
+      "beta_weighted": 0.005462989241957044
     },
     {
       "sample_index": 308,
@@ -4767,7 +4767,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019050269408694709
+      "beta_weighted": 0.004652294960983304
     },
     {
       "sample_index": 309,
@@ -4782,7 +4782,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013688383592691355
+      "beta_weighted": 0.003629934174257502
     },
     {
       "sample_index": 310,
@@ -4797,7 +4797,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020241777723359142
+      "beta_weighted": 0.004870537165215457
     },
     {
       "sample_index": 311,
@@ -4812,7 +4812,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0035247684346147354
+      "beta_weighted": 0.007524382739468463
     },
     {
       "sample_index": 312,
@@ -4827,7 +4827,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002163509109190449
+      "beta_weighted": 0.005116443834441641
     },
     {
       "sample_index": 313,
@@ -4842,7 +4842,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013572912951582356
+      "beta_weighted": 0.0036192233347976527
     },
     {
       "sample_index": 314,
@@ -4857,7 +4857,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002001994470101432
+      "beta_weighted": 0.004862347099078048
     },
     {
       "sample_index": 315,
@@ -4872,7 +4872,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0023493002736045578
+      "beta_weighted": 0.005470161901751715
     },
     {
       "sample_index": 316,
@@ -4887,7 +4887,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017540807993858749
+      "beta_weighted": 0.004375582493480447
     },
     {
       "sample_index": 317,
@@ -4902,7 +4902,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002055746320489836
+      "beta_weighted": 0.004931699812350335
     },
     {
       "sample_index": 318,
@@ -4917,7 +4917,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022899851923087605
+      "beta_weighted": 0.005394824178075251
     },
     {
       "sample_index": 319,
@@ -4932,7 +4932,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022908477139058346
+      "beta_weighted": 0.005383802444668706
     },
     {
       "sample_index": 320,
@@ -4947,7 +4947,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015556402065986144
+      "beta_weighted": 0.003999496828969354
     },
     {
       "sample_index": 321,
@@ -4962,7 +4962,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014946512039380518
+      "beta_weighted": 0.00388185420423834
     },
     {
       "sample_index": 322,
@@ -4977,7 +4977,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016542949689670355
+      "beta_weighted": 0.004184555884798901
     },
     {
       "sample_index": 323,
@@ -4992,7 +4992,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016701785777870266
+      "beta_weighted": 0.004215195365597071
     },
     {
       "sample_index": 324,
@@ -5007,7 +5007,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016879577985692983
+      "beta_weighted": 0.004249500560900974
     },
     {
       "sample_index": 325,
@@ -5022,7 +5022,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001986859940719513
+      "beta_weighted": 0.004928095362273853
     },
     {
       "sample_index": 326,
@@ -5037,7 +5037,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017865786088185627
+      "beta_weighted": 0.004433113635265491
     },
     {
       "sample_index": 327,
@@ -5052,7 +5052,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016751955401894504
+      "beta_weighted": 0.0042291862337801136
     },
     {
       "sample_index": 328,
@@ -5067,7 +5067,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0026792877877962677
+      "beta_weighted": 0.006111752188932842
     },
     {
       "sample_index": 329,
@@ -5082,7 +5082,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018181096878568186
+      "beta_weighted": 0.004521817531094315
     },
     {
       "sample_index": 330,
@@ -5097,7 +5097,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002055935653834113
+      "beta_weighted": 0.0050565439934210175
     },
     {
       "sample_index": 331,
@@ -5112,7 +5112,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001725627831194138
+      "beta_weighted": 0.004321585820281812
     },
     {
       "sample_index": 332,
@@ -5127,7 +5127,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021254279902563904
+      "beta_weighted": 0.005050338627101761
     },
     {
       "sample_index": 333,
@@ -5142,7 +5142,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015000910151332309
+      "beta_weighted": 0.0038889846070099122
     },
     {
       "sample_index": 334,
@@ -5157,7 +5157,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001984833565845563
+      "beta_weighted": 0.004875461141385899
     },
     {
       "sample_index": 335,
@@ -5172,7 +5172,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002411621025236014
+      "beta_weighted": 0.005552134741695127
     },
     {
       "sample_index": 336,
@@ -5187,7 +5187,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0027756519676227862
+      "beta_weighted": 0.006165327199739009
     },
     {
       "sample_index": 337,
@@ -5202,7 +5202,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0013062829501233205
+      "beta_weighted": 0.003511663283292552
     },
     {
       "sample_index": 338,
@@ -5217,7 +5217,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017982903004381322
+      "beta_weighted": 0.004494427418712119
     },
     {
       "sample_index": 339,
@@ -5232,7 +5232,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001803927336958427
+      "beta_weighted": 0.004494632414299269
     },
     {
       "sample_index": 340,
@@ -5247,7 +5247,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015408190046041733
+      "beta_weighted": 0.003989090166782774
     },
     {
       "sample_index": 341,
@@ -5262,7 +5262,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.004252498248070979
+      "beta_weighted": 0.00849625483599379
     },
     {
       "sample_index": 342,
@@ -5277,7 +5277,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016162516384220303
+      "beta_weighted": 0.004114408982283411
     },
     {
       "sample_index": 343,
@@ -5292,7 +5292,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024354878344050044
+      "beta_weighted": 0.005681387161613999
     },
     {
       "sample_index": 344,
@@ -5307,7 +5307,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002063323989439099
+      "beta_weighted": 0.004947170499477706
     },
     {
       "sample_index": 345,
@@ -5322,7 +5322,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0021939312354700325
+      "beta_weighted": 0.005172171676233432
     },
     {
       "sample_index": 346,
@@ -5337,7 +5337,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012325611622770413
+      "beta_weighted": 0.0033658035037146877
     },
     {
       "sample_index": 347,
@@ -5352,7 +5352,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020775878862716065
+      "beta_weighted": 0.0049702598062547785
     },
     {
       "sample_index": 348,
@@ -5367,7 +5367,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025572402727418444
+      "beta_weighted": 0.005946504452625323
     },
     {
       "sample_index": 349,
@@ -5382,7 +5382,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024329151147606267
+      "beta_weighted": 0.005613010088934811
     },
     {
       "sample_index": 350,
@@ -5397,7 +5397,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002070431234483274
+      "beta_weighted": 0.0049734353302199035
     },
     {
       "sample_index": 351,
@@ -5412,7 +5412,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0025852036188772467
+      "beta_weighted": 0.005849402069450658
     },
     {
       "sample_index": 352,
@@ -5427,7 +5427,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0014621376969692547
+      "beta_weighted": 0.0038145005508398704
     },
     {
       "sample_index": 353,
@@ -5442,7 +5442,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002391103140882996
+      "beta_weighted": 0.005606557916879448
     },
     {
       "sample_index": 354,
@@ -5457,7 +5457,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0033220855594171
+      "beta_weighted": 0.00718572166469736
     },
     {
       "sample_index": 355,
@@ -5472,7 +5472,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002069394577301927
+      "beta_weighted": 0.005006115023387096
     },
     {
       "sample_index": 356,
@@ -5487,7 +5487,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020595606497054073
+      "beta_weighted": 0.004981813781530711
     },
     {
       "sample_index": 357,
@@ -5502,7 +5502,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017568811869581099
+      "beta_weighted": 0.004381543359716912
     },
     {
       "sample_index": 358,
@@ -5517,7 +5517,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016902249841693263
+      "beta_weighted": 0.004273675201146849
     },
     {
       "sample_index": 359,
@@ -5532,7 +5532,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016277325738945825
+      "beta_weighted": 0.004148827369040288
     },
     {
       "sample_index": 360,
@@ -5547,7 +5547,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0026780355281197103
+      "beta_weighted": 0.0060299553761433014
     },
     {
       "sample_index": 361,
@@ -5562,7 +5562,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002547917442368339
+      "beta_weighted": 0.005803319848441474
     },
     {
       "sample_index": 362,
@@ -5577,7 +5577,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015250120642642862
+      "beta_weighted": 0.003959948704296663
     },
     {
       "sample_index": 363,
@@ -5592,7 +5592,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003239085737093606
+      "beta_weighted": 0.0070710835955855224
     },
     {
       "sample_index": 364,
@@ -5607,7 +5607,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017833850453019193
+      "beta_weighted": 0.004430216791710421
     },
     {
       "sample_index": 365,
@@ -5622,7 +5622,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0015891011110955092
+      "beta_weighted": 0.00409063782393356
     },
     {
       "sample_index": 366,
@@ -5637,7 +5637,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0024543739756320805
+      "beta_weighted": 0.005707725142915389
     },
     {
       "sample_index": 367,
@@ -5652,7 +5652,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022937588639426964
+      "beta_weighted": 0.005489507690331018
     },
     {
       "sample_index": 368,
@@ -5667,7 +5667,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0029232384301880244
+      "beta_weighted": 0.006530639831616107
     },
     {
       "sample_index": 369,
@@ -5682,7 +5682,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017083951837533963
+      "beta_weighted": 0.004287512389920285
     },
     {
       "sample_index": 370,
@@ -5697,7 +5697,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0012764187305348935
+      "beta_weighted": 0.0034519278391763695
     },
     {
       "sample_index": 371,
@@ -5712,7 +5712,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001799425426524951
+      "beta_weighted": 0.004459518347960134
     },
     {
       "sample_index": 372,
@@ -5727,7 +5727,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002083371459852209
+      "beta_weighted": 0.005021084806857559
     },
     {
       "sample_index": 373,
@@ -5742,7 +5742,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002221123018059356
+      "beta_weighted": 0.005220451999369623
     },
     {
       "sample_index": 374,
@@ -5757,7 +5757,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017097709222210918
+      "beta_weighted": 0.004295231204079105
     },
     {
       "sample_index": 375,
@@ -5772,7 +5772,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018910258992493793
+      "beta_weighted": 0.004630925179415289
     },
     {
       "sample_index": 376,
@@ -5787,7 +5787,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0031719794195902815
+      "beta_weighted": 0.0068764122628773286
     },
     {
       "sample_index": 377,
@@ -5802,7 +5802,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016517122441068806
+      "beta_weighted": 0.0042449374689421575
     },
     {
       "sample_index": 378,
@@ -5817,7 +5817,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003162805034380765
+      "beta_weighted": 0.006882682480837289
     },
     {
       "sample_index": 379,
@@ -5832,7 +5832,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002342209762077572
+      "beta_weighted": 0.005459131916944967
     },
     {
       "sample_index": 380,
@@ -5847,7 +5847,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002223559081135606
+      "beta_weighted": 0.005327327607257955
     },
     {
       "sample_index": 381,
@@ -5862,7 +5862,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020048051998658467
+      "beta_weighted": 0.004923151138606044
     },
     {
       "sample_index": 382,
@@ -5877,7 +5877,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018072938938392222
+      "beta_weighted": 0.0044734325069746405
     },
     {
       "sample_index": 383,
@@ -5892,7 +5892,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022362312735825177
+      "beta_weighted": 0.005311167958929149
     },
     {
       "sample_index": 384,
@@ -5907,7 +5907,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019183553519864192
+      "beta_weighted": 0.00476762304606453
     },
     {
       "sample_index": 385,
@@ -5922,7 +5922,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0019327164937740255
+      "beta_weighted": 0.00481609159945221
     },
     {
       "sample_index": 386,
@@ -5937,7 +5937,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0022360242014413992
+      "beta_weighted": 0.005368009908281772
     },
     {
       "sample_index": 387,
@@ -5952,7 +5952,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001756894157306812
+      "beta_weighted": 0.0043932489681159925
     },
     {
       "sample_index": 388,
@@ -5967,7 +5967,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018101090192294148
+      "beta_weighted": 0.004490128234748264
     },
     {
       "sample_index": 389,
@@ -5982,7 +5982,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001695941809702308
+      "beta_weighted": 0.004275052862892733
     },
     {
       "sample_index": 390,
@@ -5997,7 +5997,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.002191828928394234
+      "beta_weighted": 0.005177766139024437
     },
     {
       "sample_index": 391,
@@ -6012,7 +6012,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001638427468150773
+      "beta_weighted": 0.00415471710803988
     },
     {
       "sample_index": 392,
@@ -6027,7 +6027,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016284439019422642
+      "beta_weighted": 0.004144738927490216
     },
     {
       "sample_index": 393,
@@ -6042,7 +6042,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0018497444976519532
+      "beta_weighted": 0.004549992473027146
     },
     {
       "sample_index": 394,
@@ -6057,7 +6057,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.003694168070757998
+      "beta_weighted": 0.00769439715538578
     },
     {
       "sample_index": 395,
@@ -6072,7 +6072,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0020524725396561558
+      "beta_weighted": 0.004988937462203725
     },
     {
       "sample_index": 396,
@@ -6087,7 +6087,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0016400928403442763
+      "beta_weighted": 0.004157413442626533
     },
     {
       "sample_index": 397,
@@ -6102,7 +6102,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.001750297067297739
+      "beta_weighted": 0.004373017620463157
     },
     {
       "sample_index": 398,
@@ -6117,7 +6117,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017531077640480692
+      "beta_weighted": 0.004401304423030193
     },
     {
       "sample_index": 399,
@@ -6132,7 +6132,7 @@
       },
       "best_model_bic": "Empirical",
       "best_model_bic_pessimistic_tep_vs_null": "TEP",
-      "beta_weighted": 0.0017921613856990257
+      "beta_weighted": 0.004456156687335386
     }
   ]
 }

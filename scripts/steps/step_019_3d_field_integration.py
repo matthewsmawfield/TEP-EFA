@@ -12,8 +12,12 @@ The matter-frame scalar acceleration used in the EFA pipeline matches
 Step 007 / Jakarta v0.8 conformal coupling:
 a_φ = β_eff c² ∇φ / M_Pl (vector form; sign from ∇φ and trajectory projection).
 
-∇φ is obtained numerically from the screened field minimum
-φ_min(ρ) with denominator 2βρ_GeV⁴ as in `TEPTemporalTopologyModel._phi_of_rho`.
+∇φ is obtained numerically from the canonical excursion-complement profile
+shared with `TEPTemporalTopologyModel` (Step 007): φ(r) = Δφ (1 − e^{−δr/λ_TEP})
+outside Earth, interior pinned; the excursion ψ = φ_space − φ carries the
+well depth ψ_uns = M_EARTH/(4π M_Pl² R_EARTH) = 1.3926e-9 from the Paper 0
+radial-ODE closure. This replaces the v0.1 inverse-power density minimum
+φ_min(ρ) ∝ ρ^{−1/(n+1)} excluded by Paper 0 constraint F1.
 
 Key features:
 - Numerical field gradient calculation
@@ -31,7 +35,11 @@ import numpy as np
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.physics import BETA_BASELINE
+from scripts.utils.physics import (
+    BETA_BASELINE,
+    DELTA_PHI_EARTH_GEV,
+    LAMBDA_TEP_M,
+)
 from scripts.utils.step_logger import StepLogger
 
 
@@ -101,36 +109,36 @@ class Field3DIntegrator:
     
     def compute_field_at_position(self, position, density_field):
         """
-        Compute scalar field value at given position using screened-field formula.
+        Canonical excursion-complement field at a position (Step 007 convention).
 
-        Field minimum (Jakarta v0.8 / Step 007 convention, matter density ρ in kg m⁻³
-        converted to GeV⁴):
+        The model carries the complement of the temporal-well excursion:
+        φ(r) = Δφ (1 − e^{−δr/λ_TEP}) outside Earth with the interior pinned
+        at the floor 0, so the excursion ψ = φ_space − φ ≥ 0 is the well
+        depth -- positive inside the well, relaxing to the ambient baseline
+        over λ_TEP (canonical convention: field positive in wells).
 
-            φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2 β ρ_GeV⁴) ]^(1/(n+1)).
-        
+        Normalization: Δφ = ψ_uns · M_Pl with
+        ψ_uns = M_EARTH/(4π M_Pl² R_EARTH) = 1.3926e-9, the unscreened linear
+        response of the source from the Paper 0 radial-ODE closure
+        (TEP/results/step_01_radial_ode.json). Parameter-free and
+        β-independent, replacing the v0.1 inverse-power density minimum
+        φ_min(ρ) ∝ ρ^{−1/(n+1)} excluded by Paper 0 constraint F1.
+
         Args:
             position: (x, y, z) tuple in meters
-            density_field: Function returning density at position
-            
+            density_field: Function returning density at position (retained
+                for signature compatibility; the canonical profile is
+                geometric, anchored at the surface)
+
         Returns:
             Field value in GeV
         """
-        rho = density_field(position)
-        rho_gev4 = rho * 4.318e-21  # Convert kg/m³ to GeV^4 (correct theoretical value)
-        
-        if rho_gev4 <= 0 or self.beta <= 0:
-            return self.Lambda * 1e6
-        
-        # screened field minimum: φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2β ρ) ]^(1/(n+1))
-        numerator = self.n * self.M_PL * (self.Lambda ** (4 + self.n))
-        denominator = 2.0 * rho_gev4 * self.beta
-        
-        if denominator <= 0:
-            return self.Lambda * 1e6
-        
-        scale = (numerator / denominator) ** (1.0 / (self.n + 1))
-        phi_min = self.Lambda * scale
-        return phi_min
+        x, y, z = position
+        r = np.sqrt(x**2 + y**2 + z**2)
+        if r <= self.R_EARTH:
+            return 0.0
+        delta_r = r - self.R_EARTH
+        return DELTA_PHI_EARTH_GEV * (1.0 - np.exp(-delta_r / LAMBDA_TEP_M))
     
     def integrate_force_along_trajectory(self, trajectory_points, density_field, 
                                         velocity_profile):

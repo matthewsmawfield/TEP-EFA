@@ -1,14 +1,14 @@
 {
   "step_name": "step_008_fitting",
   "step_number": "008",
-  "timestamp": "2026-09-26T14:48:05.221727+00:00",
+  "timestamp": "2026-09-26T17:21:03.393882+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step008_fitting_results.json",
       "description": "TEP parameter fitting results",
-      "size_bytes": 40277,
-      "hash": "4656fb24e4b2e7915e475dbfe69fea6adac8e2cbe7010ee3a86bcd6b7bc4ae99"
+      "size_bytes": 40276,
+      "hash": "843de033f1be503eb9f8a3f57edfc4899956c70efbd6a7a6f7e4405800cb2215"
     }
   ],
   "parameters": {},

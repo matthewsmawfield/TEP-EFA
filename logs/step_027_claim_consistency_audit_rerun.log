@@ -1,0 +1,79 @@
+[INFO] [STEP 027] LOGGER INITIALIZED: step_027_claim_consistency_audit (Step 027)
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP 027: CLAIM CONSISTENCY AUDIT
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] Synchronized publication artifacts:
+[INFO] [STEP 027]   - site/components/4_methodology.html
+[INFO] [STEP 027]   - site/components/5_results.html
+[INFO] [STEP 027]   - site/components/6_discussion.html
+[INFO] [STEP 027]   - site/components/7_conclusion.html
+[INFO] [STEP 027] ======================================================================
+[INFO] [STEP 027] CLAIM CONSISTENCY AUDIT
+[INFO] [STEP 027] ======================================================================
+[INFO] [v_trans consistency]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Cassini status consistency]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Disformal sign rule consistency]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [F_OD placeholder check]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [F_plasma placeholder check]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Pipeline output presence]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Cross-mission holdout mandatory (Step 013)]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Stale marker scan]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Model comparison table]... 
+[INFO] [STEP 027] ✓ FAIL
+[INFO] [Variance decomposition]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Component table]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Discussion Table 8 (mechanisms)]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Reproduction checklist]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [Table 3 values]... 
+[INFO] [STEP 027] ✓ FAIL
+[INFO] [Evidence framing]... 
+[INFO] [STEP 027] ✓ FAIL
+[INFO] [ΔBIC prose consistency]... 
+[INFO] [STEP 027] ✓ PASS
+[INFO] [STEP 027] 
+======================================================================
+[INFO] [STEP 027] AUDIT FAILED - Manuscript and pipeline have inconsistencies
+[INFO] [STEP 027] 
+Violations:
+[INFO] [STEP 027]   1. Model comparison (headline IC) missing expected values: log L = -3997.14, log L = -228.44, BIC = 459.1
+[INFO] [STEP 027]   2. Table 3 missing NEAR beta ≈ 4.43e-03
+[INFO] [STEP 027]   3. Table 3 missing NEAR beta uncertainty ≈ 4.28e-05
+[INFO] [STEP 027]   4. Table 3 missing Galileo beta ≈ 1.44e-02
+[INFO] [STEP 027]   5. Table 3 missing Galileo beta uncertainty ≈ 2.93e-04
+[INFO] [STEP 027]   6. Table 3 missing Rosetta beta ≈ 5.15e-03
+[INFO] [STEP 027]   7. Table 3 missing Rosetta beta uncertainty ≈ 8.58e-05
+[INFO] [STEP 027]   8. Manuscript missing weighted mean beta ≈ 4.74e-03
+[INFO] [STEP 027]   9. Manuscript missing weighted mean uncertainty ≈ 5.83e-04
+[INFO] [STEP 027]   10. Manuscript missing random-effects uncertainty ≈ 1.28e-03
+[INFO] [STEP 027]   11. Manuscript should state that uncertainty-aware Step 039 has zero raw-tension cases.
+[INFO] [STEP 027]   12. Manuscript missing Step 039 full-catalog ΔlogL ≈ 209.70.
+[INFO] [STEP 027] ======================================================================
+[INFO] [STEP 027]   Output: step027_claim_consistency_audit.json (machine-readable claim consistency audit report)
+[INFO] [STEP 027] 
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP SUMMARY: step_027_claim_consistency_audit
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] Step Number: 027
+[INFO] [STEP 027] Status: FAILED
+[INFO] [STEP 027] Duration: 0.15s
+[INFO] [STEP 027] Calculations Logged: 0
+[INFO] [STEP 027] Output Files: 1
+[INFO] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_027_claim_consistency_audit.log
+[INFO] [STEP 027] 
+[INFO] [STEP 027] Generated 1 output file(s):
+[INFO] [STEP 027]   • step027_claim_consistency_audit.json: 4.21 KB - machine-readable claim consistency audit report
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP 027 COMPLETE: FAILED
+[INFO] [STEP 027] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_027_claim_consistency_audit_provenance.json

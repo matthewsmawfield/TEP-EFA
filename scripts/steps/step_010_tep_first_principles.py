@@ -43,9 +43,11 @@ UCD Saturation Calculation:
 - Saturation radius: R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km for Earth
 - Characteristic suppression: S_⊕ = (R_earth - R_sol) / R_earth ≈ 0.349
 
-This is distinct from standard screened Temporal Topology
-(V(φ) = Λ^(4+n)/φ^n with n=3, Λ=10 MeV, β=0.01), which would produce
+This is distinct from the inverse-power realization
+(V(φ) = Λ^(4+n)/φ^n with n=3, Λ=10 MeV, β=0.01), which produces
 ΔR/R ≈ 1.0 (essentially no suppression) for Earth's density profile.
+That branch is excluded under β_A = −1 by Paper 0 constraint F1; its SCF
+result is retained below only as the documented contrast diagnostic.
 
 The TEP framework adopts the UCD saturation model as the empirically calibrated
 transition mechanism, consistent with the GNSS-derived correlation length
@@ -272,23 +274,30 @@ class UCDSolitonCalculator:
 
     def solve_scf_topology(self, max_iter=50, tol=1e-6):
         """
-        Self-Consistent Field (SCF) Iteration for Temporal Topology.
+        Self-Consistent Field (SCF) Iteration on the inverse-power realization.
 
-        INDEPENDENT METHOD: Solves the Temporal Topology field equation to find the
-        transition radius where interior field energy density matches ρ_c.
+        CONTRAST DIAGNOSTIC (excluded branch): Solves the scalar field equation
+        on the inverse-power potential V(φ) = Λ^(4+n)/φ^n to exhibit explicitly
+        that this realization produces no terrestrial suppression shell
+        (S_⊕ ≈ 1.0). Under β_A = −1 the branch admits no admissible minimum
+        (Paper 0 constraint F1), and even on the positive-β bookkeeping used
+        here it fails the phenomenological requirement — the reported value is
+        retained as the documented contrast motivating the canonical quartic
+        amplitude sector, NOT as an independent corroboration of the UCD
+        saturation radius.
 
-        The Temporal Topology field equation for spherical symmetry:
+        The field equation for spherical symmetry:
             d²φ/dr² + (2/r)dφ/dr = V'(φ) + βρ(r)/M_Pl
 
-        where V(φ) is the Temporal Topology potential.
+        where V(φ) is the inverse-power realization.
 
         The transition radius R_sol is determined by field behavior matching:
         - Inside: φ ≈ φ_min(ρ) where field is pinned by matter (symmetry restored)
         - Outside: φ relaxes toward vacuum value (symmetry broken)
         - R_sol is where field energy density ρ_c = 20 g/cm³
         """
-        self.logger.info("Starting INDEPENDENT SCF Temporal Topology field solver...")
-        self.logger.info("Solving d²φ/dr² + (2/r)dφ/dr = V'(φ) + βρ(r)/M_Pl")
+        self.logger.info("Starting SCF solver on the EXCLUDED inverse-power realization (contrast diagnostic)...")
+        self.logger.info("Solving d²φ/dr² + (2/r)dφ/dr = V'(φ) + βρ(r)/M_Pl with V = Λ^(4+n)/φ^n")
 
         # Temporal Topology parameters
         Lambda = 0.01  # GeV (10 MeV)
@@ -398,15 +407,20 @@ class UCDSolitonCalculator:
             f"  UCD saturation: R_sol = {self.calculate_soliton_radius(rho_T=self.RHO_T) / 1e3:.1f} km"
         )
 
-        # Check agreement between independent methods
+        # Contrast check: the excluded branch is expected NOT to reproduce
+        # the UCD saturation radius — a large deviation confirms that the
+        # inverse-power realization cannot supply the required screening.
         R_sol_ucd = self.calculate_soliton_radius(rho_T=self.RHO_T)
         agreement = abs(R_sol_scf - R_sol_ucd) / R_sol_ucd
         if agreement < 0.05:  # Within 5%
-            self.logger.info(
-                f"  ✓ INDEPENDENT METHODS AGREE: {agreement * 100:.1f}% difference"
+            self.logger.warning(
+                f"  Unexpected: excluded-branch SCF agrees with UCD ({agreement * 100:.1f}% difference)"
             )
         else:
-            self.logger.info(f"  Note: SCF and UCD differ by {agreement * 100:.1f}%")
+            self.logger.info(
+                f"  As expected, excluded-branch SCF differs from UCD by {agreement * 100:.1f}% "
+                "(inverse-power realization yields no suppression shell)"
+            )
 
         return characteristic_suppression_scf, R_sol_scf, []
 
@@ -618,7 +632,7 @@ def main():
 
     all_methods = [
         ("UCD Saturation (Simple)", S_factor_1),
-        ("UCD Saturation (SCF)", S_factor_scf),
+        ("Inverse-power SCF (excluded)", S_factor_scf),
         ("GNSS Direct", S_factor_2),
         ("Compton λ", S_factor_4),
         ("Altitude Threshold", S_factor_5),
@@ -708,6 +722,13 @@ def main():
             "delta_R_km": (calculator.R_EARTH - R_sol) / 1000.0,
             "characteristic_suppression_primary": characteristic_suppression,
             "characteristic_suppression_scf": S_factor_scf,
+            "scf_branch_note": (
+                "SCF value is computed on the excluded inverse-power "
+                "realization (Paper 0 constraint F1) as a documented contrast "
+                "diagnostic only; it is not an independent corroboration of "
+                "the UCD saturation radius and is excluded from the methods "
+                "average."
+            ),
             "scf_convergence_history": scf_history,
             "gnss_empirical_value": gnss_empirical,
             "difference": difference,

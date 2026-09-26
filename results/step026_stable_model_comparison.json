@@ -1,66 +1,66 @@
 {
   "n_data": 6,
-  "extra_sigma_sys_quadrature_mm_s": 0.6065782705184705,
+  "extra_sigma_sys_quadrature_mm_s": 0.12061348486530082,
   "log_likelihoods": {
-    "Null": -273.36087550794946,
-    "Anderson": -9.343965824351875,
-    "TEP_restricted": -21.83498463147462,
-    "TEP_flexible": -19.358863525987303
+    "Null": -3362.2643550396197,
+    "Anderson": -108.60339335070472,
+    "TEP_restricted": -183.31527519003237,
+    "TEP_flexible": -154.43618969812786
   },
   "fitted_parameters": {
     "Anderson": {
-      "A": 22.319924120470038,
-      "B": -0.5933355509746675
+      "A": 21.69522905682686,
+      "B": -0.49056914334851587
     },
     "TEP_restricted": {
-      "beta": 0.0018753311289048606,
+      "beta": 0.004568319194483003,
       "fit_diagnostics": {
-        "optimal_scale_factor_x": 9.01173623712954,
+        "optimal_scale_factor_x": 45.68319194483003,
         "positive_beta_scale_feasible": true,
-        "log_likelihood_evaluated_at_beta": 0.0018753311289048606
+        "log_likelihood_evaluated_at_beta": 0.004568319194483003
       }
     },
     "TEP_flexible": {
       "beta": 0.0024787397316698165,
-      "b_disf": 0.4728592626818278,
-      "offset": 0.20921946311907647
+      "b_disf": 2.5756837552477916,
+      "offset": 1.0915125174569316
     }
   },
   "information_criteria": {
     "Null": {
-      "AIC": 546.7217510158989,
-      "AICc": 546.7217510158989,
-      "BIC": 546.7217510158989
+      "AIC": 6724.528710079239,
+      "AICc": 6724.528710079239,
+      "BIC": 6724.528710079239
     },
     "Anderson": {
-      "AIC": 22.68793164870375,
-      "AICc": 26.68793164870375,
-      "BIC": 22.27145058715986
+      "AIC": 221.20678670140944,
+      "AICc": 225.20678670140944,
+      "BIC": 220.79030563986555
     },
     "TEP_restricted": {
-      "AIC": 45.66996926294924,
-      "AICc": 46.66996926294924,
-      "BIC": 45.46172873217729
+      "AIC": 368.63055038006473,
+      "AICc": 369.63055038006473,
+      "BIC": 368.4223098492928
     },
     "TEP_flexible": {
-      "AIC": 44.717727051974606,
-      "AICc": 56.717727051974606,
-      "BIC": 44.09300545965877
+      "AIC": 314.8723793962557,
+      "AICc": 326.8723793962557,
+      "BIC": 314.2476578039399
     }
   },
   "bayes_factors": {
-    "Anderson_vs_Null": 7.637227968892024e+113,
-    "TEP_restricted_vs_Null": 7.034461195474885e+108,
-    "TEP_flexible_vs_Null": 1.3945860623874689e+109,
-    "TEP_restricted_vs_Anderson": 9.210751890774582e-06,
-    "delta_BIC_Anderson_vs_Null": 524.4503004287391,
-    "delta_BIC_TEP_restricted_vs_Null": 501.26002228372164,
-    "delta_BIC_TEP_flexible_vs_Null": 502.6287455562401,
-    "delta_BIC_TEP_restricted_vs_Anderson": -23.190278145017434,
-    "log10_BF_Anderson_vs_Null": 113.88293575435199,
-    "log10_BF_TEP_restricted_vs_Null": 108.84723083826067,
-    "log10_BF_TEP_flexible_vs_Null": 109.14444532051434,
-    "log10_BF_TEP_restricted_vs_Anderson": -5.0357049160913245,
+    "Anderson_vs_Null": Infinity,
+    "TEP_restricted_vs_Null": Infinity,
+    "TEP_flexible_vs_Null": Infinity,
+    "TEP_restricted_vs_Anderson": 8.752207585988425e-33,
+    "delta_BIC_Anderson_vs_Null": 6503.738404439374,
+    "delta_BIC_TEP_restricted_vs_Null": 6356.106400229946,
+    "delta_BIC_TEP_flexible_vs_Null": 6410.2810522753,
+    "delta_BIC_TEP_restricted_vs_Anderson": -147.63200420942724,
+    "log10_BF_Anderson_vs_Null": 1412.2688503951397,
+    "log10_BF_TEP_restricted_vs_Null": 1380.2109680049036,
+    "log10_BF_TEP_flexible_vs_Null": 1391.9748442260666,
+    "log10_BF_TEP_restricted_vs_Anderson": -32.057882390235946,
     "bic_approximation_valid": {
       "Anderson_vs_Null": false,
       "TEP_restricted_vs_Null": false,
@@ -72,9 +72,9 @@
   "model_selection": {
     "best_model_BIC": "Anderson",
     "akaike_weights": {
-      "TEP_restricted": 4.580741338757044e-05,
-      "Null": 1.1914368506368767e-113,
-      "Anderson": 0.9999541925866124
+      "TEP_restricted": 4.352894980404299e-32,
+      "Null": 0.0,
+      "Anderson": 1.0
     },
     "interpretation": "BIC selects Anderson model"
   },
@@ -87,17 +87,17 @@
     "v_trans_source": "TEP field equations",
     "geometry_source": "JPL Horizons ephemerides"
   },
-  "systematic_uncertainty_mm_s": 0.6065782705184705,
+  "systematic_uncertainty_mm_s": 0.12061348486530082,
   "systematic_uncertainty_model": "geometry_prediction_spread_std_ddof1",
-  "geometry_prediction_spread_mm_s": 0.6065782705184705,
+  "geometry_prediction_spread_mm_s": 0.12061348486530082,
   "likelihood_sensitivity_published_uncertainties_only": {
     "extra_sigma_sys_quadrature_mm_s": 0.0,
     "note": "Published per-flyby uncertainties without extra geometry-spread term. These produce extremely large BIC values because the tiny published uncertainties (~0.01\u20130.05 mm/s) are inconsistent with the ~1\u201310 mm/s residuals of the single-\u03b2 restricted scaling model. Reported for transparency and consistency checking only; the geometry-spread comparison is the scientifically meaningful one.",
     "log_likelihoods": {
       "Null": -8368.022462518826,
       "Anderson": -1005.1865856368615,
-      "TEP_restricted": -582.0312306676991,
-      "TEP_flexible": -499.1204263955153
+      "TEP_restricted": -582.031230667699,
+      "TEP_flexible": -1085.227664462109
     },
     "information_criteria": {
       "Null": {
@@ -111,29 +111,29 @@
         "BIC": 2013.9566902121792
       },
       "TEP_restricted": {
-        "AIC": 1166.0624613353982,
-        "AICc": 1167.0624613353982,
-        "BIC": 1165.8542208046263
+        "AIC": 1166.062461335398,
+        "AICc": 1167.062461335398,
+        "BIC": 1165.854220804626
       },
       "TEP_flexible": {
-        "AIC": 1004.2408527910306,
-        "AICc": 1016.2408527910306,
-        "BIC": 1003.6161311987148
+        "AIC": 2176.455328924218,
+        "AICc": 2188.455328924218,
+        "BIC": 2175.8306073319022
       }
     },
     "bayes_factors": {
       "Anderson_vs_Null": Infinity,
       "TEP_restricted_vs_Null": Infinity,
       "TEP_flexible_vs_Null": Infinity,
-      "TEP_restricted_vs_Anderson": 1.4558320500373249e+184,
+      "TEP_restricted_vs_Anderson": 1.4558320500374905e+184,
       "delta_BIC_Anderson_vs_Null": 14722.088234825473,
       "delta_BIC_TEP_restricted_vs_Null": 15570.190704233026,
-      "delta_BIC_TEP_flexible_vs_Null": 15732.428793838937,
-      "delta_BIC_TEP_restricted_vs_Anderson": 848.1024694075529,
+      "delta_BIC_TEP_flexible_vs_Null": 14560.21431770575,
+      "delta_BIC_TEP_restricted_vs_Anderson": 848.1024694075531,
       "log10_BF_Anderson_vs_Null": 3196.8608412387434,
       "log10_BF_TEP_restricted_vs_Null": 3381.0239525148545,
-      "log10_BF_TEP_flexible_vs_Null": 3416.253506050041,
-      "log10_BF_TEP_restricted_vs_Anderson": 184.1631112761108,
+      "log10_BF_TEP_flexible_vs_Null": 3161.7103667541637,
+      "log10_BF_TEP_restricted_vs_Anderson": 184.16311127611087,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -153,8 +153,8 @@
         "dv_obs_mm_s": 0.02,
         "sigma_mm_s": 0.05,
         "snr": 0.39999999999999997,
-        "dv_tep_mm_s_reference": 6.6498078579098e-05,
-        "sign_product": 1.32996157158196e-06,
+        "dv_tep_mm_s_reference": 1.3222638172343492e-05,
+        "sign_product": 2.6445276344686984e-07,
         "archival_anomaly_reference": "Muller et al. (2008)",
         "archival_anomaly_reference_doi": null,
         "archival_usability_notes": "Consistent with zero; expected for higher altitude",
@@ -166,7 +166,7 @@
         "dv_obs_mm_s": 0.0,
         "sigma_mm_s": 0.05,
         "snr": 0.0,
-        "dv_tep_mm_s_reference": 0.0012001144942585659,
+        "dv_tep_mm_s_reference": 0.00023863365772426885,
         "sign_product": 0.0,
         "archival_anomaly_reference": "Muller et al. (2010)",
         "archival_anomaly_reference_doi": null,
@@ -179,7 +179,7 @@
         "dv_obs_mm_s": 0.0,
         "sigma_mm_s": 0.02,
         "snr": 0.0,
-        "dv_tep_mm_s_reference": 0.01316795791180281,
+        "dv_tep_mm_s_reference": 0.002618348479487422,
         "sign_product": 0.0,
         "archival_anomaly_reference": "Aksenov & Tuchin (2020)",
         "archival_anomaly_reference_doi": "10.1093/mnras/staa059",
@@ -192,7 +192,7 @@
         "dv_obs_mm_s": null,
         "sigma_mm_s": null,
         "snr": 0.0,
-        "dv_tep_mm_s_reference": -0.0003350289101257082,
+        "dv_tep_mm_s_reference": -6.661795574435252e-05,
         "sign_product": null,
         "archival_anomaly_reference": "No peer-reviewed DSN-resolved \u0394v\u221e with formal \u03c3 in flyby-anomaly compendia (Anderson et al. 2008 and extensions); excluded from likelihood",
         "archival_anomaly_reference_doi": null,
@@ -205,7 +205,7 @@
         "dv_obs_mm_s": null,
         "sigma_mm_s": 0.02,
         "snr": 0.0,
-        "dv_tep_mm_s_reference": 2.1460540362927517e-06,
+        "dv_tep_mm_s_reference": 4.2672655551157307e-07,
         "sign_product": null,
         "archival_anomaly_reference": "No published detection",
         "archival_anomaly_reference_doi": null,
@@ -218,7 +218,7 @@
         "dv_obs_mm_s": null,
         "sigma_mm_s": 0.03,
         "snr": 0.0,
-        "dv_tep_mm_s_reference": -3.475335833742982e-07,
+        "dv_tep_mm_s_reference": -6.910441510321669e-08,
         "sign_product": null,
         "archival_anomaly_reference": "No published detection",
         "archival_anomaly_reference_doi": null,
@@ -230,67 +230,67 @@
   },
   "sign_agreement_model_comparison": {
     "n_data": 6,
-    "extra_sigma_sys_quadrature_mm_s": 0.6065782705184705,
+    "extra_sigma_sys_quadrature_mm_s": 0.12061348486530082,
     "log_likelihoods": {
-      "Null": -273.36087550794946,
-      "Anderson": -9.343965824351875,
-      "TEP_restricted": -21.83498463147462,
-      "TEP_flexible": -19.358863525987303
+      "Null": -3362.2643550396197,
+      "Anderson": -108.60339335070472,
+      "TEP_restricted": -183.31527519003237,
+      "TEP_flexible": -154.43618969812786
     },
     "fitted_parameters": {
       "Anderson": {
-        "A": 22.319924120470038,
-        "B": -0.5933355509746675
+        "A": 21.69522905682686,
+        "B": -0.49056914334851587
       },
       "TEP_restricted": {
-        "beta": 0.0018753311289048606,
+        "beta": 0.004568319194483003,
         "fit_diagnostics": {
-          "optimal_scale_factor_x": 9.01173623712954,
+          "optimal_scale_factor_x": 45.68319194483003,
           "positive_beta_scale_feasible": true,
-          "log_likelihood_evaluated_at_beta": 0.0018753311289048606
+          "log_likelihood_evaluated_at_beta": 0.004568319194483003
         }
       },
       "TEP_flexible": {
         "beta": 0.0024787397316698165,
-        "b_disf": 0.4728592626818278,
-        "offset": 0.20921946311907647
+        "b_disf": 2.5756837552477916,
+        "offset": 1.0915125174569316
       }
     },
     "information_criteria": {
       "Null": {
-        "AIC": 546.7217510158989,
-        "AICc": 546.7217510158989,
-        "BIC": 546.7217510158989
+        "AIC": 6724.528710079239,
+        "AICc": 6724.528710079239,
+        "BIC": 6724.528710079239
       },
       "Anderson": {
-        "AIC": 22.68793164870375,
-        "AICc": 26.68793164870375,
-        "BIC": 22.27145058715986
+        "AIC": 221.20678670140944,
+        "AICc": 225.20678670140944,
+        "BIC": 220.79030563986555
       },
       "TEP_restricted": {
-        "AIC": 45.66996926294924,
-        "AICc": 46.66996926294924,
-        "BIC": 45.46172873217729
+        "AIC": 368.63055038006473,
+        "AICc": 369.63055038006473,
+        "BIC": 368.4223098492928
       },
       "TEP_flexible": {
-        "AIC": 44.717727051974606,
-        "AICc": 56.717727051974606,
-        "BIC": 44.09300545965877
+        "AIC": 314.8723793962557,
+        "AICc": 326.8723793962557,
+        "BIC": 314.2476578039399
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": 7.637227968892024e+113,
-      "TEP_restricted_vs_Null": 7.034461195474885e+108,
-      "TEP_flexible_vs_Null": 1.3945860623874689e+109,
-      "TEP_restricted_vs_Anderson": 9.210751890774582e-06,
-      "delta_BIC_Anderson_vs_Null": 524.4503004287391,
-      "delta_BIC_TEP_restricted_vs_Null": 501.26002228372164,
-      "delta_BIC_TEP_flexible_vs_Null": 502.6287455562401,
-      "delta_BIC_TEP_restricted_vs_Anderson": -23.190278145017434,
-      "log10_BF_Anderson_vs_Null": 113.88293575435199,
-      "log10_BF_TEP_restricted_vs_Null": 108.84723083826067,
-      "log10_BF_TEP_flexible_vs_Null": 109.14444532051434,
-      "log10_BF_TEP_restricted_vs_Anderson": -5.0357049160913245,
+      "Anderson_vs_Null": Infinity,
+      "TEP_restricted_vs_Null": Infinity,
+      "TEP_flexible_vs_Null": Infinity,
+      "TEP_restricted_vs_Anderson": 8.752207585988425e-33,
+      "delta_BIC_Anderson_vs_Null": 6503.738404439374,
+      "delta_BIC_TEP_restricted_vs_Null": 6356.106400229946,
+      "delta_BIC_TEP_flexible_vs_Null": 6410.2810522753,
+      "delta_BIC_TEP_restricted_vs_Anderson": -147.63200420942724,
+      "log10_BF_Anderson_vs_Null": 1412.2688503951397,
+      "log10_BF_TEP_restricted_vs_Null": 1380.2109680049036,
+      "log10_BF_TEP_flexible_vs_Null": 1391.9748442260666,
+      "log10_BF_TEP_restricted_vs_Anderson": -32.057882390235946,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -302,9 +302,9 @@
     "model_selection": {
       "best_model_BIC": "Anderson",
       "akaike_weights": {
-        "TEP_restricted": 4.580741338757044e-05,
-        "Null": 1.1914368506368767e-113,
-        "Anderson": 0.9999541925866124
+        "TEP_restricted": 4.352894980404299e-32,
+        "Null": 0.0,
+        "Anderson": 1.0
       },
       "interpretation": "BIC selects Anderson model"
     },
@@ -317,9 +317,9 @@
       "v_trans_source": "TEP field equations",
       "geometry_source": "JPL Horizons ephemerides"
     },
-    "systematic_uncertainty_mm_s": 0.6065782705184705,
+    "systematic_uncertainty_mm_s": 0.12061348486530082,
     "systematic_uncertainty_model": "geometry_prediction_spread_std_ddof1",
-    "geometry_prediction_spread_mm_s": 0.6065782705184705,
+    "geometry_prediction_spread_mm_s": 0.12061348486530082,
     "included_flybys": [
       "NEAR",
       "Galileo_1990",
@@ -336,67 +336,67 @@
   },
   "full_catalog_model_comparison": {
     "n_data": 9,
-    "extra_sigma_sys_quadrature_mm_s": 0.5018828616179711,
+    "extra_sigma_sys_quadrature_mm_s": 0.09979559749506353,
     "log_likelihoods": {
-      "Null": -386.95064214229194,
-      "Anderson": -13.014547418570395,
-      "TEP_restricted": -26.890360861882375,
-      "TEP_flexible": -23.64762193124717
+      "Null": -3997.138120507335,
+      "Anderson": -178.3746701627098,
+      "TEP_restricted": -228.43985885006794,
+      "TEP_flexible": -266.6067968613121
     },
     "fitted_parameters": {
       "Anderson": {
-        "A": 22.626994277599202,
-        "B": -0.8080480488681402
+        "A": 22.115684995823738,
+        "B": -0.810779336066077
       },
       "TEP_restricted": {
-        "beta": 0.0018746064481162284,
+        "beta": 0.004581190187156838,
         "fit_diagnostics": {
-          "optimal_scale_factor_x": 9.009124319349018,
+          "optimal_scale_factor_x": 45.81190187156838,
           "positive_beta_scale_feasible": true,
-          "log_likelihood_evaluated_at_beta": 0.0018746064481162284
+          "log_likelihood_evaluated_at_beta": 0.004581190187156838
         }
       },
       "TEP_flexible": {
         "beta": 0.0024787397316698165,
-        "b_disf": 0.4841554210109903,
-        "offset": 0.15092086916932307
+        "b_disf": 2.7772262887202324,
+        "offset": 0.5043966450036012
       }
     },
     "information_criteria": {
       "Null": {
-        "AIC": 773.9012842845839,
-        "AICc": 773.9012842845839,
-        "BIC": 773.9012842845839
+        "AIC": 7994.27624101467,
+        "AICc": 7994.27624101467,
+        "BIC": 7994.27624101467
       },
       "Anderson": {
-        "AIC": 30.02909483714079,
-        "AICc": 32.02909483714079,
-        "BIC": 30.42354399181323
+        "AIC": 360.7493403254196,
+        "AICc": 362.7493403254196,
+        "BIC": 361.14378948009204
       },
       "TEP_restricted": {
-        "AIC": 55.78072172376475,
-        "AICc": 56.35215029519332,
-        "BIC": 55.97794630110097
+        "AIC": 458.87971770013587,
+        "AICc": 459.4511462715644,
+        "BIC": 459.0769422774721
       },
       "TEP_flexible": {
-        "AIC": 53.29524386249434,
-        "AICc": 58.095243862494335,
-        "BIC": 53.886917594503
+        "AIC": 539.2135937226242,
+        "AICc": 544.0135937226241,
+        "BIC": 539.8052674546328
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": 2.780609572484153e+161,
-      "TEP_restricted_vs_Null": 7.853659312717668e+155,
-      "TEP_flexible_vs_Null": 2.234257231586266e+156,
-      "TEP_restricted_vs_Anderson": 2.8244379903005853e-06,
-      "delta_BIC_Anderson_vs_Null": 743.4777402927707,
-      "delta_BIC_TEP_restricted_vs_Null": 717.923337983483,
-      "delta_BIC_TEP_flexible_vs_Null": 720.0143666900809,
-      "delta_BIC_TEP_restricted_vs_Anderson": -25.55440230928774,
-      "log10_BF_Anderson_vs_Null": 161.44414001352462,
-      "log10_BF_TEP_restricted_vs_Null": 155.89507205789494,
-      "log10_BF_TEP_flexible_vs_Null": 156.34913317228333,
-      "log10_BF_TEP_restricted_vs_Anderson": -5.54906795562969,
+      "Anderson_vs_Null": Infinity,
+      "TEP_restricted_vs_Null": Infinity,
+      "TEP_flexible_vs_Null": Infinity,
+      "TEP_restricted_vs_Anderson": 5.421083196187533e-22,
+      "delta_BIC_Anderson_vs_Null": 7633.132451534578,
+      "delta_BIC_TEP_restricted_vs_Null": 7535.199298737198,
+      "delta_BIC_TEP_flexible_vs_Null": 7454.470973560037,
+      "delta_BIC_TEP_restricted_vs_Anderson": -97.93315279738005,
+      "log10_BF_Anderson_vs_Null": 1657.5136516690538,
+      "log10_BF_TEP_restricted_vs_Null": 1636.2477377414086,
+      "log10_BF_TEP_flexible_vs_Null": 1618.7178046625427,
+      "log10_BF_TEP_restricted_vs_Anderson": -21.26591392764508,
       "bic_approximation_valid": {
         "Anderson_vs_Null": false,
         "TEP_restricted_vs_Null": false,
@@ -408,9 +408,9 @@
     "model_selection": {
       "best_model_BIC": "Anderson",
       "akaike_weights": {
-        "TEP_restricted": 5.227732361638954e-06,
-        "Null": 8.025990703674845e-162,
-        "Anderson": 0.9999947722676384
+        "TEP_restricted": 1.0033897119261765e-21,
+        "Null": 0.0,
+        "Anderson": 1.0
       },
       "interpretation": "BIC selects Anderson model"
     },
@@ -423,9 +423,9 @@
       "v_trans_source": "TEP field equations",
       "geometry_source": "JPL Horizons ephemerides"
     },
-    "systematic_uncertainty_mm_s": 0.5018828616179711,
+    "systematic_uncertainty_mm_s": 0.09979559749506353,
     "systematic_uncertainty_model": "geometry_prediction_spread_full_catalog_std_ddof1",
-    "geometry_prediction_spread_mm_s": 0.5018828616179711,
+    "geometry_prediction_spread_mm_s": 0.09979559749506353,
     "included_flybys": [
       "NEAR",
       "Galileo_1990",

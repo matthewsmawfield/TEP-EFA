@@ -34,6 +34,7 @@ from scripts.utils.physics import (
     BETA_BASELINE,
     C_LIGHT,
     CHARACTERISTIC_SUPPRESSION,
+    DELTA_PHI_EARTH_GEV,
     DISFORMAL_VELOCITY_THRESHOLD_KM_S,
     KG_M3_TO_GEV4,
     LAMBDA_TEP_M,
@@ -534,35 +535,35 @@ class TEPTemporalTopologyModel:
             self._geometry_envelope_heuristics = None
         
         # =====================================================================
-        # SELF-CONSISTENT FIELD PARAMETERS (Jakarta v0.8 field equations)
+        # CANONICAL AMPLITUDE SECTOR (Paper 0 v0.14 amplitude channel)
         # =====================================================================
-        # phi is computed from the Jakarta v0.8 / EFA screened field minimum (Temporal Topology):
-        #   phi(rho) = Lambda * [n * Lambda^(n+4) * M_Pl / (2 * beta * rho_GeV4)]^(1/(n+1))
-        # Matter coupling supplies the factor 2 in the denominator (Einstein-frame
-        # screened-field implementation shared with Step 011 / Step 019; EFA v0.1 Yogyakarta text).
-        # with n=3 (Temporal Topology index), Lambda=10 MeV.
+        # The model carries the well-excursion complement: phi(r) rises from
+        # the interior floor (0) to the ambient reference phi_space, so the
+        # excursion coordinate
+        #   psi(r) = phi_space - phi(r) >= 0
+        # is the temporal-well depth sampled by a transported clock --
+        # positive inside the well and relaxing to zero at the ambient
+        # baseline (canonical convention: phi > 0 in wells, phi -> 0 ambient).
         #
-        # Earth interior density ~5515 kg/m³ gives phi_earth ~ 2.4×10⁴ GeV.
-        # Interplanetary vacuum ~1e-20 kg/m³ gives phi_space ~ 2.0×10¹⁰ GeV.
-        # These are computed self-consistently for the reference beta=1e-4.
+        # The normalization is the unscreened linear response of the source,
+        #   psi_uns = M_EARTH / (4 pi M_Pl^2 R_EARTH) = 1.3926e-9,
+        # machine-computed in the Paper 0 radial-ODE closure
+        # (TEP/results/step_01_radial_ode.json: potentials.none.Earth.psi_uns).
+        # It is parameter-free -- fixed by Earth's measured mass and radius --
+        # and independent of the fitted response amplitude beta, so the model
+        # predictions are strictly linear in beta.
+        #
+        # This replaces the v0.1 density-minimum prescription
+        # phi_min(rho) ∝ rho^{-1/(n+1)} (inverse-power/chameleon realization):
+        # under beta_A = -1 that branch admits no stable minimum (Paper 0
+        # constraint F1) and runs the field largest in vacuum, opposite to the
+        # corpus convention.
         # =====================================================================
-        
-        self.phi_earth = self._phi_of_rho(5515.0)
-        self.phi_surface = self._phi_of_rho(2700.0)
-        self.phi_space = self._phi_of_rho(1e-20)
-        self.delta_phi = self.phi_space - self.phi_earth
 
-    def _phi_of_rho(self, rho_kg_m3):
-        rho_gev4 = rho_kg_m3 * KG_M3_TO_GEV4
-        if rho_gev4 <= 0 or self.beta <= 0:
-            return self.Lambda * 1e9
-        # Jakarta v0.8 consistency: use factor of 2 in denominator for field minimum
-        numerator = self.n * (self.Lambda ** (4 + self.n)) * M_PL
-        denominator = 2.0 * self.beta * rho_gev4
-        if denominator <= 0:
-            return self.Lambda * 1e9
-        scale = (numerator / denominator) ** (1.0 / (self.n + 1))
-        return self.Lambda * scale
+        self.phi_earth = 0.0
+        self.phi_surface = 0.0
+        self.phi_space = DELTA_PHI_EARTH_GEV
+        self.delta_phi = self.phi_space - self.phi_earth
 
     def phi(self, r):
         if r <= R_EARTH:

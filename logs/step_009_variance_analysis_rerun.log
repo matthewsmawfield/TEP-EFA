@@ -1,0 +1,23 @@
+[INFO] [STEP 009] LOGGER INITIALIZED: step_009_variance_analysis (Step 009)
+[INFO] [STEP 009] Consolidating beta heterogeneity explanation across all pipeline stages
+[INFO] [STEP 009] Calculating inclination, J2, plasma, and velocity factors...
+[INFO] [STEP 009] OD filter suppression: not computed (Step 021 has no mission F_OD values)
+[INFO] [STEP 009] F10.7 correlation: r=0.02 (p=0.97)
+[INFO] [STEP 009] Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=6 valid fits (n_sign_gated=6), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Beta scatter statistics (n=6): Fitted beta spans a factor of 7660.0 (log STD = 1.766 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at β_ref = 10⁻⁴ correctly classifies 8/12 flybys (accuracy 66.67%)—0 true positive, 8 true negatives, 4 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at β_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at β_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Rank correlation across the full catalog (n=12): Spearman rho = 0.56 (p = 0.059) between predicted and observed anomaly magnitudes. This does not reach conventional significance, consistent with the small catalog.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=6) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).
+[INFO] [STEP 009] 
+[INFO] [STEP 009] The 7660.0x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter.
+[INFO] [STEP 009] ✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step009_variance_analysis.json
+[WARNING] [STEP 009] ⚠ With n=6 valid fits and n_sign_gated=6, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.
+[INFO] [STEP 009] Beta scatter: span = 7660.0x, log STD = 1.766 dex (n=6)
+[INFO] [STEP 009] Full-catalog detection accuracy: 0 TP, 8 TN, 4 FN, 0 FP (66.7%)
+[INFO] [STEP 009] Spearman rank correlation: rho = 0.56 (p = 0.059)
+[INFO] [STEP 009] Legacy stage percentages DEPRECATED — see warning above.
+[INFO] [STEP 009] ✓ Step 009 completed in 0.0s

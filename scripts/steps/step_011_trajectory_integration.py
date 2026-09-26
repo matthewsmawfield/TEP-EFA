@@ -60,6 +60,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.physics import (
     C_LIGHT,
     CHARACTERISTIC_SUPPRESSION,
+    DELTA_PHI_EARTH_GEV,
     DISFORMAL_COUPLING_STRENGTH,
     DISFORMAL_VELOCITY_THRESHOLD_KM_S,
     GM_EARTH,
@@ -242,37 +243,37 @@ class Trajectory3DIntegrator:
         self._setup_screened_field()
     
     def _setup_screened_field(self):
-        """Precompute screened field reference values."""
-        rho_earth = 5515  # kg/m³ mean Earth density
-        rho_surface = 2700  # kg/m³ crustal density
-        
-        self.phi_earth = self._phi_of_rho(rho_earth)
-        self.phi_surface = self._phi_of_rho(rho_surface)
-        self.phi_space = self._phi_of_rho(1e-20)
+        """Canonical excursion normalization (Paper 0 amplitude sector).
+
+        The model carries the well-excursion complement: phi(r) rises from
+        the interior floor (0) to the ambient reference phi_space, so the
+        excursion psi(r) = phi_space - phi(r) >= 0 is the well depth a
+        transported clock samples -- positive inside the well, zero at the
+        ambient baseline (canonical convention phi > 0 in wells).
+
+        Normalization: phi_space = psi_uns * M_Pl with
+        psi_uns = M_EARTH/(4 pi M_Pl^2 R_EARTH) = 1.3926e-9, the unscreened
+        linear response of the source from the Paper 0 radial-ODE closure
+        (TEP/results/step_01_radial_ode.json). Parameter-free and
+        beta-independent, replacing the v0.1 inverse-power density minimum
+        phi_min ~ rho^{-1/(n+1)} excluded by Paper 0 constraint F1.
+        """
+        self.phi_earth = 0.0
+        self.phi_surface = 0.0
+        self.phi_space = DELTA_PHI_EARTH_GEV
         self.delta_phi = self.phi_space - self.phi_earth
-    
-    def _phi_of_rho(self, rho_kg_m3: float) -> float:
-        """Screened field value at given density."""
-        rho_gev4 = rho_kg_m3 * KG_M3_TO_GEV4
-        if rho_gev4 <= 0:
-            return LAMBDA_GEV * 1e6
-        numerator = N_TOPOLOGY * (LAMBDA_GEV**(4 + N_TOPOLOGY)) * M_PL
-        denominator = 2.0 * BETA_BASELINE * rho_gev4
-        scale = (numerator / denominator)**(1.0 / (N_TOPOLOGY + 1))
-        return LAMBDA_GEV * scale
-    
+
     def tss_field(self, r_vec: np.ndarray) -> float:
         """
-        Scalar field φ at position r_vec.
-        
-        Inside Earth: field depends on local density (PREM model)
-        Outside Earth: exponential relaxation from surface value
+        Scalar field φ at position r_vec (excursion complement).
+
+        Inside Earth: interior floor (excursion pinned to the well depth)
+        Outside Earth: exponential relaxation to the ambient reference
         """
         r = np.linalg.norm(r_vec)
-        
+
         if r <= R_EARTH:
-            rho = self.density_model.density_with_geoid(r_vec[0], r_vec[1], r_vec[2])
-            return self._phi_of_rho(rho)
+            return self.phi_earth
         else:
             delta_r = r - R_EARTH
             frac = 1.0 - np.exp(-delta_r / LAMBDA_TEP_M)
@@ -549,6 +550,20 @@ class Trajectory3DIntegrator:
 
             if perigee_state and all(k in perigee_state for k in ['rx_km', 'ry_km', 'rz_km', 'vx_km_s', 'vy_km_s', 'vz_km_s', 'datetime_utc']):
                 eph = self._generate_keplerian_ephemeris(name, ephemeris_data, perigee_state)
+                n_finite = sum(
+                    1 for p in eph
+                    if np.isfinite([p['x_km'], p['y_km'], p['z_km'],
+                                    p['vx_km_s'], p['vy_km_s'], p['vz_km_s']]).all()
+                )
+                if eph and n_finite < len(eph):
+                    self.logger.warning(
+                        f"  {name}: {len(eph) - n_finite}/{len(eph)} generated "
+                        "ephemeris points are non-finite (epoch mismatch?); "
+                        "using finite points only."
+                    )
+                    eph = [p for p in eph
+                           if np.isfinite([p['x_km'], p['y_km'], p['z_km'],
+                                           p['vx_km_s'], p['vy_km_s'], p['vz_km_s']]).all()]
                 if eph:
                     self.logger.info(f"  Generated Keplerian ephemeris for {name} ({len(eph)} points)")
                 else:
@@ -758,6 +773,18 @@ class Trajectory3DIntegrator:
             if not traj_file.exists():
                 # Search for year-suffixed directory (e.g., NEAR_1998 for NEAR)
                 matching_dirs = [d for d in jpl_dir.iterdir() if d.is_dir() and d.name.startswith(name)]
+                if len(matching_dirs) > 1:
+                    # Multiple encounter windows exist (e.g. BepiColombo 2020
+                    # vs 2021): pick the directory whose name carries the
+                    # catalogue perigee year so the generated ephemeris is
+                    # anchored to the correct epoch.
+                    perigee_dt = str((pred_data.get('perigee', {}) or {}).get('datetime', ''))
+                    perigee_year = perigee_dt[:4]
+                    year_matches = [d for d in matching_dirs if perigee_year and perigee_year in d.name]
+                    if year_matches:
+                        matching_dirs = year_matches
+                    else:
+                        matching_dirs = sorted(matching_dirs, key=lambda d: d.name)
                 if matching_dirs:
                     traj_file = matching_dirs[0] / f'{matching_dirs[0].name}_trajectory.json'
             

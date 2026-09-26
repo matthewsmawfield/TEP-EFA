@@ -277,15 +277,15 @@ class StableModelComparison:
         - v_trans ≈ 16.8 km/s (TEP field equations)
         - Geometry from JPL Horizons
         
-        The TEP velocity shift follows a 3/4 power law in β:
-            dv_tep ∝ β^(3/4)
-        This arises from the field dependence: scalar force ∝ β * ∇φ ∝ β * β^(-1/4).
+        The TEP velocity shift is linear in β under the canonical amplitude
+        sector (Paper 0): the excursion normalization is β-independent, so
+            dv_tep ∝ β
         Therefore predictions at arbitrary β are scaled from the reference (β₀=1e-4):
-            dv_pred(β) = dv_pred_base * (β / 1e-4)^(3/4)
+            dv_pred(β) = dv_pred_base * (β / 1e-4)
         """
         log_like = 0.0
         for fb in flybys:
-            scale = (beta / 1e-4) ** 0.75
+            scale = beta / 1e-4
             dv_pred = fb['dv_pred_base'] * scale
             sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
             residual = fb['dv_obs'] - dv_pred
@@ -294,12 +294,12 @@ class StableModelComparison:
 
     def fit_tep_restricted(self, flybys, sigma_sys=0.0):
         """
-        Weighted least-squares fit of β for TEP restricted with 3/4 power law scaling.
-        
-        We solve for the optimal scaling factor x = (β / 1e-4)^0.75, then back out β.
+        Weighted least-squares fit of β for TEP restricted with linear scaling.
+
+        We solve for the optimal scaling factor x = β / 1e-4 directly:
         chi² = Σ (obs - pred_base * x)² / σ²
         d(chi²)/dx = 0  →  x = Σ(pred_base * obs / σ²) / Σ(pred_base² / σ²)
-        β_fit = 1e-4 * x^(4/3)
+        β_fit = 1e-4 * x
 
         If x ≤ 0, no positive β reproduces the weighted sign pattern of the
         ensemble; ``beta_fitted`` is None and log-likelihood is evaluated at a
@@ -311,7 +311,7 @@ class StableModelComparison:
         x = (num / den) if den > 0 else 1.0
         positive_feasible = x > 0
         if positive_feasible:
-            beta_fit = 1e-4 * (x ** (4.0 / 3.0))
+            beta_fit = 1e-4 * x
             beta_like = beta_fit
         else:
             beta_fit = None
@@ -328,12 +328,12 @@ class StableModelComparison:
         """
         TEP Flexible: 3 fitted parameters (β, b_disf, offset).
         
-        Both gradient and disformal components scale with the 3/4 power law:
-            dv_grad(β) = dv_grad_base * (β / 1e-4)^0.75
-            dv_disf(β) = dv_disf_base * (β / 1e-4)^0.75
-        
+        Both gradient and disformal components scale linearly in β:
+            dv_grad(β) = dv_grad_base * (β / 1e-4)
+            dv_disf(β) = dv_disf_base * (β / 1e-4)
+
         The prediction is:
-            Δv = (β / 1e-4)^0.75 * (dv_grad_base + b_disf * dv_disf_base) + offset
+            Δv = (β / 1e-4) * (dv_grad_base + b_disf * dv_disf_base) + offset
         
         b_disf allows the disformal amplitude to vary independently (as a ratio),
         and offset captures residual modulation (plasma, OD, etc.).
@@ -342,7 +342,7 @@ class StableModelComparison:
         approach: first fit the linear combination at a reference β, then optimize β.
         """
         log_like = 0.0
-        scale = (beta / 1e-4) ** 0.75
+        scale = beta / 1e-4
         for fb in flybys:
             dv_pred = scale * (fb['dv_grad_base'] + b_disf * fb['dv_disf_base']) + offset
             sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
@@ -352,7 +352,7 @@ class StableModelComparison:
 
     def fit_tep_flexible(self, flybys, sigma_sys=0.0):
         """
-        Fit TEP flexible with 3/4 power law scaling.
+        Fit TEP flexible with linear (canonical) beta scaling.
         
         Strategy: For a given β, the model is linear in (b_disf, offset) with
         design matrix columns (scale*dv_disf_base, 1.0). We iterate over β to
@@ -362,7 +362,7 @@ class StableModelComparison:
         
         def _neg_loglike_at_beta(log_beta):
             beta = np.exp(log_beta)
-            scale = (beta / 1e-4) ** 0.75
+            scale = beta / 1e-4
             # Linear least squares for b_disf and offset at fixed beta
             X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
             y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
@@ -383,7 +383,7 @@ class StableModelComparison:
         beta_fit = np.exp(result.x)
         
         # Refit b_disf and offset at optimal beta
-        scale = (beta_fit / 1e-4) ** 0.75
+        scale = beta_fit / 1e-4
         X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
         y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
         w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])

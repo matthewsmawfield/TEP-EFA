@@ -1,0 +1,90 @@
+[INFO] [STEP 030] LOGGER INITIALIZED: step_030_juno_reanalysis (Step 030)
+[INFO] [STEP 030] ================================================================================
+[INFO] [STEP 030] STEP 030: JUNO 2013 RAW DSN REANALYSIS (CRITICAL TEST)
+[INFO] [STEP 030] ================================================================================
+[INFO] [STEP 030] ======================================================================
+[INFO] [STEP 030] REQUIREMENT: REAL DSN DATA ONLY - NO SYNTHETIC SUBSTITUTES
+[INFO] [STEP 030] ======================================================================
+[INFO] [STEP 030] Pairwise-Doppler proxy gate: ±0.08 mm/s on |mean proxy| (not OD-scale Δv).
+[INFO] [STEP 030] TEP reference scale +2.25 mm/s is not commensurate with this proxy without OD binding.
+[INFO] [STEP 030] ======================================================================
+[INFO] [STEP 030] PDS Collection: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/
+[INFO] [STEP 030] Expected data window: 48 hours around perigee
+[INFO] [STEP 030] Target stations: DSS-24, DSS-25, DSS-54, DSS-34, DSS-63
+[INFO] [STEP 030] PDS ingest status: no_indexed_products (0 files)
+[INFO] [STEP 030] Data window: 2013-10-08 to 2013-10-10
+[INFO] [STEP 030] Perigee: 2013-10-09 19:21:00 UTC
+[INFO] [STEP 030] Trying PDS-RN Earth Flyby...
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/08/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/08/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/data/2013/10/08/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/data/2013/10/08/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/09/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/09/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/data/2013/10/09/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/data/2013/10/09/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/data/2013/10/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-e-rss-1-edr/data/2013/10/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030] Trying PDS-RN Jupiter Cruise...
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/08/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/08/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/data/2013/10/08/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/data/2013/10/08/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/09/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/09/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/data/2013/10/09/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/data/2013/10/09/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9f90>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/2013/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/2013/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c8690>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[INFO] [STEP 030]   Checking: https://pds-rn.jpl.nasa.gov/data/jno-j-rss-1-edr/data/2013/10/10/
+[WARNING] [STEP 030] ⚠   Connection failed (network restriction): HTTPSConnectionPool(host='pds-rn.jpl.nasa.gov', port=443): Max retries exceeded with url: /data/jno-j-rss-1-edr/data/2013/10/10/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1066c9950>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+[WARNING] [STEP 030] ⚠ ======================================================================
+[WARNING] [STEP 030] ⚠ NO PERIGEE-WINDOW JUNO 2013 DSN ARCHIVE ON DISK
+[WARNING] [STEP 030] ⚠ ======================================================================
+[WARNING] [STEP 030] ⚠ Download status: success_format_validation_only
+[WARNING] [STEP 030] ⚠ Files found: 0
+[INFO] [STEP 030] 
+[INFO] [STEP 030] MANUAL DOWNLOAD REQUIRED:
+[INFO] [STEP 030] 1. Visit: https://pds.mcp.nasa.gov/portal/search
+[INFO] [STEP 030] 2. Search: 'Juno Earth flyby 2013' or 'JNO-E-RSS-1-EDR'
+[INFO] [STEP 030] 3. Download TRK-2-34/NJPL products whose .LBL overlaps 2013-10-08 to 2013-10-10 UTC
+[INFO] [STEP 030] 4. Place in: data/raw/dsn_tracking/Juno_2013/
+[INFO] [STEP 030] 5. Re-run: python scripts/steps/step_030_juno_reanalysis.py
+[INFO] [STEP 030] 
+[INFO] [STEP 030] CONTACT: pds-rn@jpl.nasa.gov — 'Juno 2013 Earth Flyby TRK-2-25 Data Request'
+[WARNING] [STEP 030] ⚠ ======================================================================
+[INFO] [STEP 030] LOGGER INITIALIZED: step_030_juno_reanalysis (Step 030)
+[INFO] [STEP 030] ======================================================================
+[INFO] [STEP 030] INCONCLUSIVE OR NON-GATED — see falsification_test.status
+[INFO] [STEP 030] ======================================================================
+[INFO] [STEP 030] Raw data download may be required.
+[INFO] [STEP 030] See data/raw/dsn_tracking/Juno_2013/DOWNLOAD_INSTRUCTIONS.txt
+[INFO] [STEP 030] 
+[INFO] [STEP 030] ================================================================================
+[INFO] [STEP 030] STEP SUMMARY: step_030_juno_reanalysis
+[INFO] [STEP 030] ================================================================================
+[INFO] [STEP 030] Step Number: 030
+[INFO] [STEP 030] Status: SUCCESS
+[INFO] [STEP 030] Duration: 0.00s
+[INFO] [STEP 030] Calculations Logged: 0
+[INFO] [STEP 030] Output Files: 0
+[INFO] [STEP 030] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_030_juno_reanalysis.log
+[INFO] [STEP 030] No output files generated
+[INFO] [STEP 030] ================================================================================
+[INFO] [STEP 030] STEP 030 COMPLETE: SUCCESS
+[INFO] [STEP 030] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_030_juno_reanalysis_provenance.json
+[WARNING] [STEP 030] ⚠ No perigee-window TRK on disk; JSON written with Horizons/public probes only.

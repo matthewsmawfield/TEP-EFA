@@ -9,61 +9,61 @@
     "NEAR": {
       "dv_3d_mm_s": 8.703977717816935,
       "dv_simplified_mm_s": 6.932949835595835,
-      "dv_current_mm_s": 1.5270456032053303,
+      "dv_current_mm_s": 0.3036414271704807,
       "ratio_3d_simplified": 1.2554508433233014
     },
     "Galileo_1990": {
       "dv_3d_mm_s": 8.396305625524825,
       "dv_simplified_mm_s": 6.375624282362746,
-      "dv_current_mm_s": 0.1372338175512307,
+      "dv_current_mm_s": 0.027287902947916113,
       "ratio_3d_simplified": 1.3169385857243823
     },
     "Cassini": {
       "dv_3d_mm_s": 8.247422680412273,
       "dv_simplified_mm_s": 6.1178629932580355,
-      "dv_current_mm_s": -5.326023415145495e-05,
+      "dv_current_mm_s": -1.0590393289654255e-05,
       "ratio_3d_simplified": 1.348088816225705
     },
     "Galileo_1992": {
       "dv_3d_mm_s": 8.886519150448915,
       "dv_simplified_mm_s": 7.279997378696116,
-      "dv_current_mm_s": -0.034811851294463965,
+      "dv_current_mm_s": -0.006922072390837614,
       "ratio_3d_simplified": 1.2206761470071483
     },
     "Rosetta_2005": {
       "dv_3d_mm_s": 7.748934521503112,
       "dv_simplified_mm_s": 5.30810283915946,
-      "dv_current_mm_s": 0.1757984655197509,
+      "dv_current_mm_s": 0.03495619047181799,
       "ratio_3d_simplified": 1.4598312723591012
     },
     "Rosetta_2007": {
       "dv_3d_mm_s": 6.153467478924442,
       "dv_simplified_mm_s": 3.200512706763331,
-      "dv_current_mm_s": 6.6498078579098e-05,
+      "dv_current_mm_s": 1.3222638172343492e-05,
       "ratio_3d_simplified": 1.9226505384343326
     },
     "MESSENGER_2005": {
       "dv_3d_mm_s": 7.520493344363437,
       "dv_simplified_mm_s": 4.962984012376002,
-      "dv_current_mm_s": 2.962146923366389e-07,
+      "dv_current_mm_s": 5.8900043155992084e-08,
       "ratio_3d_simplified": 1.5153168588917219
     },
     "Stardust": {
       "dv_3d_mm_s": 5.896608860244548,
       "dv_simplified_mm_s": 2.921845623998989,
-      "dv_current_mm_s": -0.0003350289101257082,
+      "dv_current_mm_s": -6.661795574435252e-05,
       "ratio_3d_simplified": 2.0181110226399106
     },
     "OSIRIS-REx": {
       "dv_3d_mm_s": 3.5474704761769433,
       "dv_simplified_mm_s": 1.0193973470679447,
-      "dv_current_mm_s": 2.1460540362927517e-06,
+      "dv_current_mm_s": 4.2672655551157307e-07,
       "ratio_3d_simplified": 3.479968322833489
     },
     "BepiColombo": {
       "dv_3d_mm_s": 4.228812591712179,
       "dv_simplified_mm_s": 1.4597544037725945,
-      "dv_current_mm_s": -3.475335833742982e-07,
+      "dv_current_mm_s": -6.910441510321669e-08,
       "ratio_3d_simplified": 2.8969342930449264
     }
   }

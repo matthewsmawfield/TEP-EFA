@@ -37,11 +37,11 @@ def load_json(path: Path) -> dict:
 def compute_beta_threshold(dv_ref: float, beta_ref: float, target_dv: float) -> float:
     """
     Compute the β at which dv_tep = target_dv, given the reference.
-    Scaling law: dv ∝ β^(3/4).
+    Scaling law: dv ∝ β (canonical linear response).
     """
     if dv_ref <= 0 or target_dv <= 0:
         return float("inf")
-    return beta_ref * (target_dv / dv_ref) ** (4.0 / 3.0)
+    return beta_ref * (target_dv / dv_ref)
 
 
 def main():
@@ -77,7 +77,7 @@ def main():
     # ------------------------------------------------------------------
     # Compute falsification thresholds
     # ------------------------------------------------------------------
-    scale_exponent = 0.75
+    scale_exponent = 1.0  # canonical linear response
 
     # At current β
     dv_current = dv_tep_ref * (beta_weighted / beta_ref) ** scale_exponent
@@ -157,7 +157,7 @@ def main():
             ),
         },
         "notes": [
-            "Scaling law: dv_tep ∝ β^(3/4) (from Step 008 fitting).",
+            "Scaling law: dv_tep ∝ β (canonical linear response from Step 008).",
             "Falsification requires independent minimal-OD reanalysis with TEP-inclusive force modeling.",
             "OD survival factors (F_OD) are withheld until mission OD configuration data are available.",
             "These bounds assume the published null (0.00 ± 0.02 mm/s) is correct and systematic-free.",

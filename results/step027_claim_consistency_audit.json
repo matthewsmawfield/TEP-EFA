@@ -1,15 +1,11 @@
 {
   "metadata": {
     "step": "027_claim_consistency_audit",
-    "timestamp": "2026-09-26T14:48:41.079029+00:00",
+    "timestamp": "2026-09-26T17:43:10.475656+00:00",
     "status": "PASS",
-    "duration_seconds": 0.15639305114746094
+    "duration_seconds": 0.1383342742919922
   },
-  "synced_files": [
-    "site/components/4_methodology.html",
-    "site/components/5_results.html",
-    "site/components/6_discussion.html"
-  ],
+  "synced_files": [],
   "audits": [
     {
       "name": "v_trans consistency",
@@ -95,11 +91,11 @@
   "violations": [],
   "evidence_frame": {
     "comparison_frame": "full_catalog_n9_geometry_spread",
-    "tep_restricted_vs_null_log10_bf": 155.89507205789494,
-    "tep_restricted_vs_anderson_log10_bf": -5.54906795562969,
-    "gated_n3_tep_restricted_vs_null_log10_bf": 108.84723083826067,
-    "gated_n3_tep_restricted_vs_anderson_log10_bf": -5.0357049160913245,
-    "step039_delta_log_likelihood_tep_minus_null": 50.667226054686694,
+    "tep_restricted_vs_null_log10_bf": 1636.2477377414086,
+    "tep_restricted_vs_anderson_log10_bf": -21.26591392764508,
+    "gated_n3_tep_restricted_vs_null_log10_bf": 1380.2109680049036,
+    "gated_n3_tep_restricted_vs_anderson_log10_bf": -32.057882390235946,
+    "step039_delta_log_likelihood_tep_minus_null": 43.034480720844876,
     "step039_deterministic_raw_tensions": 1,
     "step039_uncertainty_aware_raw_tensions": 1,
     "prediction_uncertainty_model": "random_effects_uncertainty"

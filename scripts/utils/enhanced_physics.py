@@ -19,8 +19,10 @@ from scipy.integrate import solve_ivp
 from scripts.utils.physics import (
     BETA_BASELINE,
     C_LIGHT,
+    DELTA_PHI_EARTH_GEV,
     G_NEWTON,
     J2_EARTH,
+    LAMBDA_TEP_M,
     M_EARTH,
     R_EARTH,
 )
@@ -433,48 +435,39 @@ class TEP3DTrajectoryIntegrator:
         self._setup_temporal_topology_field()
     
     def _setup_temporal_topology_field(self):
-        """Precompute Temporal Topology field values at key points."""
-        beta = self.tep['beta']
-        Lambda = self.tep['Lambda_keV'] * 1e-6  # Convert to GeV
-        n = self.tep['n_topology']
-        
-        # Field at Earth's center (highest density)
-        rho_center = 13000  # kg/m^3
-        self.phi_center = self._phi_of_rho(rho_center, beta, Lambda, n)
-        
-        # Field at surface
-        rho_surface = 2700  # kg/m^3
-        self.phi_surface = self._phi_of_rho(rho_surface, beta, Lambda, n)
-        
-        # Field in vacuum
-        self.phi_space = self._phi_of_rho(1e-20, beta, Lambda, n)
-        
-        # Restoration length from atmosphere
-        rho_atm = 1.225
-        phi_atm = self._phi_of_rho(rho_atm, beta, Lambda, n)
-        hbar_c = 0.197e-15  # GeV·m
-        m2_atm = (n * (n + 1) * Lambda**(4 + n) / phi_atm**(n + 2))
-        m_atm = np.sqrt(m2_atm)
-        self.lambda_rest = hbar_c / m_atm
-    
-    @staticmethod
-    def _phi_of_rho(rho_kg_m3: float, beta: float, Lambda: float, n: int) -> float:
-        """Compute Temporal Topology field for given density."""
-        rho_gev4 = rho_kg_m3 * KG_M3_TO_GEV4
-        
-        if rho_gev4 <= 0 or beta <= 0:
-            return Lambda * 1e6
-        
-        # Jakarta v0.8 consistency: use factor of 2 in denominator for field minimum
-        # Temporal Topology field minimum: φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2β ρ) ]^(1/(n+1))
-        numerator = n * M_PL * Lambda**(4 + n)
-        denominator = 2.0 * beta * rho_gev4
-        
-        if denominator <= 0:
-            return Lambda * 1e6
-        
-        scale = (numerator / denominator)**(1.0 / (n + 1))
-        return Lambda * scale
+        """Canonical excursion field (Paper 0 amplitude sector).
+
+        The model carries the well-excursion complement: phi(r) rises from
+        the interior floor (0) to the ambient reference phi_space, so the
+        excursion psi(r) = phi_space - phi(r) >= 0 is the temporal-well
+        depth -- positive inside the well, zero at the ambient baseline
+        (canonical convention: phi > 0 in wells, phi -> 0 ambient).
+
+        Normalization: phi_space = psi_uns * M_Pl with
+        psi_uns = M_EARTH/(4 pi M_Pl^2 R_EARTH) = 1.3926e-9, the unscreened
+        linear response of the source from the Paper 0 radial-ODE closure
+        (TEP/results/step_01_radial_ode.json: potentials.none.Earth.psi_uns).
+        Parameter-free and beta-independent, replacing the v0.1 inverse-power
+        density minimum phi_min ~ rho^{-1/(n+1)} (chameleon branch), which
+        admits no admissible minimum under beta_A = -1 (Paper 0 constraint
+        F1) and runs the field opposite to the corpus convention.
+
+        The exterior relaxation length is the corpus-anchored lambda_TEP
+        (~4200 km, GNSS correlation-length calibration; see issue 15-8),
+        replacing the density-dependent Compton restoration length of the
+        excluded realization.
+        """
+        # Interior floor (pinned interior, excursion = full well depth)
+        self.phi_center = 0.0
+
+        # Surface boundary of the complement
+        self.phi_surface = 0.0
+
+        # Ambient reference = canonical well depth
+        self.phi_space = DELTA_PHI_EARTH_GEV
+
+        # Corpus-anchored exterior relaxation length
+        self.lambda_rest = LAMBDA_TEP_M
 
     def temporal_topology_field(self, x: float, y: float, z: float) -> float:
         """
@@ -486,11 +479,8 @@ class TEP3DTrajectoryIntegrator:
         r = np.sqrt(x**2 + y**2 + z**2)
         
         if r <= R_EARTH:
-            # Inside Earth: field depends on local density
-            rho = self.density.density_with_geoid(x, y, z)
-            return self._phi_of_rho(rho, self.tep['beta'], 
-                                   self.tep['Lambda_keV'] * 1e-6,
-                                   self.tep['n_topology'])
+            # Inside Earth: interior floor (excursion pinned to well depth)
+            return self.phi_surface
         else:
             # Outside Earth: exponential relaxation from surface value
             delta_r = r - R_EARTH

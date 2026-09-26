@@ -7,11 +7,11 @@
   "lambda_tep_km": 4200.0,
   "lambda_tep_uncertainty_km": 630.0,
   "beta_theory_consistent": true,
-  "beta_theory_sigma": 1.781269790367165e-05,
+  "beta_theory_sigma": 0.00035201002020355073,
   "gnss_correlation_length": 4201,
   "gnss_correlation_uncertainty": 1967,
-  "flyby_beta": 0.0019487725462354747,
-  "flyby_beta_spread": 103.78958629587467,
-  "flyby_beta_fit_uncertainty": 0.00028172128774794295,
+  "flyby_beta": 0.004740427344114228,
+  "flyby_beta_spread": 13.18265696365941,
+  "flyby_beta_fit_uncertainty": 0.0005831834163655893,
   "theoretical_beta": 0.0001
 }

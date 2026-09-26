@@ -1,0 +1,27 @@
+[INFO] [STEP 018] LOGGER INITIALIZED: step_018_space_weather (Step 018)
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP 018: EMPIRICAL SPACE WEATHER CORRELATION
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] Matching historical flybys to Celestrak SW-All data (Kp, F10.7)
+[INFO] [STEP 018] Matched 6 flybys with fitted β values.
+[INFO] [STEP 018] Pearson r against space-weather plasma index: 0.0574
+[INFO] [STEP 018] 95% CI: [-0.791, 0.830]
+[INFO] [STEP 018] P-value: 0.9140
+[INFO] [STEP 018] Status: preliminary
+[INFO] [STEP 018] Correlation not significant (p=0.91) - as expected with n=6
+[INFO] [STEP 018] Interpretation: r=0.06, p=0.91 (n=6): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.
+[INFO] [STEP 018] ✓ Space weather correlation isolated. Conformal parameters bridged. Report: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step018_space_weather.json
+[INFO] [STEP 018] 
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP SUMMARY: step_018_space_weather
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] Step Number: 018
+[INFO] [STEP 018] Status: SUCCESS
+[INFO] [STEP 018] Duration: 0.05s
+[INFO] [STEP 018] Calculations Logged: 0
+[INFO] [STEP 018] Output Files: 0
+[INFO] [STEP 018] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_018_space_weather.log
+[INFO] [STEP 018] No output files generated
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP 018 COMPLETE: SUCCESS
+[INFO] [STEP 018] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_018_space_weather_provenance.json

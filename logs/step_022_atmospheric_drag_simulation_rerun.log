@@ -1,0 +1,101 @@
+[INFO] [STEP 022] LOGGER INITIALIZED: step_022_atmospheric_drag_simulation (Step 022)
+[INFO] [STEP 022] LOGGER INITIALIZED: step_022_atmospheric_drag_simulation (Step 022)
+
+======================================================================
+ATMOSPHERIC DRAG SIMULATION RESULTS
+======================================================================
+
+Analyzed 12 flybys (7 with published anomalies)
+
+Summary:
+  All excluded: False
+  Maximum drag fraction: 1.39e+00
+  Δv range: [np.float64(9.870162373531354e-30), np.float64(6.395796074467099)]
+  Conclusion: Atmospheric drag may contribute to some anomalies
+
+Per-flyby results:
+
+  NEAR:
+    Perigee altitude: 539.0 km
+    Atmospheric density: 3.76e-13 kg/m³
+    Integrated Δv from drag: 1.13e-01 mm/s
+    Observed anomaly: 13.46 mm/s
+    Drag fraction: -8.36e-03
+    Excluded: True
+
+  Galileo_1990:
+    Perigee altitude: 960.0 km
+    Atmospheric density: 3.77e-15 kg/m³
+    Integrated Δv from drag: 2.26e-03 mm/s
+    Observed anomaly: 3.92 mm/s
+    Drag fraction: -5.77e-04
+    Excluded: True
+
+  Cassini:
+    Perigee altitude: 1175.0 km
+    Atmospheric density: 1.57e-15 kg/m³
+    Integrated Δv from drag: 1.28e-03 mm/s
+    Observed anomaly: -2.00 mm/s
+    Drag fraction: 6.40e-04
+    Excluded: True
+
+  Galileo_1992:
+    Perigee altitude: 303.0 km
+    Atmospheric density: 2.29e-11 kg/m³
+    Integrated Δv from drag: 6.40e+00 mm/s
+    Observed anomaly: -4.60 mm/s
+    Drag fraction: 1.39e+00
+    Excluded: False
+
+  Rosetta_2005:
+    Perigee altitude: 1955.0 km
+    Atmospheric density: 8.56e-17 kg/m³
+    Integrated Δv from drag: 4.93e-05 mm/s
+    Observed anomaly: 1.80 mm/s
+    Drag fraction: -2.74e-05
+    Excluded: True
+
+  Rosetta_2007:
+    Perigee altitude: 5301.0 km
+    Atmospheric density: 3.24e-22 kg/m³
+    Integrated Δv from drag: 2.24e-10 mm/s
+    Observed anomaly: 0.02 mm/s
+    Drag fraction: -1.12e-08
+    Excluded: True
+
+  Rosetta_2009:
+    Perigee altitude: 2572.0 km
+    Atmospheric density: 8.56e-18 kg/m³
+    Integrated Δv from drag: 5.65e-06 mm/s
+
+  MESSENGER_2005:
+    Perigee altitude: 2347.0 km
+    Atmospheric density: 1.98e-17 kg/m³
+    Integrated Δv from drag: 1.14e-05 mm/s
+    Observed anomaly: 0.02 mm/s
+    Drag fraction: -5.72e-04
+    Excluded: True
+
+  Juno:
+    Perigee altitude: 817.4 km
+    Atmospheric density: 1.02e-14 kg/m³
+    Integrated Δv from drag: 5.21e-03 mm/s
+
+  Stardust:
+    Perigee altitude: 6008.9 km
+    Atmospheric density: 2.31e-23 kg/m³
+    Integrated Δv from drag: 1.43e-11 mm/s
+
+  OSIRIS-REx:
+    Perigee altitude: 17239.1 km
+    Atmospheric density: 1.46e-41 kg/m³
+    Integrated Δv from drag: 9.87e-30 mm/s
+
+  BepiColombo:
+    Perigee altitude: 12697.3 km
+    Atmospheric density: 3.34e-34 kg/m³
+    Integrated Δv from drag: 1.98e-22 mm/s
+[INFO] [STEP 022] Atmospheric drag not excluded for all flybys: Galileo_1992 (see summary conclusion)
+[INFO] [STEP 022]   Output: step022_atmospheric_drag_simulation.json (Atmospheric drag simulation results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step022_atmospheric_drag_simulation.json

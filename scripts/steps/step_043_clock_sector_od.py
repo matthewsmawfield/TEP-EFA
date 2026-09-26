@@ -21,10 +21,11 @@ PIPELINE (Option A rederivation):
 PHYSICAL MODEL:
     * Excursion field psi(r) = phi_space - phi(r) >= 0 is taken from the
       identical canonical field solution used throughout this pipeline
-      (TEPTemporalTopologyModel, n=3, Lambda=10 MeV, reference beta=1e-4,
-      relaxation length lambda_T = 4200 km).  No new field model is
-      introduced: the clock channel samples the same excursion that the
-      force-channel analyses integrate.
+      (TEPTemporalTopologyModel; surface normalization the Paper 0
+      unscreened linear response psi_uns = 1.3926e-9, parameter-free and
+      beta-independent; relaxation length lambda_T = 4200 km).  No new
+      field model is introduced: the clock channel samples the same
+      excursion that the force-channel analyses integrate.
     * Clock-rate offset: eta(t) = exp(beta_A psi/M_Pl) - 1 with the
       universal coupling beta_A = -1  (A < 1 in the well; clocks run
       slower).  This is the AMPLITUDE channel S_A, which is unsuppressed

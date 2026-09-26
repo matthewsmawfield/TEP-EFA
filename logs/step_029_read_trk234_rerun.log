@@ -1,0 +1,22 @@
+[INFO] [STEP 029] LOGGER INITIALIZED: step_029_read_trk234 (Step 029)
+[INFO] [STEP 029] ================================================================================
+[INFO] [STEP 029] STEP 029: READ TRK-2-34 DATA FORMAT
+[INFO] [STEP 029] ================================================================================
+[INFO] [STEP 029]   Output: step029_trk234_extracted.json (TRK-2-34 extraction status JSON)
+[WARNING] [STEP 029] ⚠ No perigee-matched TRK-2-34 product found - saved status to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step029_trk234_extracted.json
+[INFO] [STEP 029] 
+[INFO] [STEP 029] ================================================================================
+[INFO] [STEP 029] STEP SUMMARY: step_029_read_trk234
+[INFO] [STEP 029] ================================================================================
+[INFO] [STEP 029] Step Number: 029
+[INFO] [STEP 029] Status: PARTIAL
+[INFO] [STEP 029] Duration: 0.00s
+[INFO] [STEP 029] Calculations Logged: 0
+[INFO] [STEP 029] Output Files: 1
+[INFO] [STEP 029] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_029_read_trk234.log
+[INFO] [STEP 029] 
+[INFO] [STEP 029] Generated 1 output file(s):
+[INFO] [STEP 029]   • step029_trk234_extracted.json: 0.40 KB - TRK-2-34 extraction status JSON
+[INFO] [STEP 029] ================================================================================
+[INFO] [STEP 029] STEP 029 COMPLETE: PARTIAL
+[INFO] [STEP 029] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_029_read_trk234_provenance.json

@@ -233,16 +233,16 @@ def main():
     )
     beta_initial = 1e-4
 
-    # Scaling exponent from Step 008 (3/4 power law)
-    scale_factor = (beta_weighted / beta_initial) ** 0.75
+    # Canonical linear scaling (β-independent excursion normalization)
+    scale_factor = beta_weighted / beta_initial
     rel_unc_beta = beta_uncertainty / beta_weighted
-    rel_unc_raw = 0.75 * rel_unc_beta  # from power-law error propagation
+    rel_unc_raw = rel_unc_beta  # linear response: relative uncertainty propagates unchanged
 
     logger.info(
         f"Step 008 pooled beta = {beta_weighted:.6e}; prediction uncertainty "
         f"uses {beta_uncertainty_model} = {beta_uncertainty:.6e}"
     )
-    logger.info(f"Scale factor (beta^(3/4)) = {scale_factor:.4f}")
+    logger.info(f"Scale factor (linear in beta) = {scale_factor:.4f}")
     logger.info(f"Relative uncertainty on raw prediction = {rel_unc_raw:.4f}")
 
     # ------------------------------------------------------------------
@@ -330,7 +330,7 @@ def main():
             dv_disf = pred["tep_predictions"]["dv_disf_mm_s"]
             cos_asym = pred.get("geometry", {}).get("cos_dec_asymmetry")
 
-            # Scale reference prediction to Step 008 pooled amplitude (beta^(3/4) law)
+            # Scale reference prediction to Step 008 pooled amplitude (linear-in-beta law)
             dv_raw = dv_tep_ref * scale_factor
             sigma_raw = abs(dv_raw) * rel_unc_raw
 

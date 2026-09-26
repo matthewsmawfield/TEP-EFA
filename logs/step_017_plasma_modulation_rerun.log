@@ -1,0 +1,97 @@
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] NEAR:
+[INFO] [STEP 017]   Altitude: 539 km
+[INFO] [STEP 017]   Plasma density: 2.03e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 1.488e-04
+[INFO] [STEP 017]   Plasma sign factor: -0.673
+[INFO] [STEP 017]   Solar activity: 1.0
+[INFO] [STEP 017] Galileo_1990:
+[INFO] [STEP 017]   Altitude: 960 km
+[INFO] [STEP 017]   Plasma density: 5.37e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 7.480e-11
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 2.3
+[INFO] [STEP 017] Cassini:
+[INFO] [STEP 017]   Altitude: 1175 km
+[INFO] [STEP 017]   Plasma density: 1.58e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 1.040e-03
+[INFO] [STEP 017]   Plasma sign factor: -0.651
+[INFO] [STEP 017]   Solar activity: 1.3
+[INFO] [STEP 017] Galileo_1992:
+[INFO] [STEP 017]   Altitude: 303 km
+[INFO] [STEP 017]   Plasma density: 1.39e+06 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 5.279e-262
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 1.3
+[INFO] [STEP 017] Rosetta_2005:
+[INFO] [STEP 017]   Altitude: 1955 km
+[INFO] [STEP 017]   Plasma density: 1.75e+03 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 4.679e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 0.8
+[INFO] [STEP 017] Rosetta_2007:
+[INFO] [STEP 017]   Altitude: 5301 km
+[INFO] [STEP 017]   Plasma density: 2.51e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 8.966e-01
+[INFO] [STEP 017]   Plasma sign factor: 0.883
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] Rosetta_2009:
+[INFO] [STEP 017]   Altitude: 2572 km
+[INFO] [STEP 017]   Plasma density: 4.70e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 8.154e-01
+[INFO] [STEP 017]   Plasma sign factor: 0.550
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] MESSENGER_2005:
+[INFO] [STEP 017]   Altitude: 2347 km
+[INFO] [STEP 017]   Plasma density: 1.72e+03 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 4.744e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 1.1
+[INFO] [STEP 017] Juno:
+[INFO] [STEP 017]   Altitude: 817 km
+[INFO] [STEP 017]   Plasma density: 2.32e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 4.288e-05
+[INFO] [STEP 017]   Plasma sign factor: -0.530
+[INFO] [STEP 017]   Solar activity: 1.1
+[INFO] [STEP 017] Stardust:
+[INFO] [STEP 017]   Altitude: 6009 km
+[INFO] [STEP 017]   Plasma density: 9.83e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 6.525e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 1.7
+[INFO] [STEP 017] OSIRIS-REx:
+[INFO] [STEP 017]   Altitude: 17239 km
+[INFO] [STEP 017]   Plasma density: 1.92e+00 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.992e-01
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 0.8
+[INFO] [STEP 017] BepiColombo:
+[INFO] [STEP 017]   Altitude: 12697 km
+[INFO] [STEP 017]   Plasma density: 4.06e+01 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.825e-01
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] Cassini observed: +0.11 mm/s
+[INFO] [STEP 017] Cassini predicted (mixed disformal regime): -0.000 mm/s
+[INFO] [STEP 017] Plasma sign factor: -0.651
+[INFO] [STEP 017] CONCLUSION: Disformal coupling produces partial cancellation in the mixed regime; plasma modulates magnitude. The literature geometry sign remains an open stress test, not a resolved confirmation. Independent DSN/OD reanalysis is required.
+[INFO] [STEP 017] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step017_plasma_modulation.json
+[INFO] [STEP 017]   Output: step017_plasma_modulation.json (Plasma modulation factors)
+[INFO] [STEP 017] 
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] STEP SUMMARY: step_017_plasma_modulation
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] Step Number: 017
+[INFO] [STEP 017] Status: SUCCESS
+[INFO] [STEP 017] Duration: 0.00s
+[INFO] [STEP 017] Calculations Logged: 0
+[INFO] [STEP 017] Output Files: 1
+[INFO] [STEP 017] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_017_plasma_modulation.log
+[INFO] [STEP 017] 
+[INFO] [STEP 017] Generated 1 output file(s):
+[INFO] [STEP 017]   • step017_plasma_modulation.json: 30.04 KB - Plasma modulation factors
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] STEP 017 COMPLETE: SUCCESS
+[INFO] [STEP 017] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_017_plasma_modulation_provenance.json

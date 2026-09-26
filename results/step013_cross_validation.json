@@ -18,95 +18,95 @@
     "MESSENGER_2005": "MESSENGER"
   },
   "fitted_betas": {
-    "NEAR": 0.0018207797052178442,
-    "Galileo_1990": 0.008731721925085452,
-    "Cassini": 125.74842831024559,
-    "Galileo_1992": 0.06730401137901822,
-    "Rosetta_2005": 0.002223360573892163,
-    "MESSENGER_2005": 274.93574034838866
+    "NEAR": 0.004432860207985661,
+    "Galileo_1990": 0.014365339863169504,
+    "Cassini": 18.885039915881105,
+    "Galileo_1992": 0.06645408687272297,
+    "Rosetta_2005": 0.005149302528978886,
+    "MESSENGER_2005": 33.955832505982364
   },
   "fitted_beta_uncertainties": {
-    "NEAR": 2.3447386000824143e-05,
-    "Galileo_1990": 0.00023759787551252932,
-    "Cassini": 83.83228554016372,
-    "Galileo_1992": 0.0195084090953676,
-    "Rosetta_2005": 4.940801275315918e-05,
-    "MESSENGER_2005": 183.29049356559244
+    "NEAR": 4.281365728366537e-05,
+    "Galileo_1990": 0.0002931702012891736,
+    "Cassini": 9.442519957940553,
+    "Galileo_1992": 0.014446540624504995,
+    "Rosetta_2005": 8.582170881631476e-05,
+    "MESSENGER_2005": 16.977916252991182
   },
   "beta_summary": {
-    "mean": 66.79404142203624,
-    "std": 103.78958629587467,
-    "min": 0.0018207797052178442,
-    "max": 274.93574034838866,
-    "scatter_ratio": 150998.9042389367,
+    "mean": 8.821879001889387,
+    "std": 13.18265696365941,
+    "min": 0.004432860207985661,
+    "max": 33.955832505982364,
+    "scatter_ratio": 7660.02781788877,
     "all_positive": true
   },
   "leave_one_out": {
     "n_folds": 6,
-    "beta_loo_mean": 0.0020203595826140666,
-    "beta_loo_std": 0.00021317866838717185,
-    "stability_coefficient": 0.10551521136220121,
+    "beta_loo_mean": 0.004886070066051884,
+    "beta_loo_std": 0.00044820819402861714,
+    "stability_coefficient": 0.09173183928383268,
     "stability_assessment": "stable",
     "sign_accuracy": 1.0,
     "fold_results": [
       {
         "left_out": "NEAR",
-        "beta_loo": 0.0024935306395386506,
+        "beta_loo": 0.005878703654437466,
         "dv_obs": 13.46,
-        "dv_pred": 17.03974293613458,
-        "residual_mm_s": -3.579742936134579,
-        "abs_error_mm_s": 3.579742936134579,
-        "rel_error_pct": 26.595415573065225,
+        "dv_pred": 17.850179675457124,
+        "residual_mm_s": -4.390179675457123,
+        "abs_error_mm_s": 4.390179675457123,
+        "rel_error_pct": 32.61649090235604,
         "correct_sign": true
       },
       {
         "left_out": "Galileo_1990",
-        "beta_loo": 0.0018948574840537266,
+        "beta_loo": 0.004576065142758516,
         "dv_obs": 3.92,
-        "dv_pred": 1.246360159722376,
-        "residual_mm_s": 2.673639840277624,
-        "abs_error_mm_s": 2.673639840277624,
-        "rel_error_pct": 68.20509796626591,
+        "dv_pred": 1.2487122149893626,
+        "residual_mm_s": 2.6712877850106374,
+        "abs_error_mm_s": 2.6712877850106374,
+        "rel_error_pct": 68.14509655639381,
         "correct_sign": true
       },
       {
         "left_out": "Cassini",
-        "beta_loo": 0.0019487725382700035,
+        "beta_loo": 0.004740427038534782,
         "dv_obs": -2.0,
-        "dv_pred": -0.0004939965713735259,
-        "residual_mm_s": -1.9995060034286265,
-        "abs_error_mm_s": 1.9995060034286265,
-        "rel_error_pct": 99.97530017143133,
+        "dv_pred": -0.0005020298669899435,
+        "residual_mm_s": -1.99949797013301,
+        "abs_error_mm_s": 1.99949797013301,
+        "rel_error_pct": 99.9748985066505,
         "correct_sign": true
       },
       {
         "left_out": "Galileo_1992",
-        "beta_loo": 0.0019486960965939737,
+        "beta_loo": 0.004740000619533842,
         "dv_obs": -4.6,
-        "dv_pred": -0.32287558503420444,
-        "residual_mm_s": -4.277124414965796,
-        "abs_error_mm_s": 4.277124414965796,
-        "rel_error_pct": 92.9809655427347,
+        "dv_pred": -0.32810627421028393,
+        "residual_mm_s": -4.271893725789716,
+        "abs_error_mm_s": 4.271893725789716,
+        "rel_error_pct": 92.86725490847209,
         "correct_sign": true
       },
       {
         "left_out": "Rosetta_2005",
-        "beta_loo": 0.0018875281946358006,
+        "beta_loo": 0.00464079676690395,
         "dv_obs": 1.8,
-        "dv_pred": 1.591971049243746,
-        "residual_mm_s": 0.20802895075625405,
-        "abs_error_mm_s": 0.20802895075625405,
-        "rel_error_pct": 11.557163930903002,
+        "dv_pred": 1.622245757248916,
+        "residual_mm_s": 0.1777542427510841,
+        "abs_error_mm_s": 0.1777542427510841,
+        "rel_error_pct": 9.87523570839356,
         "correct_sign": true
       },
       {
         "left_out": "MESSENGER_2005",
-        "beta_loo": 0.0019487725425922453,
+        "beta_loo": 0.004740427174142747,
         "dv_obs": 0.02,
-        "dv_pred": 2.747435210894145e-06,
-        "residual_mm_s": 0.019997252564789108,
-        "abs_error_mm_s": 0.019997252564789108,
-        "rel_error_pct": 99.98626282394554,
+        "dv_pred": 2.792113651348454e-06,
+        "residual_mm_s": 0.019997207886348654,
+        "abs_error_mm_s": 0.019997207886348654,
+        "rel_error_pct": 99.98603943174327,
         "correct_sign": true
       }
     ]
@@ -132,18 +132,18 @@
         "held_out_flybys": [
           "Cassini"
         ],
-        "beta_train": 0.0019487725382700035,
+        "beta_train": 0.004740427038534782,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Cassini",
             "status": "ok",
-            "beta_train": 0.0019487725382700035,
-            "dv_pred": -0.0004939965713735259,
+            "beta_train": 0.004740427038534782,
+            "dv_pred": -0.0005020298669899435,
             "dv_obs": -2.0,
-            "residual_mm_s": -1.9995060034286265,
-            "abs_error_mm_s": 1.9995060034286265,
-            "rel_error_pct": 99.97530017143133,
+            "residual_mm_s": -1.99949797013301,
+            "abs_error_mm_s": 1.99949797013301,
+            "rel_error_pct": 99.9748985066505,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -165,18 +165,18 @@
           "Galileo_1990",
           "Galileo_1992"
         ],
-        "beta_train": 0.0018947803631739072,
+        "beta_train": 0.004575629975154096,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Galileo_1990",
             "status": "ok",
-            "beta_train": 0.0018947803631739072,
-            "dv_pred": 1.2463221142960363,
+            "beta_train": 0.004575629975154096,
+            "dv_pred": 1.2485934668758079,
             "dv_obs": 3.92,
-            "residual_mm_s": 2.6736778857039636,
-            "abs_error_mm_s": 2.6736778857039636,
-            "rel_error_pct": 68.2060685128562,
+            "residual_mm_s": 2.671406533124192,
+            "abs_error_mm_s": 2.671406533124192,
+            "rel_error_pct": 68.1481258450049,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -184,12 +184,12 @@
           {
             "flyby": "Galileo_1992",
             "status": "ok",
-            "beta_train": 0.0018947803631739072,
-            "dv_pred": -0.3161522493657865,
+            "beta_train": 0.004575629975154096,
+            "dv_pred": -0.3167284192170316,
             "dv_obs": -4.6,
-            "residual_mm_s": -4.283847750634213,
-            "abs_error_mm_s": 4.283847750634213,
-            "rel_error_pct": 93.12712501378725,
+            "residual_mm_s": -4.283271580782968,
+            "abs_error_mm_s": 4.283271580782968,
+            "rel_error_pct": 93.11459958223845,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -211,18 +211,18 @@
         "held_out_flybys": [
           "MESSENGER_2005"
         ],
-        "beta_train": 0.0019487725425922453,
+        "beta_train": 0.004740427174142747,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "MESSENGER_2005",
             "status": "ok",
-            "beta_train": 0.0019487725425922453,
-            "dv_pred": 2.747435210894145e-06,
+            "beta_train": 0.004740427174142747,
+            "dv_pred": 2.792113651348454e-06,
             "dv_obs": 0.02,
-            "residual_mm_s": 0.019997252564789108,
-            "abs_error_mm_s": 0.019997252564789108,
-            "rel_error_pct": 99.98626282394554,
+            "residual_mm_s": 0.019997207886348654,
+            "abs_error_mm_s": 0.019997207886348654,
+            "rel_error_pct": 99.98603943174327,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -244,18 +244,18 @@
         "held_out_flybys": [
           "NEAR"
         ],
-        "beta_train": 0.0024935306395386506,
+        "beta_train": 0.005878703654437466,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "NEAR",
             "status": "ok",
-            "beta_train": 0.0024935306395386506,
-            "dv_pred": 17.03974293613458,
+            "beta_train": 0.005878703654437466,
+            "dv_pred": 17.850179675457124,
             "dv_obs": 13.46,
-            "residual_mm_s": -3.579742936134579,
-            "abs_error_mm_s": 3.579742936134579,
-            "rel_error_pct": 26.595415573065225,
+            "residual_mm_s": -4.390179675457123,
+            "abs_error_mm_s": 4.390179675457123,
+            "rel_error_pct": 32.61649090235604,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -277,18 +277,18 @@
         "held_out_flybys": [
           "Rosetta_2005"
         ],
-        "beta_train": 0.0018875281946358006,
+        "beta_train": 0.00464079676690395,
         "fold_all_signs_correct": true,
         "per_flyby": [
           {
             "flyby": "Rosetta_2005",
             "status": "ok",
-            "beta_train": 0.0018875281946358006,
-            "dv_pred": 1.591971049243746,
+            "beta_train": 0.00464079676690395,
+            "dv_pred": 1.622245757248916,
             "dv_obs": 1.8,
-            "residual_mm_s": 0.20802895075625405,
-            "abs_error_mm_s": 0.20802895075625405,
-            "rel_error_pct": 11.557163930903002,
+            "residual_mm_s": 0.1777542427510841,
+            "abs_error_mm_s": 0.1777542427510841,
+            "rel_error_pct": 9.87523570839356,
             "correct_sign": true,
             "sign_agreement_at_ref": true,
             "known_sign_mismatch": false
@@ -308,26 +308,26 @@
   "bootstrap": {
     "n_bootstrap": 10000,
     "n_valid_samples": 10000,
-    "beta_mean": 69.0657840349274,
-    "beta_median": 60.41759507571103,
-    "beta_std": 54.347613865886004,
+    "beta_mean": 8.866930995645255,
+    "beta_median": 8.051157401518754,
+    "beta_std": 6.305346877266407,
     "ci_68": [
-      13.44099178557884,
-      122.32122511867365
+      2.5019798288907316,
+      15.195546602960947
     ],
     "ci_95": [
-      0.010917971383650292,
-      196.97733726924193
+      0.015362030848070826,
+      23.216436623910866
     ]
   },
   "altitude_stratified": {
     "low_altitude": {
       "n_flybys": 3,
-      "beta_mean": 0.025952171003107174,
-      "beta_median": 0.008731721925085452,
+      "beta_mean": 0.028417428981292712,
+      "beta_median": 0.014365339863169504,
       "beta_range": [
-        0.0018207797052178442,
-        0.06730401137901822
+        0.004432860207985661,
+        0.06645408687272297
       ],
       "members": [
         "NEAR",
@@ -337,11 +337,11 @@
     },
     "mid_altitude": {
       "n_flybys": 3,
-      "beta_mean": 133.5621306730694,
-      "beta_median": 125.74842831024559,
+      "beta_mean": 17.615340574797482,
+      "beta_median": 18.885039915881105,
       "beta_range": [
-        0.002223360573892163,
-        274.93574034838866
+        0.005149302528978886,
+        33.955832505982364
       ],
       "members": [
         "Cassini",

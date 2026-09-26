@@ -1,14 +1,14 @@
 {
   "step_name": "step_035_cross_corpus_export",
   "step_number": "035",
-  "timestamp": "2026-09-26T14:52:39.013334+00:00",
+  "timestamp": "2026-09-26T17:25:57.022970+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/tep_universal_constants_manifest.json",
       "description": "Cross-corpus universal constants manifest",
-      "size_bytes": 8971,
-      "hash": "68046214dc51098f5c9f1b4e153ede2d7ea2a1887d17086fdbeafe27ebdd5aef"
+      "size_bytes": 8964,
+      "hash": "f3f80c0d830f4cb902898a0bd88988db0b0afa2cf2961c36e7fec99451d76c3b"
     }
   ],
   "parameters": {},

@@ -2,7 +2,7 @@
   "integration_method": "full_3d_trajectory_with_geometry_dependent_beta",
   "model_version": "2.0",
   "physics": {
-    "beta_baseline": 0.0019487725462354747,
+    "beta_baseline": 0.004740427344114228,
     "restoration_length_km": 4200.0,
     "characteristic_suppression": 0.3492387380317062,
     "modulation_equation": "\u03b2_eff = \u03b2\u2080 \u00d7 f_incl \u00d7 f_J2 \u00d7 f_plasma \u00d7 f_velocity \u00d7 f_screen"
@@ -99,29 +99,29 @@
     },
     "f_total_variance": 0.017671707689004182,
     "beta_eff_range": {
-      "min": 3.975496993135563e-07,
-      "max": 0.0007619639387058489
+      "min": 9.670474211630526e-07,
+      "max": 0.001853492187812119
     },
-    "beta_eff_variance": 6.711209941628758e-08,
+    "beta_eff_variance": 3.9711245491528294e-07,
     "beta_eff_ratio": 1916.6507735297544
   },
   "individual_results": {
     "NEAR": {
-      "dv_integrated_mm_s": 11.692856818392954,
-      "dv_perigee_mm_s": 1.5270456032053303,
-      "difference_mm_s": 10.165811215187624,
-      "ratio_integrated_perigee": 7.657175917896084,
+      "dv_integrated_mm_s": 5.65569512794261,
+      "dv_perigee_mm_s": 0.3036414271704807,
+      "difference_mm_s": 5.352053700772129,
+      "ratio_integrated_perigee": 18.626230223740837,
       "path_length_km": 1809864.7636790727,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 4.347938591808267e-06,
-        "std": 5.394172794365949e-05,
-        "min": 1.6161940866864346e-226,
-        "max": 0.0012739435470994819
+        "mean": 1.0576445686774845e-05,
+        "std": 0.00013121430852813148,
+        "min": 3.931423734762704e-226,
+        "max": 0.0030988926014963187
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 1.6161940866864346e-226,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 3.931423734762704e-226,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.1425537917116444,
         "f_j2_altitude": 7.351919218511267e-224,
         "f_plasma": 0.9873132793129012,
@@ -138,8 +138,8 @@
         "f_geometry_total": 0.19041690405710016,
         "f_screening": 1.0,
         "f_total": 0.19041690405710016,
-        "beta_eff": 0.00037107923496563117,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.000902657498773853,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -152,21 +152,21 @@
       }
     },
     "Galileo_1990": {
-      "dv_integrated_mm_s": 0.8217737948874639,
-      "dv_perigee_mm_s": 0.1372338175512307,
-      "difference_mm_s": 0.6845399773362333,
-      "ratio_integrated_perigee": 5.988128943368407,
+      "dv_integrated_mm_s": 0.39748216541102815,
+      "dv_perigee_mm_s": 0.027287902947916113,
+      "difference_mm_s": 0.37019426246311204,
+      "ratio_integrated_perigee": 14.566240805300964,
       "path_length_km": 2335944.361348582,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 4.144234144360661e-06,
-        "std": 5.637845625379347e-05,
-        "min": 1.08746e-318,
-        "max": 0.0012286718473635226
+        "mean": 1.0080930633125467e-05,
+        "std": 0.00013714169781419783,
+        "min": 2.645267e-318,
+        "max": 0.0029887683062021163
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 5.456958781034439e-198,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 1.327415899371674e-197,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0855342684215643,
         "f_j2_altitude": 2.6127087779168167e-195,
         "f_plasma": 0.9873132793129012,
@@ -183,8 +183,8 @@
         "f_geometry_total": 0.2802681836738649,
         "f_screening": 1.0,
         "f_total": 0.2802681836738649,
-        "beta_eff": 0.0005461789419269094,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.001328590961572818,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -197,21 +197,21 @@
       }
     },
     "Cassini": {
-      "dv_integrated_mm_s": -0.004383692790400606,
-      "dv_perigee_mm_s": -5.326023415145495e-05,
-      "difference_mm_s": -0.004330432556249151,
-      "ratio_integrated_perigee": 82.30705065874844,
+      "dv_integrated_mm_s": -0.0021203398230333678,
+      "dv_perigee_mm_s": -1.0590393289654255e-05,
+      "difference_mm_s": -0.0021097494297437134,
+      "ratio_integrated_perigee": 200.21351096608714,
       "path_length_km": 4119269.2273443,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 1.8330049386939806e-06,
-        "std": 3.016959682960579e-05,
+        "mean": 4.458820373915217e-06,
+        "std": 7.338813451997602e-05,
         "min": 0.0,
-        "max": 0.0007314090614848556
+        "max": 0.0017791668512025442
       },
       "modulation_factors_at_perigee": {
         "beta_eff": 0.0,
-        "beta_0": 0.0019487725462354747,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0167476533996924,
         "f_j2_altitude": 0.0,
         "f_plasma": 0.9873132793129012,
@@ -228,8 +228,8 @@
         "f_geometry_total": 0.3532530199917499,
         "f_screening": 1.0,
         "f_total": 0.3532530199917499,
-        "beta_eff": 0.0006884097872346935,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.001674570275359821,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -242,21 +242,21 @@
       }
     },
     "Galileo_1992": {
-      "dv_integrated_mm_s": 0.6284346727229317,
-      "dv_perigee_mm_s": -0.034811851294463965,
-      "difference_mm_s": 0.6632465240173957,
-      "ratio_integrated_perigee": -18.052319809342343,
+      "dv_integrated_mm_s": 0.3039663421823869,
+      "dv_perigee_mm_s": -0.006922072390837614,
+      "difference_mm_s": 0.31088841457322447,
+      "ratio_integrated_perigee": -43.91262110820038,
       "path_length_km": 2309900.3709474555,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.6320173597987856e-06,
-        "std": 4.93805463486052e-05,
-        "min": 1.5931568915430836e-278,
-        "max": 0.0012780530184340027
+        "mean": 8.83495328377195e-06,
+        "std": 0.00012011914506411723,
+        "min": 3.875385306881424e-278,
+        "max": 0.0031088889709144163
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 2.190092816074258e-234,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 5.327443621638575e-234,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.016922399517847,
         "f_j2_altitude": 1.1193311140298331e-231,
         "f_plasma": 0.9873132793129012,
@@ -273,8 +273,8 @@
         "f_geometry_total": 0.15059165452765963,
         "f_screening": 1.0,
         "f_total": 0.15059165452765963,
-        "beta_eff": 0.0002934688820356802,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.0007138687969183208,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -287,21 +287,21 @@
       }
     },
     "Rosetta_2005": {
-      "dv_integrated_mm_s": 0.44608513763609836,
-      "dv_perigee_mm_s": 0.1757984655197509,
-      "difference_mm_s": 0.2702866721163475,
-      "ratio_integrated_perigee": 2.5374802693370544,
+      "dv_integrated_mm_s": 0.21576605091131476,
+      "dv_perigee_mm_s": 0.03495619047181799,
+      "difference_mm_s": 0.18080986043949676,
+      "ratio_integrated_perigee": 6.172470397919,
       "path_length_km": 1108396.4535648597,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 4.207098300115741e-06,
-        "std": 4.61041077604498e-05,
-        "min": 1.7039633584747328e-157,
-        "max": 0.0007609121253293506
+        "mean": 1.0233848921861472e-05,
+        "std": 0.0001121491440988398,
+        "min": 4.144924205488223e-157,
+        "max": 0.00185093363119632
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 3.0238681749191654e-93,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 7.355618493843219e-93,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0843026377743856,
         "f_j2_altitude": 1.4494265386806024e-90,
         "f_plasma": 0.9873132793129012,
@@ -318,8 +318,8 @@
         "f_geometry_total": 0.3909968560352343,
         "f_screening": 1.0,
         "f_total": 0.3909968560352343,
-        "beta_eff": 0.0007619639387058489,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.001853492187812119,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -332,21 +332,21 @@
       }
     },
     "Rosetta_2007": {
-      "dv_integrated_mm_s": 0.00020545643113445886,
-      "dv_perigee_mm_s": 6.6498078579098e-05,
-      "difference_mm_s": 0.00013895835255536086,
-      "ratio_integrated_perigee": 3.089659664227335,
+      "dv_integrated_mm_s": 9.937682079060452e-05,
+      "dv_perigee_mm_s": 1.3222638172343492e-05,
+      "difference_mm_s": 8.615418261826102e-05,
+      "ratio_integrated_perigee": 7.5156575787168824,
       "path_length_km": 2427976.2941625714,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 6.938921433669915e-07,
-        "std": 8.52317299736579e-06,
+        "mean": 1.6879062139073552e-06,
+        "std": 2.073278506174459e-05,
         "min": 0.0,
-        "max": 0.0001535753190226828
+        "max": 0.0003735749680395097
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 1.6555109739063678e-203,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 4.027062832112912e-203,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0452289226340212,
         "f_j2_altitude": 8.231983935013326e-201,
         "f_plasma": 0.9873132793129012,
@@ -363,8 +363,8 @@
         "f_geometry_total": 0.07917068578469329,
         "f_screening": 1.0,
         "f_total": 0.07917068578469329,
-        "beta_eff": 0.00015428565892384544,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.00037530288374603565,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -377,21 +377,21 @@
       }
     },
     "Rosetta_2009": {
-      "dv_integrated_mm_s": 0.00963338005854262,
-      "dv_perigee_mm_s": 0.0012001144942585659,
-      "difference_mm_s": 0.008433265564284056,
-      "ratio_integrated_perigee": 8.027050839423575,
+      "dv_integrated_mm_s": 0.00465955082739199,
+      "dv_perigee_mm_s": 0.00023863365772426885,
+      "difference_mm_s": 0.004420917169667722,
+      "ratio_integrated_perigee": 19.525958206515465,
       "path_length_km": 2451561.841096756,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 2.1996221513585436e-06,
-        "std": 2.8967246963585293e-05,
-        "min": 5.453190259685814e-301,
-        "max": 0.0005652018422848392
+        "mean": 5.350623916147611e-06,
+        "std": 7.04633949483488e-05,
+        "min": 1.326499199180961e-300,
+        "max": 0.001374864538853701
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 5.453190259685814e-301,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 1.326499199180961e-300,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.061669498828719,
         "f_j2_altitude": 2.6695937614553905e-298,
         "f_plasma": 0.9873132793129012,
@@ -408,8 +408,8 @@
         "f_geometry_total": 0.2780195871089687,
         "f_screening": 1.0,
         "f_total": 0.2780195871089687,
-        "beta_eff": 0.0005417969386736802,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.0013179316529307026,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -422,21 +422,21 @@
       }
     },
     "MESSENGER_2005": {
-      "dv_integrated_mm_s": 0.0002969537558586359,
-      "dv_perigee_mm_s": 2.962146923366389e-07,
-      "difference_mm_s": 0.00029665754116629925,
-      "ratio_integrated_perigee": 1002.495026550395,
+      "dv_integrated_mm_s": 0.00014363298348031683,
+      "dv_perigee_mm_s": 5.8900043155992084e-08,
+      "difference_mm_s": 0.00014357408343716084,
+      "ratio_integrated_perigee": 2438.588764696085,
       "path_length_km": 1140539.8706600338,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.701279489740662e-06,
-        "std": 4.045745030447981e-05,
-        "min": 7.43079473959274e-154,
-        "max": 0.0006613315907095163
+        "mean": 9.003434769886024e-06,
+        "std": 9.841353936711539e-05,
+        "min": 1.807555357864183e-153,
+        "max": 0.0016087020325599051
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 3.2868003576818874e-106,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 7.99520617236619e-106,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0812855905665506,
         "f_j2_altitude": 1.5798533629299996e-103,
         "f_plasma": 0.9873132793129012,
@@ -453,8 +453,8 @@
         "f_geometry_total": 0.33874390178751174,
         "f_screening": 1.0,
         "f_total": 0.33874390178751174,
-        "beta_eff": 0.0006601348160081888,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.0016057908546854651,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -467,21 +467,21 @@
       }
     },
     "Juno": {
-      "dv_integrated_mm_s": 0.15925052600519898,
-      "dv_perigee_mm_s": 0.01316795791180281,
-      "difference_mm_s": 0.14608256809339618,
-      "ratio_integrated_perigee": 12.093790629635768,
+      "dv_integrated_mm_s": 0.07702757658275063,
+      "dv_perigee_mm_s": 0.002618348479487422,
+      "difference_mm_s": 0.0744092281032632,
+      "ratio_integrated_perigee": 29.418382307090706,
       "path_length_km": 2693525.409391039,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.4379241065197904e-06,
-        "std": 4.868279313979128e-05,
+        "mean": 8.362817647969194e-06,
+        "std": 0.00011842184673297312,
         "min": 0.0,
-        "max": 0.0012545821347722205
+        "max": 0.003051795587227456
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 6.524498068009348e-238,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 1.5870969194408365e-237,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0923475307135555,
         "f_j2_altitude": 3.104346173159331e-235,
         "f_plasma": 0.9873132793129012,
@@ -498,8 +498,8 @@
         "f_geometry_total": 0.25151830708083694,
         "f_screening": 1.0,
         "f_total": 0.25151830708083694,
-        "beta_eff": 0.0004901519717147587,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.0011923042604313186,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -512,21 +512,21 @@
       }
     },
     "Stardust": {
-      "dv_integrated_mm_s": 0.0001089372189121846,
-      "dv_perigee_mm_s": -0.0003350289101257082,
-      "difference_mm_s": 0.0004439661290378928,
-      "ratio_integrated_perigee": -0.3251576673526759,
+      "dv_integrated_mm_s": 5.2691631123379965e-05,
+      "dv_perigee_mm_s": -6.661795574435252e-05,
+      "difference_mm_s": 0.00011930958686773248,
+      "ratio_integrated_perigee": -0.790952387154973,
       "path_length_km": 1733288.2439553256,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 6.200537214187771e-07,
-        "std": 6.642480405409966e-06,
-        "min": 3.561189479680424e-195,
-        "max": 0.00010470708860000187
+        "mean": 1.5082928079582006e-06,
+        "std": 1.6157963538318222e-05,
+        "min": 8.662663079721549e-195,
+        "max": 0.00025470204148804964
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 3.561189479680424e-195,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 8.662663079721549e-195,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.026616842881901,
         "f_j2_altitude": 1.8028955449166844e-192,
         "f_plasma": 0.9873132793129012,
@@ -543,8 +543,8 @@
         "f_geometry_total": 0.05366933372098292,
         "f_screening": 1.0,
         "f_total": 0.05366933372098292,
-        "beta_eff": 0.0001045893241302013,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 0.0002544155771113392,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -557,21 +557,21 @@
       }
     },
     "OSIRIS-REx": {
-      "dv_integrated_mm_s": 5.523714947235127e-10,
-      "dv_perigee_mm_s": 2.1460540362927517e-06,
-      "difference_mm_s": -2.1455016647980284e-06,
-      "ratio_integrated_perigee": 0.0002573893692246999,
+      "dv_integrated_mm_s": 2.6717549184455907e-10,
+      "dv_perigee_mm_s": 4.2672655551157307e-07,
+      "difference_mm_s": -4.264593800197285e-07,
+      "ratio_integrated_perigee": 0.0006261046761532353,
       "path_length_km": 1683328.561982093,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": 3.66852393268979e-09,
-        "std": 3.177834636914472e-08,
-        "min": 5.413258892221291e-208,
-        "max": 4.0105232963149275e-07
+        "mean": 8.923756236536608e-09,
+        "std": 7.730144924815878e-08,
+        "min": 1.3167858159242871e-207,
+        "max": 9.755676379361921e-07
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": 7.223141071382371e-160,
-        "beta_0": 0.0019487725462354747,
+        "beta_eff": 1.7570431968225262e-159,
+        "beta_0": 0.004740427344114228,
         "f_inclination": 1.0799164110844357,
         "f_j2_altitude": 3.476320622775851e-157,
         "f_plasma": 0.9873132793129012,
@@ -588,8 +588,8 @@
         "f_geometry_total": 0.00020400005125355427,
         "f_screening": 1.0,
         "f_total": 0.00020400005125355427,
-        "beta_eff": 3.975496993135563e-07,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 9.670474211630526e-07,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -602,28 +602,28 @@
       }
     },
     "BepiColombo": {
-      "dv_integrated_mm_s": NaN,
-      "dv_perigee_mm_s": -3.475335833742982e-07,
-      "difference_mm_s": NaN,
-      "ratio_integrated_perigee": NaN,
-      "path_length_km": NaN,
+      "dv_integrated_mm_s": 3.795894373837119e-09,
+      "dv_perigee_mm_s": -6.910441510321669e-08,
+      "difference_mm_s": 7.290030947705381e-08,
+      "ratio_integrated_perigee": -0.054929838682050106,
+      "path_length_km": 1166758.3699100853,
       "n_integration_points": 4320,
       "beta_eff_stats": {
-        "mean": NaN,
-        "std": NaN,
-        "min": NaN,
-        "max": NaN
+        "mean": 8.852358686712743e-08,
+        "std": 7.210985072851868e-07,
+        "min": 3.758734456459779e-161,
+        "max": 8.61921355776271e-06
       },
       "modulation_factors_at_perigee": {
-        "beta_eff": NaN,
-        "beta_0": 0.0019487725462354747,
-        "f_inclination": NaN,
-        "f_j2_altitude": NaN,
+        "beta_eff": 4.3965277254608445e-151,
+        "beta_0": 0.004740427344114228,
+        "f_inclination": 1.0157644171597968,
+        "f_j2_altitude": 9.247926048104407e-149,
         "f_plasma": 0.9873132793129012,
         "f_velocity": 1.0,
-        "f_geometry_total": NaN,
+        "f_geometry_total": 9.274538783765195e-149,
         "f_screening": 1.0,
-        "f_total": NaN
+        "f_total": 9.274538783765195e-149
       },
       "modulation_factors": {
         "f_inclination": 1.050282178035775,
@@ -633,8 +633,8 @@
         "f_geometry_total": 0.00181288015770383,
         "f_screening": 1.0,
         "f_total": 0.00181288015770383,
-        "beta_eff": 3.5328910809482618e-06,
-        "beta_0": 0.0019487725462354747
+        "beta_eff": 8.593826671181349e-06,
+        "beta_0": 0.004740427344114228
       },
       "method": "full_3d_trajectory_integration",
       "geometry_at_perigee": {
@@ -651,62 +651,62 @@
     {
       "name": "NEAR",
       "f_total": 0.19041690405710016,
-      "beta_eff": 0.00037107923496563117
+      "beta_eff": 0.000902657498773853
     },
     {
       "name": "Galileo_1990",
       "f_total": 0.2802681836738649,
-      "beta_eff": 0.0005461789419269094
+      "beta_eff": 0.001328590961572818
     },
     {
       "name": "Cassini",
       "f_total": 0.3532530199917499,
-      "beta_eff": 0.0006884097872346935
+      "beta_eff": 0.001674570275359821
     },
     {
       "name": "Galileo_1992",
       "f_total": 0.15059165452765963,
-      "beta_eff": 0.0002934688820356802
+      "beta_eff": 0.0007138687969183208
     },
     {
       "name": "Rosetta_2005",
       "f_total": 0.3909968560352343,
-      "beta_eff": 0.0007619639387058489
+      "beta_eff": 0.001853492187812119
     },
     {
       "name": "Rosetta_2007",
       "f_total": 0.07917068578469329,
-      "beta_eff": 0.00015428565892384544
+      "beta_eff": 0.00037530288374603565
     },
     {
       "name": "Rosetta_2009",
       "f_total": 0.2780195871089687,
-      "beta_eff": 0.0005417969386736802
+      "beta_eff": 0.0013179316529307026
     },
     {
       "name": "MESSENGER_2005",
       "f_total": 0.33874390178751174,
-      "beta_eff": 0.0006601348160081888
+      "beta_eff": 0.0016057908546854651
     },
     {
       "name": "Juno",
       "f_total": 0.25151830708083694,
-      "beta_eff": 0.0004901519717147587
+      "beta_eff": 0.0011923042604313186
     },
     {
       "name": "Stardust",
       "f_total": 0.05366933372098292,
-      "beta_eff": 0.0001045893241302013
+      "beta_eff": 0.0002544155771113392
     },
     {
       "name": "OSIRIS-REx",
       "f_total": 0.00020400005125355427,
-      "beta_eff": 3.975496993135563e-07
+      "beta_eff": 9.670474211630526e-07
     },
     {
       "name": "BepiColombo",
       "f_total": 0.00181288015770383,
-      "beta_eff": 3.5328910809482618e-06
+      "beta_eff": 8.593826671181349e-06
     }
   ]
 }

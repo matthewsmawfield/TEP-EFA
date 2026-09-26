@@ -1,7 +1,7 @@
 {
   "step_name": "step_037_visualizations",
   "step_number": "037",
-  "timestamp": "2026-09-26T14:52:50.201598+00:00",
+  "timestamp": "2026-09-26T17:26:08.112973+00:00",
   "input_files": [],
   "output_files": [
     {
@@ -13,20 +13,20 @@
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure2_beta_comparison.png",
       "description": "Fitted beta comparison figure",
-      "size_bytes": 192905,
-      "hash": "01da29273c3af2d48d161c3485b715125b821f4669e3fd0972ed8f84a66e34d2"
+      "size_bytes": 180402,
+      "hash": "099d6b968f8ef7ba268f6065b1e4114e8cf4845d2f759795e48ccb131046294f"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure3_ppn_constraints.png",
       "description": "PPN constraint figure",
-      "size_bytes": 189056,
-      "hash": "f99c45239355fdc4b0e87146ab58bf3f14cd7809237f0d47bd80f83477d2396c"
+      "size_bytes": 187378,
+      "hash": "3f80678708543aad91913162cdc945c351e120fc7e04b989fb59840232296f6e"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step037_figure4_screening_profile.png",
       "description": "Screening profile figure",
-      "size_bytes": 177480,
-      "hash": "6d3ae148a3fc92a07a823140c6692800076d84e3100624f587400cb15fc476be"
+      "size_bytes": 251056,
+      "hash": "6532f217f74aee92e57aa58cd021e684e54af27711f938c2496cbd2886909f19"
     }
   ],
   "parameters": {},
