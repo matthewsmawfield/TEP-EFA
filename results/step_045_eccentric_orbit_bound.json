@@ -1,0 +1,27 @@
+{
+    "delva_bound": {
+        "alpha": 1.9e-06,
+        "alpha_err": 2.48e-05,
+        "gr_modulation": 5.3e-11,
+        "max_anomalous_modulation": 2.7295e-15,
+        "reference": "Delva et al. (2018) PRL 121(23), 231101"
+    },
+    "orbit_gsat_0201": {
+        "a_m": 27977600.0,
+        "e": 0.162,
+        "r_p_m": 23445228.8,
+        "r_a_m": 32509971.2
+    },
+    "canonical_model": {
+        "lambda_tep_m": 4200000.0,
+        "eta_periapsis": -4.7691551164202624e-12,
+        "eta_apoapsis": -5.509546185352028e-13,
+        "predicted_modulation": 4.218200497885059e-12,
+        "exceeds_bound_by_factor": 1545.4114298901115
+    },
+    "bounded_model": {
+        "lambda_tep_max_m": 1480993.839489644,
+        "lambda_tep_max_km": 1480.993839489644
+    },
+    "conclusion": "If the clock-amplitude excursion operates as a lapse-level term, Delva et al. (2018) bounds the exterior vertical relaxation scale to lambda_TEP <= 1481.0 km, decoupling it from the lateral correlation scale L_c = 4201 km. Alternatively, the excursion enters observables only through non-integrable transport (the holonomy sector), meaning Step 043 uses the wrong observable for this channel."
+}

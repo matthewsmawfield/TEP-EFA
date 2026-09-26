@@ -84,6 +84,7 @@ CORE_STEPS: list[tuple[str, str]] = [
     ('step_030_juno_reanalysis.py', 'Step 030: Juno 2013 Reanalysis'),
     ('step_042_time_resolved_cosmography.py', 'Step 042: Time-Resolved Cosmography (after Horizons + optional Juno DSN sidecar)'),
     ('step_043_clock_sector_od.py', 'Step 043: Clock-Sector Proper-Time Artefact OD Rederivation'),
+    ('step_045_eccentric_orbit_bound.py', 'Step 045: Eccentric-Orbit Clock Bound on Lambda_TEP'),
     ('step_031_pds_search.py', 'Step 031: PDS Search'),
     ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
     
