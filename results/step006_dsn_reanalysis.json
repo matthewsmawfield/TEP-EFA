@@ -1,10 +1,10 @@
 {
   "step": "006_dsn_framework",
-  "timestamp": "2026-09-26T15:18:48.530845",
+  "timestamp": "2026-09-26T15:48:03.354862",
   "reference_validation": {
     "step": "006_dsn_framework",
     "mission": "DART_TRK234_REFERENCE",
-    "timestamp": "2026-09-26T15:18:48.531804",
+    "timestamp": "2026-09-26T15:48:03.355335",
     "mode": "reference_format_validation",
     "status": "REFERENCE_FORMAT_VALIDATION_COMPLETE",
     "parsing": {

@@ -1,38 +1,38 @@
 {
   "step_name": "step_005_dsn_data_ingestion",
   "step_number": "005",
-  "timestamp": "2026-09-26T14:16:59.620893+00:00",
+  "timestamp": "2026-09-26T14:46:15.424441+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests/step005_NASA_request_NEAR_1998.json",
       "description": "DSN request for NEAR_1998",
       "size_bytes": 1156,
-      "hash": "8f8e0229ee2a1ac8cf99239b189bf48618abe01b9abc13a227057b99dbd6a6e3"
+      "hash": "90b044472d4e54d41e8dddcce8002e627e40714f81edc4521accaa2944835fa3"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests/step005_NASA_request_Galileo_1990.json",
       "description": "DSN request for Galileo_1990",
       "size_bytes": 1162,
-      "hash": "ad6003ddfa0ec2c9ea0a43fab92c1d7c3e4251525ccbc79c0776fd9d18d861c4"
+      "hash": "0c539fe33db1ba0b62403ef18d0dff6dc61faf4705106ba8d4d90d07590b9293"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests/step005_NASA_request_Cassini_1999.json",
       "description": "DSN request for Cassini_1999",
       "size_bytes": 1162,
-      "hash": "a48f7baa80b3946b7d7eb25bc411ff19ef87f0c868ac6fe2dd41bc09fd516e2c"
+      "hash": "9dfd07dd9b409e5cd68983b071ea4e17768b3d3c1c53cf7c74407dc719d5dc40"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests/step005_NASA_request_Juno_2013.json",
       "description": "DSN request for Juno_2013",
       "size_bytes": 1156,
-      "hash": "a0fc35327538d45d1704e20c615bdcb147eaf9de7b1b546f262613eadf638b56"
+      "hash": "353ff48a7b53a5175672c33287e0bdaf828d8a1d64c571413ab49a1486061036"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests/step005_ESA_request_Rosetta_2005.json",
       "description": "DSN request for Rosetta_2005",
       "size_bytes": 1159,
-      "hash": "3b9bc5ba3f1bde46b6b8fe7fed2a32ef456ebed813c9943ebbb364c171962464"
+      "hash": "6960e11b65b093d3fbc3522164836a038b161271cc62d17c6592502741a36669"
     }
   ],
   "parameters": {},

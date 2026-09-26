@@ -1,20 +1,20 @@
 {
   "step_name": "step_002_spice_to_json",
   "step_number": "002",
-  "timestamp": "2026-09-26T14:15:52.667951+00:00",
+  "timestamp": "2026-09-26T14:45:28.824616+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/flyby_trajectories/Rosetta_2005_trajectory.json",
       "description": "Rosetta_2005 trajectory JSON",
       "size_bytes": 31361,
-      "hash": "f33a931214f4c6e5d195f215e7a3cc3c1ab082190c909596431df12607bebf89"
+      "hash": "127180b27e0644c82aeaeb04d6ab8d9458509a282585d0a79ec4c1037fa0064f"
     },
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/flyby_trajectories/Rosetta_2007_trajectory.json",
       "description": "Rosetta_2007 trajectory JSON",
       "size_bytes": 61189,
-      "hash": "ae8c48db24ceef5124a0ed724373a9134ddb53f3e19f324767d76a2e6fe7a982"
+      "hash": "e1c85f68634b4b98eb8f337648b25ab29d34ab3dc83edd0092bc673e10f1e1b1"
     }
   ],
   "parameters": {},

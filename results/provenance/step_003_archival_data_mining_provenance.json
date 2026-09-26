@@ -1,14 +1,14 @@
 {
   "step_name": "step_003_archival_data_mining",
   "step_number": "003",
-  "timestamp": "2026-09-26T14:15:52.756888+00:00",
+  "timestamp": "2026-09-26T14:45:28.899667+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step003_archival_flyby_catalog.json",
       "description": "Archival flyby catalog with metadata",
       "size_bytes": 14644,
-      "hash": "8db634bf0ed9e72dde0102c565ea4f7f03fc34d608535d3d180aeb9c3300e8e4"
+      "hash": "ffef320b280ec3f1b4d5b1395f5aa2f44fc9bb13f088f1cfff83e30ccd4ea271"
     }
   ],
   "parameters": {},
