@@ -49,9 +49,9 @@
     }
   },
   "bayes_factors": {
-    "Anderson_vs_Null": Infinity,
-    "TEP_restricted_vs_Null": Infinity,
-    "TEP_flexible_vs_Null": Infinity,
+    "Anderson_vs_Null": null,
+    "TEP_restricted_vs_Null": null,
+    "TEP_flexible_vs_Null": null,
     "TEP_restricted_vs_Anderson": 8.752207585988425e-33,
     "delta_BIC_Anderson_vs_Null": 6503.738404439374,
     "delta_BIC_TEP_restricted_vs_Null": 6356.106400229946,
@@ -122,9 +122,9 @@
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": Infinity,
-      "TEP_restricted_vs_Null": Infinity,
-      "TEP_flexible_vs_Null": Infinity,
+      "Anderson_vs_Null": null,
+      "TEP_restricted_vs_Null": null,
+      "TEP_flexible_vs_Null": null,
       "TEP_restricted_vs_Anderson": 1.4558320500374905e+184,
       "delta_BIC_Anderson_vs_Null": 14722.088234825473,
       "delta_BIC_TEP_restricted_vs_Null": 15570.190704233026,
@@ -279,9 +279,9 @@
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": Infinity,
-      "TEP_restricted_vs_Null": Infinity,
-      "TEP_flexible_vs_Null": Infinity,
+      "Anderson_vs_Null": null,
+      "TEP_restricted_vs_Null": null,
+      "TEP_flexible_vs_Null": null,
       "TEP_restricted_vs_Anderson": 8.752207585988425e-33,
       "delta_BIC_Anderson_vs_Null": 6503.738404439374,
       "delta_BIC_TEP_restricted_vs_Null": 6356.106400229946,
@@ -385,9 +385,9 @@
       }
     },
     "bayes_factors": {
-      "Anderson_vs_Null": Infinity,
-      "TEP_restricted_vs_Null": Infinity,
-      "TEP_flexible_vs_Null": Infinity,
+      "Anderson_vs_Null": null,
+      "TEP_restricted_vs_Null": null,
+      "TEP_flexible_vs_Null": null,
       "TEP_restricted_vs_Anderson": 5.421083196187533e-22,
       "delta_BIC_Anderson_vs_Null": 7633.132451534578,
       "delta_BIC_TEP_restricted_vs_Null": 7535.199298737198,

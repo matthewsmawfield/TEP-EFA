@@ -1,14 +1,14 @@
 {
   "step_name": "step_027_claim_consistency_audit",
   "step_number": "027",
-  "timestamp": "2026-09-26T17:43:10.336816+00:00",
+  "timestamp": "2026-09-26T21:15:29.724723+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step027_claim_consistency_audit.json",
       "description": "machine-readable claim consistency audit report",
-      "size_bytes": 2447,
-      "hash": "2e20c054e6117df04c9bebf3cef60ebd70236306db10ffcc1adafe65eedc8074"
+      "size_bytes": 2448,
+      "hash": "fa3bc9375be1e674dc8764a343ce2331ccb982f6a34378a58cc28c7209f32b82"
     }
   ],
   "parameters": {},

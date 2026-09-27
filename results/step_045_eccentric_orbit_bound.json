@@ -14,14 +14,14 @@
     },
     "canonical_model": {
         "lambda_tep_m": 4200000.0,
-        "eta_periapsis": -4.7691551164202624e-12,
-        "eta_apoapsis": -5.509546185352028e-13,
-        "predicted_modulation": 4.218200497885059e-12,
-        "exceeds_bound_by_factor": 1545.4114298901115
+        "eta_periapsis": -2.3894740213458236e-11,
+        "eta_apoapsis": -2.7604297109330792e-12,
+        "predicted_modulation": 2.1134310502525156e-11,
+        "exceeds_bound_by_factor": 7742.9237964920885
     },
     "bounded_model": {
-        "lambda_tep_max_m": 1480993.839489644,
-        "lambda_tep_max_km": 1480.993839489644
+        "lambda_tep_max_m": 1299245.025008121,
+        "lambda_tep_max_km": 1299.245025008121
     },
-    "conclusion": "If the clock-amplitude excursion operates as a lapse-level term, Delva et al. (2018) bounds the exterior vertical relaxation scale to lambda_TEP <= 1481.0 km, decoupling it from the lateral correlation scale L_c = 4201 km. Alternatively, the excursion enters observables only through non-integrable transport (the holonomy sector), meaning Step 043 uses the wrong observable for this channel."
+    "conclusion": "If the clock-amplitude excursion operates as a lapse-level term, Delva et al. (2018) bounds the exterior vertical relaxation scale to lambda_TEP <= 1299.2 km, decoupling it from the lateral correlation scale L_c = 4201 km. Alternatively, the excursion enters observables only through non-integrable transport (the holonomy sector), meaning Step 043 uses the wrong observable for this channel."
 }

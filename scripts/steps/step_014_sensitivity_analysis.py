@@ -68,7 +68,7 @@ class SensitivityAnalyzer:
         # CRITICAL: These are HEURISTIC nominal values with ±50% uncertainty
         self.nominal = {
             "beta": 1e-4,  # ±50% uncertainty - heuristic coupling strength
-            "lambda_tep_km": 4146,  # ±15% uncertainty - from GNSS calibration
+            "lambda_tep_km": 4200,  # ±15% uncertainty - GNSS-calibrated operational value (LAMBDA_TEP_M)
             "characteristic_suppression": 0.35,  # ±50% uncertainty - heuristic screening factor
             "disformal_coupling": 0.5,  # ±50% uncertainty - theoretical coupling strength (Yogyakarta v0.1)
             "j2": 0.00108263,  # ±10% uncertainty - from geodetic measurements
@@ -99,13 +99,13 @@ class SensitivityAnalyzer:
                 "recommended_action": "Reduce uncertainty through additional flyby measurements and independent GNSS calibration validation"
             },
             "lambda_tep_km": {
-                "value": 4146,
+                "value": 4200,
                 "uncertainty_fraction": 0.15,
-                "uncertainty_absolute": 622,
+                "uncertainty_absolute": 630,
                 "status": "empirical",
                 "calibration_status": "empirically_calibrated_from_GNSS",
                 "data_source": "GNSS atomic clock correlation analysis (Paper 6, UCD)",
-                "derivation": "λ_TEP = 4146 km is the characteristic relaxation length from GNSS atomic clock correlation analysis; ±15% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
+                "derivation": "λ_TEP = 4200 km is the operational exterior relaxation length anchored on the measured GNSS clock-correlation scale L_c = 4201 km; the transfer-sketch ansatz motivates the scale order via R_T = 4146 km (1.3% apart, inside the ±15% calibration band — L_c is measured, R_T is derived, per 15-8); ±15% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
                 "recommended_action": "Improve precision through longer GNSS time series and multi-network analysis"
             },
             "characteristic_suppression": {

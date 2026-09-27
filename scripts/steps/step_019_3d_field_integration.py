@@ -58,19 +58,15 @@ class Field3DIntegrator:
     C_LIGHT = 299792458.0  # m/s (CODATA 2018, from physics.py)
     R_EARTH = 6.371e6  # m
     
-    def __init__(self, beta=None, Lambda_GeV=0.01, n=3):
+    def __init__(self, beta=None):
         """
         Initialize 3D field integrator.
-        
+
         Args:
             beta: Coupling constant (dimensionless, defaults to BETA_BASELINE from physics.py)
-            Lambda_GeV: screened field scale in GeV (default 0.01 = 10 MeV)
-            n: screened field power-law index (default 3)
         """
         self.logger = StepLogger("step_019_3d_field_integration", PROJECT_ROOT)
         self.beta = beta if beta is not None else BETA_BASELINE * 1e-4
-        self.Lambda = Lambda_GeV
-        self.n = n
         
     def compute_field_gradient_3d(self, position, density_field):
         """

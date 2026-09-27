@@ -14,7 +14,8 @@ PURPOSE:
 
 PIPELINE (Option A rederivation):
     phi(r(t)) -> eta(t) = A(psi) - 1  ->  delta_tau(t) = ∫ eta dt
-             -> two-way Doppler corruption  rho_dot_obs = rho_dot + 2c·eta
+             -> synthetic clock-carrying injection  z_clock = z_clean + c·eta
+                (two-way geometric proxy; not coherent-link clock coupling)
              -> batch least-squares OD fit (GR time standard assumed)
              -> Delta_v_apparent  vs  published anomaly
 
@@ -360,8 +361,11 @@ def main():
             "beta_A": BETA_A,
             "amplitude_channel": "S_A unsuppressed at perigee; shear channel "
                                  "S_Sigma does not enter the clock observable",
-            "observable": "two-way coherent Doppler; rho_dot += c*eta(t) "
-                          "constant station offset absorbed by calibration",
+            "observable": "synthetic clock-carrying Doppler proxy; "
+                          "z_clock = z_clean + c*eta(t), with a two-way "
+                          "geometric baseline and one clock-reference term; "
+                          "not a fully coherent two-way link. Constant station "
+                          "offset absorbed by calibration",
             "od_filter": "MinimalODFilter (6-state batch LSQ, point-mass "
                          "dynamics, GR time standard) + empirical-acceleration "
                          "variant for absorption diagnostic",

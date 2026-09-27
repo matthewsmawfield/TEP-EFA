@@ -15,16 +15,16 @@
       "impact_assessment": "high"
     },
     "lambda_tep_km": {
-      "sensitivity_coefficient": 0.36068905306159843,
-      "max_impact": 0.4824049521031774,
+      "sensitivity_coefficient": 0.35611545945807843,
+      "max_impact": 0.47630335046950606,
       "by_flyby": {
-        "Galileo_1990": 0.23897315402001948,
-        "Rosetta_2005": 0.4824049521031774
+        "Galileo_1990": 0.23592756844665075,
+        "Rosetta_2005": 0.47630335046950606
       },
       "nominal_value": {
-        "value": 4146.0,
+        "value": 4200.0,
         "source": "GNSS atomic clock correlation analysis (Paper 6, UCD)",
-        "derivation": "\u03bb_TEP = 4146 km is the characteristic relaxation length from GNSS atomic clock correlation analysis; \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement"
+        "derivation": "\u03bb_TEP = 4200 km is the operational exterior relaxation length anchored on the measured GNSS clock-correlation scale L_c = 4201 km; the transfer-sketch ansatz motivates the scale order via R_T = 4146 km (1.3% apart, inside the \u00b115% calibration band \u2014 L_c is measured, R_T is derived, per 15-8); \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement"
       },
       "impact_assessment": "moderate"
     },
@@ -38,7 +38,7 @@
       "nominal_value": {
         "value": 0.35,
         "source": "UCD saturation formula with GNSS-derived \u03c1_T = 20 g/cm\u00b3",
-        "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 8 g/cm\u00b3 (Paper 6 UCD), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65"
+        "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 7 g/cm\u00b3 (35% inter-center systematic, Paper 6 UCD; the wider epoch/window band [8,70] is carried separately there), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65"
       },
       "impact_assessment": "high"
     },
@@ -91,7 +91,7 @@
         "fractional_uncertainty": 0.5,
         "sensitivity_coefficient": 0.9999999999999999,
         "contribution_to_total": 0.49999999999999994,
-        "percent_of_total": 0.602661334644492,
+        "percent_of_total": 0.6031600867597409,
         "data_source": "TEP-EFA pipeline weighted mean from flyby anomaly analysis",
         "calibration_status": "empirically_calibrated_from_flyby_fits",
         "derivation": "\u03b2 = 1\u00d710\u207b\u2074 is the nominal coupling constant for TEP scalar field; this value is derived from the ensemble weighted mean of flyby anomaly fits; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration and heterogeneity across flybys",
@@ -99,29 +99,29 @@
       },
       "lambda_tep_km": {
         "fractional_uncertainty": 0.15,
-        "sensitivity_coefficient": 0.36068905306159843,
-        "contribution_to_total": 0.05410335795923976,
-        "percent_of_total": 0.06521200383292827,
+        "sensitivity_coefficient": 0.35611545945807843,
+        "contribution_to_total": 0.053417318918711765,
+        "percent_of_total": 0.06443838942696588,
         "data_source": "GNSS atomic clock correlation analysis (Paper 6, UCD)",
         "calibration_status": "empirically_calibrated_from_GNSS",
-        "derivation": "\u03bb_TEP = 4146 km is the characteristic relaxation length from GNSS atomic clock correlation analysis; \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
+        "derivation": "\u03bb_TEP = 4200 km is the operational exterior relaxation length anchored on the measured GNSS clock-correlation scale L_c = 4201 km; the transfer-sketch ansatz motivates the scale order via R_T = 4146 km (1.3% apart, inside the \u00b115% calibration band \u2014 L_c is measured, R_T is derived, per 15-8); \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
         "recommended_action": "Improve precision through longer GNSS time series and multi-network analysis"
       },
       "characteristic_suppression": {
         "fractional_uncertainty": 0.25,
         "sensitivity_coefficient": 1.0,
         "contribution_to_total": 0.25,
-        "percent_of_total": 0.30133066732224606,
+        "percent_of_total": 0.30158004337987043,
         "data_source": "UCD saturation formula with GNSS-derived \u03c1_T = 20 g/cm\u00b3",
         "calibration_status": "empirically_calibrated_from_GNSS_UCD",
-        "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 8 g/cm\u00b3 (Paper 6 UCD), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65",
+        "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 7 g/cm\u00b3 (35% inter-center systematic, Paper 6 UCD; the wider epoch/window band [8,70] is carried separately there), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65",
         "recommended_action": "Validate against independent geophysical measurements of field gradients"
       },
       "disformal_coupling": {
         "fractional_uncertainty": 0.5,
         "sensitivity_coefficient": 0.050000000000000155,
         "contribution_to_total": 0.025000000000000078,
-        "percent_of_total": 0.030133066732224698,
+        "percent_of_total": 0.030158004337987137,
         "data_source": "Theoretical coupling strength from Yogyakarta v0.1",
         "calibration_status": "theoretical_estimate_poorly_constrained",
         "derivation": "b_disf = 0.5 represents the relative strength of disformal to conformal coupling; this value is calibrated from the Cassini cancellation regime where disformal term partially cancels gradient term; \u00b150% uncertainty accounts for potential variations in the disformal coupling function B(\u03c6)",
@@ -131,7 +131,7 @@
         "fractional_uncertainty": 0.001,
         "sensitivity_coefficient": 0.050000000000000155,
         "contribution_to_total": 5.000000000000016e-05,
-        "percent_of_total": 6.02661334644494e-05,
+        "percent_of_total": 6.031600867597428e-05,
         "data_source": "Geodetic measurements (Earth's gravitational J2 coefficient)",
         "calibration_status": "well_constrained_geodetic",
         "derivation": "J2 = 0.00108263 is Earth's quadrupole moment coefficient from geodetic measurements; \u00b10.1% uncertainty represents the precision of geodetic measurements",
@@ -141,14 +141,14 @@
         "fractional_uncertainty": 0.01,
         "sensitivity_coefficient": 0.050000000000000155,
         "contribution_to_total": 0.0005000000000000015,
-        "percent_of_total": 0.000602661334644494,
+        "percent_of_total": 0.0006031600867597428,
         "data_source": "Geodetic measurements (Earth's gravitational J3 coefficient)",
         "calibration_status": "well_constrained_geodetic",
         "derivation": "J3 = -2.54\u00d710\u207b\u2076 is Earth's octupole moment coefficient from geodetic measurements; \u00b11% uncertainty represents the precision of geodetic measurements",
         "recommended_action": "No action needed - well constrained"
       }
     },
-    "total_fractional_uncertainty": 0.5621854016625347,
+    "total_fractional_uncertainty": 0.5621197936921126,
     "dominant_source": "beta"
   },
   "parameter_correlations": {
@@ -171,7 +171,7 @@
     },
     {
       "parameter": "lambda_tep_km",
-      "sensitivity": 0.36068905306159843,
+      "sensitivity": 0.35611545945807843,
       "impact": "moderate"
     },
     {
@@ -202,13 +202,13 @@
       "recommended_action": "Reduce uncertainty through additional flyby measurements and independent GNSS calibration validation"
     },
     "lambda_tep_km": {
-      "value": 4146,
+      "value": 4200,
       "uncertainty_fraction": 0.15,
-      "uncertainty_absolute": 622,
+      "uncertainty_absolute": 630,
       "status": "empirical",
       "calibration_status": "empirically_calibrated_from_GNSS",
       "data_source": "GNSS atomic clock correlation analysis (Paper 6, UCD)",
-      "derivation": "\u03bb_TEP = 4146 km is the characteristic relaxation length from GNSS atomic clock correlation analysis; \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
+      "derivation": "\u03bb_TEP = 4200 km is the operational exterior relaxation length anchored on the measured GNSS clock-correlation scale L_c = 4201 km; the transfer-sketch ansatz motivates the scale order via R_T = 4146 km (1.3% apart, inside the \u00b115% calibration band \u2014 L_c is measured, R_T is derived, per 15-8); \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
       "recommended_action": "Improve precision through longer GNSS time series and multi-network analysis"
     },
     "characteristic_suppression": {
@@ -218,7 +218,7 @@
       "status": "empirical",
       "calibration_status": "empirically_calibrated_from_GNSS_UCD",
       "data_source": "UCD saturation formula with GNSS-derived \u03c1_T = 20 g/cm\u00b3",
-      "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 8 g/cm\u00b3 (Paper 6 UCD), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65",
+      "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; ~\u00b125% uncertainty from \u03c1_T = 20 \u00b1 7 g/cm\u00b3 (35% inter-center systematic, Paper 6 UCD; the wider epoch/window band [8,70] is carried separately there), distinct from UCD embedding factor S = R_sol/R_earth \u2248 0.65",
       "recommended_action": "Validate against independent geophysical measurements of field gradients"
     },
     "disformal_coupling": {
@@ -254,6 +254,6 @@
   },
   "summary": {
     "dominant_uncertainty": "beta",
-    "total_uncertainty_percent": 56.218540166253476
+    "total_uncertainty_percent": 56.211979369211264
   }
 }

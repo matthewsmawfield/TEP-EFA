@@ -19,10 +19,9 @@ from scipy.optimize import root_scalar
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 from scripts.steps.step_007_tep_model import TEPTemporalTopologyModel
-from scripts.utils.physics import R_EARTH
+from scripts.utils.physics import R_EARTH, M_PL_GEV
 
 BETA_A = -1.0
-M_PL_GEV = 1.22e19
 
 # Delva et al. 2018 bounds
 DELVA_ALPHA = 0.19e-5

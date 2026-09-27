@@ -1,9 +1,9 @@
 {
   "metadata": {
     "step": "027_claim_consistency_audit",
-    "timestamp": "2026-09-26T17:43:10.475656+00:00",
+    "timestamp": "2026-09-26T21:15:29.970541+00:00",
     "status": "PASS",
-    "duration_seconds": 0.1383342742919922
+    "duration_seconds": 0.24427318572998047
   },
   "synced_files": [],
   "audits": [

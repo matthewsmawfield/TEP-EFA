@@ -33,7 +33,7 @@
       "thermal_acceleration_m_s2": 8.175590568582158e-11,
       "integrated_dv_mm_s": 0.007063710251254985,
       "observed_anomaly_mm_s": -2.0,
-      "thermal_fraction_of_anomaly": Infinity,
+      "thermal_fraction_of_anomaly": null,
       "excluded": false
     },
     {
@@ -45,7 +45,7 @@
       "thermal_acceleration_m_s2": 8.556774719304531e-11,
       "integrated_dv_mm_s": 0.007393053357479114,
       "observed_anomaly_mm_s": -4.6,
-      "thermal_fraction_of_anomaly": Infinity,
+      "thermal_fraction_of_anomaly": null,
       "excluded": false
     },
     {
@@ -89,7 +89,7 @@
     "n_analyzed": 7,
     "n_rtg_flybys": 3,
     "all_excluded": false,
-    "max_thermal_fraction": Infinity,
+    "max_thermal_fraction": null,
     "conclusion": "Thermal recoil may contribute to some anomalies"
   }
 }
