@@ -310,7 +310,13 @@ def main():
             "observed_anomaly_mm_s": cassini_anderson.get("published_anomaly_mm_s"),
             "anderson_prediction_mm_s": cassini_row.get("anderson_prediction_mm_s"),
             "tep_prediction_mm_s": cassini_row.get("tep_prediction_beta_ref_mm_s"),
-            "conclusion": "Both Anderson empirical formula and TEP model predict negative anomaly for Cassini because the published geometry factor cos_asymmetry = -0.088 is negative. The sign mismatch is inherited from the literature geometry, not a TEP-specific failure.",
+            "conclusion": (
+                "Both Anderson empirical formula and TEP model predict a negative "
+                f"anomaly for Cassini because the published geometry factor "
+                f"cos_asymmetry = {cassini_anderson.get('cos_asymmetry')} is negative. "
+                "The sign is inherited from the literature geometry (and confirmed by "
+                "the independent Horizons reconstruction), not a TEP-specific failure."
+            ),
         },
         "anderson_vs_tep_vs_observed_table": anderson_comparison,
         "geometry_audit_table": geometry_audit,

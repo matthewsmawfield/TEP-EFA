@@ -1,5 +1,10 @@
 v0.3 (Yogyakarta) — 23 September 2026
 
+- Reframed the flyby catalogue analysis as a gated clock-sector response test with multipole contributions
+- Changed the per-mission link classification to a literature-based ledger pending encounter-specific verification
+- Model-comparison scores now described as catalogue organization under a stated convention, not clock-mechanism evidence
+- Aligned abstract, methodology, results, discussion and conclusion wording with the current corpus
+
 v0.2 (Yogyakarta) — 14 September 2026 — Model-selection reframing, β_A notation, and S_Σ operator
 
 - Renamed conformal coupling notation: β → β_A, β_eff → β_{A,eff}, β_fit → b_flyby throughout

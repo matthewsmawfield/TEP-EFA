@@ -30,18 +30,18 @@
         </tr>
         <tr>
             <td>Artefact kernel (flyby sector)</td>
-            <td>F<sub>φ</sub> = β<sub>A,eff</sub> c² ∇φ / M<sub>Pl</sub>; β<sub>A,eff</sub> = β<sub>A</sub> × S<sub>⊕</sub></td>
-            <td>Paper 0; Paper 4 (Phantom Mass); methodology §3.2</td>
+            <td>Clock-sector excursion: Δv<sub>TEP</sub> = β × g(geometry) with canonical normalization Δφ = ψ<sub>uns</sub> = M<sub>⊕</sub>/(4π M<sub>Pl</sub><sup>2</sup> R<sub>⊕</sub>) = 1.39×10⁻⁹ (dimensionless η); the earlier force mapping F<sub>φ</sub> = β<sub>A,eff</sub> c² ∇φ / M<sub>Pl</sub> was retired at v0.3 under the amplitude–shear split (S<sub>Σ</sub> screened; the effect lives in the clock sector)</td>
+            <td>Paper 0 v0.15; Paper 4 (Phantom Mass); methodology §3.2</td>
         </tr>
         <tr>
             <td>Density minimum φ<sub>min</sub>(ρ) — candidate realization</td>
             <td>φ = Λ [ n Λ<sup>n+4</sup> M<sub>Pl</sub> / (2 β ρ<sub>GeV4</sub>) ]<sup>1/(n+1)</sup>, evaluated at reference response amplitude β = 10⁻⁴, in <code>step_007_tep_model.py</code>, <code>step_011_trajectory_integration.py</code>, <code>step_019_3d_field_integration.py</code></td>
-            <td>Paper 10 Appendix C (aligned to this form, May 2026); Paper 6 (scaling φ ∝ ρ<sup>−1/(n+1)</sup> only). Paper 0 v0.14 states screening/PPN mapping; it does not fix the closed φ(ρ) line — this prescription is a candidate microscopic realization, not the defining Temporal-Topology mechanism, and β here is the channel response amplitude, not the bare coupling β_A = −1.</td>
+            <td>Paper 10 Appendix C (aligned to this form, May 2026); Paper 6 (scaling φ ∝ ρ<sup>−1/(n+1)</sup> only). Paper 0 v0.15 states screening/PPN mapping; it does not fix the closed φ(ρ) line — this prescription is a candidate microscopic realization, not the defining Temporal-Topology mechanism, and β here is the channel response amplitude, not the bare coupling β_A = −1.</td>
         </tr>
         <tr>
             <td>PPN γ (magnitude checks)</td>
             <td><code>ppn_gamma_deviation</code>: report |γ − 1| ≈ 2 β<sub>A,eff</sub>² vs Cassini</td>
-            <td>Paper 0 Sec. 7: γ − 1 = −2 α<sub>eff</sub>² (DEF); Papers 5, 11, 12 (screened limit narrative)</td>
+            <td>Paper 0 Sec. 7: γ − 1 = −2 α<sub>0</sub>α<sub>eff</sub> (DEF); Papers 5, 11, 12 (screened limit narrative)</td>
         </tr>
         <tr>
             <td>Screening / UCD radius</td>
@@ -754,7 +754,7 @@ python scripts/run_all.py
     <li>Heterogeneity Assessment: Cochran's Q and I² statistics for model scatter</li>
     <li>GNSS clock correlation: The GNSS atomic clock correlation analysis provides a cross-consistency check with the GNSS/UCD terrestrial calibration on the transition radius ($R_{\rm sol} \approx 4146$ km). This shared-input dependency is disclosed explicitly to avoid circular claims of independent validation.</li>
     <li>Claim-consistency audit: Step 027 machine-checks manuscript claims against pipeline outputs, including model-comparison values, Table 3 fitted parameters, variance decomposition, Cassini exclusion status, Step 039 Juno classification, and evidence framing. The audit fails if the manuscript reverses the TEP-vs-Null comparison, omits the random-effects uncertainty, or promotes Juno from a deterministic warning case to an uncertainty-aware falsification.</li>
-    <li>Uncertainty discipline: Formal inverse-variance summaries, random-effects scatter, geometry-spread model comparison, and published-uncertainty stress tests are reported as separate layers rather than blended into a single headline number.</li>
+    <li>Uncertainty discipline: Formal inverse-variance summaries, random-effects scatter, the fractional-floor model comparison, and published-uncertainty plus constant-floor stress tests are reported as separate layers rather than blended into a single headline number.</li>
     <li>Automated smoke tests: <code>pytest</code> (see <code>tests/</code> and <code>pytest.ini</code>) checks repository layout and step logger conventions.</li>
 </ul>
 

@@ -16,7 +16,7 @@ Model Tiers:
 
 3. TEP Restricted (M_T^res): 1 parameter. Universal coupling β is the sole
    fitted parameter. All other TEP quantities are pre-specified:
-   - λ_TEP ≈ 4000 km (from GNSS atomic clock correlations, Step 016)
+   - λ_TEP ≈ 4200 km (from GNSS atomic clock correlations, Step 016)
    - S_⊕ ≈ 0.35 (from UCD saturation first-principles, Step 010)
    - v_trans ≈ 16.8 km/s (from TEP field equations)
    - Geometry (altitude, velocity, declinations) from JPL Horizons ephemerides
@@ -38,19 +38,44 @@ Fixes from prior version:
 - Explicitly document pre-specified vs fitted parameters.
 - Use log-likelihood and AICc/BIC corrections for stability.
 
-Likelihood / σ_sys (Yogyakarta audit fix → headline swap):
-----------------------------------------------------------
-**Headline** reported log-likelihoods use the geometry-spread systematic
-uncertainty (``sigma_sys = sigma_geom``, the sample std of reference-scale
-TEP predictions across the gated ensemble, ddof=1). This accounts for the
-fact that the tiny published per-flyby uncertainties (~0.01–0.05 mm/s) are
-inconsistent with the ~1–10 mm/s residuals of the single-β restricted scaling model;
-using sigma_sys = 0 produces astronomically large BIC values that are
-scientifically meaningless.
+Likelihood / σ_sys (fractional misspecification floor — headline):
+------------------------------------------------------------------
+**Headline** reported log-likelihoods use a per-flyby fractional
+misspecification floor,
 
-A ``sigma_sys = 0`` sensitivity block (published uncertainties only) is
-retained for transparency but explicitly labelled as a consistency check,
-not the primary evidence claim.
+    sigma_sys_i = CV_beta * |y_hat_i|,
+
+where y_hat_i is each model's own fitted prediction and
+CV_beta = tau / beta_bar is the coefficient of variation of the measured
+between-flyby amplitude heterogeneity (DerSimonian–Laird tau on the
+per-flyby scale factors, computed in _amplitude_heterogeneity_cv). Each
+signal-bearing model is iterated to a fixed point: prediction -> floor ->
+refit -> floor, until convergence.
+
+Rationale: the earlier constant geometry-spread floor
+(sigma_geom = std of reference-scale predictions at beta_ref = 1e-4) was
+anchor-dependent — rescaling the arbitrary normalization beta_ref rescales
+the floor and can reorder the model comparison without changing the data.
+The fractional floor is dimensionless and invariant under beta_ref; it
+encodes that model misspecification scales with the size of the claimed
+signal, with the coefficient measured from the catalogue itself.
+
+The Null model predicts zero signal and therefore carries no floor: its
+published per-flyby uncertainties are taken at face value, so large
+detections penalize it directly.
+
+Sensitivity analyses retained (labelled, non-headline):
+- ``likelihood_sensitivity_published_uncertainties_only``: sigma_sys = 0.
+  The tiny published uncertainties (~0.01–0.05 mm/s) are inconsistent with
+  the ~1–10 mm/s residuals of the single-beta restricted scaling model, so
+  this block produces astronomically large BIC values; it is a consistency
+  check showing the data taken at face value, not the primary claim.
+- ``sensitivity_constant_floor_reference_spread``: the former headline
+  constant sigma_geom block, retained to document the anchor-dependent
+  convention it superseded.
+- ``sensitivity_constant_floor_sweep``: BIC ordering across a grid of
+  constant floors, showing where the TEP restricted / Anderson ordering
+  crosses zero.
 """
 
 import json
@@ -184,7 +209,7 @@ class StableModelComparison:
         """
         Load ALL flybys with published observations from Step 007, bypassing
         the Step 008 ensemble gates. This expands the model comparison from
-        the gated n=3 detections to the full catalog of n=9 flybys with
+        the gated n=6 detections to the full catalog of n=9 flybys with
         explicit TEP predictions and published (or tracking-precision-fallback)
         uncertainties.
 
@@ -239,6 +264,16 @@ class StableModelComparison:
         """Single Gaussian log-likelihood term."""
         return -0.5 * ((residual / sigma_total)**2) - 0.5 * np.log(2 * np.pi * sigma_total**2)
 
+    @staticmethod
+    def _sigma_sys_vec(sigma_sys, n):
+        """Broadcast a scalar systematic floor or validate a per-flyby vector."""
+        arr = np.asarray(sigma_sys, dtype=float)
+        if arr.ndim == 0:
+            return np.full(n, float(arr))
+        if arr.shape != (n,):
+            raise ValueError(f"sigma_sys vector must have length {n}, got {arr.shape}")
+        return arr
+
     def log_likelihood_anderson(self, flybys, A, B, sigma_sys=0.0):
         """
         Anderson empirical model: Δv = A * cos_asymmetry + B.
@@ -247,20 +282,22 @@ class StableModelComparison:
         that the anomaly correlates with trajectory asymmetry. Perigee
         latitude is not included because it is not catalogued.
         """
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
         log_like = 0.0
-        for fb in flybys:
+        for i, fb in enumerate(flybys):
             dv_pred = A * fb['cos_asymmetry'] + B
-            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
+            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_extra[i]**2)
             residual = fb['dv_obs'] - dv_pred
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
 
     def fit_anderson(self, flybys, sigma_sys=0.0):
         """Least-squares fit of Anderson empirical model to data."""
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
         X = np.array([[fb['cos_asymmetry'], 1.0] for fb in flybys])
         y = np.array([fb['dv_obs'] for fb in flybys])
         # Weighted least squares with measurement uncertainty
-        w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])
+        w = np.array([1.0 / (fb['dv_unc']**2 + sigma_extra[i]**2) for i, fb in enumerate(flybys)])
         W = np.diag(w)
         beta_hat = np.linalg.lstsq(X.T @ W @ X, X.T @ W @ y, rcond=None)[0]
         A_fit, B_fit = beta_hat[0], beta_hat[1]
@@ -283,11 +320,12 @@ class StableModelComparison:
         Therefore predictions at arbitrary β are scaled from the reference (β₀=1e-4):
             dv_pred(β) = dv_pred_base * (β / 1e-4)
         """
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
         log_like = 0.0
-        for fb in flybys:
+        for i, fb in enumerate(flybys):
             scale = beta / 1e-4
             dv_pred = fb['dv_pred_base'] * scale
-            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
+            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_extra[i]**2)
             residual = fb['dv_obs'] - dv_pred
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
@@ -306,8 +344,9 @@ class StableModelComparison:
         small positive β for reporting only (near-null TEP), with metadata
         flagging infeasibility of the interior optimum.
         """
-        num = sum(fb['dv_obs'] * fb['dv_pred_base'] / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
-        den = sum(fb['dv_pred_base']**2 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
+        num = sum(fb['dv_obs'] * fb['dv_pred_base'] / (fb['dv_unc']**2 + sigma_extra[i]**2) for i, fb in enumerate(flybys))
+        den = sum(fb['dv_pred_base']**2 / (fb['dv_unc']**2 + sigma_extra[i]**2) for i, fb in enumerate(flybys))
         x = (num / den) if den > 0 else 1.0
         positive_feasible = x > 0
         if positive_feasible:
@@ -341,11 +380,12 @@ class StableModelComparison:
         Note: This is a non-linear model in β. For fitting, we use an iterative
         approach: first fit the linear combination at a reference β, then optimize β.
         """
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
         log_like = 0.0
         scale = beta / 1e-4
-        for fb in flybys:
+        for i, fb in enumerate(flybys):
             dv_pred = scale * (fb['dv_grad_base'] + b_disf * fb['dv_disf_base']) + offset
-            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
+            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_extra[i]**2)
             residual = fb['dv_obs'] - dv_pred
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
@@ -359,14 +399,15 @@ class StableModelComparison:
         find the global optimum.
         """
         from scipy.optimize import minimize_scalar
-        
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
+
         def _neg_loglike_at_beta(log_beta):
             beta = np.exp(log_beta)
             scale = beta / 1e-4
             # Linear least squares for b_disf and offset at fixed beta
             X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
             y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
-            w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])
+            w = np.array([1.0 / (fb['dv_unc']**2 + sigma_extra[i]**2) for i, fb in enumerate(flybys)])
             W = np.diag(w)
             
             try:
@@ -386,7 +427,7 @@ class StableModelComparison:
         scale = beta_fit / 1e-4
         X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
         y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
-        w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])
+        w = np.array([1.0 / (fb['dv_unc']**2 + sigma_extra[i]**2) for i, fb in enumerate(flybys)])
         W = np.diag(w)
         beta_hat = np.linalg.lstsq(X.T @ W @ X, X.T @ W @ y, rcond=None)[0]
         b_disf_fit, offset_fit = beta_hat[0], beta_hat[1]
@@ -398,9 +439,10 @@ class StableModelComparison:
         """
         Null model: 0 parameters, predicts Δv = 0.
         """
+        sigma_extra = self._sigma_sys_vec(sigma_sys, len(flybys))
         log_like = 0.0
-        for fb in flybys:
-            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
+        for i, fb in enumerate(flybys):
+            sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_extra[i]**2)
             residual = fb['dv_obs']
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
@@ -631,7 +673,7 @@ class StableModelComparison:
                 'interpretation': f"BIC selects {best_model_bic} model"
             },
             'pre_specified_parameters': {
-                'lambda_TEP_km': 4000,
+                'lambda_TEP_km': 4200,
                 'lambda_TEP_source': 'GNSS atomic clock correlations (Step 016)',
                 'S_earth': round(CHARACTERISTIC_SUPPRESSION, 3),
                 'S_earth_source': 'UCD saturation first-principles (Step 010)',
@@ -645,12 +687,12 @@ class StableModelComparison:
 
     def stable_model_comparison(self, flybys):
         """
-        Headline comparison uses the geometry-spread systematic uncertainty
-        (sigma_sys = sigma_geom), which captures the physically realistic
-        dispersion of TEP predictions across heterogeneous flyby geometries.
-        A published-uncertainties-only sensitivity block (sigma_sys = 0) is
-        retained for transparency but explicitly labelled as a consistency
-        check, not the primary evidence claim.
+        Headline comparison uses the fractional misspecification floor
+        (sigma_sys_i = CV_beta * |y_hat_i| per flyby, iterated to a fixed
+        point), which is invariant under the arbitrary beta_ref anchor.
+        The former constant geometry-spread floor and a
+        published-uncertainties-only block (sigma_sys = 0) are retained as
+        labelled sensitivity analyses, not the primary evidence claim.
         """
         self.logger.section("FOUR-TIER MODEL COMPARISON")
 
@@ -661,19 +703,27 @@ class StableModelComparison:
         sigma_geom = float(np.std(pred_vec, ddof=1)) if len(pred_vec) > 1 else 0.0
 
         self.logger.info(
-            f"Headline IC/BF: extra σ_sys = {sigma_geom:.3f} mm/s "
-            "(geometry-prediction spread, ddof=1)."
+            f"Anchor-dependent reference spread σ_geom = {sigma_geom:.3f} mm/s "
+            "(constant floor, sensitivity only)."
         )
         self.logger.info(
-            "This accounts for the fact that published per-flyby uncertainties "
-            "(~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals "
-            "of the single-β restricted scaling model."
+            "The constant floor is retained only as a labelled sensitivity "
+            "because it rescales with the arbitrary beta_ref anchor."
         )
 
-        primary = self._evaluate_four_tiers(flybys, sigma_geom, log_details=True)
-        primary["systematic_uncertainty_mm_s"] = sigma_geom
-        primary["systematic_uncertainty_model"] = "geometry_prediction_spread_std_ddof1"
+        frac = self.fractional_floor_model_comparison(flybys)
+        if frac is not None:
+            primary = frac
+            self.logger.info(
+                f"Headline systematic model: fractional misspecification floor "
+                f"(cv_amp = {frac['amplitude_heterogeneity']['cv_amp']:.3f})."
+            )
+        else:
+            primary = self._evaluate_four_tiers(flybys, sigma_geom, log_details=True)
+            primary["systematic_uncertainty_mm_s"] = sigma_geom
+            primary["systematic_uncertainty_model"] = "geometry_prediction_spread_std_ddof1"
         primary["geometry_prediction_spread_mm_s"] = sigma_geom
+        primary["reference_scale_spread_mm_s_anchor_dependent"] = sigma_geom
 
         # Sensitivity: published uncertainties only (sigma_sys = 0)
         # These produce extremely large BIC values because tiny published
@@ -682,11 +732,11 @@ class StableModelComparison:
         primary["likelihood_sensitivity_published_uncertainties_only"] = {
             "extra_sigma_sys_quadrature_mm_s": 0.0,
             "note": (
-                "Published per-flyby uncertainties without extra geometry-spread term. "
+                "Published per-flyby uncertainties without any additional systematic term. "
                 "These produce extremely large BIC values because the tiny published "
                 "uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s "
                 "residuals of the single-β restricted scaling model. Reported for transparency and "
-                "consistency checking only; the geometry-spread comparison is the "
+                "consistency checking only; the fractional-floor comparison is the "
                 "scientifically meaningful one."
             ),
             "log_likelihoods": sens["log_likelihoods"],
@@ -701,15 +751,16 @@ class StableModelComparison:
         Robustness test: evaluate model comparison under alternative ensemble
         compositions to address reviewer concerns about sample-size sensitivity.
 
-        Specifically tests n=4 (Cassini included despite sign mismatch) vs
-        the headline n=3 gated ensemble when ``strict_sign_gate`` is true in
+        Specifically tests the historical n=4 composition (Cassini re-added
+        despite sign mismatch under the pre-retranscription catalogue) vs the
+        headline gated ensemble when ``strict_sign_gate`` is true in
         ``config/pipeline_config.json``. When Cassini is already in ``eligible_flybys``,
         this block is skipped as degenerate.
         """
         self.logger.section("ENSEMBLE COMPOSITION ROBUSTNESS")
         self.logger.info(
-            "Testing whether model-comparison conclusions are sensitive to the "
-            "n=3 vs n=4 choice (Cassini excluded vs included)."
+            "Testing whether model-comparison conclusions are sensitive to "
+            "Cassini exclusion vs inclusion (historical n vs n+1 composition)."
         )
 
         names = {fb["name"] for fb in eligible_flybys}
@@ -763,31 +814,32 @@ class StableModelComparison:
 
         n4_flybys = eligible_flybys + [cassini_flyby]
 
-        # Use the same geometry-spread sigma_sys as the headline n=3 comparison
-        pred_vec_n4 = np.array([fb["dv_pred_base"] for fb in n4_flybys], dtype=float)
-        sigma_geom_n4 = float(np.std(pred_vec_n4, ddof=1)) if len(pred_vec_n4) > 1 else 0.0
-        n4_result = self._evaluate_four_tiers(n4_flybys, sigma_geom_n4, log_details=False)
+        # Use the same fractional misspecification floor as the headline comparison
+        n4_result = self.fractional_floor_model_comparison(n4_flybys)
+        if n4_result is None:
+            self.logger.info("Fractional-floor comparison unavailable for n=4; skipping.")
+            return None
 
         self.logger.info(f"Headline n={len(eligible_flybys)} vs robustness n={len(n4_flybys)}")
         self.logger.info(
-            f"  TEP restricted vs Null log10(BF): n=3 = "
+            f"  TEP restricted vs Null log10(BF): n={len(eligible_flybys)} = "
             f"{primary_results['bayes_factors']['log10_BF_TEP_restricted_vs_Null']:.2f}; "
-            f"n=4 = {n4_result['bayes_factors']['log10_BF_TEP_restricted_vs_Null']:.2f}"
+            f"n={len(n4_flybys)} = {n4_result['bayes_factors']['log10_BF_TEP_restricted_vs_Null']:.2f}"
         )
         self.logger.info(
-            f"  Best model BIC: n=3 = {primary_results['model_selection']['best_model_BIC']}; "
-            f"n=4 = {n4_result['model_selection']['best_model_BIC']}"
+            f"  Best model BIC: n={len(eligible_flybys)} = {primary_results['model_selection']['best_model_BIC']}; "
+            f"n={len(n4_flybys)} = {n4_result['model_selection']['best_model_BIC']}"
         )
 
         return {
             "note": (
                 "Model comparison evaluated on n=4 (Cassini included) to test "
                 "sensitivity of conclusions to the sign-mismatch exclusion. "
-                "Uses the same geometry-spread sigma_sys as the headline comparison."
+                "Uses the same fractional misspecification floor as the headline comparison."
             ),
             "n_data": len(n4_flybys),
             "cassini_included": True,
-            "sigma_sys_mm_s": sigma_geom_n4,
+            "systematic_uncertainty_model": n4_result.get("systematic_uncertainty_model"),
             "log_likelihoods": n4_result["log_likelihoods"],
             "information_criteria": n4_result["information_criteria"],
             "bayes_factors": n4_result["bayes_factors"],
@@ -800,17 +852,24 @@ class StableModelComparison:
         Breakthrough test: four-tier model comparison on the FULL catalog of
         all flybys with published observations and explicit TEP predictions.
 
-        Expands the sample from the gated n=3 to n=9, including:
-        - 4 published anomalies (NEAR, Galileo 1990, Rosetta 2005, Cassini)
-        - 5 null-result bounds (Galileo 1992, MESSENGER, Juno, Rosetta 2007, Rosetta 2009)
+        Expands the sample from the gated n=6 to n=9, including:
+        - 6 published anomalies (NEAR, Galileo 1990, Rosetta 2005, Cassini, Galileo 1992, MESSENGER)
+        - 3 null-result bounds (Juno, Rosetta 2007, Rosetta 2009)
 
         This is a more conservative test than the gated ensemble because:
         1. The BIC large-sample approximation is more reliable at n=9.
         2. Null flybys provide constraints that penalize overfitting.
         3. Cassini's sign mismatch must be explained by the TEP flexible model.
 
-        The geometry-spread sigma_sys is computed from the sample std of ALL
-        9 reference-scale TEP predictions (ddof=1).
+        The headline systematic floor is the fractional-misspecification
+        model (``fractional_floor_model_comparison``): each signal-bearing
+        model carries a per-flyby systematic proportional to its own fitted
+        amplitude, with the proportionality measured from the catalogue's
+        own between-flyby amplitude heterogeneity.  The legacy constant
+        floor sigma_geom = std(reference-scale predictions) is retained as a
+        labelled sensitivity, alongside a constant-floor sweep, because it
+        is anchor-dependent (it rescales with beta_ref) and must not be the
+        headline.
         """
         self.logger.section("FULL-CATALOG MODEL COMPARISON (n=9)")
         self.logger.info(
@@ -825,25 +884,55 @@ class StableModelComparison:
         pred_vec = np.array([fb["dv_pred_base"] for fb in full_catalog_flybys], dtype=float)
         sigma_geom = float(np.std(pred_vec, ddof=1)) if len(pred_vec) > 1 else 0.0
 
-        self.logger.info(
-            f"Geometry-spread sigma_sys = {sigma_geom:.3f} mm/s "
-            f"(sample std of {n_data} reference-scale TEP predictions, ddof=1)."
-        )
-        self.logger.info(
-            "This includes both primary detections and null-result bounds, "
-            "providing a more conservative test of model discrimination."
-        )
+        # Primary: anchor-invariant fractional misspecification floor
+        frac = self.fractional_floor_model_comparison(full_catalog_flybys)
+        if frac is not None:
+            result = frac
+            self.logger.info(
+                f"Headline systematic model: fractional misspecification floor "
+                f"(cv_amp = {frac['amplitude_heterogeneity']['cv_amp']:.3f}); "
+                "per-flyby floor scales with each model's fitted signal, "
+                "invariant under the beta_ref anchor."
+            )
+        else:
+            self.logger.warning(
+                "Fractional-floor comparison unavailable; falling back to "
+                "constant sigma_geom floor (anchor-dependent)."
+            )
+            result = self._evaluate_four_tiers(
+                full_catalog_flybys, sigma_geom, log_details=True)
+            result["systematic_uncertainty_mm_s"] = sigma_geom
+            result["systematic_uncertainty_model"] = \
+                "geometry_prediction_spread_full_catalog_std_ddof1"
 
-        result = self._evaluate_four_tiers(full_catalog_flybys, sigma_geom, log_details=True)
-        result["systematic_uncertainty_mm_s"] = sigma_geom
-        result["systematic_uncertainty_model"] = "geometry_prediction_spread_full_catalog_std_ddof1"
-        result["geometry_prediction_spread_mm_s"] = sigma_geom
         result["n_data"] = n_data
         result["included_flybys"] = [fb["name"] for fb in full_catalog_flybys]
         result["included_flyby_summary"] = {
             "n_detections": sum(1 for fb in full_catalog_flybys if fb["snr"] >= 2),
             "n_nulls": sum(1 for fb in full_catalog_flybys if fb["snr"] < 2),
         }
+
+        # Sensitivity: legacy anchor-dependent constant floor
+        legacy = self._evaluate_four_tiers(
+            full_catalog_flybys, sigma_geom, log_details=False)
+        result["sensitivity_constant_floor_reference_spread"] = {
+            "systematic_uncertainty_mm_s": sigma_geom,
+            "note": (
+                "Constant floor sigma_sys = std(reference-scale predictions). "
+                "Anchor-dependent: it rescales with the arbitrary beta_ref "
+                "anchor, so it is retained as a sensitivity diagnostic only."
+            ),
+            "information_criteria": legacy["information_criteria"],
+            "bayes_factors": legacy["bayes_factors"],
+            "log_likelihoods": legacy["log_likelihoods"],
+        }
+
+        # Sensitivity: constant-floor ordering sweep
+        sweep_floors = sorted({
+            0.0, sigma_geom, 0.25, 0.5, 1.0, 2.0, 5.0, 10.0
+        })
+        result["sensitivity_constant_floor_sweep"] = \
+            self.constant_floor_sensitivity_sweep(full_catalog_flybys, sweep_floors)
 
         self.logger.info("")
         self.logger.info("=" * 70)
@@ -864,6 +953,251 @@ class StableModelComparison:
 
         return result
 
+    def _amplitude_heterogeneity_cv(self, flybys):
+        """
+        Fractional between-flyby scatter of the fitted response amplitude,
+        estimated by DerSimonian–Laird on the implied scale factors
+        x_i = dv_obs_i / dv_pred_base_i over the amplitude-informative rows
+        (|dv_pred_base| > 0).  Returns cv_amp = tau_x / |x_bar|.
+
+        This is a data property — it measures how much the single-amplitude
+        restricted model is misspecified per flyby — and is invariant under
+        the arbitrary reference coupling beta_ref because it is a ratio of
+        fitted-amplitude quantities.
+        """
+        base = np.array([fb["dv_pred_base"] for fb in flybys], dtype=float)
+        obs = np.array([fb["dv_obs"] for fb in flybys], dtype=float)
+        unc = np.array([fb["dv_unc"] for fb in flybys], dtype=float)
+        inform = np.abs(base) > 1e-8
+        if inform.sum() < 2:
+            return None
+        x_i = obs[inform] / base[inform]
+        s_i = unc[inform] / np.abs(base[inform])
+        w = 1.0 / s_i**2
+        x_bar = float(np.sum(w * x_i) / np.sum(w))
+        Q = float(np.sum(w * (x_i - x_bar) ** 2))
+        df = int(inform.sum()) - 1
+        C = float(np.sum(w) - np.sum(w**2) / np.sum(w))
+        tau2 = max(0.0, (Q - df) / C) if C > 0 else 0.0
+        return {
+            "cv_amp": float(np.sqrt(tau2) / abs(x_bar)) if x_bar != 0 else None,
+            "tau_scale": float(np.sqrt(tau2)),
+            "x_bar_scale": x_bar,
+            "n_informative": int(inform.sum()),
+            "cochran_Q": Q,
+        }
+
+    def fractional_floor_model_comparison(self, flybys):
+        """
+        Anchor-invariant four-tier comparison using a fractional
+        misspecification floor: each signal-bearing model carries a per-flyby
+        systematic proportional to its own fitted signal amplitude,
+
+            sigma_sys_i = cv_amp * |pred_i(model)|
+
+        so the floor scales with the signal the model asserts rather than
+        with the arbitrary reference coupling beta_ref.  cv_amp is measured
+        from the catalogue itself via DerSimonian–Laird on the implied
+        per-flyby amplitude scale factors.  The Null model predicts zero
+        signal, hence zero floor: it is evaluated against the published
+        uncertainties at face value (the anomalies are real detections, so
+        this is the correct honest penalty).  Each model is iterated to the
+        fixed point pred -> floor -> refit.
+        """
+        het = self._amplitude_heterogeneity_cv(flybys)
+        if het is None or het["cv_amp"] is None:
+            return None
+        cv = het["cv_amp"]
+        n_data = len(flybys)
+        base = np.array([fb["dv_pred_base"] for fb in flybys], dtype=float)
+        asym = np.array([fb["cos_asymmetry"] for fb in flybys], dtype=float)
+        grad = np.array([fb["dv_grad_base"] for fb in flybys], dtype=float)
+        disf = np.array([fb["dv_disf_base"] for fb in flybys], dtype=float)
+        obs = np.array([fb["dv_obs"] for fb in flybys], dtype=float)
+
+        # Null: zero predicted signal -> zero misspecification floor
+        log_like_null = self.log_likelihood_null(flybys, 0.0)
+
+        # TEP restricted fixed point
+        pred_tr = np.zeros(n_data)
+        for _ in range(80):
+            floor = cv * np.abs(pred_tr)
+            beta_tr, _, _ = self.fit_tep_restricted(flybys, floor)
+            scale = (beta_tr / 1e-4) if beta_tr else 1e-8
+            pred_new = base * scale
+            if np.allclose(pred_new, pred_tr, atol=1e-12):
+                pred_tr = pred_new
+                break
+            pred_tr = pred_new
+        floor_tr = cv * np.abs(pred_tr)
+        beta_tr, log_like_tr, meta_tr = self.fit_tep_restricted(flybys, floor_tr)
+
+        # Anderson fixed point
+        pred_and = np.zeros(n_data)
+        for _ in range(80):
+            floor = cv * np.abs(pred_and)
+            A_fit, B_fit, _ = self.fit_anderson(flybys, floor)
+            pred_new = A_fit * asym + B_fit
+            if np.allclose(pred_new, pred_and, atol=1e-12):
+                pred_and = pred_new
+                break
+            pred_and = pred_new
+        floor_and = cv * np.abs(pred_and)
+        A_fit, B_fit, log_like_and = self.fit_anderson(flybys, floor_and)
+
+        # TEP flexible fixed point
+        pred_tf = np.zeros(n_data)
+        beta_flex, b_disf_flex, offset_flex = 1e-4, 0.0, 0.0
+        for _ in range(80):
+            floor = cv * np.abs(pred_tf)
+            beta_flex, b_disf_flex, offset_flex, _ = self.fit_tep_flexible(
+                flybys, floor)
+            pred_new = (beta_flex / 1e-4) * (grad + b_disf_flex * disf) + offset_flex
+            if np.allclose(pred_new, pred_tf, atol=1e-12):
+                pred_tf = pred_new
+                break
+            pred_tf = pred_new
+        floor_tf = cv * np.abs(pred_tf)
+        beta_flex, b_disf_flex, offset_flex, log_like_tf = \
+            self.fit_tep_flexible(flybys, floor_tf)
+
+        aic_null, aicc_null, bic_null = self.compute_aic_bic(log_like_null, 0, n_data)
+        aic_and, aicc_and, bic_and = self.compute_aic_bic(log_like_and, 2, n_data)
+        aic_tr, aicc_tr, bic_tr = self.compute_aic_bic(log_like_tr, 1, n_data)
+        aic_tf, aicc_tf, bic_tf = self.compute_aic_bic(log_like_tf, 3, n_data)
+
+        bf_tr_null, dbic_tr_null, l10_tr_null, valid_tr_null = \
+            self.bayes_factor_approx(log_like_tr, log_like_null, 1, 0, n_data)
+        bf_and_null, dbic_and_null, l10_and_null, valid_and_null = \
+            self.bayes_factor_approx(log_like_and, log_like_null, 2, 0, n_data)
+        bf_tf_null, dbic_tf_null, l10_tf_null, valid_tf_null = \
+            self.bayes_factor_approx(log_like_tf, log_like_null, 3, 0, n_data)
+        bf_tr_and, dbic_tr_and, l10_tr_and, valid_tr_and = \
+            self.bayes_factor_approx(log_like_tr, log_like_and, 1, 2, n_data)
+        bf_tf_and, dbic_tf_and, l10_tf_and, valid_tf_and = \
+            self.bayes_factor_approx(log_like_tf, log_like_and, 3, 2, n_data)
+
+        bic_values = {
+            'Null': bic_null, 'Anderson': bic_and,
+            'TEP_restricted': bic_tr, 'TEP_flexible': bic_tf,
+        }
+        best_model_bic = min(bic_values, key=bic_values.get)
+
+        aicc_comp = {
+            'TEP_restricted': aicc_tr, 'Null': aicc_null,
+            'Anderson': aicc_and, 'TEP_flexible': aicc_tf,
+        }
+        finite_aicc = {k: v for k, v in aicc_comp.items() if np.isfinite(v)}
+        if finite_aicc:
+            min_aicc = min(finite_aicc.values())
+            delta_aicc = {k: v - min_aicc for k, v in finite_aicc.items()}
+            sum_exp = sum(np.exp(-0.5 * da) for da in delta_aicc.values())
+            akaike_weights = {k: np.exp(-0.5 * da) / sum_exp for k, da in delta_aicc.items()}
+        else:
+            akaike_weights = {k: 0.25 for k in aicc_comp}
+
+        return {
+            "systematic_uncertainty_model": (
+                "fractional_misspecification_floor_cv_times_abs_prediction"
+            ),
+            "amplitude_heterogeneity": het,
+            "n_data": n_data,
+            "per_flyby_floor_mm_s": {
+                "TEP_restricted": {
+                    fb["name"]: float(v) for fb, v in zip(flybys, floor_tr)
+                },
+                "Anderson": {
+                    fb["name"]: float(v) for fb, v in zip(flybys, floor_and)
+                },
+                "TEP_flexible": {
+                    fb["name"]: float(v) for fb, v in zip(flybys, floor_tf)
+                },
+            },
+            "log_likelihoods": {
+                'Null': float(log_like_null),
+                'Anderson': float(log_like_and),
+                'TEP_restricted': float(log_like_tr),
+                'TEP_flexible': float(log_like_tf),
+            },
+            "fitted_parameters": {
+                'Anderson': {'A': float(A_fit), 'B': float(B_fit)},
+                'TEP_restricted': {
+                    'beta': float(beta_tr) if beta_tr is not None else None,
+                    'fit_diagnostics': meta_tr,
+                },
+                'TEP_flexible': {
+                    'beta': float(beta_flex),
+                    'b_disf': float(b_disf_flex),
+                    'offset': float(offset_flex),
+                },
+            },
+            "information_criteria": {
+                'Null': {'AIC': aic_null, 'AICc': aicc_null, 'BIC': bic_null},
+                'Anderson': {'AIC': aic_and, 'AICc': aicc_and, 'BIC': bic_and},
+                'TEP_restricted': {'AIC': aic_tr, 'AICc': aicc_tr, 'BIC': bic_tr},
+                'TEP_flexible': {'AIC': aic_tf, 'AICc': aicc_tf, 'BIC': bic_tf},
+            },
+            "bayes_factors": {
+                'Anderson_vs_Null': bf_and_null,
+                'TEP_restricted_vs_Null': bf_tr_null,
+                'TEP_flexible_vs_Null': bf_tf_null,
+                'TEP_restricted_vs_Anderson': bf_tr_and,
+                'TEP_flexible_vs_Anderson': bf_tf_and,
+                'delta_BIC_Anderson_vs_Null': dbic_and_null,
+                'delta_BIC_TEP_restricted_vs_Null': dbic_tr_null,
+                'delta_BIC_TEP_flexible_vs_Null': dbic_tf_null,
+                'delta_BIC_TEP_restricted_vs_Anderson': dbic_tr_and,
+                'delta_BIC_TEP_flexible_vs_Anderson': dbic_tf_and,
+                'log10_BF_Anderson_vs_Null': l10_and_null,
+                'log10_BF_TEP_restricted_vs_Null': l10_tr_null,
+                'log10_BF_TEP_restricted_vs_Anderson': l10_tr_and,
+                'log10_BF_TEP_flexible_vs_Null': l10_tf_null,
+                'log10_BF_TEP_flexible_vs_Anderson': l10_tf_and,
+                'bic_approximation_valid': {
+                    'Anderson_vs_Null': valid_and_null,
+                    'TEP_restricted_vs_Null': valid_tr_null,
+                    'TEP_flexible_vs_Null': valid_tf_null,
+                    'TEP_restricted_vs_Anderson': valid_tr_and,
+                    'TEP_flexible_vs_Anderson': valid_tf_and,
+                },
+                'bic_approximation_note': (
+                    "The BIC approximation BF ≈ exp(ΔBIC/2) is a large-sample result. "
+                    "For n < 10 and extreme S/N it is unreliable.  When log10(BF) > 100 "
+                    "the value is driven by formal uncertainties and should not be "
+                    "reported as a literal probability ratio."
+                ),
+            },
+            "model_selection": {
+                'best_model_BIC': best_model_bic,
+                'akaike_weights': akaike_weights,
+                'interpretation': f"BIC selects {best_model_bic} model",
+            },
+        }
+
+    def constant_floor_sensitivity_sweep(self, flybys, floors):
+        """
+        Transparency block: four-tier comparison under a range of constant
+        shared systematic floors, showing the ordering dependence on sigma_sys
+        (including the legacy anchor-dependent sigma_geom choice).  Each row
+        records the constant floor and the resulting delta-BIC ordering.
+        """
+        rows = []
+        for ss in floors:
+            r = self._evaluate_four_tiers(flybys, float(ss), log_details=False)
+            bics = r["information_criteria"]
+            rows.append({
+                "sigma_sys_const_mm_s": float(ss),
+                "BIC_Null": bics["Null"]["BIC"],
+                "BIC_Anderson": bics["Anderson"]["BIC"],
+                "BIC_TEP_restricted": bics["TEP_restricted"]["BIC"],
+                "BIC_TEP_flexible": bics["TEP_flexible"]["BIC"],
+                "delta_BIC_TEP_restricted_vs_Null":
+                    r["bayes_factors"]["delta_BIC_TEP_restricted_vs_Null"],
+                "delta_BIC_TEP_restricted_vs_Anderson":
+                    r["bayes_factors"]["delta_BIC_TEP_restricted_vs_Anderson"],
+            })
+        return rows
+
     def sign_agreement_model_comparison(self, eligible_flybys):
         """
         Sign-agreement-restricted four-tier comparison (NEAR, Galileo 1990, Rosetta 2005
@@ -882,13 +1216,8 @@ class StableModelComparison:
         if len(sign_flybys) < 2:
             return None
 
-        pred_vec = np.array([fb["dv_pred_base"] for fb in sign_flybys], dtype=float)
-        sigma_geom = float(np.std(pred_vec, ddof=1)) if len(pred_vec) > 1 else 0.0
-        result = self._evaluate_four_tiers(sign_flybys, sigma_geom, log_details=False)
+        result = self.fractional_floor_model_comparison(sign_flybys)
         result["n_data"] = len(sign_flybys)
-        result["systematic_uncertainty_mm_s"] = sigma_geom
-        result["systematic_uncertainty_model"] = "geometry_prediction_spread_std_ddof1"
-        result["geometry_prediction_spread_mm_s"] = sigma_geom
         result["included_flybys"] = [fb["name"] for fb in sign_flybys]
         return result
 

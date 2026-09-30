@@ -81,7 +81,7 @@
     The inverse-variance weighted mean is $\beta_{\rm fit} = 4.74 \times 10^{-3} \pm 5.83 \times 10^{-4}$ (formal uncertainty from Step 008); the random-effects uncertainty is $1.28 \times 10^{-3}$.
     Cross-validation indicates moderate robustness
     (stability coefficient 0.092 &lt; 0.5). Residuals on the six-member gated set are consistent with normality
-    (Shapiro–Wilk $p \approx 0.92$).
+    (Shapiro–Wilk $p \approx 0.95$).
 </p>
 
 <p>
@@ -448,7 +448,7 @@
 </table>
 
 <p>
-    The posterior median $\beta_{\rm fit,0} = 5.27 \times 10^{-3}$ agrees with the Step 008 inverse-variance weighted mean ($4.74 \times 10^{-3}$) within the heterogeneity width; the width is driven by the population scatter $\sigma \approx 1.6$ mm/s absorbed by the hierarchical layer rather than by any residual offset between the two estimators. The factor-of-order-unity rescaling from the reference coupling ($\beta_{A,\rm ref} = 10^{-4}$) is a computational anchor only: because the canonical excursion normalization is $\beta$-independent, the response model is strictly linear ($\Delta v_{\rm TEP} \propto \beta$), so the closed-form inversion $\beta_{\rm fit} = \beta_{A,\rm ref}\,(\Delta v_{\rm obs}/\Delta v_{\rm TEP})$ is algebraically independent of $\beta_{A,\rm ref}$ — the fitted amplitude is set by the data, and re-evaluating the same flyby at $\beta_{A,\rm ref} = 10^{-5}$ or $10^{-3}$ returns the identical fitted value. The residual bookkeeping is therefore a single channel quantity: the population response coefficient $\kappa_{\rm flyby} = \beta_{\rm fit}/|\beta_A| \approx 4.7 \times 10^{-3}$ — an unexplained transfer-map coefficient of the same open class as $\kappa_{\rm Cep}$ and the Paper 0 $\Gamma_X$ entries, reported pending the action-level derivation rather than absorbed into the theory. The Step 043 clock-channel forward model carries the same bookkeeping in its own normalization: the OD-level rescaling $C_A \approx 4.2$ between reconstructed apparent shifts and published anomalies is the clock-channel analogue of $\kappa_{\rm flyby}$ and is reported as such.
+    The posterior median $\beta_{\rm fit,0} = 5.27 \times 10^{-3}$ agrees with the Step 008 inverse-variance weighted mean ($4.74 \times 10^{-3}$) within the heterogeneity width; the width is driven by the population scatter $\sigma \approx 1.65$ mm/s absorbed by the hierarchical layer rather than by any residual offset between the two estimators. The factor-of-order-unity rescaling from the reference coupling ($\beta_{A,\rm ref} = 10^{-4}$) is a computational anchor only: because the canonical excursion normalization is $\beta$-independent, the response model is strictly linear ($\Delta v_{\rm TEP} \propto \beta$), so the closed-form inversion $\beta_{\rm fit} = \beta_{A,\rm ref}\,(\Delta v_{\rm obs}/\Delta v_{\rm TEP})$ is algebraically independent of $\beta_{A,\rm ref}$ — the fitted amplitude is set by the data, and re-evaluating the same flyby at $\beta_{A,\rm ref} = 10^{-5}$ or $10^{-3}$ returns the identical fitted value. The residual bookkeeping is therefore a single channel quantity: the population response coefficient $\kappa_{\rm flyby} = \beta_{\rm fit}/|\beta_A| \approx 4.7 \times 10^{-3}$ — an unexplained transfer-map coefficient of the same open class as $\kappa_{\rm Cep}$ and the Paper 0 $\Gamma_X$ entries, reported pending the action-level derivation rather than absorbed into the theory. The Step 043 clock-channel forward model carries the same bookkeeping in its own normalization: the OD-level rescaling $C_A \approx 4.2$ between reconstructed apparent shifts and published anomalies is the clock-channel analogue of $\kappa_{\rm flyby}$ and is reported as such.
 </p>
 
 <h2>4.3 Deterministic Geometry Modulation Analysis</h2>
@@ -528,7 +528,7 @@
 </p>
 
 <p>
-    Cassini, with its high perigee velocity (19.02 km/s) and weakly negative asymmetry (cos_asymmetry = -0.022), lies in the template's mixed regime where gradient and disformal contributions partially cancel at β_{A,ref}, yielding a small negative total prediction ($-5.3 \times 10^{-5}$ mm/s). With the corrected catalogue entry the published anomaly is also negative ($-2 \pm 1$ mm/s), so Cassini passes the sign gate; its residual tension is in amplitude only, since the reference prediction is far below the observation and the unconstrained per-flyby rescaling is absorbed into the negligible-weight fit reported in Table 3. Consistent with the canonical branch, the hierarchical layer's fitted disformal amplitude is null ($b_{\rm disf} = 0.026 \pm 0.041$), so the velocity-template terms act as phenomenological descriptors rather than a detected propagating sector.
+    Cassini, with its high perigee velocity (19.02 km/s) and weakly negative asymmetry (cos_asymmetry = -0.022), lies in the template's mixed regime where gradient and disformal contributions partially cancel at β_{A,ref}, yielding a small negative total prediction ($-5.3 \times 10^{-5}$ mm/s). With the corrected catalogue entry the published anomaly is also negative ($-2 \pm 1$ mm/s), so Cassini passes the sign gate; its residual tension is in amplitude only, since the reference prediction is far below the observation and the unconstrained per-flyby rescaling is absorbed into the negligible-weight fit reported in Table 3. Consistent with the canonical branch, the hierarchical layer's fitted disformal amplitude is null ($b_{\rm disf} = 0.026 \pm 0.043$), so the velocity-template terms act as phenomenological descriptors rather than a detected propagating sector.
 </p>
 
 <h2>4.4a Full-Catalog Raw Stress Test</h2>
@@ -624,7 +624,7 @@
         <tr>
             <td>TEP Restricted ($M_{\rm T}^{\rm res}$)</td>
             <td>1 ($\beta_{\rm fit}$)</td>
-            <td>$\lambda_{\rm TEP} = 4200$ km (GNSS Step 016); $S_\oplus \approx 0.35$ (UCD Step 010); $v_{\rm trans} \approx 16.8$ km/s (empirical template scale); geometry from JPL Horizons</td>
+            <td>$\lambda_T = 4200$ km (GNSS Step 016); $S_\oplus \approx 0.35$ (UCD Step 010); $v_{\rm trans} \approx 16.8$ km/s (empirical template scale); geometry from JPL Horizons</td>
             <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta_{\rm fit}/\beta_{\rm ref})$. All physics except the coupling amplitude is pre-specified from independent data or stated response templates; the excursion normalization is $\beta$-independent under the canonical Paper 0 amplitude sector, so the response is linear.</td>
         </tr>
         <tr>
@@ -639,19 +639,19 @@
 <h3>4.5.2 Log-likelihoods and Information Criteria</h3>
 
 <p>
-    Each model is fitted by weighted least squares. Log-likelihoods, AIC, and BIC are:
+    The archived Step 026 models are trajectory-geometry templates, not distinct clock-sector predictions for the coherent catalogue. Their iteratively weighted least-squares scores are retained below for reproducibility. Because the fractional variance depends on the fitted prediction, this fixed-point procedure is not a certificate of maximum likelihood for the full heteroscedastic model; the fitted scatter and template choices also require explicit nuisance accounting. The following log-likelihood, AIC and BIC values are therefore archived convention-dependent scores, not calibrated evidence for the clock mechanism:
 </p>
 
 <ul>
-    <li>Null: log L = -3997.14, AIC = 7994.3, BIC = 7994.3</li>
-    <li>Anderson: log L = -178.37, AIC = 360.7, BIC = 361.1</li>
-    <li>TEP restricted: log L = -228.44, AIC = 458.9, BIC = 459.1</li>
-    <li>TEP flexible: log L = -266.61, AIC = 539.2, BIC = 539.8</li>
-    <li>TEP restricted (pessimistic): k_eff = 8 (1 fitted β<sub>fit</sub> + 7 heuristic envelope coefficients), BIC = 474.5</li>
+    <li>Null: log L = -8360.96, AIC = 16721.9, BIC = 16721.9</li>
+    <li>Anderson: log L = -11.59, AIC = 27.2, BIC = 27.6</li>
+    <li>TEP restricted: log L = -15.09, AIC = 32.2, BIC = 32.4</li>
+    <li>TEP flexible: log L = -30.88, AIC = 67.8, BIC = 68.4</li>
+    <li>TEP restricted (pessimistic): k_eff = 8 (1 fitted β<sub>fit</sub> + 7 heuristic envelope coefficients), BIC = 47.8</li>
 </ul>
 
 <p>
-    Sign-gated ensemble (n = 6) log-likelihoods: Null log L = -3362.26, Anderson log L = -108.60, TEP restricted log L = -183.32, TEP flexible log L = -154.44.
+    Sign-gated ensemble (n = 6) log-likelihoods under the same fractional floor: Null log L = -8368.02, Anderson log L = -6.55, TEP restricted log L = -16.97, TEP flexible log L = -35.42 (BICs 16736.0, 16.7, 35.7, 76.2 respectively). The gated sensitivity at $\sigma_{\rm sys} = 0$ — published uncertainties taken at face value — favours TEP restricted over Anderson by $\Delta{\rm BIC} \approx +848$ (log L $-582.0$ versus $-1005.2$), the same direction as the full-catalog $\sigma_{\rm sys}=0$ result ($+2767$); the nominal Anderson preference exists only under a nonzero systematic floor whose scale is a modelling convention rather than a measurement.
 </p>
 
 <h3>4.5.3 Information Criteria and Model Comparison</h3>
@@ -661,22 +661,22 @@
 </p>
 
 <ul>
-    <li>Anderson vs Null: $\Delta$BIC $\approx 7633.1$</li>
-    <li>TEP restricted vs Null: $\Delta$BIC $\approx 7535.2$</li>
-    <li>TEP flexible vs Null: $\Delta$BIC $\approx 7454.5$</li>
-    <li>TEP restricted vs Anderson: $\Delta$BIC $\approx -97.9$ (favors Anderson)</li>
+    <li>Anderson vs Null: $\Delta$BIC $\approx 16694.3$</li>
+    <li>TEP restricted vs Null: $\Delta$BIC $\approx 16689.5$</li>
+    <li>TEP flexible vs Null: $\Delta$BIC $\approx 16653.6$</li>
+    <li>TEP restricted vs Anderson: $\Delta$BIC $\approx -4.8$ (parity; Anderson nominally first)</li>
 </ul>
 
 <p>
-    Interpretation. All three physics-based and empirical tiers compress the full catalog by $\Delta$BIC $\gtrsim 7400$ against the Null — the catalogue carries overwhelming signal relative to no-anomaly expectations. On the direct head-to-head, the Anderson empirical model attains the smallest BIC ($361.1$ versus $459.1$ for TEP restricted). This is the expected behaviour when the data are evaluated against the very empirical law fit to them: Anderson's two free parameters (amplitude $A$ and offset $B$) are calibrated on this same catalogue, whereas the TEP restricted tier carries a single free amplitude on top of geometry and response scales pre-specified from independent measurements. The TEP restricted model nevertheless achieves $\Delta$BIC $\approx 7535$ against the Null with one parameter — within $\approx 98$ BIC units of a two-parameter model tuned on the data itself — while the TEP flexible tier (BIC $= 539.8$) does not improve on the restricted tier under the canonical linear response. The physical interpretation is that the TEP kernel reproduces the asymmetry-ordered structure of the catalog without catalog-tuned parameters, while the residual amplitude-level heterogeneity (Galileo 1992 and Cassini residuals; Section 4.2) is what the Anderson offset absorbs.
+    Interpretation. The three geometric templates organize the catalogue with archived score differences $\Delta$BIC $\gtrsim 1.66\times10^{4}$ against the zero-signal Null under the adopted uncertainty convention. This is not support for the clock-sector mechanism: that term is absent from the coherent observable by Section 5.2. The comparison also assigns the Null no additional fractional scatter, so it does not exclude tracking-systematic alternatives. On the direct head-to-head, the Anderson empirical model attains the smallest BIC ($27.6$ versus $32.4$ for TEP restricted) — a $\Delta$BIC $\approx 4.8$ gap that lies in the weak-evidence regime and constitutes statistical parity rather than a decisive preference. Two context points matter. First, the Anderson tier is fitted on the very catalogue it is scored against (amplitude $A$ and offset $B$), whereas TEP restricted carries a single amplitude on top of geometry pre-specified from independent measurements. Second, the ordering between the two tiers is systematic-convention dependent: under the published-uncertainties-only sensitivity block ($\sigma_{\rm sys} = 0$), TEP restricted leads Anderson by $\Delta$BIC $\approx +2767$, because its geometry tracks the dominant NEAR amplitude while the linear asymmetry law does not; the former constant geometry-spread floor placed Anderson ahead by $\approx 98$ only through its dependence on the arbitrary $\beta_{\rm ref}$ anchor, and the constant-floor sweep in Step 026 shows the ordering crossing zero near $\sigma_{\rm sys}\approx5$ mm/s. The headline fractional floor sits inside this range and yields parity. The TEP flexible tier (BIC $= 68.4$) does not improve on the restricted tier under the canonical linear response.
 
-    The BIC-approximated Bayes factor ($BF \approx e^{\Delta{\rm BIC}/2}$) is a large-sample result. For n &lt; 10 and extreme signal-to-noise it is unreliable; when $\log_{10}(BF) &gt; 100$ the value is driven by formal uncertainties and should not be read as a literal probability ratio (Step 026 flags all comparisons in this regime). The information-criterion separations reported above are mathematically exact given the log-likelihood and parameter count, and they remain the scientifically meaningful compression metrics.
+    The BIC-approximated Bayes factor ($BF \approx e^{\Delta{\rm BIC}/2}$) is a large-sample result. For n &lt; 10 and extreme signal-to-noise it is unreliable; when $\log_{10}(BF) &gt; 100$ the value is driven by formal uncertainties and should not be read as a literal probability ratio (Step 026 flags all comparisons in this regime). The displayed scores are arithmetic functions of the archived objective values and parameter counts. Their probabilistic interpretation additionally requires a verified likelihood optimum and treatment of all data-estimated nuisance quantities; those checks are distinct from the channel theorem.
 
-    Even under the pessimistic parameter count ($k_{\rm eff} = 8$), the TEP restricted BIC = 474.5 still beats the Null by $\Delta$BIC $\approx 7519.8$, confirming that the catalog compression is not an artifact of aggressive parameter counting; the Anderson tier retains its advantage ($\Delta$BIC $\approx 113.4$) under this penalty as well.
+    Even under the pessimistic parameter count ($k_{\rm eff} = 8$), the TEP restricted BIC = 47.8 still beats the Null by $\Delta$BIC $\approx 16674.1$, confirming that the catalog compression is not an artifact of aggressive parameter counting; under that penalty the Anderson tier's margin over TEP restricted widens to $\approx 20$ BIC units.
 </p>
 
 <p>
-    Akaike weights (Step 026): Anderson $\approx 1.0000$, TEP restricted $1.0 \times 10^{-21}$ (0.0%), Null $\approx 0$ on the full $n = 9$ catalog. The weight concentration on the empirical tier quantifies the same ordering as the BIC comparison.
+    Akaike weights (Step 026, full $n = 9$ catalog, AICc): Anderson $\approx 0.86$, TEP restricted $\approx 0.14$, TEP flexible $\approx 0$, Null $\approx 0$. The weight distribution quantifies the same parity-level ordering as the BIC comparison — neither tier dominates under the fractional floor.
 </p>
 
 <p>
@@ -714,7 +714,7 @@
     not PPN $\gamma$ predictions. Cassini PPN compliance is evaluated through
     the solar source-charge projection $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$
     (Section 4.6.1a). The ensemble weighted mean yields $\beta_{\rm fit} = 4.74 \times 10^{-3} \pm 5.83 \times 10^{-4}$.
-    The conservative solar source-charge projection in Section 4.6.1a gives $S_\Sigma^{(\odot)} \le 10^{-8}$ from the Jakarta radial field solution for the screened quadratic benchmark, well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$ (canonical linear mapping). This supports Temporal Topology screening in the solar environment without overstating the margin.
+    The solar source-charge projection in Section 4.6.1a adopts the Paper 0 v0.15 convention $S_\Sigma^{(\odot)} \sim 2\times10^{-6}$, inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$ (canonical linear mapping); the kinetic-operator benchmark evaluates the solar-field screening far deeper, $\sim 10^{-15}$ at the 1 AU path. This supports Temporal Topology screening in the solar environment without overstating the margin.
 </p>
 
 <h2>4.6 PPN Constraints and Validation</h2>
@@ -792,7 +792,7 @@
 </div>
 
 <p>
-    where $\alpha_0 = \sqrt{2}\,\beta_A$ is the DEF-normalized bare microscopic coupling (linear in the source charge because the photon probe is unscreened) and $S_\Sigma^{(\odot)}$ is the solar Temporal-Topology screening factor. With $\beta_A = -1$ (Jakarta §2.2), the Cassini bound $|\gamma - 1| < 2.3\times 10^{-5}$ requires (Paper 0, Jakarta v0.14 §7, canonical linear source-charge mapping):
+    where $\alpha_0 = \sqrt{2}\,\beta_A$ is the DEF-normalized bare microscopic coupling (linear in the source charge because the photon probe is unscreened) and $S_\Sigma^{(\odot)}$ is the solar Temporal-Topology screening factor. With $\beta_A = -1$ (Jakarta §2.2), the Cassini bound $|\gamma - 1| < 2.3\times 10^{-5}$ requires (Paper 0, Jakarta v0.15 §7, canonical linear source-charge mapping):
 </p>
 
 <div class="equation">
@@ -802,7 +802,7 @@
 </div>
 
 <p>
-    Cassini constrains the solar exterior source-charge projection $S_\Sigma^{(\odot)}$, not the Earth-vicinity flyby response $S_\oplus$. The Jakarta radial field solution gives $S_\Sigma^{(\odot)} \le 10^{-8}$ for the screened quadratic benchmark ($V = \frac12 m^2 \phi^2$, $\mu_0 \ge 0.01$), well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$. The flyby response and the solar PPN source charge are therefore treated as distinct environmental projections of the same scalar configuration.
+    Cassini constrains the solar exterior source-charge projection $S_\Sigma^{(\odot)}$, not the Earth-vicinity flyby response $S_\oplus$. Paper 0 v0.15 adopts the Solar-System source-charge convention $S_\Sigma^{(\odot)} \sim 2\times10^{-6}$, which satisfies the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$ comfortably; the kinetic-operator evaluation on the solar field returns far deeper screening, $S_\Sigma \sim 1.6\times10^{-15}$ at the 1 AU Cassini path (Paper 0 Appendix E, static-branch benchmarks), with the microscopic uniqueness of that charge within the wider $K(X)$ class remaining open. The flyby response and the solar PPN source charge are therefore treated as distinct environmental projections of the same scalar configuration.
 </p>
 
 <h3>4.6.2 Sensitivity Analysis</h3>
@@ -830,12 +830,12 @@
         <tr>
             <td>Geometric suppression factor (S_⊕)</td>
             <td>0.35</td>
-            <td>0.30 – 0.40</td>
+            <td>0.30 – 0.50</td>
             <td>✓ Yes (all values)</td>
             <td>±6%</td>
         </tr>
         <tr>
-            <td>Relaxation length (λ_TEP)</td>
+            <td>Relaxation length (λ_T)</td>
             <td>4200 km</td>
             <td>2000 – 8000 km</td>
             <td>✓ Yes (within range)</td>
@@ -974,8 +974,8 @@
     endpoint conformal factors cancel identically (Section 5.2). The step
     therefore computes what the clock excursion reconstructs as on a
     clock-carrying link over the real arcs — the mechanism's falsifiable
-    prediction — together with the OD absorption coefficient that sets how
-    much of such a signature survives reduction.
+    prediction — together with the postfit-residual signature that
+    quantifies how much of it survives reduction into the orbit solve.
     The identical batch least-squares orbit-determination filter used in
     the OD-suppression study (six-state estimator, point-mass dynamics,
     assumed GR time standard) is then run on clean and corrupted synthetic
@@ -988,29 +988,32 @@
 
 <table class="data-table">
     <caption>Table 3h: Clock-sector OD rederivation — per-flyby proper-time
-        signature and reconstructed apparent velocity shift on a
-        clock-carrying link (Step 043;
+        signature, reconstructed apparent velocity shift, and postfit
+        residual signature on a clock-carrying link (Step 043;
         noiseless differential estimator, three-complex DSN network,
-        $\pm$12 h tracking window at 180 s cadence). The injected term is
-        absent from the catalogue's coherent two-way class (Section 5.2);
-        the comparison column therefore evaluates sign and scale, not
-        attribution.</caption>
+        $\pm$12 h tracking window at 180 s cadence). $\Delta V_{\rm app}$
+        is an absorption remnant — it shrinks as the arc lengthens
+        (NEAR: $+0.68$/$+0.18$/$+0.05$ mm/s for $\pm$6/$12$/$24$ h) —
+        so the discriminating observable is the unabsorbed postfit
+        residual column. The injected term is absent from the
+        catalogue's coherent two-way class (Section 5.2); the comparison
+        column therefore evaluates sign and scale, not attribution.</caption>
     <thead>
-        <tr><th>Flyby</th><th>$\eta$ at perigee</th><th>$\delta\tau$ total ($\mu$s)</th><th>$\Delta V_{\rm app}$ (mm/s)</th><th>Observed (mm/s)</th></tr>
+        <tr><th>Flyby</th><th>$\eta$ at perigee</th><th>$\delta\tau$ total ($\mu$s)</th><th>$\Delta V_{\rm app}$ (mm/s)</th><th>Postfit resid. RMS (peak) mm/s</th><th>Observed (mm/s)</th></tr>
     </thead>
     <tbody>
-        <tr><td>NEAR</td><td>$-1.22\times10^{-9}$</td><td>$-2.0$</td><td>$+0.18$</td><td>$13.46\pm0.13$</td></tr>
-        <tr><td>Galileo 1990</td><td>$-1.11\times10^{-9}$</td><td>$-1.6$</td><td>$+0.07$</td><td>$3.92\pm0.08$</td></tr>
-        <tr><td>Galileo 1992</td><td>$-1.29\times10^{-9}$</td><td>$-1.8$</td><td>$+0.06$</td><td>$-4.60\pm1.00$</td></tr>
-        <tr><td>Cassini</td><td>$-1.05\times10^{-9}$</td><td>$-1.0$</td><td>$+0.01$</td><td>$-2.00\pm1.00$</td></tr>
-        <tr><td>Rosetta 2005</td><td>$-8.73\times10^{-10}$</td><td>$-2.0$</td><td>$+0.50$</td><td>$1.80\pm0.03$</td></tr>
-        <tr><td>Rosetta 2007</td><td>$-3.93\times10^{-10}$</td><td>$-0.7$</td><td>$+0.01$</td><td>$0.02\pm0.05$</td></tr>
-        <tr><td>Rosetta 2009</td><td>$-7.70\times10^{-10}$</td><td>$-1.2$</td><td>$+0.05$</td><td>$0.00\pm0.05$</td></tr>
-        <tr><td>MESSENGER</td><td>$-7.97\times10^{-10}$</td><td>$-1.9$</td><td>$+0.49$</td><td>$0.02\pm0.01$</td></tr>
-        <tr><td>Juno</td><td>$-1.22\times10^{-9}$</td><td>$-1.6$</td><td>$+0.04$</td><td>$0.0\pm0.02$</td></tr>
-        <tr><td>Stardust</td><td>$-3.33\times10^{-10}$</td><td>$-0.8$</td><td>$+0.04$</td><td>—</td></tr>
-        <tr><td>OSIRIS-REx</td><td>$-2.31\times10^{-11}$</td><td>$-0.1$</td><td>$+0.02$</td><td>—</td></tr>
-        <tr><td>BepiColombo</td><td>$-6.78\times10^{-11}$</td><td>$-0.3$</td><td>$+0.05$</td><td>—</td></tr>
+        <tr><td>NEAR</td><td>$-1.22\times10^{-9}$</td><td>$-2.0$</td><td>$+0.18$</td><td>$5.8$ ($35$)</td><td>$13.46\pm0.13$</td></tr>
+        <tr><td>Galileo 1990</td><td>$-1.11\times10^{-9}$</td><td>$-1.6$</td><td>$+0.07$</td><td>$7.7$ ($83$)</td><td>$3.92\pm0.08$</td></tr>
+        <tr><td>Galileo 1992</td><td>$-1.29\times10^{-9}$</td><td>$-1.8$</td><td>$+0.06$</td><td>$4.6$ ($42$)</td><td>$-4.60\pm1.00$</td></tr>
+        <tr><td>Cassini</td><td>$-1.05\times10^{-9}$</td><td>$-1.0$</td><td>$+0.01$</td><td>$1.3$ ($13$)</td><td>$-2.00\pm1.00$</td></tr>
+        <tr><td>Rosetta 2005</td><td>$-8.73\times10^{-10}$</td><td>$-2.0$</td><td>$+0.50$</td><td>$4.7$ ($27$)</td><td>$1.80\pm0.03$</td></tr>
+        <tr><td>Rosetta 2007</td><td>$-3.93\times10^{-10}$</td><td>$-0.7$</td><td>$+0.01$</td><td>$0.7$ ($5$)</td><td>$0.02\pm0.05$</td></tr>
+        <tr><td>Rosetta 2009</td><td>$-7.70\times10^{-10}$</td><td>$-1.2$</td><td>$+0.05$</td><td>$3.0$ ($26$)</td><td>$0.00\pm0.05$</td></tr>
+        <tr><td>MESSENGER</td><td>$-7.97\times10^{-10}$</td><td>$-1.9$</td><td>$+0.49$</td><td>$4.7$ ($31$)</td><td>$0.02\pm0.01$</td></tr>
+        <tr><td>Juno</td><td>$-1.22\times10^{-9}$</td><td>$-1.6$</td><td>$+0.04$</td><td>$1.8$ ($15$)</td><td>$0.0\pm0.02$</td></tr>
+        <tr><td>Stardust</td><td>$-3.33\times10^{-10}$</td><td>$-0.8$</td><td>$+0.04$</td><td>$0.5$ ($3$)</td><td>—</td></tr>
+        <tr><td>OSIRIS-REx</td><td>$-2.31\times10^{-11}$</td><td>$-0.1$</td><td>$+0.02$</td><td>$0.3$ ($1$)</td><td>—</td></tr>
+        <tr><td>BepiColombo</td><td>$-6.78\times10^{-11}$</td><td>$-0.3$</td><td>$+0.05$</td><td>$0.2$ ($0.7$)</td><td>—</td></tr>
     </tbody>
 </table>
 
@@ -1019,27 +1022,31 @@
     amplitude regime is correct: the
     canonical field excursion ($\Delta\phi = 3.4\times10^{9}$ GeV,
     $\eta_{\rm surface}=-1.39\times10^{-9}$) produces accumulated
-    proper-time offsets of $0.1$–$2\,\mu$s and — on a clock-carrying
-    link — reconstructed apparent
-    velocity shifts of $0.01$–$0.5$ mm/s, just below the observed anomaly
-    scale,
-    with no amplitude tuning; the raw signature itself reaches $c\eta
-    \sim$ m/s, so the excursion would be an unmissable signature in any
-    one-way, non-coherent, or onboard-referenced flyby measurement.
-    Second, the OD suppression is quantified in
-    the clock channel itself: the raw signature $c\eta$ reaches m/s scale
-    at perigee, yet only $\sim 0.1$% survives the six-state fit as an
-    apparent $\Delta V$, confirming that orbit determination absorbs the
-    bulk of a smooth perigee-concentrated clock offset into the estimated
-    state (the linearized filter response reproduces the nonlinear result
-    within 10–40%). Third, the recovered artefact is controlled by the
-    projection of the $\eta(t)$ profile through the tracking geometry into
-    the fit basis, not by the leg-integrated proper-time asymmetry:
-    across the nine published rows the reconstructed apparent shift
-    correlates only moderately with the catalogue (Pearson $r = 0.17$,
-    Spearman $\rho = 0.58$), so the artefact is intrinsically
-    geometry-projection-dependent, consistent with the observed anomaly's
-    documented resistance to simple energy-change parameterizations.
+    proper-time offsets of $0.1$–$2\,\mu$s; the raw signature reaches
+    $c\eta \sim$ m/s at perigee, so the excursion would be an unmissable
+    feature of any one-way, non-coherent, or onboard-referenced flyby
+    measurement. Second, the discriminating observable is the postfit
+    residual, not the reconstructed endpoint $\Delta V$: the six-state
+    fit absorbs the bulk of the perigee-concentrated offset into the
+    estimated state, but a structured remnant always survives —
+    $0.2$–$7.7$ mm/s RMS across the catalogue (peaks up to
+    $\sim 83$ mm/s), i.e. $4$–$25\%$ of the injected signature leaks
+    through orbit determination at $\sim 180$ s cadence and remains
+    detectable at DSN noise floors. The endpoint $\Delta V_{\rm app}$
+    column is reported for completeness but is an absorption remnant
+    rather than a signal amplitude — it shrinks by a factor of
+    $\sim 15$ as the tracking window widens from $\pm 6$ to $\pm 24$ h
+    (NEAR: $+0.68 \to +0.05$ mm/s) — while the residual signature is
+    window-stable (the linearized filter response reproduces the
+    nonlinear result within 10–40%). Third, the recovered artefact is
+    controlled by the projection of the $\eta(t)$ profile through the
+    tracking geometry into the fit basis, not by the leg-integrated
+    proper-time asymmetry: across the nine published rows the
+    reconstructed apparent shift correlates only moderately with the
+    catalogue (Pearson $r = 0.17$, Spearman $\rho = 0.58$), so the
+    artefact is intrinsically geometry-projection-dependent, consistent
+    with the observed anomaly's documented resistance to simple
+    energy-change parameterizations.
 </p>
 
 <p>
@@ -1047,9 +1054,11 @@
     canonical normalization under-produces
     the detected anomalies, and the global clock-response coefficient —
     the clock-channel analogue of the Step 008 response
-    amplitude $\beta_{\rm fit}$ — returns $C_A = 4.2$ on the detection
-    subset (NEAR, Galileo 1990, Rosetta 2005; $n=3$, Pearson $r=-0.43$ at
-    this normalization) with $\chi^2 = 1.17 \times 10^{4}$ on 2 dof:
+    amplitude $\beta_{\rm fit}$ — returns $C_A = 4.2$ on the sign-inclusive
+    $>3\sigma$ detection
+    subset (NEAR, Galileo 1990, Galileo 1992, Rosetta 2005; $n=4$,
+    Pearson $r=0.08$ at
+    this normalization) with $\chi^2 = 1.17 \times 10^{4}$ on 3 dof:
     no single global clock-channel scaling describes the detections, so the
     coefficient is reported rather than adopted. The per-flyby ordering of $\Delta V_{\rm app}$ does
     not, by itself, reproduce the catalog pattern: the same geometry
@@ -1167,15 +1176,15 @@
 </p>
 
 <p>
-    Bayesian model comparison: Stable four-tier model comparison (Step 026) on the full n = 9 catalog favors TEP restricted over Null ($\Delta{\rm BIC}\approx717.9$), while the Anderson empirical model — whose two parameters are fitted on this same catalogue — attains the smallest BIC (TEP restricted minus Anderson $\Delta{\rm BIC}\approx-25.6$). See Section 4.5 for tier definitions. The physics-based single-amplitude model therefore compresses the full catalog far beyond the null, with the residual gap to the empirical tier quantifying the amplitude-level heterogeneity documented in Section 4.2.
+    Bayesian model comparison: Stable four-tier model comparison (Step 026) on the full n = 9 catalog favors TEP restricted over Null ($\Delta{\rm BIC}\approx16689.5$) under the fractional misspecification floor, while the Anderson empirical model — whose two parameters are fitted on this same catalogue — attains the nominally smallest BIC at parity-level separation (TEP restricted minus Anderson $\Delta{\rm BIC}\approx-4.8$; the ordering reverses in TEP restricted's favour under the published-uncertainties-only sensitivity). See Section 4.5 for tier definitions. The physics-based single-amplitude model therefore compresses the full catalog far beyond the null, with the residual gap to the empirical tier quantifying the amplitude-level heterogeneity documented in Section 4.2.
 </p>
 
 <p>
-    Prediction accuracy: On the Step 008 primary comparison, $R^2 \approx 0.850$, Pearson $r \approx 0.930$, MAE $\approx 1.64$ mm/s, RMSE $\approx 2.23$ mm/s, and MAPE $\approx 62.5\%$. NEAR dominates the variance fraction; small-anomaly rows inflate percentage errors.
+    Prediction accuracy: On the Step 008 primary comparison, $R^2 \approx 0.850$, Pearson $r \approx 0.930$, MAE $\approx 1.67$ mm/s, RMSE $\approx 2.24$ mm/s, and MAPE $\approx 62.5\%$. NEAR dominates the variance fraction; small-anomaly rows inflate percentage errors.
 </p>
 
 <p>
-    Residual analysis: Shapiro–Wilk normality on the gated prediction residuals gives $p \approx 0.92$ (consistent with Gaussian tails at $n=6$).
+    Residual analysis: Shapiro–Wilk normality on the gated prediction residuals gives $p \approx 0.95$ (consistent with Gaussian tails at $n=6$).
 </p>
 
 <h3>4.6.6 Characteristic Suppression from UCD Saturation Model</h3>
@@ -1602,11 +1611,11 @@
 
 <p>
     Model comparison: Stable four-tier model comparison (Step 026) compares
-    the Null, Anderson empirical, TEP restricted, and TEP flexible models on the full n = 9 catalog. All non-null tiers compress the catalog by $\Delta$BIC $\gtrsim 700$ against the Null (TEP restricted $\approx 717.9$, TEP flexible $\approx 720.0$, Anderson $\approx 743.5$),
+    the Null, Anderson empirical, TEP restricted, and TEP flexible models on the full n = 9 catalog. All non-null tiers compress the catalog by $\Delta$BIC $\gtrsim 1.66\times10^{4}$ against the Null (TEP restricted $\approx 16689.5$, TEP flexible $\approx 16653.6$, Anderson $\approx 16694.3$),
     confirming that trajectory asymmetry carries genuine signal. The Anderson
     empirical model — fitted with two free parameters on this same catalogue —
-    attains the smallest BIC, leading TEP restricted by $\Delta$BIC $\approx 25.6$;
-    that ordering and its interpretation are discussed in Section 4.5.
+    attains the nominally smallest BIC, at parity-level separation from TEP restricted ($\Delta$BIC $\approx 4.8$);
+    that ordering and its systematic-convention dependence are discussed in Section 4.5.
 </p>
 
 <p>
@@ -1698,7 +1707,7 @@
             <td>Stable (all results within fitted range)</td>
         </tr>
         <tr>
-            <td>Relaxation length λ_TEP</td>
+            <td>Relaxation length λ_T</td>
             <td>3000 – 5000 km</td>
             <td>Stable (weak dependence)</td>
         </tr>
@@ -1711,7 +1720,7 @@
 </table>
 
 <p>
-    Model adequacy tests: Shapiro–Wilk on the gated prediction residuals yields $p \approx 0.92$ in Step 008 (n = 6; consistent with normality, small-$n$ caution). Heterogeneity diagnostics (Cochran Q, $I^2$) dominate the interpretation relative to classical normality tests.
+    Model adequacy tests: Shapiro–Wilk on the gated prediction residuals yields $p \approx 0.95$ in Step 008 (n = 6; consistent with normality, small-$n$ caution). Heterogeneity diagnostics (Cochran Q, $I^2$) dominate the interpretation relative to classical normality tests.
 </p>
 
 <p>
@@ -1719,16 +1728,16 @@
     observed anomalies and satisfies PPN constraints. The following section
     tests a deeper prediction: that the <em>residual</em> discrepancy between
     observation and prediction should correlate with the geometry of velocity
-    in the scalar field rest frame, approximated by the CMB dipole frame.
+    in the ambient-field rest frame, approximated by the CMB dipole frame.
 </p>
 
 <h2>4.11 Cosmographic Temporal Shear Modulation Analysis</h2>
 
 <p>
     A key prediction of the TEP framework is that temporal shear should depend
-    on the total velocity of the Earth-Moon system relative to the scalar field
+    on the total velocity of the Earth-Moon system relative to the ambient-field
     rest frame, not merely the spacecraft velocity relative to Earth. If the
-    cosmic microwave background (CMB) dipole frame approximates this rest frame,
+    cosmic microwave background (CMB) dipole frame approximates this frame,
     the ~370 km/s bulk motion of the Solar System toward (RA, Dec) =
     (167.94°, −6.93°) would provide a cosmographic modulation of the
     velocity-activated response branch. Additionally, Earth's elliptical orbit produces a heliocentric
@@ -1785,7 +1794,7 @@
 </ol>
 
 <p>
-    The TEP disformal coupling scales as <em>v</em><sup>2</sup> in the scalar
+    The TEP disformal coupling scales as <em>v</em><sup>2</sup> in the ambient-field
     rest frame. The CMB-rest-frame disformal enhancement factor is
     <em>f</em><sub>enh</sub> = |v<sub>total</sub>|<sup>2</sup>
     / |v<sub>sc</sub>|<sup>2</sup>, ranging from ~350 to ~1300
@@ -1795,7 +1804,7 @@
     predicted propagating-sector signal.) Because the 370 km/s CMB bulk velocity is nearly
     constant, the dominant variation in the effective coupling comes from the
     <em>direction</em> of the spacecraft velocity relative to the CMB dipole,
-    quantified by cos <em>θ</em><sub>SC-CMB</em> = (v<sub>sc</sub>
+    quantified by cos <em>θ</em><sub>SC-CMB</sub> = (v<sub>sc</sub>
     · n<sub>CMB</sub>) / |v<sub>sc</sub>|.
 </p>
 
@@ -2052,7 +2061,7 @@
     orbital velocity are aligned with the CMB dipole apex (cos
     <em>θ</em><sub>SC-CMB</sub> &gt; 0 and
     v<sub>Earth</sub> · n<sub>CMB</sub> &gt; 0),
-    the two velocity components add constructively in the scalar rest frame,
+    the two velocity components add constructively in the ambient-field rest frame,
     boosting the template's velocity factor. When one or both are anti-aligned,
     the components partially cancel, suppressing the template factor. This is a
     directional hypothesis about the phenomenological envelope only: the

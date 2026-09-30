@@ -70,10 +70,24 @@ DIFFERENTIAL ESTIMATOR:
 OUTPUT:
     results/step043_clock_sector_od.json — per-flyby eta_perigee,
     accumulated delta_tau, apparent dv (minimal + empirical-accel OD),
-    observed anomaly, ensemble correlations, and the fitted global
+    the postfit-residual signature (RMS, peak, inner-2h RMS — the
+    primary falsifiable observable: the unabsorbed structure a real
+    clock-carrying pass would leave after the orbit solve), observed
+    anomaly, ensemble correlations, and the fitted global
     clock-response coefficient C_A (the clock-channel analogue of the
     Step 008 beta_fit: a single amplitude normalisation across the
     catalogue, fit by inverse variance).
+
+NOTE on estimator stability: dv_app = end-minus-start speed change
+    is an ABSORPTION REMNANT — it shrinks as the tracking arc widens
+    (NEAR: +0.68 mm/s at +/-6 h, +0.18 at +/-12 h, +0.05 at +/-24 h),
+    i.e. it measures how much of the signature the fit absorbed, not
+    the signature itself.  The modern empirical-acceleration variant
+    does not re-estimate the orbit at all (state frozen at truth; one
+    constant-accel solve), so its dv column is the constant-
+    acceleration projection — a different quantity, systematically
+    opposite in sign — and is reported under
+    dv_app_constaccel_projection_mm_s.
 """
 
 import json
@@ -226,16 +240,37 @@ def analyse_flyby(name: str, arc: dict, model: TEPTemporalTopologyModel,
     z_clock = z_clean + C_LIGHT * eta
 
     dv_min_clean, res_min_clean = run_od_fit(t, propagator, network, z_clean, x0, modern=False)
-    dv_min_clock, _ = run_od_fit(t, propagator, network, z_clock, x0, modern=False)
+    dv_min_clock, res_min_clock = run_od_fit(t, propagator, network, z_clock, x0, modern=False)
     dv_app_minimal = dv_min_clock - dv_min_clean
+
+    # Primary falsifiable observable: the postfit-residual signature.
+    # dv_app is the endpoint remnant AFTER absorption into the 6-state
+    # fit and shrinks as the arc lengthens — it measures absorption,
+    # not signal amplitude.  The discriminating signature a real
+    # clock-carrying pass would show is the structured postfit
+    # residual the orbit fit cannot absorb (concentrated at perigee).
+    resid_clock = np.asarray(res_min_clock["residuals"], dtype=float)
+    inj_rms = float(np.std(C_LIGHT * eta))
+    inner = np.abs(t) <= 2.0 * 3600.0
+    resid_rms = float(np.std(resid_clock))
+    resid_peak = float(np.max(np.abs(resid_clock)))
+    resid_rms_inner = float(np.std(resid_clock[inner])) if inner.sum() >= 5 else np.nan
 
     try:
         dv_mod_clean, _ = run_od_fit(t, propagator, network, z_clean, x0, modern=True)
-        dv_mod_clock, _ = run_od_fit(t, propagator, network, z_clock, x0, modern=True)
+        dv_mod_clock, res_mod_clock = run_od_fit(t, propagator, network, z_clock, x0, modern=True)
         dv_app_modern = dv_mod_clock - dv_mod_clean
-        absorption = 1.0 - dv_app_modern / dv_app_minimal if dv_app_minimal != 0 else np.nan
+        # The empirical-accel variant never re-estimates the orbit
+        # (state frozen at truth, one constant-accel solve): its dv
+        # column is the sign/magnitude of the constant-acceleration
+        # projection of c*eta on the endpoint speed change — a
+        # different quantity from dv_app_minimal, systematically
+        # opposite in sign.  The meaningful diagnostic is how much
+        # residual power the accel term removes.
+        resid_mod = float(np.std(np.asarray(res_mod_clock["residuals"], dtype=float)))
+        absorption = 1.0 - resid_mod / resid_rms if resid_rms > 0 else np.nan
     except Exception:  # empirical-accel variant is diagnostic-only
-        dv_app_modern, absorption = np.nan, np.nan
+        dv_app_modern, resid_mod, absorption = np.nan, np.nan, np.nan
 
     # Linear-response cross-check at the clean-fit solution.
     try:
@@ -268,7 +303,17 @@ def analyse_flyby(name: str, arc: dict, model: TEPTemporalTopologyModel,
         "dv_app_modern_od_mm_s": (None if np.isnan(dv_app_modern)
                                   else float(dv_app_modern) * 1e3),
         "dv_app_linearized_mm_s": (None if np.isnan(dv_lin) else float(dv_lin) * 1e3),
-        "empirical_accel_absorption_fraction": (None if np.isnan(absorption)
+        "injected_doppler_rms_mm_s": inj_rms * 1e3,
+        "postfit_resid_rms_mm_s": resid_rms * 1e3,
+        "postfit_resid_peak_mm_s": resid_peak * 1e3,
+        "postfit_resid_rms_inner2h_mm_s": (None if np.isnan(resid_rms_inner)
+                                           else resid_rms_inner * 1e3),
+        "resid_leak_fraction": (resid_rms / inj_rms) if inj_rms > 0 else np.nan,
+        "dv_app_constaccel_projection_mm_s": (None if np.isnan(dv_app_modern)
+                                              else float(dv_app_modern) * 1e3),
+        "constaccel_resid_rms_mm_s": (None if np.isnan(resid_mod)
+                                      else resid_mod * 1e3),
+        "constaccel_resid_absorption_fraction": (None if np.isnan(absorption)
                                                 else float(absorption)),
         "baseline_postfit_rms_m_s": float(res_min_clean["rms"]),
         "published_anomaly_mm_s": cat_entry.get("published_anomaly_mm_s"),
@@ -316,15 +361,18 @@ def main():
         print(f"  {name:>16}: eta_p={row['eta_perigee']:.2e}  "
               f"dtau={row['delta_tau_total_s']*1e6:.2f} us  "
               f"dv_app={row['dv_app_minimal_od_mm_s']:+.3f} mm/s  "
+              f"resid={row['postfit_resid_rms_mm_s']:.2f} mm/s "
+              f"(peak {row['postfit_resid_peak_mm_s']:.1f})  "
               f"obs={row['published_anomaly_mm_s']}")
 
-    # Ensemble statistics on the S/N-qualified subset (positive, >3sigma
-    # detections are the primary diagnostic rows).
+    # Ensemble statistics on the S/N-qualified subset (>3sigma
+    # detections, sign-inclusive — the earlier positive-only gate
+    # discarded the negative-branch detections Galileo 1992 (-4.6
+    # sigma) and Cassini (-2 sigma), biasing the diagnostic).
     qual = [r for r in rows if r["published_anomaly_mm_s"] is not None]
     det = [r for r in qual
-           if r["published_anomaly_mm_s"] > 0
-           and (r["published_anomaly_uncertainty_mm_s"] or 0) > 0
-           and r["published_anomaly_mm_s"]
+           if (r["published_anomaly_uncertainty_mm_s"] or 0) > 0
+           and abs(r["published_anomaly_mm_s"])
                > 3 * r["published_anomaly_uncertainty_mm_s"]]
 
     def _corr(subset):
@@ -369,7 +417,10 @@ def main():
             "od_filter": "MinimalODFilter (6-state batch LSQ, point-mass "
                          "dynamics, GR time standard) + empirical-acceleration "
                          "variant for absorption diagnostic",
-            "estimator": "differential dv_detected(corrupted) - dv_detected(clean)",
+            "estimator": "differential dv_detected(corrupted) - dv_detected(clean); "
+                         "primary observable is the postfit-residual signature "
+                         "(dv_app is an absorption remnant that shrinks as the "
+                         "arc window lengthens, not a signal amplitude)",
             "truth_source": "real JPL Horizons state-vector arcs (step038)",
             "window_hours": WINDOW_HOURS,
             "cadence_s": CADENCE_S,
@@ -390,6 +441,14 @@ def main():
             "C_A_chi2": chi2,
             "C_A_n_dof": len(fit_src) - 1,
             "mean_abs_dv_app_mm_s": float(np.mean(np.abs(app))) if len(app) else None,
+            "postfit_resid_signature": {
+                "rms_mm_s_range": [
+                    min(r["postfit_resid_rms_mm_s"] for r in rows),
+                    max(r["postfit_resid_rms_mm_s"] for r in rows)],
+                "peak_mm_s_max": max(r["postfit_resid_peak_mm_s"] for r in rows),
+                "mean_leak_fraction": float(np.mean(
+                    [r["resid_leak_fraction"] for r in rows])),
+            },
         },
     }
     out_path = RESULTS_DIR / "step043_clock_sector_od.json"

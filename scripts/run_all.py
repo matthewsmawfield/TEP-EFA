@@ -84,6 +84,7 @@ CORE_STEPS: list[tuple[str, str]] = [
     ('step_030_juno_reanalysis.py', 'Step 030: Juno 2013 Reanalysis'),
     ('step_042_time_resolved_cosmography.py', 'Step 042: Time-Resolved Cosmography (after Horizons + optional Juno DSN sidecar)'),
     ('step_043_clock_sector_od.py', 'Step 043: Clock-Sector Proper-Time Artefact OD Rederivation'),
+    ('step_046_two_way_cancellation.py', 'Step 046: Coherent Two-Way Cancellation Verification'),
     ('step_045_eccentric_orbit_bound.py', 'Step 045: Eccentric-Orbit Clock Bound on Lambda_TEP'),
     ('step_031_pds_search.py', 'Step 031: PDS Search'),
     ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
@@ -404,8 +405,8 @@ def _log_ensemble_policy(logger: PipelineLogger) -> None:
         )
     else:
         logger.info(
-            "strict_sign_gate=false: four S/N-qualified primary fits in Step 008/026; "
-            "sign-agreement n=3 reported as sign_agreement_model_comparison / "
+            "strict_sign_gate=false: six S/N-qualified primary fits in Step 008/026; "
+            "sign-agreement n=6 reported as sign_agreement_model_comparison / "
             "beta_statistics_sign_gated_diagnostic."
         )
     logger.info(f"Gate policy text: {ENSEMBLE_GATE_POLICY[:120]}...")

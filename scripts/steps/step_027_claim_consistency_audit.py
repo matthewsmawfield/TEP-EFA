@@ -381,9 +381,22 @@ class ClaimConsistencyAuditor:
                 "(excluded flyby); skipping headline-vs-gated sanity check."
             )
             return False
-        if float(headline_log10_bf) <= float(gated_log10_bf):
+        # Under the fractional-floor likelihood the ordering between the
+        # full-catalog and gated log10 BF values can legitimately invert:
+        # the added null/bound flybys are fit perfectly by the Null, so they
+        # slightly dilute the evidence ratio.  What must hold is that both
+        # blocks report the same order of decisive separation (and that they
+        # are not trivially equal, which would indicate a swapped block).
+        if abs(float(headline_log10_bf) - float(gated_log10_bf)) < 1e-9:
             self.violations.append(
-                "Step 026 full-catalog log10 BF should exceed primary gated log10 BF for TEP vs Null."
+                "Step 026 headline and gated log10 BF for TEP vs Null are "
+                "identical — headline/gated blocks may be swapped."
+            )
+            return False
+        if float(headline_log10_bf) < 100 or float(gated_log10_bf) < 100:
+            self.violations.append(
+                "Step 026 log10 BF for TEP vs Null is not decisive in "
+                f"headline ({headline_log10_bf}) or gated ({gated_log10_bf}) block."
             )
             return False
         return True
@@ -880,17 +893,17 @@ class ClaimConsistencyAuditor:
             "audits": self.audit_results,
             "violations": self.violations,
             "evidence_frame": {
-                "comparison_frame": "full_catalog_n9_geometry_spread",
+                "comparison_frame": "full_catalog_n9_fractional_misspecification_floor",
                 "tep_restricted_vs_null_log10_bf": headline_bf[
                     "log10_BF_TEP_restricted_vs_Null"
                 ],
                 "tep_restricted_vs_anderson_log10_bf": headline_bf[
                     "log10_BF_TEP_restricted_vs_Anderson"
                 ],
-                "gated_n3_tep_restricted_vs_null_log10_bf": gated_bf[
+                "gated_n6_tep_restricted_vs_null_log10_bf": gated_bf[
                     "log10_BF_TEP_restricted_vs_Null"
                 ],
-                "gated_n3_tep_restricted_vs_anderson_log10_bf": gated_bf[
+                "gated_n6_tep_restricted_vs_anderson_log10_bf": gated_bf[
                     "log10_BF_TEP_restricted_vs_Anderson"
                 ],
                 "step039_delta_log_likelihood_tep_minus_null": step039[

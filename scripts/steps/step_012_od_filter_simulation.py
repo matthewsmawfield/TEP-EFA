@@ -706,10 +706,15 @@ class ModernODFilterWithEmpiricalAccel:
     empirical acceleration states, which is exactly how modern OD software
     (like JPL's MONTE or GEODYN) models unmodeled non-gravitational forces.
     
-    Estimates:
-    - Initial Position [x, y, z]
-    - Initial Velocity [vx, vy, vz]
+    Solves:
     - Piece-wise Constant Empirical Acceleration [ax, ay, az] (single batch)
+
+    NOTE: this is an acceleration-only diagnostic — the orbital state is
+    frozen at the input estimate (only states[6:9] are updated by one
+    normal-equation solve under an a priori accel sigma).  It does not
+    re-estimate position/velocity, so its detected speed change is the
+    constant-acceleration projection of the unmodelled signal, not a
+    full modern-OD reconstruction.
       
     By including these empirical parameters (which are standard in modern OD
     software like MONTE or GEODYN to absorb radiation pressure or drag),

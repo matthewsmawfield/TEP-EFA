@@ -1,9 +1,9 @@
 {
   "metadata": {
     "step": "027_claim_consistency_audit",
-    "timestamp": "2026-09-26T21:15:29.970541+00:00",
+    "timestamp": "2026-09-30T17:13:51.727216+00:00",
     "status": "PASS",
-    "duration_seconds": 0.24427318572998047
+    "duration_seconds": 0.16405892372131348
   },
   "synced_files": [],
   "audits": [
@@ -90,11 +90,11 @@
   ],
   "violations": [],
   "evidence_frame": {
-    "comparison_frame": "full_catalog_n9_geometry_spread",
-    "tep_restricted_vs_null_log10_bf": 1636.2477377414086,
-    "tep_restricted_vs_anderson_log10_bf": -21.26591392764508,
-    "gated_n3_tep_restricted_vs_null_log10_bf": 1380.2109680049036,
-    "gated_n3_tep_restricted_vs_anderson_log10_bf": -32.057882390235946,
+    "comparison_frame": "full_catalog_n9_fractional_misspecification_floor",
+    "tep_restricted_vs_null_log10_bf": 3624.087901128561,
+    "tep_restricted_vs_anderson_log10_bf": -1.0383752798015522,
+    "gated_n6_tep_restricted_vs_null_log10_bf": 3626.424780255006,
+    "gated_n6_tep_restricted_vs_anderson_log10_bf": -4.137504458083115,
     "step039_delta_log_likelihood_tep_minus_null": 43.034480720844876,
     "step039_deterministic_raw_tensions": 1,
     "step039_uncertainty_aware_raw_tensions": 1,

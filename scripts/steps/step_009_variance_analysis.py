@@ -544,7 +544,7 @@ def calculate_variance_decomposition(
     asymmetry_ordering = {
         'description': (
             'Spearman rank of |trajectory asymmetry| vs |observed anomaly '
-            'magnitude|.  The gated sign-agreement subset is the n=3 '
+            'magnitude|.  The gated sign-agreement subset is the n=6 '
             'detection ensemble quoted in the abstract; the nonzero and '
             'full rows give the broader-catalog statistics.'
         ),

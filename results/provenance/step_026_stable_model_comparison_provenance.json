@@ -1,14 +1,14 @@
 {
   "step_name": "step_026_stable_model_comparison",
   "step_number": "026",
-  "timestamp": "2026-09-26T17:21:42.276617+00:00",
+  "timestamp": "2026-09-28T14:23:58.495655+00:00",
   "input_files": [],
   "output_files": [
     {
       "path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json",
       "description": "Stable model comparison results",
-      "size_bytes": 17743,
-      "hash": "455f21bc4276a3b7a87d9cf5936ac598582ad5b920fd42ad82faab7aaa0accf8"
+      "size_bytes": 26189,
+      "hash": "dd448117a0d122561ecdf23ca6ca2c4b696b835cb5c7d342ea7f4d69be2390c0"
     }
   ],
   "parameters": {},

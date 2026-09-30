@@ -47,8 +47,8 @@
     "published_cos_asymmetry": -0.022,
     "observed_anomaly_mm_s": -2.0,
     "anderson_prediction_mm_s": -0.4815,
-    "tep_prediction_mm_s": -0.0001,
-    "conclusion": "Both Anderson empirical formula and TEP model predict negative anomaly for Cassini because the published geometry factor cos_asymmetry = -0.088 is negative. The sign mismatch is inherited from the literature geometry, not a TEP-specific failure."
+    "tep_prediction_mm_s": -0.0,
+    "conclusion": "Both Anderson empirical formula and TEP model predict a negative anomaly for Cassini because the published geometry factor cos_asymmetry = -0.022 is negative. The sign is inherited from the literature geometry (and confirmed by the independent Horizons reconstruction), not a TEP-specific failure."
   },
   "anderson_vs_tep_vs_observed_table": [
     {
@@ -57,7 +57,7 @@
       "observed_dv_mm_s": 13.46,
       "observed_uncertainty_mm_s": 0.13,
       "anderson_prediction_mm_s": 9.9546,
-      "tep_prediction_beta_ref_mm_s": 1.527,
+      "tep_prediction_beta_ref_mm_s": 0.3036,
       "tep_prediction_fitted_beta_mm_s": 13.46
     },
     {
@@ -66,7 +66,7 @@
       "observed_dv_mm_s": 3.92,
       "observed_uncertainty_mm_s": 0.08,
       "anderson_prediction_mm_s": 2.2768,
-      "tep_prediction_beta_ref_mm_s": 0.1372,
+      "tep_prediction_beta_ref_mm_s": 0.0273,
       "tep_prediction_fitted_beta_mm_s": 3.92
     },
     {
@@ -75,7 +75,7 @@
       "observed_dv_mm_s": -2.0,
       "observed_uncertainty_mm_s": 1.0,
       "anderson_prediction_mm_s": -0.4815,
-      "tep_prediction_beta_ref_mm_s": -0.0001,
+      "tep_prediction_beta_ref_mm_s": -0.0,
       "tep_prediction_fitted_beta_mm_s": -2.0
     },
     {
@@ -84,7 +84,7 @@
       "observed_dv_mm_s": -4.6,
       "observed_uncertainty_mm_s": 1.0,
       "anderson_prediction_mm_s": -2.8687,
-      "tep_prediction_beta_ref_mm_s": -0.0348,
+      "tep_prediction_beta_ref_mm_s": -0.0069,
       "tep_prediction_fitted_beta_mm_s": -4.6
     },
     {
@@ -93,7 +93,7 @@
       "observed_dv_mm_s": 1.8,
       "observed_uncertainty_mm_s": 0.03,
       "anderson_prediction_mm_s": 2.6639,
-      "tep_prediction_beta_ref_mm_s": 0.1758,
+      "tep_prediction_beta_ref_mm_s": 0.035,
       "tep_prediction_fitted_beta_mm_s": 1.8
     },
     {
@@ -102,8 +102,8 @@
       "observed_dv_mm_s": 0.02,
       "observed_uncertainty_mm_s": 0.05,
       "anderson_prediction_mm_s": 0.4218,
-      "tep_prediction_beta_ref_mm_s": 0.0001,
-      "tep_prediction_fitted_beta_mm_s": 0.0002
+      "tep_prediction_beta_ref_mm_s": 0.0,
+      "tep_prediction_fitted_beta_mm_s": 0.0001
     },
     {
       "mission_name": "Rosetta_2009",
@@ -111,8 +111,8 @@
       "observed_dv_mm_s": 0.0,
       "observed_uncertainty_mm_s": 0.05,
       "anderson_prediction_mm_s": null,
-      "tep_prediction_beta_ref_mm_s": 0.0012,
-      "tep_prediction_fitted_beta_mm_s": 0.0044
+      "tep_prediction_beta_ref_mm_s": 0.0002,
+      "tep_prediction_fitted_beta_mm_s": 0.0013
     },
     {
       "mission_name": "MESSENGER_2005",
@@ -129,8 +129,8 @@
       "observed_dv_mm_s": 0.0,
       "observed_uncertainty_mm_s": 0.02,
       "anderson_prediction_mm_s": null,
-      "tep_prediction_beta_ref_mm_s": 0.0132,
-      "tep_prediction_fitted_beta_mm_s": 0.0483
+      "tep_prediction_beta_ref_mm_s": 0.0026,
+      "tep_prediction_fitted_beta_mm_s": 0.0148
     },
     {
       "mission_name": "Stardust",
@@ -138,8 +138,8 @@
       "observed_dv_mm_s": null,
       "observed_uncertainty_mm_s": null,
       "anderson_prediction_mm_s": null,
-      "tep_prediction_beta_ref_mm_s": -0.0003,
-      "tep_prediction_fitted_beta_mm_s": -0.0012
+      "tep_prediction_beta_ref_mm_s": -0.0001,
+      "tep_prediction_fitted_beta_mm_s": -0.0004
     },
     {
       "mission_name": "OSIRIS-REx",

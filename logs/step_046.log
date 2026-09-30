@@ -1,0 +1,58 @@
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] LOGGER INITIALIZED: step_046 (Step 046)
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_046.log
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] ================================================================================
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] Step 046: Coherent Two-Way Cancellation Verification
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] ================================================================================
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] Field model: delta_phi = 3.3911e+09 GeV, lambda_T = 4200000 m
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] Link class under test: fully coherent two-way (turnaround ratio R = 1.085973)
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] --- NEAR ---
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 8.136e-17 frac (2.439e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 1.160e-09 frac (0.3477 m/s); peak eta_sc 1.225e-09
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] --- Galileo_1990 ---
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 1.583e-16 frac (4.747e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 9.469e-10 frac (0.2839 m/s); peak eta_sc 1.106e-09
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] --- Galileo_1992 ---
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 1.330e-16 frac (3.988e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:03 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 1.291e-09 frac (0.3872 m/s); peak eta_sc 1.293e-09
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:03 UTC] [DEBUG   ] [STEP 046] --- Cassini ---
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 3.858e-16 frac (1.157e-04 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 1.008e-09 frac (0.3021 m/s); peak eta_sc 1.048e-09
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] --- Rosetta_2005 ---
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 1.335e-16 frac (4.002e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 8.713e-10 frac (0.2612 m/s); peak eta_sc 8.727e-10
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] --- Rosetta_2007 ---
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 2.761e-16 frac (8.277e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 3.818e-10 frac (0.1145 m/s); peak eta_sc 3.933e-10
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] --- Rosetta_2009 ---
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 2.355e-16 frac (7.061e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 6.852e-10 frac (0.2054 m/s); peak eta_sc 7.696e-10
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] --- MESSENGER_2005 ---
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 6.382e-17 frac (1.913e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:04 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 7.738e-10 frac (0.2320 m/s); peak eta_sc 7.972e-10
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:04 UTC] [DEBUG   ] [STEP 046] --- Juno ---
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 3.602e-16 frac (1.080e-04 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 1.194e-09 frac (0.3579 m/s); peak eta_sc 1.216e-09
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] --- Stardust ---
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 4.306e-17 frac (1.291e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 3.167e-10 frac (0.0949 m/s); peak eta_sc 3.331e-10
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] --- OSIRIS-REx ---
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 1.999e-16 frac (5.993e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 2.300e-11 frac (0.0069 m/s); peak eta_sc 2.307e-11
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] 
+[2026-09-30 17:25:05 UTC] [DEBUG   ] [STEP 046] --- BepiColombo ---
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] coherent 2-way residual: max 1.492e-16 frac (4.472e-05 mm/s); estimator slope 1.000, r 1.0000
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] one-way clock-carrying: max 6.648e-11 frac (0.0199 m/s); peak eta_sc 6.784e-11
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] Ensemble max coherent residual: 3.858e-16 frac (1.16e-04 mm/s; claim ~1e-18); max clock-carrying SC term 0.387 m/s (claim ~0.4)
+[2026-09-30 17:25:05 UTC] [INFO    ] [STEP 046] ✓ Wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step046_two_way_cancellation.json

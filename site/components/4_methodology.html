@@ -1,7 +1,7 @@
 <h2>3. Methodology</h2>
 
 <p>
-    The analysis employs a four-step pipeline to test whether TEP with Temporal Topology explains observed flyby velocity anomalies as clock-sector artefacts. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta_{\rm fit}$ to match observed anomalies, and validates all parameters against solar system PPN constraints. Which measurement classes can carry the clock-sector term is itself part of the analysis: the channel accounting of Section 5.2 shows the spacecraft's conformal excursion survives only in clock-carrying links (one-way, non-coherent, or regenerative-ranging observables), while the published catalogue was recorded in the coherent two-way class.
+    The analysis employs a four-step pipeline to compare the published flyby anomaly geometry with the TEP response template and to test the clock-sector artefact separately in the link classes where it survives. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta_{\rm fit}$ to match observed anomalies, and validates all parameters against solar system PPN constraints. Which measurement classes can carry the clock-sector term is itself part of the analysis: the channel accounting of Section 5.2 shows the spacecraft's conformal excursion survives only in clock-carrying links (one-way, non-coherent, or regenerative-ranging observables), while the published catalogue is assigned to the coherent-transponder class on the literature-based ledger of Section 5.2, pending encounter-specific tracking verification.
 </p>
 
 <h2>3.1 Data Acquisition</h2>
@@ -75,15 +75,15 @@
 
   <p>Step 019 applies the same impulse integrator along idealized asymmetric flyby arcs (metadata: <code>idealized_analytic_hypoflyby</code>). On comparable rows of Table 3b (Section&nbsp;4.1.2), the ratio $\Delta v_{\rm 3D}/\Delta v_{\rm simplified}$ differs from unity by tens of percent for the three gated primaries—a consistency check inside the analytic path class—while ratios against the Step&nbsp;007 perigee impulse are deliberately not marketed as ±10% “agreement.” Symmetric/high-altitude cases remain perturbatively small in Step&nbsp;007, matching the qualitative null catalogue. Ensemble fitting continues to anchor on Step&nbsp;007 + Step&nbsp;008; Step&nbsp;019 is a diagnostic shim for the trajectory integrator, not a calibration of Anderson-scale residuals.</p>
 
-  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial component of the artefact kernel. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not collapse the heterogeneity in fitted β<sub>fit</sub> across the gated ensemble (factor ~4.8 across the amplitude-informative members at fixed reference coupling, with formal Cochran Q ≫ 1). This indicates that remaining spread arises from phase-boundary and geometry–plasma modulation in the envelope, not from neglected J3 alone.</p>
+  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial component of the artefact kernel. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not collapse the heterogeneity in fitted β<sub>fit</sub> across the gated ensemble (factor ~3.3 across the tightly constrained members at fixed reference coupling, extending to ~15 with the negative-branch Galileo 1992 member, with formal Cochran Q ≫ 1). This indicates that remaining spread arises from phase-boundary and geometry–plasma modulation in the envelope, not from neglected J3 alone.</p>
 
-  <p>The scalar field φ relaxes outside Earth with a profile scale λ_TEP = 4200 km — the operational value anchored on the measured GNSS clock-correlation length L_c = 4201 km (±15% calibration band). Under the corpus's terrestrial transfer-sketch identification (Paper 6 §2) the exterior profile varies on 𝒪(R_T) with an undetermined order-unity prefactor, since a gradual screening transition produces no exterior structure sharper than the scale over which the integrated source charge changes over; the adopted value sits 1.3% above the ansatz target R_T = 4146 km, within the stated prefactor freedom and calibration band (the two are not independent: ρ_T was itself calibrated from L_c). This is a stated ansatz anchoring the profile scale — not a derived equality, and distinct from the in-medium Compton wavelength of a candidate chameleon completion.</p>
+  <p>The scalar field φ relaxes outside Earth with a profile scale λ_T = 4200 km — the operational value anchored on the measured GNSS clock-correlation length L_c = 4201 km (±15% calibration band). Under the corpus's terrestrial transfer-sketch identification (Paper 6 §2) the exterior profile varies on 𝒪(R_T) with an undetermined order-unity prefactor, since a gradual screening transition produces no exterior structure sharper than the scale over which the integrated source charge changes over; the adopted value sits 1.3% above the ansatz target R_T = 4146 km, within the stated prefactor freedom and calibration band (the two are not independent: ρ_T was itself calibrated from L_c). This is a stated ansatz anchoring the profile scale — not a derived equality, and distinct from the in-medium Compton wavelength of a candidate chameleon completion.</p>
 
-  <p>The trajectory asymmetry factor $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ is the dominant source of inter-flyby variation. Nearly symmetric trajectories (e.g., MESSENGER, $\cos\delta_{\rm in} - \cos\delta_{\rm out} \approx 0.005$) predict negligible anomalies, consistent with observations. Asymmetric trajectories (e.g., NEAR with $\cos\delta_{\rm in} - \cos\delta_{\rm out} = 0.625$) predict large anomalies. Cassini carries a small negative asymmetry factor ($-0.022$), verified by independent JPL Horizons reconstruction (Table 1a) — a physical property of the trajectory, not a convention artifact. The kernel therefore predicts a negative apparent anomaly, consistent in sign with the corrected $-2 \pm 1$ mm/s catalogue value, though the predicted magnitude is negligible and the amplitude shortfall remains a genuine limitation of the phenomenological kernel for this geometry, not a convention mismatch. The mechanism-faithful calculation addresses it: the Step 043 OD rederivation, which propagates the proper-time artefact through the batch least-squares filter rather than the kernel, recovers a positive-sign reconstruction at the correct order ($\Delta V_{\rm app} = +0.04$ mm/s vs the published $0.11\pm0.05$ mm/s, Table 3h) — a comparison evaluated against the published catalogue value, conditional on the open Anderson transcription audit, and scoped to the clock-carrying link class under the channel accounting of Section 5.2 (the catalogued datum was recorded in the coherent two-way class, where the term is absent).</p>
+  <p>The trajectory asymmetry factor $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ is the dominant source of inter-flyby variation. Nearly symmetric trajectories (e.g., MESSENGER, $\cos\delta_{\rm in} - \cos\delta_{\rm out} \approx 0.005$) predict negligible anomalies, consistent with observations. Asymmetric trajectories (e.g., NEAR with $\cos\delta_{\rm in} - \cos\delta_{\rm out} = 0.625$) predict large anomalies. Cassini carries a small negative asymmetry factor ($-0.022$), verified by independent JPL Horizons reconstruction (Table 1a) — a physical property of the trajectory, not a convention artifact. The kernel therefore predicts a negative apparent anomaly, consistent in sign with the corrected $-2 \pm 1$ mm/s catalogue value, though the predicted magnitude is negligible and the amplitude shortfall remains a genuine limitation of the phenomenological kernel for this geometry, not a convention mismatch. The mechanism-faithful calculation is consistent with this reading: the Step 043 OD rederivation, which propagates the proper-time artefact through the batch least-squares filter rather than the kernel, returns only a negligible endpoint remnant for Cassini ($\Delta V_{\rm app} = +0.01$ mm/s, Table 3h) — the clock-sector channel does not produce the corrected $-2\pm1$ mm/s catalogue value, consistently with that datum's coherent two-way link class, in which the term is absent at the observable (Section 5.2).</p>
 
   <div class="equation">
     \begin{equation}
-    \phi(r) = \phi_{\rm earth} + (\phi_{\rm space} - \phi_{\rm earth}) \left[1 - \exp\!\left(-\frac{r - R_\oplus}{\lambda_{\rm TEP}}\right)\right]
+    \phi(r) = \phi_{\rm earth} + (\phi_{\rm space} - \phi_{\rm earth}) \left[1 - \exp\!\left(-\frac{r - R_\oplus}{\lambda_T}\right)\right]
     \end{equation}
   </div>
 
@@ -95,7 +95,7 @@
     \end{equation}
   </div>
 
-  <p>The pipeline's field-amplitude normalization is the canonical amplitude-sector excursion of Paper 0 v0.14. The pipeline carries the excursion complement $\phi(r)$ — zero at the pinned interior floor, rising to the ambient reference $\phi_{\rm space}$ — so that the physical excursion $\psi(r) = \phi_{\rm space} - \phi(r) \geq 0$ is the temporal-well depth sampled by a transported clock: positive inside the well and relaxing to zero at the ambient baseline, matching the corpus convention $\phi &gt; 0$ in wells, $\phi \to 0$ ambient (Paper 0 Rule 4). The normalization is the unscreened linear response of the source computed in the Paper 0 radial-ODE closure (<code>results/step_01_radial_ode.json</code>, Earth entry):</p>
+  <p>The pipeline's field-amplitude normalization is the canonical amplitude-sector excursion of Paper 0 v0.15. The pipeline carries the excursion complement $\phi(r)$ — zero at the pinned interior floor, rising to the ambient reference $\phi_{\rm space}$ — so that the physical excursion $\psi(r) = \phi_{\rm space} - \phi(r) \geq 0$ is the temporal-well depth sampled by a transported clock: positive inside the well and relaxing to zero at the ambient baseline, matching the corpus convention $\phi &gt; 0$ in wells, $\phi \to 0$ ambient (Paper 0 Rule 4). The normalization is the unscreened linear response of the source computed in the Paper 0 radial-ODE closure (<code>TEP/results/step_01_radial_ode.json</code>, Earth entry):</p>
 
   <div class="equation">
     \begin{equation}
@@ -111,7 +111,7 @@
         <li>Earth well depth (unscreened source response): $\Delta\phi = \psi_{\rm uns}\,M_{\rm Pl} = 3.39 \times 10^{9}$ GeV</li>
         <li>Surface clock excursion: $\eta_\oplus = e^{-\psi_{\rm uns}} - 1 = -1.3926 \times 10^{-9}$ (clock-carrying link class; Step 043). This is the amplitude-sector excursion, not the static lapse: the corpus's weak-field lapse ledger gives $\ln(A/A_\infty) = 2\beta_A^2\,\Phi_N$ on the unscreened branch and the measured redshift-channel lapse $\tilde N \to e^{\Phi_N}$ under screening of the shear sector (Paper 0 §2.2, R9) — $\eta_\oplus$ is the transport excursion a carried clock accumulates, which static clock comparisons do not constrain</li>
         <li>Interior: excursion pinned at the well depth ($\phi_{\rm interior} = 0$ in complement units)</li>
-        <li>TEP exterior profile scale: $\lambda_{\rm TEP} \approx 4200$ km (set equal to the geometric saturation scale R_T(M_⊕) under the Paper 6 §2 transfer-sketch ansatz, up to an order-unity prefactor; the GNSS covariance scale $L_c = 4201$ km is the empirical anchor of that identification)</li>
+        <li>TEP exterior profile scale: $\lambda_T \approx 4200$ km (set equal to the geometric saturation scale R_T(M_⊕) under the Paper 6 §2 transfer-sketch ansatz, up to an order-unity prefactor; the GNSS covariance scale $L_c = 4201$ km is the empirical anchor of that identification)</li>
         <li>Characteristic suppression: $S_{\oplus} \approx 0.35$ (UCD-derived from Step 010)</li>
     </ul>
 </div>
@@ -120,7 +120,7 @@
     Fundamental coupling: The bare conformal coupling is β_A = −1.0, established in Paper 0 (Jakarta) §2.2. The fitted values reported here (β_{\rm fit} ∼ 10⁻³) are the fitted response amplitudes; the effective clock-sector response β_{A,\rm eff} = S_\oplus(r)\,\beta_{\rm fit} is derived from these under the excursion projection S_\oplus(r) defined above. The sign of the artefact contribution in the flyby geometry is determined by trajectory asymmetry; the reported β_{\rm fit} magnitudes should be compared to the absolute fundamental scale |β_A| = 1.0 — the ratio κ_flyby = β_fit/|β_A| ≈ 4.7×10⁻³ is the population-level channel response coefficient, reported as an unexplained transfer-map quantity of the same open class as the Paper 0 Γ_X entries pending the action-level derivation. The fitted flyby amplitude is a trajectory-response coefficient; Solar-System PPN bounds apply to the screened source-charge projection α_{\rm eff} = S_Σ α_0, not to the fitted flyby amplitude itself. The converse direction closes identically: terrestrial bounds on the Earth environment constrain the shear channel, for which the corpus's own two-body operator returns an Earth-vicinity suppression of ∼10⁻²¹, whereas the claimed flyby observable is the unsuppressed clock-amplitude channel — and even there it is a transport excursion accumulated by a clock carried through the relaxing radial profile, not a stationary rate offset that inter-comparisons between clocks at rest in the terrestrial environment could bound. The same unsuppressed terrestrial amplitude response is the structure that the corpus's GNSS coherence-length measurement anchors (L_c = 4201 km, Section 3.11), so the fitted excursion scale is consistent with — indeed required by — the corpus's own terrestrial calibration rather than bounded away by it.
 </p>
 
-<p>Ambient field value: Under the canonical excursion normalization, the ambient reference carries the full well depth φ_space = Δφ = 3.39×10⁹ GeV in complement units, while the physical excursion ψ(r) decays to the interplanetary baseline over λ_TEP — no ad-hoc density cutoff enters, since the profile is geometric rather than density-minimum-derived. The normalization is β-independent, so the reference amplitude β = 10⁻⁴ enters only as a linear scaling of the response, not of the field.</p>
+<p>Ambient field value: Under the canonical excursion normalization, the ambient reference carries the full well depth φ_space = Δφ = 3.39×10⁹ GeV in complement units, while the physical excursion ψ(r) decays to the interplanetary baseline over λ_T — no ad-hoc density cutoff enters, since the profile is geometric rather than density-minimum-derived. The normalization is β-independent, so the reference amplitude β = 10⁻⁴ enters only as a linear scaling of the response, not of the field.</p>
 
 <p>Geometry modulation factors: Per-flyby fitted β<sub>fit</sub> in the six-member sign-consistent ensemble spans roughly a factor of three across the tightly constrained members (extending to a factor of ≈15 across the four amplitude-informative fits) — formally divergent for the near-zero-prediction Cassini and MESSENGER members — reflecting substantial geometry-, plasma-, and velocity-dependent modulation encoded in the Step 007 envelope. Four physical mechanisms are tracked in the analysis: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening (IRI at perigee, Step 033); and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the clock-sector response calculation.</p>
 
@@ -245,7 +245,7 @@
 <ol>
     <li>Beta scatter statistics. The raw span and log-standard deviation of fitted β<sub>fit</sub> are reported as descriptive statistics, with an explicit note that the Step 007 prediction already includes the geometry envelope, so residual scatter reflects genuine coupling heterogeneity or model incompleteness rather than unmodeled trajectory geometry.</li>
     <li>Full-catalog detection pattern. Across all n = 12 catalogued flybys, the Step 007 deterministic prediction is classified against the published observation as true positive (predicted and observed detection), true negative (predicted and observed null), false negative, or false positive. This yields a classification accuracy that tests whether the model correctly identifies which flybys should show anomalies independent of the small fitted-β<sub>fit</sub> sample.</li>
-    <li>Rank correlation. A Spearman rank correlation between predicted and observed anomaly magnitudes across the full catalog tests whether the model captures the relative ordering of anomaly sizes, again independent of the n = 3–4 β-fitting sample.</li>
+    <li>Rank correlation. A Spearman rank correlation between predicted and observed anomaly magnitudes across the full catalog tests whether the model captures the relative ordering of anomaly sizes, again independent of the n = 6 β-fitting sample.</li>
 </ol>
 
 <p>
@@ -308,12 +308,12 @@
     no kilometre-per-second disformal transition exists, and flyby
     phenomenology at these velocities is conformal-sector — consistent with
     the fitted disformal amplitude of the hierarchical layer,
-    $b_{\rm disf} = 0.051 \pm 0.053$, which is consistent with zero and is the
+    $b_{\rm disf} = 0.026 \pm 0.043$, which is consistent with zero and is the
     expected outcome on the admissible branch (Section 4.2.2).
 </p>
 
 <p>
-    The coefficient $B_{\rm eff} = 4|\beta_A|R_\oplus/\lambda_{\rm TEP} \approx
+    The coefficient $B_{\rm eff} = 4|\beta_A|R_\oplus/\lambda_T \approx
     6.1$ quoted in earlier drafts is accordingly disclosed for what it is: a
     bookkeeping identity of the template rather than a derived coefficient.
     Writing $B_{\rm eff}\equiv (A^2-1)/(v_{\rm trans}/c)^2$ defines it through
@@ -324,25 +324,25 @@
 
 <div class="equation">
     \begin{equation}
-    v_{\rm trans} = \frac{c}{\sqrt{2}}\left(\frac{\lambda_{\rm TEP}}{R_\oplus}\right)^{1/2}\left(\frac{|\nabla\phi_\oplus|\,\lambda_{\rm TEP}}{M_{\rm Pl}}\right)^{1/2},
+    v_{\rm trans} = \frac{c}{\sqrt{2}}\left(\frac{\lambda_T}{R_\oplus}\right)^{1/2}\left(\frac{|\nabla\phi_\oplus|\,\lambda_T}{M_{\rm Pl}}\right)^{1/2},
     \end{equation}
 </div>
 
 <p>
-    where $\epsilon_\phi \equiv |\nabla\phi_\oplus|\,\lambda_{\rm TEP}/M_{\rm
+    where $\epsilon_\phi \equiv |\nabla\phi_\oplus|\,\lambda_T/M_{\rm
     Pl}$ is the dimensionless field excursion across one relaxation length of
     the screened profile (the Helmholtz solution of $\nabla^2\phi -
-    \lambda_{\rm TEP}^{-2}\phi = -(\beta_A/M_{\rm Pl})\rho$ for the
+    \lambda_T^{-2}\phi = -(\beta_A/M_{\rm Pl})\rho$ for the
     uniform-sphere source), is retained here only as a dimensional anchor.
     Evaluated at the UCD-pinned surface combination $\epsilon_\phi =
-    |\beta_A|\rho_T\lambda_{\rm TEP}^2/M_{\rm Pl}^2 \approx 6.6\times10^{-9}$
+    |\beta_A|\rho_T\lambda_T^2/M_{\rm Pl}^2 \approx 6.6\times10^{-9}$
     (the field pinned at the saturation-density source inside $R_{\rm sol}$;
     the documented $\pm40\%$ GNSS uncertainty on $\rho_T$ spans $\epsilon_\phi
     \approx (4.0\text{--}9.2)\times10^{-9}$), the combination evaluates to
     $14\text{--}16.5$ km/s, numerically bracketing the $16.8$ km/s template
     value used below (Step 011 audit). This proximity — the geometric
     combination of the clock-offset velocity $c\sqrt{2\epsilon_\phi}$ diluted
-    by the layer aspect ratio $\sqrt{\lambda_{\rm TEP}/4R_\oplus}$ — is
+    by the layer aspect ratio $\sqrt{\lambda_T/4R_\oplus}$ — is
     recorded as a consistency observation that motivates the template scale;
     it is not a derivation, and no claim of a field-theoretic transition is
     made. The UCD-derived characteristic suppression $S_\oplus = (R_\oplus -
@@ -385,7 +385,7 @@
 
 <p>Each factor has a distinct physical origin:</p>
 <ol>
-    <li>Field amplitude excursion $d\phi/dr = (\Delta\phi / \lambda_{\rm TEP})\, e^{-h/\lambda_{\rm TEP}}$: the clock-sector response strength at perigee altitude $h$, decaying exponentially with the GNSS-established relaxation length. Lower flybys experience stronger field excursions.</li>
+    <li>Field amplitude excursion $d\phi/dr = (\Delta\phi / \lambda_T)\, e^{-h/\lambda_T}$: the clock-sector response strength at perigee altitude $h$, decaying exponentially with the GNSS-established relaxation length. Lower flybys experience stronger field excursions.</li>
     <li>Perigee dwell time $r_p / v_p$: the effective duration of the close encounter. Slower, lower flybys accumulate larger proper-time offsets.</li>
     <li>$J_2$ oblateness $J_2 (R_\oplus/r_p)^2$: the non-radial component of the offset arising from Earth's oblateness. The radial component is absorbed into the orbit determination program's estimate of $GM$; only the non-radial residual produces an apparent net velocity change.</li>
     <li>Trajectory asymmetry $\cos\delta_{\rm in} - \cos\delta_{\rm out}$: the difference in approach and departure $v_\infty$ declinations (from Anderson et al. (2008)). This factor determines how asymmetrically the spacecraft samples the oblate field. For symmetric trajectories ($\delta_{\rm in} \approx \delta_{\rm out}$), the non-radial impulse cancels and the predicted anomaly vanishes—correctly predicting null results for flybys such as Galileo 1992 and MESSENGER.</li>
@@ -517,7 +517,7 @@
   <li>Fit only initial state and solar radiation pressure coefficient</li>
 </ul>
 
-<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. Where the pipeline reports perigee-window statistics from sequential pairwise Doppler differences (Steps 006 and 030), those quantities are explicitly <em>not</em> commensurate with published post-OD $\Delta v$ anomalies unless a batch OD residual chain is bound; model comparison for the flyby ensemble (Step 026) uses a geometry-spread systematic uncertainty as the headline likelihood, because the tiny published per-flyby uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals of the single-β<sub>fit</sub> restricted scaling model and produce astronomically large, scientifically meaningless BIC values. On the full n = 9 catalog, the geometry-spread term is σ_geom ≈ 0.520 mm/s (Step 026 full-catalog spread); for the pooled n = 4 detection layer it is σ_geom ≈ 0.722 mm/s. A published-uncertainties-only sensitivity block (σ_sys = 0) is retained for transparency but is explicitly labelled as a consistency check, not the primary evidence claim.</p>
+<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. Where the pipeline reports perigee-window statistics from sequential pairwise Doppler differences (Steps 006 and 030), those quantities are explicitly <em>not</em> commensurate with published post-OD $\Delta v$ anomalies unless a batch OD residual chain is bound; model comparison for the flyby ensemble (Step 026) uses a fractional misspecification floor as the headline likelihood. Each signal-bearing model carries a per-flyby systematic uncertainty $\sigma_{{\rm sys},i} = CV_\beta\,|\hat y_i|$, where $CV_\beta = \tau/\bar\beta \approx 0.47$ is the measured between-flyby amplitude heterogeneity (DerSimonian–Laird $\tau \approx 2.23\times10^{-3}$ on the Step 008 scale factors; $\bar\beta \approx 4.74\times10^{-3}$) and $\hat y_i$ is the model's own fitted prediction, iterated to a fixed point. The floor is dimensionless and therefore invariant under the arbitrary reference-amplitude anchor $\beta_{\rm ref}$ — a property the earlier constant geometry-spread floor lacked, since the spread of predictions evaluated at $\beta_{\rm ref}$ rescales with that anchor and can alter the model ordering without any change to the data. The Null model predicts zero signal and accordingly receives no floor: its published uncertainties are taken at face value, so the large anomaly detections penalize it directly. Per-flyby floors under the fitted models span $\approx 0$–$14$ mm/s, concentrated where a model claims a large signal. The former constant geometry-spread floor and a published-uncertainties-only block ($\sigma_{\rm sys} = 0$) are retained as labelled sensitivity analyses together with a constant-floor sweep, not the primary evidence claim.</p>
 
 <h2>3.9 PPN Constraints and Cassini Solar Conjunction</h2>
 
@@ -548,7 +548,7 @@
 </p>
 
 <p>
-    C. Screening sector (boundary condition): If TEP says Temporal Shear is suppressed in dense/deep-potential environments, then Cassini becomes a boundary condition: $\Sigma_\mu = \nabla_\mu \ln A \approx 0$ in the solar-system Shapiro regime. This is not a weakness but exactly how the theory must be formulated.
+    C. Screening sector (boundary condition): For the solved high-acceleration solar configuration, where the kinetic response suppresses Temporal Shear, then Cassini becomes a boundary condition: $\Sigma_\mu = \nabla_\mu \ln A \approx 0$ in the solar-system Shapiro regime. This is not a weakness but exactly how the theory must be formulated.
 </p>
 
 <p>
@@ -619,7 +619,7 @@ S_{\rm plasma} = \exp\left(-\frac{n_e}{n_{\rm ref}}\right)\end{equation}
   <h2>3.11 UCD-Motivated Temporal Topology Derivation</h2>
 
   <p>
-    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Temporal Topology Saturation Scale (UCD) saturation model. The saturation radius is calculated from the UCD ansatz using Earth's total mass and the saturation scale $\rho_T \approx 20$ g/cm³, a scale established across astrophysical systems from dwarf-galaxy soliton cores to galaxy-cluster halos (TEP-I through TEP-V preprint series; Schive et al. 2014; Mocz et al. 2018). GNSS atomic-clock correlation analysis (Step 016) yields a covariance decay length $L_c \approx 4201$ km. Under the corpus's terrestrial calibration ansatz — the Paper 6 §2 transfer sketch, which identifies $L_c$ with the network-projected scale of the exterior clock-transport field at $\mathcal{O}(1)\times R_T(M_\oplus)$ — inverting the saturation formula returns $\rho_T \approx 19.2$ g/cm³, within 3.9% of the adopted 20 g/cm³. Because the adopted $\rho_T$ is itself anchored on $L_c$, this agreement is a shared-input consistency check (the global anchor recovered at its own terrestrial calibration point), not an independent validation; what it does establish is that the density scale carries no tuning to Earth flyby data.
+    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Temporal Topology Saturation Scale (UCD) saturation model. The saturation radius is calculated from the UCD ansatz using Earth's total mass and the saturation scale $\rho_T \approx 20$ g/cm³, a scale established across astrophysical systems from dwarf-galaxy cores to galaxy-cluster halos (Paper 6; Schive et al. 2014; Mocz et al. 2018). GNSS atomic-clock correlation analysis (Step 016) yields a covariance decay length $L_c \approx 4201$ km. Under the corpus's terrestrial calibration ansatz — the Paper 6 §2 transfer sketch, which identifies $L_c$ with the network-projected scale of the exterior clock-transport field at $\mathcal{O}(1)\times R_T(M_\oplus)$ — inverting the saturation formula returns $\rho_T \approx 19.2$ g/cm³, within 3.9% of the adopted 20 g/cm³. Because the adopted $\rho_T$ is itself anchored on $L_c$, this agreement is a shared-input consistency check (the global anchor recovered at its own terrestrial calibration point), not an independent validation; what it does establish is that the density scale carries no tuning to Earth flyby data.
   </p>
 
   <div class="equation">
@@ -643,5 +643,5 @@ R_{\rm sol} = \left( \frac{3 M_{\oplus}}{4\pi\rho_T} \right)^{1/3} \approx 4146 
   <h2>3.12 Cosmographic Temporal Shear Modulation Analysis</h2>
 
   <p>
-    A deeper TEP prediction is that the disformal coupling term depends on the total velocity in the scalar-field rest frame. If the CMB dipole frame approximates this rest frame, the Solar System's ~370 km/s bulk motion toward (RA, Dec) = (167.94°, −6.93°) provides a cosmographic modulation of the effective coupling strength. Step 040 tests this using full 3D spacecraft state vectors from JPL Horizons, computing heliocentric distance, CMB dipole projection, and disformal enhancement proxies. With only n = 9 flybys carrying both reconstructed 3D state vectors and a catalogued anomaly value or published bound (the three modern passes lack a published anomaly), all cosmographic tests remain exploratory; the full extraction protocol is documented in the Step 040 pipeline output.
+    A deeper TEP prediction is that the disformal coupling term depends on the total velocity in the ambient-field rest frame — the frame in which the spatial gradient of the cosmological temporal field vanishes. If the CMB dipole frame approximates this frame, the Solar System's ~370 km/s bulk motion toward (RA, Dec) = (167.94°, −6.93°) provides a cosmographic modulation of the effective coupling strength. Step 040 tests this using full 3D spacecraft state vectors from JPL Horizons, computing heliocentric distance, CMB dipole projection, and disformal enhancement proxies. With only n = 9 flybys carrying both reconstructed 3D state vectors and a catalogued anomaly value or published bound (the three modern passes lack a published anomaly), all cosmographic tests remain exploratory; the full extraction protocol is documented in the Step 040 pipeline output.
   </p>

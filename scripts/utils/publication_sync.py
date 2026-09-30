@@ -97,12 +97,12 @@ _STEP026_METADATA_KEYS = frozenset(
 
 
 def _step026_primary_block(step026: dict[str, Any]) -> dict[str, Any]:
-    """Primary gated comparison (top-level Step 026 row set; n=4 when sign gate is relaxed)."""
+    """Primary gated comparison (top-level Step 026 row set; n=6 on the re-transcribed catalogue)."""
     return {key: value for key, value in step026.items() if key not in _STEP026_METADATA_KEYS}
 
 
 def sign_agreement_model_block(step026: dict[str, Any]) -> dict[str, Any]:
-    """Sign-agreement-restricted subset (typically n=3) for Section 4.5 robustness prose."""
+    """Sign-agreement-restricted subset (currently n=6) for Section 4.5 robustness prose."""
     if "sign_agreement_model_comparison" in step026:
         return step026["sign_agreement_model_comparison"]
     primary = _step026_primary_block(step026)
@@ -117,10 +117,10 @@ def split_step026_model_blocks(step026: dict[str, Any]) -> tuple[dict[str, Any],
     """
     Return (headline_full_catalog, primary_gated_ensemble) blocks from Step 026.
 
-    ``full_catalog_model_comparison`` is the headline n=9 geometry-spread comparison.
-    The primary gated row set lives at the top level (n=4 with ``strict_sign_gate``
-    false; n=3 when true). The sign-agreement diagnostic is exposed via
-    ``sign_agreement_model_block``.
+    ``full_catalog_model_comparison`` is the headline n=9 fractional-floor
+    comparison. The primary gated row set lives at the top level (n=6 on the
+    re-transcribed catalogue under ``strict_sign_gate`` false). The
+    sign-agreement diagnostic is exposed via ``sign_agreement_model_block``.
     """
     if "full_catalog_model_comparison" not in step026:
         raise KeyError(
@@ -757,7 +757,7 @@ def _sync_plaintext_bic_sentence(text: str, model_dict: dict[str, Any]) -> str:
     if not bayes_approx:
         return text
     legacy = (
-        "On the same n = 3 gated ensemble as Step 026, BIC-based summaries give B₁₀ ≈ 1.8×10¹⁸ "
+        "On the same n = 6 gated ensemble as Step 026, BIC-based summaries give B₁₀ ≈ 1.8×10¹⁸ "
         "(TEP restricted vs Null, ΔBIC ≈ 84), B_A0 ≈ 9.9×10¹⁶ (Anderson vs Null, ΔBIC ≈ 78), "
         "and TEP restricted vs Anderson B ≈ 18.2 (ΔBIC ≈ 5.8), indicating positive"
     )
@@ -770,7 +770,7 @@ def _sync_plaintext_bic_sentence(text: str, model_dict: dict[str, Any]) -> str:
     da = bayes_approx["dBIC_anderson_null"]
     dt = bayes_approx["dBIC_tep_anderson"]
     new_sentence = (
-        "On the same n = 3 gated ensemble as Step 026, BIC-derived Bayes summaries give "
+        "On the same n = 6 gated ensemble as Step 026, BIC-derived Bayes summaries give "
         f"{b10} (TEP restricted vs Null, {d0}), {ba0} (Anderson vs Null, {da}), "
         f"and TEP restricted vs Anderson {bva} ({dt}), indicating positive"
     )
@@ -821,7 +821,7 @@ def _sync_text(text: str, expected: dict[str, Any], step039: dict[str, Any]) -> 
     # Match the full multi-value sentence from 5_results.html line ~1170
     # (backreferences require a callable replacer, not a static string)
     text = re.sub(
-        r"(The Step 009 variance decomposition on log₁₀ β assigns) [\d.]+% (to structural proxies), [\d.]+% (to observational pipeline effects), [\d.]+% (to environmental modulation \(F10\.7; sample-limited at n = 3\)), and [\d.]+% (to residual terms)",
+        r"(The Step 009 variance decomposition on log₁₀ β assigns) [\d.]+% (to structural proxies), [\d.]+% (to observational pipeline effects), [\d.]+% (to environmental modulation \(F10\.7; sample-limited at n = 6\)), and [\d.]+% (to residual terms)",
         lambda m: (
             f"{m.group(1)} {variance['structural']} {m.group(2)}, "
             f"{variance['observational']} {m.group(3)}, "
@@ -830,7 +830,7 @@ def _sync_text(text: str, expected: dict[str, Any], step039: dict[str, Any]) -> 
         ),
         text,
     )
-    # Match a shorter variant without "F10.7; sample-limited at n = 3"
+    # Match a shorter variant without "F10.7; sample-limited at n = 6"
     text = re.sub(
         r"(assigns [\d.]+% to structural proxies), [\d.]+% (to observational pipeline effects), [\d.]+% (to environmental modulation), and [\d.]+% (to residual terms)",
         lambda m: (
@@ -854,17 +854,17 @@ def _sync_text(text: str, expected: dict[str, Any], step039: dict[str, Any]) -> 
     if f10_r is not None and f10_p is not None:
         text = re.sub(
             r"The Step 009 stage-3 environmental diagnostic for solar_activity_f10\.7 lists Pearson \|r\| ≈ [\d.]+ "
-            r"\(two-sided p ≈ [\d.]+, n = 3 gated fits\)\.",
+            r"\(two-sided p ≈ [\d.]+, n = 6 gated fits\)\.",
             lambda _m: (
                 "The Step 009 stage-3 environmental diagnostic for solar_activity_f10.7 lists Pearson "
-                f"|r| ≈ {f10_r} (two-sided p ≈ {f10_p}, n = 3 gated fits)."
+                f"|r| ≈ {f10_r} (two-sided p ≈ {f10_p}, n = 6 gated fits)."
             ),
             text,
         )
         text = re.sub(
             r"\(F10\.7 correlation \|r\| ≈ [\d.]+,\s*p ≈ [\d.]+ on n = 3\)",
             lambda _m: (
-                f"(F10.7 correlation |r| ≈ {f10_r}, p ≈ {f10_p} on n = 3)"
+                f"(F10.7 correlation |r| ≈ {f10_r}, p ≈ {f10_p} on n = 6)"
             ),
             text,
         )
@@ -948,7 +948,7 @@ def _sync_text(text: str, expected: dict[str, Any], step039: dict[str, Any]) -> 
             r"B₁₀ = [\d.]+ \(ΔBIC = [\d.]+, strong evidence\)",
             lambda _m: (
                 f"B₁₀ ≈ {model['bayes']['tep_vs_null_plain']} "
-                f"(ΔBIC ≈ {model['bayes']['delta_bic_tep_null']}, headline BIC surrogate; not literal posterior odds at n=3)"
+                f"(ΔBIC ≈ {model['bayes']['delta_bic_tep_null']}, headline BIC surrogate; not literal posterior odds at n=6)"
             ),
             text,
         )
