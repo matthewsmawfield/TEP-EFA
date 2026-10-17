@@ -24,7 +24,7 @@
 
   <h2>3.2 TEP Temporal Topology Model</h2>
 
-  <p>The TEP framework provides a quantitative model for the flyby anomaly through the perigee proper-time offset arising from the temporal-field amplitude excursion. With the universal conformal coupling A(φ) = exp(β_A φ/M_{\rm Pl}), the accumulated offset along the trajectory projects into an apparent velocity discontinuity under GR-based orbit determination:</p>
+  <p>The TEP framework provides a quantitative model for the flyby anomaly through the perigee proper-time offset arising from the temporal-field amplitude excursion. With the universal conformal coupling A(φ) = exp(β_A φ/M<sub>Pl</sub>), the accumulated offset along the trajectory projects into an apparent velocity discontinuity under GR-based orbit determination:</p>
 
   <div class="equation">
     \begin{equation}
@@ -32,7 +32,7 @@
     \end{equation}
   </div>
 
-  <p>Under the amplitude–shear split (Paper 0 §7), the Earth-vicinity Temporal Shear is screened by the two-body operator, so this kernel is not a physical force on the spacecraft — the shear-force channel is closed. It is the orbit-determination-equivalent kernel of the clock-sector artefact in a clock-carrying link: the spacecraft's matter-metric rate offset $\eta(t) = \exp(\beta_A\psi/M_{\rm Pl})-1$ carries the same radial gradient $\beta_A\nabla\phi/M_{\rm Pl}$, and a tracking filter that assumes the GR time standard reconstructs the accumulated rate-offset excursion exactly as if it were this impulse. The two signatures are observationally indistinguishable over a flyby arc <em>where the term is present in the observable</em> — one-way, non-coherent, or regenerative-ranging links; in the coherent two-way class of the published catalogue the transponder endpoint cancels it identically (Section 5.2). The mechanism-faithful forward model is the Step 043 OD rederivation (Table 3h), which computes the artefact's signature on the clock-carrying link class over the real arcs. Here β_{A,\rm eff} = β_A × S_⊕(r) is the effective artefact-response amplitude, where S_⊕(r) is the continuous clock-amplitude response profile. The characteristic surface ratio S_⊕ ≈ 0.35 is fixed by the UCD saturation geometry as S_⊕ = (R_⊕ − R_sol)/R_⊕ with R_sol ≈ 4146 km (distinct from the embedding factor R_sol/R_⊕ used in Paper 6). The radial component of the apparent impulse is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces the apparent net velocity change that reads as the flyby anomaly.</p>
+  <p>Under the amplitude–shear split (Paper 0 §7), the Earth-vicinity Temporal Shear is screened by the two-body operator, so this kernel is not a physical force on the spacecraft — the shear-force channel is closed. It is the orbit-determination-equivalent kernel of the clock-sector artefact in a clock-carrying link: the spacecraft's matter-metric rate offset $\eta(t) = \exp(\beta_A\psi/M_{\rm Pl})-1$ carries the same radial gradient $\beta_A\nabla\phi/M_{\rm Pl}$, and a tracking filter that assumes the GR time standard reconstructs the accumulated rate-offset excursion exactly as if it were this impulse. The two signatures are observationally indistinguishable over a flyby arc <em>where the term is present in the observable</em> — one-way, non-coherent, or regenerative-ranging links; in the coherent two-way class of the published catalogue the transponder endpoint cancels it identically (Section 5.2). The mechanism-faithful forward model is the Step 043 OD rederivation (Table 3h), which computes the artefact's signature on the clock-carrying link class over the real arcs. Here β<sub>A,eff</sub> = β_A × S_⊕(r) is the effective artefact-response amplitude, where S_⊕(r) is the continuous clock-amplitude response profile. The characteristic surface ratio S_⊕ ≈ 0.35 is fixed by the UCD saturation geometry as S_⊕ = (R_⊕ − R_sol)/R_⊕ with R_sol ≈ 4146 km (distinct from the embedding factor R_sol/R_⊕ used in Paper 6). The radial component of the apparent impulse is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces the apparent net velocity change that reads as the flyby anomaly.</p>
 
   <p>The predicted velocity discontinuity is resolved through rigorous numerical integration of the artefact kernel along the trajectory in the Earth-centered inertial (ECI) frame — the accumulated apparent impulse that an orbit-determination filter would attribute to dynamics, not a physical trajectory deflection. This approach captures the accumulated proper-time offset as the spacecraft traverses the varying field amplitude, incorporating a 4th-order Spherical Harmonic Expansion (SHEX) for the geopotential to ensure that local gravitational perturbations are not conflated with the clock-sector response:</p>
 
@@ -95,7 +95,7 @@
     \end{equation}
   </div>
 
-  <p>The pipeline's field-amplitude normalization is the canonical amplitude-sector excursion of Paper 0 v0.15. The pipeline carries the excursion complement $\phi(r)$ — zero at the pinned interior floor, rising to the ambient reference $\phi_{\rm space}$ — so that the physical excursion $\psi(r) = \phi_{\rm space} - \phi(r) \geq 0$ is the temporal-well depth sampled by a transported clock: positive inside the well and relaxing to zero at the ambient baseline, matching the corpus convention $\phi &gt; 0$ in wells, $\phi \to 0$ ambient (Paper 0 Rule 4). The normalization is the unscreened linear response of the source computed in the Paper 0 radial-ODE closure (<code>TEP/results/step_01_radial_ode.json</code>, Earth entry):</p>
+  <p>The pipeline's field-amplitude normalization is the canonical amplitude-sector excursion of Paper 0 v0.16. The pipeline carries the excursion complement $\phi(r)$ — zero at the pinned interior floor, rising to the ambient reference $\phi_{\rm space}$ — so that the physical excursion $\psi(r) = \phi_{\rm space} - \phi(r) \geq 0$ is the temporal-well depth sampled by a transported clock: positive inside the well and relaxing to zero at the ambient baseline, matching the corpus convention $\phi &gt; 0$ in wells, $\phi \to 0$ ambient (Paper 0 Rule 4). The normalization is the unscreened linear response of the source computed in the Paper 0 radial-ODE closure (<code>TEP/results/step_01_radial_ode.json</code>, Earth entry):</p>
 
   <div class="equation">
     \begin{equation}
@@ -117,7 +117,7 @@
 </div>
 
 <p>
-    Fundamental coupling: The bare conformal coupling is β_A = −1.0, established in Paper 0 (Jakarta) §2.2. The fitted values reported here (β_{\rm fit} ∼ 10⁻³) are the fitted response amplitudes; the effective clock-sector response β_{A,\rm eff} = S_\oplus(r)\,\beta_{\rm fit} is derived from these under the excursion projection S_\oplus(r) defined above. The sign of the artefact contribution in the flyby geometry is determined by trajectory asymmetry; the reported β_{\rm fit} magnitudes should be compared to the absolute fundamental scale |β_A| = 1.0 — the ratio κ_flyby = β_fit/|β_A| ≈ 4.7×10⁻³ is the population-level channel response coefficient, reported as an unexplained transfer-map quantity of the same open class as the Paper 0 Γ_X entries pending the action-level derivation. The fitted flyby amplitude is a trajectory-response coefficient; Solar-System PPN bounds apply to the screened source-charge projection α_{\rm eff} = S_Σ α_0, not to the fitted flyby amplitude itself. The converse direction closes identically: terrestrial bounds on the Earth environment constrain the shear channel, for which the corpus's own two-body operator returns an Earth-vicinity suppression of ∼10⁻²¹, whereas the claimed flyby observable is the unsuppressed clock-amplitude channel — and even there it is a transport excursion accumulated by a clock carried through the relaxing radial profile, not a stationary rate offset that inter-comparisons between clocks at rest in the terrestrial environment could bound. The same unsuppressed terrestrial amplitude response is the structure that the corpus's GNSS coherence-length measurement anchors (L_c = 4201 km, Section 3.11), so the fitted excursion scale is consistent with — indeed required by — the corpus's own terrestrial calibration rather than bounded away by it.
+    Fundamental coupling: The bare conformal coupling is β_A = −1.0, established in Paper 0 (Jakarta) §2.2. The fitted values reported here (β<sub>fit</sub> ∼ 10⁻³) are the fitted response amplitudes; the effective clock-sector response β<sub>A,eff</sub> = S_⊕(r) β<sub>fit</sub> is derived from these under the excursion projection S_⊕(r) defined above. The sign of the artefact contribution in the flyby geometry is determined by trajectory asymmetry; the reported β<sub>fit</sub> magnitudes should be compared to the absolute fundamental scale |β_A| = 1.0 — the ratio κ_flyby = β_fit/|β_A| ≈ 4.7×10⁻³ is the population-level channel response coefficient, reported as an unexplained transfer-map quantity of the same open class as the Paper 0 Γ_X entries pending the action-level derivation. The fitted flyby amplitude is a trajectory-response coefficient; Solar-System PPN bounds apply to the screened source-charge projection α<sub>eff</sub> = S_Σ α_0, not to the fitted flyby amplitude itself. The converse direction closes identically: terrestrial bounds on the Earth environment constrain the shear channel, for which the corpus's own two-body operator returns an Earth-vicinity suppression of ∼10⁻²¹, whereas the claimed flyby observable is the unsuppressed clock-amplitude channel — and even there it is a transport excursion accumulated by a clock carried through the relaxing radial profile, not a stationary rate offset that inter-comparisons between clocks at rest in the terrestrial environment could bound. The same unsuppressed terrestrial amplitude response is the structure that the corpus's GNSS coherence-length measurement anchors (L_c = 4201 km, Section 3.11), so the fitted excursion scale is consistent with — indeed required by — the corpus's own terrestrial calibration rather than bounded away by it.
 </p>
 
 <p>Ambient field value: Under the canonical excursion normalization, the ambient reference carries the full well depth φ_space = Δφ = 3.39×10⁹ GeV in complement units, while the physical excursion ψ(r) decays to the interplanetary baseline over λ_T — no ad-hoc density cutoff enters, since the profile is geometric rather than density-minimum-derived. The normalization is β-independent, so the reference amplitude β = 10⁻⁴ enters only as a linear scaling of the response, not of the field.</p>
@@ -197,7 +197,7 @@
     <h4>A Priori Ensemble Gates</h4>
     <ol>
         <li>Signal-to-noise gate: The published anomaly must satisfy S/N = |Δv_obs| / σ > 2. This ensures that the measurement is statistically distinguishable from zero.</li>
-        <li>Sign-agreement gate (configurable): When <code>parameters.analysis.tep_physics.strict_sign_gate</code> is true, the observed anomaly must have the same sign as the TEP prediction at β_{A,ref} = 10⁻⁴. The pipeline default is <code>false</code>: opposite-sign rows still receive an amplitude-only reference fit and remain in the primary pool; the sign-agreement-restricted subset is reported as <code>recommended_beta_sign_gated_diagnostic</code> and <code>sign_agreement_model_comparison</code> in Step 026.</li>
+        <li>Sign-agreement gate (configurable): When <code>parameters.analysis.tep_physics.strict_sign_gate</code> is true, the observed anomaly must have the same sign as the TEP prediction at β<sub>A,ref</sub> = 10⁻⁴. The pipeline default is <code>false</code>: opposite-sign rows still receive an amplitude-only reference fit and remain in the primary pool; the sign-agreement-restricted subset is reported as <code>recommended_beta_sign_gated_diagnostic</code> and <code>sign_agreement_model_comparison</code> in Step 026.</li>
     </ol>
 </div>
 
@@ -208,12 +208,12 @@
 <p>
     Application to the current dataset:</p>
 <ul>
-    <li><em>NEAR (1998):</em> S/N = 103.5 > 2; sign agreement (+13.46 mm/s vs +0.30 mm/s predicted at β_{A,ref}). Passes both gates.</li>
-    <li><em>Galileo 1990:</em> S/N = 49 > 2; sign agreement (+3.92 mm/s vs +0.03 mm/s predicted at β_{A,ref}). Passes both gates.</li>
-    <li><em>Rosetta 2005:</em> S/N = 60 > 2; sign agreement (+1.80 mm/s vs +0.03 mm/s predicted at β_{A,ref}). Passes both gates.</li>
-    <li><em>Cassini (1999):</em> S/N = 2.0 ≥ 2; passes sign agreement at β_{A,ref} on the re-transcribed catalogue (−2.00 mm/s observed vs a negative, near-zero predicted total, sign product > 0). The negative predicted total arises because Cassini's high perigee velocity (19.02 km/s > v_trans ≈ 16.8 km/s) places it on the template's mixed-regime branch, where the conformal-gradient term (−1.1×10<sup>−5</sup> mm/s) and disformal term (+5×10<sup>−7</sup> mm/s) nearly cancel. Because the reference prediction is numerically negligible, the closed-form β<sub>fit</sub> rescaling is formally divergent (β<sub>fitted</sub> ≈ 19 with an uncertainty of comparable size); Cassini enters the Step 008 pool and the Step 026 gated likelihood but contributes negligible weight to the pooled amplitude.</li>
-    <li><em>Galileo 1992:</em> S/N = 4.6 > 2 on the re-transcribed catalogue (−4.60 ± 1.00 mm/s vs −0.007 mm/s predicted at β_{A,ref}, sign agreement). Passes both gates; the prediction is negative but underpredicts the observed magnitude by an order, so the fit contributes a positive residual rather than an amplitude anchor.</li>
-    <li><em>MESSENGER (2005):</em> S/N = 2.0 ≥ 2 (+0.02 ± 0.01 mm/s vs +6×10<sup>−8</sup> mm/s predicted at β_{A,ref}, sign agreement). Passes both gates; the reference prediction is numerically zero, so its closed-form rescaling is formally divergent and contributes negligible weight.</li>
+    <li><em>NEAR (1998):</em> S/N = 103.5 > 2; sign agreement (+13.46 mm/s vs +0.30 mm/s predicted at β<sub>A,ref</sub>). Passes both gates.</li>
+    <li><em>Galileo 1990:</em> S/N = 49 > 2; sign agreement (+3.92 mm/s vs +0.03 mm/s predicted at β<sub>A,ref</sub>). Passes both gates.</li>
+    <li><em>Rosetta 2005:</em> S/N = 60 > 2; sign agreement (+1.80 mm/s vs +0.03 mm/s predicted at β<sub>A,ref</sub>). Passes both gates.</li>
+    <li><em>Cassini (1999):</em> S/N = 2.0 ≥ 2; passes sign agreement at β<sub>A,ref</sub> on the re-transcribed catalogue (−2.00 mm/s observed vs a negative, near-zero predicted total, sign product > 0). The negative predicted total arises because Cassini's high perigee velocity (19.02 km/s > v_trans ≈ 16.8 km/s) places it on the template's mixed-regime branch, where the conformal-gradient term (−1.1×10<sup>−5</sup> mm/s) and disformal term (+5×10<sup>−7</sup> mm/s) nearly cancel. Because the reference prediction is numerically negligible, the closed-form β<sub>fit</sub> rescaling is formally divergent (β<sub>fitted</sub> ≈ 19 with an uncertainty of comparable size); Cassini enters the Step 008 pool and the Step 026 gated likelihood but contributes negligible weight to the pooled amplitude.</li>
+    <li><em>Galileo 1992:</em> S/N = 4.6 > 2 on the re-transcribed catalogue (−4.60 ± 1.00 mm/s vs −0.007 mm/s predicted at β<sub>A,ref</sub>, sign agreement). Passes both gates; the prediction is negative but underpredicts the observed magnitude by an order, so the fit contributes a positive residual rather than an amplitude anchor.</li>
+    <li><em>MESSENGER (2005):</em> S/N = 2.0 ≥ 2 (+0.02 ± 0.01 mm/s vs +6×10<sup>−8</sup> mm/s predicted at β<sub>A,ref</sub>, sign agreement). Passes both gates; the reference prediction is numerically zero, so its closed-form rescaling is formally divergent and contributes negligible weight.</li>
     <li><em>Rosetta 2007:</em> S/N = 0.4 &lt; 2 (+0.02 ± 0.05 mm/s). Fails the S/N gate. Excluded.</li>
     <li><em>Rosetta 2009:</em> S/N = 0 (Δv = 0.00 mm/s bound). Fails the S/N gate. Excluded.</li>
     <li><em>Juno (2013):</em> Δv = 0.00 mm/s. Fails S/N gate (S/N = 0). Excluded.</li>
@@ -366,7 +366,7 @@
     Classification (by |Ξ|):
 </p>
 <ul>
-    <li>|Ξ| < 0.05: Conformal-dominated</li>
+    <li>|Ξ| &lt; 0.05: Conformal-dominated</li>
     <li>0.05 ≤ |Ξ| ≤ 0.10: Mixed</li>
     <li>|Ξ| > 0.10: Disformal-dominated</li>
 </ul>
@@ -403,7 +403,7 @@
   </p>
 
   <p>
-    Primary fit (Step 008). After the pre-specified S/N and sign gates, each retained flyby maps the Step~007 prediction at $\beta_{\rm ref} = 10^{-4}$ to a single effective amplitude using the linear rescaling $\beta_{\rm fit} = \beta_{\rm ref}\,(\Delta v_{\rm obs}/\Delta v_{\rm TEP})$ implied by the canonical $\beta$-independent excursion normalization (Section~3.3). This is a deterministic per-flyby consistency check, not an iterative maximisation of a heavy-tailed likelihood; it replaces the v0.1 $(\Delta v)^{4/3}$ map, which traced to the $\beta$-dependence of the excluded inverse-power density minimum rather than to the canonical action.
+    Primary fit (Step 008). After the pre-specified S/N and sign gates, each retained flyby maps the Step&nbsp;007 prediction at $\beta_{\rm ref} = 10^{-4}$ to a single effective amplitude using the linear rescaling $\beta_{\rm fit} = \beta_{\rm ref}\,(\Delta v_{\rm obs}/\Delta v_{\rm TEP})$ implied by the canonical $\beta$-independent excursion normalization (Section&nbsp;3.3). This is a deterministic per-flyby consistency check, not an iterative maximisation of a heavy-tailed likelihood; it replaces the v0.1 $(\Delta v)^{4/3}$ map, which traced to the $\beta$-dependence of the excluded inverse-power density minimum rather than to the canonical action.
   </p>
 
   <p>
@@ -417,7 +417,7 @@
   </div>
 
   <p>
-    Auxiliary tail diagnostics. Cochran's $Q$, $I^2$, and Student-$t$ critical values are used only when summarising scatter among the per-flyby $\beta_{A,i}$ and when constructing heterogeneity-aware error bars in Step~008 (<code>analyze_fit_quality</code>); they do not replace the primary scaling law above.
+    Auxiliary tail diagnostics. Cochran's $Q$, $I^2$, and Student-$t$ critical values are used only when summarising scatter among the per-flyby $\beta_{A,i}$ and when constructing heterogeneity-aware error bars in Step&nbsp;008 (<code>analyze_fit_quality</code>); they do not replace the primary scaling law above.
   </p>
 
   <p>
@@ -472,7 +472,7 @@
 
   <ol>
     <li><em>Smooth bootstrap ($n = 10\,000$):</em> Resampling with replacement combined with Gaussian noise injection validates the weighted mean distribution and provides confidence intervals.</li>
-    <li><em>Leave-one-out cross-validation:</em> Systematically excluding each detection verifies that no single flyby dominates the conclusion. Stability coefficient < 0.5 indicates robustness.</li>
+    <li><em>Leave-one-out cross-validation:</em> Systematically excluding each detection verifies that no single flyby dominates the conclusion. Stability coefficient &lt; 0.5 indicates robustness.</li>
   </ol>
 
   <h2>3.8 Orbit Determination Filtering Mechanism (Hypothesis)</h2>
@@ -527,7 +527,7 @@
 
 <div class="equation">
     \begin{equation}
-    \alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\,\alpha_0, \qquad \gamma_{\rm PPN} - 1 = -\frac{2\,\alpha_0\,\alpha_{\rm eff}^{(\odot)}}{1 + \alpha_0\,\alpha_{\rm eff}^{(\odot)}} \simeq -4\beta_A^2\,S_\Sigma^{(\odot)}
+    \alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\,\alpha_0, \qquad \gamma_{\rm PPN} - 1 = -\frac{2\beta_A^2\,S_\Sigma^{(\odot)}}{1 + 2\beta_A^2\,S_\Sigma^{(\odot)}} \simeq -2\beta_A^2\,S_\Sigma^{(\odot)} \quad \left(\text{isotropic benchmark: } -\frac{2\,\alpha_0\,\alpha_{\rm eff}^{(\odot)}}{1 + \alpha_0\,\alpha_{\rm eff}^{(\odot)}} \simeq -4\beta_A^2\,S_\Sigma^{(\odot)}\right)
     \end{equation}
 </div>
 
@@ -628,7 +628,7 @@ R_{\rm sol} = \left( \frac{3 M_{\oplus}}{4\pi\rho_T} \right)^{1/3} \approx 4146 
   </div>
 
   <p>
-    This yields the UCD-motivated saturation estimate, consistent with the GNSS terrestrial anchor under the same identification ($L_c = 4201$ km → $\Delta R/R = 0.34$, 2% agreement — a calibration-internal check rather than an independent validation):
+    This yields the UCD saturation estimate anchored on the terrestrial GNSS scale ($L_c = 4201$ km → $\Delta R/R = 0.34$, 2% agreement with the terrestrial calibration anchor):
   </p>
 
   <div class="equation">

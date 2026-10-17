@@ -3,7 +3,7 @@
 <p>
     This study investigated whether the Temporal Equivalence Principle (TEP),
     through the clock-sector reduction-artefact channel identified in Paper 0
-    (v0.15) and scoped to its observable classes in Section 5.2,
+    (v0.16) and scoped to its observable classes in Section 5.2,
     can organize the Earth flyby
     anomaly—unexplained velocity shifts observed during spacecraft gravity
     assists. The analysis of twelve Earth flyby events spanning nine spacecraft
@@ -15,7 +15,7 @@
     <li>
         Six-member TEP ensemble: Inverse-variance fitting (Step 008) enters NEAR ($13.46 \pm 0.13$
         mm/s), Galileo 1990 ($3.92 \pm 0.08$ mm/s), Rosetta 2005 ($1.80 \pm
-        0.03$ mm/s), Cassini ($-2.00 \pm 1.00$ mm/s), Galileo 1992 ($-4.60 \pm 1.00$ mm/s), and MESSENGER ($+0.02 \pm 0.01$ mm/s) after pre-fit gates (S/N ≥ 2, sign agreement at $\beta_{\rm ref}=10^{-4}$) on the re-transcribed catalogue. All six reference predictions agree in sign with the published anomalies. At $\beta_{\rm ref}$, Rosetta 2005 predicts $\Delta v_{\rm TEP} \approx 0.03$ mm/s vs $1.80$ mm/s observed; the full-model fit yields $\beta_{\rm fitted} \approx 5.15\times10^{-3}$. Cassini and MESSENGER carry near-zero reference predictions, so their per-flyby rescalings are poorly constrained and contribute negligible pooled weight. The amplitude-informative gated $\beta_{\rm fit}$ values span roughly a factor of 3.3 ($4.43\times10^{-3}$ to $1.44\times10^{-2}$, with Galileo 1992 at $6.7\times10^{-2}$),
+        0.03$ mm/s), Cassini ($-2.00 \pm 1.00$ mm/s), Galileo 1992 ($-4.60 \pm 1.00$ mm/s), and MESSENGER ($+0.02 \pm 0.01$ mm/s) under the S/N ≥ 2 pre-fit admission gate (with <code>strict_sign_gate = false</code> in the active pipeline configuration). Evaluated on the ungated catalogue prior to S/N filtering, all 7 of 7 published nonzero anomalies (including Rosetta 2007; one-sided binomial $p = 0.0078$) agree in sign with the reference prediction at $\beta_{\rm ref}=10^{-4}$, so the six S/N-qualified detections also satisfy sign concordance without selection circularity. At $\beta_{\rm ref}$, Rosetta 2005 predicts $\Delta v_{\rm TEP} \approx 0.03$ mm/s vs $1.80$ mm/s observed; the full-model fit yields $\beta_{\rm fitted} \approx 5.15\times10^{-3}$. Cassini and MESSENGER carry near-zero reference predictions, so their per-flyby rescalings are poorly constrained and contribute negligible pooled weight. The amplitude-informative gated $\beta_{\rm fit}$ values span roughly a factor of 3.3 ($4.43\times10^{-3}$ to $1.44\times10^{-2}$, with Galileo 1992 at $6.7\times10^{-2}$),
         consistent with geometry-dependent modulation (the plasma term is a bounded heuristic envelope coefficient; the stronger Debye attenuation ansatz is quarantined at $S_{\rm plasma}=1$, Section 3.10). The flyby
         trajectory-response amplitudes $\beta_{\rm fit}$ are distinct from the
         bare conformal coupling $\beta_A = -1.0$ and from the Cassini source
@@ -32,7 +32,7 @@
     </li>
 
     <li>
-        PPN compliance via Temporal Topology screening: The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery. The fitted $\beta_{\rm fit}$ values are flyby trajectory-response amplitudes, not the Cassini source charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$. Cassini PPN compliance is evaluated through the solar source-charge projection (Section 4.6.1a): the adopted Paper 0 v0.15 convention gives $S_\Sigma^{(\odot)} \sim 2\times10^{-6}$, inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$ (canonical linear mapping, Paper 0 §7), with the kinetic-operator benchmark evaluating the solar-field screening at $\sim 10^{-15}$ along the 1 AU path. This supports the claim that TEP can reduce to the GR PPN light-propagation limit in the screened solar environment while reserving its discriminating predictions for observables outside the Cassini measurement class.
+        PPN compliance via Temporal Topology screening: The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery. The fitted $\beta_{\rm fit}$ values are flyby trajectory-response amplitudes, not the Cassini source charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$. Cassini PPN compliance is evaluated through the solar source-charge projection (Section 4.6.1a): the adopted Paper 0 v0.16 convention gives $S_\Sigma^{(\odot)} \sim 2\times10^{-6}$, inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 1.15\times 10^{-5}$ under the unified unstretched-space metric ($5.8\times 10^{-6}$ isotropic, Paper 0 §7), with the kinetic-operator benchmark evaluating the solar-field screening at $\sim 10^{-15}$ along the 1 AU path. This supports the claim that TEP can reduce to the GR PPN light-propagation limit in the screened solar environment while reserving its discriminating predictions for observables outside the Cassini measurement class.
     </li>
 
     <li>
@@ -121,8 +121,7 @@
 </p>
 
 <p>
-    Statistical evidence strength: The validation analysis
-    provides substantial statistical support for TEP:
+    Template-organization metrics: The quantitative validation summarizes how the restricted geometric response template organizes the published catalogue (measuring empirical template compression rather than mechanism-level confirmation in the coherent two-way observable):
 </p>
 
 <ul>
@@ -164,7 +163,7 @@
 </p>
 
 <p>
-    Systematic error discrimination: trajectory asymmetry ($\cos\delta_{\rm in} - \cos\delta_{\rm out}$) organizes the adopted catalogue template, but this correlation does not exclude geometry-dependent tracking or reconstruction errors. Within the gated n = 6 ensemble the ordering is positive but imperfect (Spearman ρ = +0.66, p = 0.156), a qualitative consistency check rather than a primary discriminator. All six retained anomalies agree in sign with the reference prediction on the re-transcribed catalogue, and the geometry envelope carries seven nominal deterministic coefficients plus one fitted amplitude against six anomalies, so the archived scores characterize template organization under the adopted convention, not the clock-sector mechanism. The broader catalogue rank correlations are complementary diagnostics on overlapping data: asymmetry-vs-magnitude gives ρ = 0.56 (p = 0.11, n = 9) and ρ = 0.68 (p = 0.090, n = 7 nonzero anomalies) in the Step 009 ordering diagnostic. See Section 5.5 for comprehensive systematic uncertainty budget.
+    Systematic error discrimination: trajectory asymmetry ($\cos\delta_{\rm in} - \cos\delta_{\rm out}$) organizes the adopted catalogue template, and while the hardware and environmental systematics explicitly modelled in Step 024 (0.12 mm/s combined) do not reproduce this pattern, this correlation does not by itself exclude unmodeled geometry-dependent tracking or orbit-determination reconstruction errors pending raw DSN reanalysis. Within the gated n = 6 ensemble the ordering is positive but imperfect (Spearman ρ = +0.66, p = 0.156), a qualitative consistency check rather than a primary discriminator. On the ungated re-transcribed catalogue, all 7 of 7 published nonzero anomalies (and all 6 S/N ≥ 2 entries) agree in sign with the reference prediction, while the geometry envelope carries seven nominal deterministic coefficients plus one fitted amplitude against six S/N-qualified anomalies, so the archived scores characterize template organization under the adopted convention, not confirmation of the clock-sector mechanism in the coherent two-way observable. The broader catalogue rank correlations are complementary diagnostics on overlapping data: asymmetry-vs-magnitude gives ρ = 0.56 (p = 0.11, n = 9) and ρ = 0.68 (p = 0.090, n = 7 nonzero anomalies) in the Step 009 ordering diagnostic. See Section 5.5 for comprehensive systematic uncertainty budget.
 </p>
 
 <p>
@@ -214,9 +213,9 @@
     The flyby trajectory-response amplitudes $\beta_{\rm fit}$ are distinct
     from the Cassini source charge $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$;
     Cassini PPN compliance is evaluated through the solar source-charge projection
-    (Section 4.6.1a), where the adopted Paper 0 v0.15 convention gives
+    (Section 4.6.1a), where the adopted Paper 0 v0.16 convention gives
     $S_\Sigma^{(\odot)} \sim 2\times10^{-6}$,
-    inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 5.8\times 10^{-6}$.
+    inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 1.15\times 10^{-5}$ under the unified unstretched-space metric ($5.8\times 10^{-6}$ on the isotropic-conformal benchmark).
 </p>
 
 <p>

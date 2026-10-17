@@ -1,12 +1,12 @@
 {
-  "title": "Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly",
+  "title": "Temporal Equivalence Principle and the Earth Flyby Anomaly: Clock-Sector Response and Coherent-Link Cancellation",
   "short_title": "TEP Flyby Anomaly",
   "author": "Matthew Lukin Smawfield",
-  "version": "v0.3 (Yogyakarta)",
-  "date": "17 May 2026",
+  "version": "v0.4 (Yogyakarta)",
+  "date": "17 October 2026",
   "doi": "10.5281/zenodo.19454862",
   "paper_series": "TEP Series: Paper 15 (Earth Flyby Anomaly)",
-  "generated": "2026-05-17",
+  "generated": "2026-10-17",
   "sections": [
     {
       "id": "abstract",
@@ -64,7 +64,7 @@
     }
   ],
   "first_published": "17 May 2026",
-  "last_updated": "30 September 2026",
+  "last_updated": "17 October 2026",
   "icons": [
     {
       "src": "public/android-chrome-192x192.png",

@@ -15,7 +15,7 @@ STEPS TO DOWNLOAD:
 2. Navigate to the data products for the perigee date: 1999-08-18
 3. Look for TRK-2-25 (ATDF) files which contain raw Doppler tracking
 4. Download files covering perigee ± 2 days
-5. Place downloaded files in this directory: /Users/matthewsmawfield/www/TEP-3I/data/raw/dsn_tracking/Cassini_1999
+5. Place downloaded files in this directory: TEP-3I/data/raw/dsn_tracking/Cassini_1999
 
 DATA FORMAT:
 - TRK-2-25 (ATDF): Archival Tracking Data Files

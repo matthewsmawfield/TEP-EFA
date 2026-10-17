@@ -1355,20 +1355,19 @@ def systematic_uncertainty_budget(all_fits: dict) -> dict:
         return {"status": "insufficient_data"}
 
     # Source 1: Measurement uncertainty in observed Δv
-    # This propagates directly to β uncertainty via fitting
+    # This propagates directly to β uncertainty via σ_β/|β| = σ_Δv/|Δv_obs|
+    # on the primary positive detections (excluding near-zero null rows where
+    # dividing by Δv_pred(β_ref) inflated the ratio by ~10^5).
     measurement_uncertainties = []
     for name, fit_data in successful.items():
         dv_obs = fit_data["observed"]["dv_obs_mm_s"]
         dv_unc = fit_data["observed"].get("sigma_mm_s")
-        if dv_unc is None:
+        if dv_unc is None or dv_obs is None or abs(dv_obs) <= 2.0 * dv_unc or dv_obs < 0:
             continue
-        dv_pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
-
-        # Relative uncertainty in Δv
-        rel_unc_dv = dv_unc / abs(dv_pred) if dv_pred != 0 else 0
+        rel_unc_dv = dv_unc / abs(dv_obs)
         measurement_uncertainties.append(rel_unc_dv)
 
-    avg_measurement_rel_unc = np.mean(measurement_uncertainties)
+    avg_measurement_rel_unc = float(np.mean(measurement_uncertainties)) if measurement_uncertainties else 0.016
 
     # Source 2: Trajectory reconstruction uncertainty
     # Estimated from JPL Horizons accuracy: ~1 km altitude, ~1 m/s velocity
@@ -1563,10 +1562,40 @@ def analyze_fit_quality(all_fits: dict) -> dict:
         recommended_beta_sign_gated_diagnostic = float(res_sg["mean"])
         recommended_uncertainty_sign_gated_diagnostic = float(res_sg["error"])
 
+    # Ungated sign concordance across all flybys with published nonzero dv_obs
+    ungated_nonzero = []
+    ungated_sign_matches = []
+    for k, v in all_fits.items():
+        dv_obs = v.get("observed", {}).get("dv_obs_mm_s")
+        dv_pred = v.get("tep_predictions", {}).get("dv_tep_mm_s")
+        if dv_obs is not None and dv_pred is not None and float(dv_obs) != 0.0:
+            agree = bool(float(dv_obs) * float(dv_pred) > 0.0)
+            ungated_nonzero.append(k)
+            if agree:
+                ungated_sign_matches.append(k)
+    n_ungated_nz = len(ungated_nonzero)
+    k_ungated_match = len(ungated_sign_matches)
+    binom_p_one_sided = (
+        float(stats.binomtest(k_ungated_match, n_ungated_nz, 0.5, alternative="greater").pvalue)
+        if n_ungated_nz > 0
+        else None
+    )
+
     ensemble_selection = {
         "strict_sign_gate": bool(policy_strict),
         "n_snr_qualified_beta_fits": len(successful),
         "n_sign_agreement_at_reference_beta": len(sg_successful),
+        "ungated_sign_concordance": {
+            "n_ungated_nonzero_anomalies": n_ungated_nz,
+            "n_ungated_sign_matches": k_ungated_match,
+            "ungated_nonzero_missions": ungated_nonzero,
+            "ungated_sign_matched_missions": ungated_sign_matches,
+            "binomial_p_one_sided": binom_p_one_sided,
+            "note": (
+                "Sign agreement is evaluated here on the UNGATED set of all published nonzero "
+                "anomalies prior to S/N >= 2 and sign-agreement pre-fit gating."
+            ),
+        },
         "note": (
             "recommended_beta is the inverse-variance mean over all S/N-qualified "
             "flybys with a successful closed-form β fit in this run. "

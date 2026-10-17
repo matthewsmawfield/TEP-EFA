@@ -2,6 +2,7 @@
     "delva_bound": {
         "alpha": 1.9e-06,
         "alpha_err": 2.48e-05,
+        "alpha_2sigma_upper": 5.15e-05,
         "gr_modulation": 5.3e-11,
         "max_anomalous_modulation": 2.7295e-15,
         "reference": "Delva et al. (2018) PRL 121(23), 231101"
@@ -12,16 +13,26 @@
         "r_p_m": 23445228.8,
         "r_a_m": 32509971.2
     },
+    "master_action_two_branch": {
+        "kinetic_sector": "selected two-branch P_,X = k sqrt(xi) + 2 xi (k = 16.03, zero free parameters)",
+        "dPhi_GR_over_c2": 5.27434487443193e-11,
+        "predicted_modulation_du": 3.9302107241893434e-17,
+        "predicted_alpha": 7.451561886371044e-07,
+        "delva_2sigma_bound_alpha": 5.15e-05,
+        "passes_delva_bound": true,
+        "safety_margin_factor": 69.11302728921012
+    },
     "canonical_model": {
         "lambda_tep_m": 4200000.0,
         "eta_periapsis": -2.3894740213458236e-11,
         "eta_apoapsis": -2.7604297109330792e-12,
         "predicted_modulation": 2.1134310502525156e-11,
-        "exceeds_bound_by_factor": 7742.9237964920885
+        "exceeds_bound_by_factor": 7742.9237964920885,
+        "note": "Unscreened Yukawa proxy (y=1); omits the master-action kinetic screening factor y_tb(g) ~ 7.5e-7 at r ~ 28,000 km."
     },
     "bounded_model": {
         "lambda_tep_max_m": 1299245.025008121,
         "lambda_tep_max_km": 1299.245025008121
     },
-    "conclusion": "If the clock-amplitude excursion operates as a lapse-level term, Delva et al. (2018) bounds the exterior vertical relaxation scale to lambda_TEP <= 1299.2 km, decoupling it from the lateral correlation scale L_c = 4201 km. Alternatively, the excursion enters observables only through non-integrable transport (the holonomy sector), meaning Step 043 uses the wrong observable for this channel."
+    "conclusion": "Under the Paper 0 selected two-branch master action (du/dr = y_tb(g) g/c^2), kinetic screening at r = 23,445-32,510 km (y_tb ~ 7.5e-7) suppresses the GSAT-0201/0202 eccentric-orbit clock modulation to delta_eta = 3.93e-17 (alpha = 7.45e-07), passing the Delva et al. (2018) 2-sigma bound (alpha < 5.15e-05) by a factor of 69.1x with zero free parameters (whereas an unscreened y=1 Yukawa profile would require lambda_TEP <= 1299.2 km)."
 }

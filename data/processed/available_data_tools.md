@@ -217,7 +217,7 @@ import trk234
 from pathlib import Path
 
 # Test file
-filepath = Path('/Users/matthewsmawfield/www/TEP-EFA/data/raw/dsn_tracking/MESSENGER_2005/NASA_PDS/151161600sc236dss15ddor_234.dat')
+filepath = Path('TEP-EFA/data/raw/dsn_tracking/MESSENGER_2005/NASA_PDS/151161600sc236dss15ddor_234.dat')
 
 # Read with trk234
 f = trk234.Reader(str(filepath))

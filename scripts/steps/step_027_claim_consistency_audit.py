@@ -90,7 +90,7 @@ class ClaimConsistencyAuditor:
         }
 
     def _manuscript_sources(self) -> list[Path]:
-        sources = [self.project_root / "15-TEP-EFA-v0.1-Yogyakarta.md"]
+        sources = [self.project_root / "C15-TEP-EFA-v0.1-Yogyakarta.md"]
         sources.extend(sorted((self.project_root / "site/components").glob("*.html")))
         return [path for path in sources if path.exists()]
 
@@ -692,6 +692,7 @@ class ClaimConsistencyAuditor:
             "direct experimental validation",
             "overwhelming evidence",
             "juno is a 5",
+            "pattern that systematic errors cannot explain",
         ]
         for phrase in banned:
             if phrase in text_lower:

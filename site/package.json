@@ -1,7 +1,7 @@
 {
   "name": "tep-efa-site",
-  "version": "0.3.0",
-  "description": "The Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly",
+  "version": "0.4.0",
+  "description": "Temporal Equivalence Principle and the Earth Flyby Anomaly: Clock-Sector Response and Coherent-Link Cancellation",
   "main": "index.html",
   "scripts": {
     "dev": "node dev-server.js",

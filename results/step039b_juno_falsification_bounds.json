@@ -15,42 +15,57 @@
     "beta_weighted": 0.00474,
     "beta_uncertainty": 0.001285,
     "dv_prediction_mm_s": 0.1241,
-    "tension_sigma": 6.21
+    "sigma_pred_se_mm_s": 0.0336,
+    "sigma_total_mm_s": 0.0391,
+    "sigma_total_with_between_flyby_tau_mm_s": 0.0702,
+    "tension_sigma": 3.17,
+    "tension_with_between_flyby_tau_sigma": 1.77,
+    "tension_obs_only_sigma": 6.21
   },
   "falsification_thresholds": {
     "1sigma": {
-      "target_dv_mm_s": 0.02,
-      "beta_threshold": 0.000764,
-      "dv_at_threshold_mm_s": 0.02,
+      "target_dv_mm_s": 0.0391,
+      "target_dv_obs_only_mm_s": 0.02,
+      "beta_threshold": 0.001495,
+      "dv_at_threshold_mm_s": 0.0391,
       "current_beta_exceeds_threshold": true,
-      "tension_at_current_beta_sigma": 6.21
+      "tension_at_current_beta_sigma": 3.17,
+      "tension_obs_only_sigma": 6.21,
+      "tension_with_between_flyby_tau_sigma": 1.77
     },
     "2sigma": {
-      "target_dv_mm_s": 0.04,
-      "beta_threshold": 0.001528,
-      "dv_at_threshold_mm_s": 0.04,
+      "target_dv_mm_s": 0.0783,
+      "target_dv_obs_only_mm_s": 0.04,
+      "beta_threshold": 0.002989,
+      "dv_at_threshold_mm_s": 0.0783,
       "current_beta_exceeds_threshold": true,
-      "tension_at_current_beta_sigma": 6.21
+      "tension_at_current_beta_sigma": 3.17,
+      "tension_obs_only_sigma": 6.21,
+      "tension_with_between_flyby_tau_sigma": 1.77
     },
     "3sigma": {
-      "target_dv_mm_s": 0.06,
-      "beta_threshold": 0.002292,
-      "dv_at_threshold_mm_s": 0.06,
+      "target_dv_mm_s": 0.1174,
+      "target_dv_obs_only_mm_s": 0.06,
+      "beta_threshold": 0.004484,
+      "dv_at_threshold_mm_s": 0.1174,
       "current_beta_exceeds_threshold": true,
-      "tension_at_current_beta_sigma": 6.21
+      "tension_at_current_beta_sigma": 3.17,
+      "tension_obs_only_sigma": 6.21,
+      "tension_with_between_flyby_tau_sigma": 1.77
     }
   },
   "falsification_assessment": {
     "tep_falsified_by_juno_at_3sigma": true,
+    "tep_falsified_with_between_flyby_tau_at_3sigma": false,
     "beta_falsified_interval": {
-      "upper_bound": 0.002292,
-      "current_beta_fraction_of_threshold": 2.07
+      "upper_bound": 0.004484,
+      "current_beta_fraction_of_threshold": 1.06
     },
     "beta_needed_to_explain_observation": {
       "at_1sigma_mm_s": 0.000764,
       "at_2sigma_mm_s": 0.001528
     },
-    "interpretation": "At the current fitted \u03b2, the TEP model predicts a Juno anomaly 6.2\u03c3 above the published null. To drop below 3\u03c3 consistency, \u03b2 would need to be < 2.2920e-03. The current fitted \u03b2 (4.7404e-03) is 2.1x the 3\u03c3 threshold."
+    "interpretation": "At the current fitted \u03b2, the raw TEP prediction (+0.124 mm/s) sits at 3.17\u03c3 under the combined observation+mean-\u03b2 uncertainty (\u03c3_total = 0.039 mm/s, matching Section 5.6's Cohen's d = 3.2), and drops to 1.77\u03c3 (< 2\u03c3, not falsified) when the Step 008 random-effects prediction uncertainty (\u03c3_total = 0.070 mm/s) is included, prior to accounting for Juno's perigee safe-mode tracking gap and modern stochastic-OD absorption."
   },
   "notes": [
     "Scaling law: dv_tep \u221d \u03b2 (canonical linear response from Step 008).",

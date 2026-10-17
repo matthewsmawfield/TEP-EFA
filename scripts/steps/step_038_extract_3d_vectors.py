@@ -211,7 +211,7 @@ def compute_3d_state_vectors(data: dict) -> dict:
     Velocity: decomposed into radial + transverse from dRA/dt, dDec/dt, and range-rate.
     """
     ts = data["timestamps"]
-    ra = np.radians(data["ra_deg"])
+    ra = np.unwrap(np.radians(data["ra_deg"]))
     dec = np.radians(data["dec_deg"])
     r = data["range_km"] * 1000.0  # meters
     rdot = data["range_rate_kms"] * 1000.0  # m/s

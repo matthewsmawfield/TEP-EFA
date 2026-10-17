@@ -289,8 +289,8 @@ def compute_sc_cmb_cos_theta(dec_in_deg, state_vectors=None, mission_name=None):
             uz_ecl = vec["uz_ecl"]
             eps = math.radians(23.439281)
             ux_eq = ux_ecl
-            uy_eq = uy_ecl * math.cos(eps) + uz_ecl * math.sin(eps)
-            uz_eq = -uy_ecl * math.sin(eps) + uz_ecl * math.cos(eps)
+            uy_eq = uy_ecl * math.cos(eps) - uz_ecl * math.sin(eps)
+            uz_eq = uy_ecl * math.sin(eps) + uz_ecl * math.cos(eps)
             v_sc_hat = np.array([ux_eq, uy_eq, uz_eq])
             return float(np.dot(v_sc_hat, n_cmb))
 
